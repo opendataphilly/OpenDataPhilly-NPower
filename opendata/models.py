@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Tag(models.Model):
     tag_name = models.CharField(max_length=150)
@@ -8,6 +9,15 @@ class Tag(models.Model):
 
     class Meta: 
         ordering = ['tag_name']
+
+class DataType(models.Model):
+    data_type = models.CharField(max_length=50)
+    
+    def __unicode__(self):
+        return self.data_type
+        
+    class Meta: 
+        ordering = ['data_type']
 
 class UrlType(models.Model):
     url_type = models.CharField(max_length=50)
@@ -28,7 +38,7 @@ class Resource(models.Model):
     contact_email = models.CharField(max_length=255, blank=True)
     contact_url = models.CharField(max_length=255, blank=True)
     
-    release_date = models.DateField(blank=True)
+    release_date = models.DateField(blank=True, null=True)
     time_period = models.CharField(max_length=50, blank=True)
     update_frequency = models.CharField(max_length=255, blank=True)
     data_formats = models.CharField(max_length=255, blank=True)
@@ -36,11 +46,15 @@ class Resource(models.Model):
     proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
     is_published = models.BooleanField(default=True, verbose_name="Available to the public")
     
-    metadata_user = models.CharField(max_length=50, blank=True)
+    created_by = models.ForeignKey(User, related_name='created_by')
+    last_updated_by = models.ForeignKey(User, related_name='updated_by')
+    created = models.DateTimeField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now=True)
     metadata_contact = models.CharField(max_length=255, blank=True)
     metadata_notes = models.TextField(blank=True)
     
     tags = models.ManyToManyField(Tag, blank=True, null=True)
+    data_types = models.ManyToManyField(DataType, blank=True, null=True)
     
     def __unicode__(self):
         return self.name
