@@ -10,7 +10,7 @@ class UrlInline(admin.TabularInline):
 
 class ResourceAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields':[('name', 'is_published'), 'description','usage', 
+        (None, {'fields':[('name', 'is_published'), 'description', 'short_description', 'usage', 
             ('organization', 'division'), ('contact_phone', 'contact_email', 'contact_url')]}),
         ('Metadata Fields ', {'fields':['release_date', ('time_period', 'update_frequency'), 
             ('data_formats', 'area_of_interest'), 'proj_coord_sys', 'metadata_contact',

@@ -31,6 +31,7 @@ class UrlType(models.Model):
 class Resource(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    short_description = models.CharField(max_length=255, blank=True)
     usage = models.TextField()
     organization = models.CharField(max_length=255)
     division = models.CharField(max_length=255, blank=True)
