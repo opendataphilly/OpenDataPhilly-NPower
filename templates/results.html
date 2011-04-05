@@ -1,0 +1,61 @@
+{% extends "template1.html" %}
+
+{% load thumbnail %}
+
+{% block center_container %}
+
+	{% if tag %}
+	<div id="tag_name">{{ tag }}</div>
+	{% endif %}
+
+	<div id="results_header">
+		{% if results.description %}
+			<div id="description"></div>
+		{% endif %}
+		<div id="results_info">
+			<div id="count">{{results.count}} Results</div>
+			<div id="filter">
+				<ul>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_application.png);background-position:bottom center;"></a><//li>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_data.png);background-position:bottom center;"></a></li>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_api.png);background-position:bottom center;"></a></li>
+					<li class="info_label">FILTER:</li>
+				</ul>
+			</div>
+			<div id="sort">
+				<ul>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_ratings.png);background-position:bottom center;"></a><//li>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_alpha.png);background-position:top center;"></a></li>
+					<li class="info_label">SORT:</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="results_list">
+		<ul>
+		{% for r in results %}
+			<li class="resource">
+				<div id="url_types">
+					{% for u in r.get_distinct_url_types %}
+						<div class="url_image" style="background-image:url(/static/images/icon_{{u}}.png)" alt="{{u}}"></div>
+					{% endfor %}</div>
+				<div id="rating_image">
+					<div>*****</div>
+					{% if r.get_first_image %}
+						<img src="{% thumbnail r.get_first_image 80x80 autocrop %}" alt="{{r.get_first_image.title}}">
+					{% else %}
+						<img src="/static/images/results_no_image.gif" alt="No Resource Images">
+					{% endif %}
+				</div>
+				<div id="resource_info">
+					<div id="resource_title">{{r}}</div>
+					<div id="resource_desc">{{r.short_description|default:"No description available."}}</div>
+					<div id="resource_button"><a class="button" href="/opendata/resource/{{r.id}}">VIEW DETAILS</a></div>
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+
+{% endblock %}

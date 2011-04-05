@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+		});
+	</script>
+{% endblock %}
+
+
+{% block content %}
+
+	<div id="left_container">
+
+		<div id="logo"><img src="/static/images/logo.png"/></div>
+
+		<div id="tags">
+			<ul>
+				<li class="header">DATA</li>
+				<li id="tag_list"></li>
+				<li class="seperated">Inspirational Uses</li>
+				<li>Suggest Data</li>
+			</ul>
+		</div>
+
+		<div id="about">
+			<ul>
+				<li class="header">ABOUT</li>
+				<li>Suggest Data</li>
+				<li>About</li>
+				<li>FAQ</li>
+				<li>Contact</li>
+				<li>Terms</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div id="center_container">
+		<div id="center_header">
+			<div id="search">
+				<form action="/opendata/search/" >
+					<div id="search_qs">
+						<input type="text" id="qs" value="Search for data" />
+					</div>
+				</form>
+				<div id="search_img"><img src="/static/images/glass.png"/></div>
+			</div>
+
+			<div id="account">
+				<div id="account_text" class="small_dark">Rate and suggest data:</div>
+				<div id="account_button" class="button">My Account</div>
+			</div>
+		</div>
+		<div id="center_content">
+			{% block center_container %}
+			{% endblock %}
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<div id="footer_logo"><img src="/static/images/logo_azavea.png" /></div>
+		<div id="footer_copyright">Copyright 2011 c OpenDataPhilly <br> All Rights Reserved. Terms of Use.</div>
+	</div>
+
+{% endblock %}

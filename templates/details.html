@@ -1,0 +1,67 @@
+{% extends "template1.html" %}
+
+
+{% block center_container %}
+	<div id="title">{{resource}}</div>
+	<div id="description">{{resource.description}}</div>
+
+
+	<div class="tab_header">
+		<div id="tab_button">BASIC INFO</div>
+		<div id="tab_button">MORE INFO</div>
+	</div>
+	<div class="tab_body">
+		<div id="left">
+			<div>Organization</div><div>{{resource.organization}}</div>
+			<div>Division</div><div>{{resource.division}}</div>
+			<div>Contact Email</div><div>{{resource.contact_email}}</div>
+			<div>Contact Phone</div><div>{{resource.contact_phone}}</div>
+			<div>ContactWebsite</div><div>{{resource.contact_website}}</div>
+			<div>Categories</div><div>{{resource.tags.all}}</div>
+			<div>Usage</div><div>{{resource.usage}}</div>
+		</div>
+		<div id="right">- - Images - -</div>
+	</div>
+
+	<div class="tab_body hidden">**Extended Info Here**</div>
+
+
+	<div class="tab_header">
+		<div id="tab_button">DATA</div>
+	</div>
+	<div class="tab_body">
+		<div id="data_block">
+			<div>Raw Data</div>
+			{{resource.get_grouped_urls.Data}}
+		</div>
+		<div id="data_block">
+			<div>Documentation</div>
+			{{resource.get_grouped_urls.Documentation}}
+		</div>
+		<div id="data_block">
+			<div>APIs</div>
+			{{resource.get_grouped_urls.API}}
+		</div>
+		<div id="data_block">
+			<div>Apps and Images</div>
+			{{resource.get_grouped_urls.Application}}
+			{{resource.get_grouped_urls.Image}}
+		</div>
+	</div>
+
+
+	<div class="tab_header">
+		<div id="tab_button">RATINGS/COMMENTS</div>
+	</div>
+	<div class="tab_body">
+		<div id="social_meta">
+			<div>Average Rating</div><div>***** ##Votes</div>
+		</div>
+		<div id="comment_form">
+			<div>Rate this data ***** </div>
+			<div>Add a comment? -- Box --</div>
+		</div>
+		<div id="comment-list">Comments</div>
+	</div>
+
+{% endblock %}
