@@ -282,6 +282,35 @@
 	text-decoration: none;
 }
 
+.pagination {
+	padding-bottom:50px;
+	text-align:center;
+	font-size:1em;
+	font-weight: bold;
+}
+.pagination a {
+	color: #575656;
+	text-decoration: none;
+}
+.disabled {
+	color:#9C9B9B;
+}
+.page {
+	padding:2px 6px;
+	border: 2px white solid;
+	background-color: #E1E1E1;
+	
+	-moz-border-radius: 3px;
+	border-radius:3px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+.current {
+	background-color: #616161;
+	color: white;
+}
+
 /* -------------------------------------------------
 	
 	Details

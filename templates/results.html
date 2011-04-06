@@ -2,6 +2,7 @@
 
 {% load thumbnail %}
 {% load sorting_tags %}
+{% load pagination_tags %}
 
 {% block js_ready %}
 	<script>
@@ -44,7 +45,7 @@
 		</div>
 		{% endif %}
 	</div>
-
+{% autopaginate results 6 %}
 {% autosort results %}
 	<div id="results_list">
 		<ul>
@@ -72,6 +73,6 @@
 		</ul>
 	</div>
 
-	<div id="pager"></div>
+	<div id="pager">{% paginate %}</div>
 
 {% endblock %}
