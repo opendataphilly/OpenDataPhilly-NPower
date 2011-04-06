@@ -4,6 +4,10 @@
 	color: #575656;
 }
 
+.hidden {
+	display:none;
+}
+
 .small_dark {	
 	font-size: 0.75em;
 	font-weight:bold;
@@ -25,6 +29,12 @@
 	box-shadow: 0 0 4px #ccc;
 }
 
+/* -------------------------------------------------
+	
+	Base, Template1, left nav, search bar
+	
+   ------------------------------------------------- */ 
+
 
 #wrapper {
 	position:relative;
@@ -33,6 +43,7 @@
 	margin-left:25px;
 	padding-top:50px;
 }
+
 
 #left_container {
 	float: left;
@@ -154,6 +165,14 @@
 	margin-top:50px;
 }
 
+
+/* -------------------------------------------------
+	
+	Results
+	
+   ------------------------------------------------- */
+
+
 #tag_name {
 	font-size: 1.7em;
 	font-weight: bold;
@@ -263,6 +282,69 @@
 	text-decoration: none;
 }
 
+/* -------------------------------------------------
+	
+	Details
+	
+   ------------------------------------------------- */
+
+#title {
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #666;
+}
+#description {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	font-weight: bold;
+	color: #9C9B9B;
+}
+
+.tab_header{
+	position:relative;
+	height:40px;
+}
+.tab_button {
+	float: left;
+	margin-right:5px;
+	padding: 10px;
+	border: 2px solid white;
+	border-bottom: 0 none;
+	background: url(/static/images/background_tab_off.gif) repeat-x;
+	font-size: 0.85em;
+	font-weight: bold;
+	
+	-moz-border-radius: 3px;
+	border-radius:3px;
+	-moz-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
+	-webkit-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
+	box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
+	
+}
+
+.tab_button.selected {
+	background: #F5F5F5 none;
+	
+}
+
+.tab_body {
+	margin-top:-6px;
+	border: 2px solid white;
+	background-color: #F5F5F5;
+	
+	-moz-border-radius: 3px;
+	border-radius:3px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+
+
+/* -------------------------------------------------
+	
+	Footer
+	
+   ------------------------------------------------- */
 
 #footer {
 	position:relative;

@@ -1,22 +1,34 @@
 {% extends "template1.html" %}
 
 {% load thumbnail %}
+{% load sorting_tags %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+
+			odp.setupSortLinks();
+		});
+	</script>
+{% endblock %}
 
 {% block center_container %}
 
 	{% if tag %}
 	<div id="tag_name">{{ tag }}</div>
 	{% endif %}
-
 	<div id="results_header">
 		{% if results.description %}
 			<div id="description"></div>
 		{% endif %}
+		{% if results %}
 		<div id="results_info">
 			<div id="count">{{results.count}} Results</div>
 			<div id="filter">
 				<ul>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_application.png);background-position:bottom center;"></a><//li>
+					<li><a class="url_image" style="background-image:url(/static/images/icon_application.png);background-position:bottom center;"></a></li>
 					<li><a class="url_image" style="background-image:url(/static/images/icon_data.png);background-position:bottom center;"></a></li>
 					<li><a class="url_image" style="background-image:url(/static/images/icon_api.png);background-position:bottom center;"></a></li>
 					<li class="info_label">FILTER:</li>
@@ -24,14 +36,16 @@
 			</div>
 			<div id="sort">
 				<ul>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_ratings.png);background-position:bottom center;"></a><//li>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_alpha.png);background-position:top center;"></a></li>
+					<li><a id="sort_rating" class="url_image" style="background-image:url(/static/images/icon_ratings.png);background-position:bottom center;"></a></li>
+					<li><a id="sort_name" class="url_image" style="background-image:url(/static/images/icon_alpha.png);background-position:bottom center;"></a></li>
 					<li class="info_label">SORT:</li>
 				</ul>
 			</div>
 		</div>
+		{% endif %}
 	</div>
 
+{% autosort results %}
 	<div id="results_list">
 		<ul>
 		{% for r in results %}
@@ -57,5 +71,7 @@
 		{% endfor %}
 		</ul>
 	</div>
+
+	<div id="pager"></div>
 
 {% endblock %}

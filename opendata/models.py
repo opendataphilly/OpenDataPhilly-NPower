@@ -1,8 +1,12 @@
 import os
+
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+
 from sorl.thumbnail.fields import ImageWithThumbnailsField
+#from djangoratings.fields import RatingField
+
 
 class Tag(models.Model):
     tag_name = models.CharField(max_length=150)
@@ -82,6 +86,8 @@ class Resource(models.Model):
     coord_sys = models.ManyToManyField(CoordSystem, blank=True, null=True, verbose_name="Coordinate system")
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     data_types = models.ManyToManyField(DataType, blank=True, null=True)
+    
+    #rating = RatingField(range=5)
     
     def get_distinct_url_types(self):
         types = []

@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 
-
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
 			odp.getTags();
+			odp.setupSearchInput();
 		});
 	</script>
 {% endblock %}
-
 
 {% block content %}
 
@@ -41,7 +40,7 @@
 	<div id="center_container">
 		<div id="center_header">
 			<div id="search">
-				<form action="/opendata/search/" >
+				<form action="/opendata/search" method="GET" >
 					<div id="search_qs">
 						<input type="text" id="qs" value="Search for data" />
 					</div>

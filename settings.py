@@ -104,12 +104,24 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
+)
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_sorting.middleware.SortingMiddleware',
+    'pagination.middleware.PaginationMiddleware',
+
 )
 
 ROOT_URLCONF = 'urls'
@@ -129,9 +141,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.comments',
     'opendata',
     'registration',
     'sorl.thumbnail',
+    'pagination',
+    'django_sorting',
+    #'djangoratings'
+    
 )
 
 # A sample logging configuration. The only tangible logging
