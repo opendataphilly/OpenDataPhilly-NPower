@@ -20,6 +20,10 @@ var odp = {
     tags: null,
 
     setupSearchInput: function () {
+        if ($.getUrlVar('qs') && $.getUrlVar('qs') != "") {
+            $("#qs")[0].value = decodeURI($.getUrlVar('qs'));
+        }
+    
         $("#qs").focus(function (evt) {
             if (this.value == "Search for data") {
                 this.value = "";
@@ -30,6 +34,15 @@ var odp = {
                 this.value = "Search for data";
             }
         });
+        
+        $("#search_form").submit(function(evt) {
+            if ($("#qs")[0].value != "" | $("#qs")[0].value != "Search for data")
+            evt.stopImmediatePropagation();
+            evt.preventDefault();
+            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);
+            
+        });
+        
     },
 
     setupSortLinks: function () {
