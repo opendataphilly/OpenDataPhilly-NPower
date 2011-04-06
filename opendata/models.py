@@ -108,6 +108,12 @@ class Resource(models.Model):
             return None
         return images[0]
     
+    def get_images(self):
+        images = UrlImage.objects.filter(url__resource=self)
+        if images.count() == 0:
+            return None
+        return images
+    
     def __unicode__(self):
         return '%s' % self.name
     

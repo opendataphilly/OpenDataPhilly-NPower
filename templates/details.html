@@ -1,5 +1,6 @@
 {% extends "template1.html" %}
 
+{% load thumbnail %}
 
 {% block center_container %}
 	<div id="title">{{resource}}</div>
@@ -11,16 +12,28 @@
 		<div class="tab_button">MORE INFO</div>
 	</div>
 	<div class="tab_body">
-		<div id="left">
-			<div>Organization</div><div>{{resource.organization}}</div>
-			<div>Division</div><div>{{resource.division}}</div>
-			<div>Contact Email</div><div>{{resource.contact_email}}</div>
-			<div>Contact Phone</div><div>{{resource.contact_phone}}</div>
-			<div>ContactWebsite</div><div>{{resource.contact_website}}</div>
-			<div>Categories</div><div>{{resource.tags.all}}</div>
-			<div>Usage</div><div>{{resource.usage}}</div>
+		<div id="tab_data">
+			<div class="info_label">Organization</div><div class="info_data"><a>{{resource.organization}}</a></div>
+			<div class="info_label">Division</div><div class="info_data"><a>{{resource.division}}</div>
+			<div class="info_label">Contact Email</div><div class="info_data"><a>{{resource.contact_email}}</div>
+			<div class="info_label">Contact Phone</div><div class="info_data"><a>{{resource.contact_phone}}</div>
+			<div class="info_label">Contact Website</div><div class="info_data">{{resource.contact_website}}</div>
+			<div class="info_label">Categories</div>
+			<div class="info_data">
+				{% for tag in resource.tags.all %}
+					<a>{{tag}}</a>
+				{% endfor %}
+			</div>
+			<div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
 		</div>
-		<div id="right">- - Images - -</div>
+		<div id="tab_image">
+			{% if resource.get_images %}
+				<img src="{% thumbnail r.get_first_image 80x80 autocrop %}" alt="{{r.get_first_image.title}}">
+			{% else %}
+				<img src="/static/images/detail_no_image.gif" alt="No Resource Images">
+			{% endif %}
+			<div id="tab_image_detail">No Resource Images</div>
+		</div>
 	</div>
 
 	<div class="tab_body hidden">**Extended Info Here**</div>
@@ -30,23 +43,40 @@
 		<div class="tab_button selected">DATA</div>
 	</div>
 	<div class="tab_body">
-		<div id="data_block">
-			<div>Raw Data</div>
-			{{resource.get_grouped_urls.Data}}
+		<div class="data_block">
+			<div class="url_header">
+				<div id="raw_image"></div><div class="url_label">Raw Data</div>
+			</div>
+			{% for url in resource.get_grouped_urls.Data %}
+				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+			{% endfor %}
 		</div>
-		<div id="data_block">
-			<div>Documentation</div>
-			{{resource.get_grouped_urls.Documentation}}
+		<div class="data_block">
+			<div class="url_header">
+				<div id="doc_image"></div><div class="url_label">Documentation</div>
+			</div>
+			{% for url in resource.get_grouped_urls.Documentation %}
+				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+			{% endfor %}
 		</div>
-		<div id="data_block">
-			<div>APIs</div>
-			{{resource.get_grouped_urls.API}}
+
+		<div class="data_block">
+			<div class="url_header">
+				<div id="api_image"></div><div class="url_label">APIs</div>
+			</div>
+			{% for url in resource.get_grouped_urls.API %}
+				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+			{% endfor %}
 		</div>
-		<div id="data_block">
-			<div>Apps and Images</div>
-			{{resource.get_grouped_urls.Application}}
-			{{resource.get_grouped_urls.Image}}
+		<div class="data_block">
+			<div class="url_header">
+				<div id="app_image"></div><div class="url_label">Applications</div>
+			</div>
+			{% for url in resource.get_grouped_urls.Application %}
+				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+			{% endfor %}
 		</div>
+
 	</div>
 
 
@@ -55,13 +85,17 @@
 	</div>
 	<div class="tab_body">
 		<div id="social_meta">
-			<div>Average Rating</div><div>***** ##Votes</div>
+			<div id="avg_rating">Average Rating</div>
+			<div id="detail_rating">***** ## Votes</div>
 		</div>
 		<div id="comment_form">
-			<div>Rate this data ***** </div>
-			<div>Add a comment? -- Box --</div>
+			<div id="rate_label">Rate this data  </div><div id="rate">*****</div>
+			<div id="comment_label">Add a comment? </div><div><textarea>placeholder</textarea></div>
 		</div>
-		<div id="comment-list">Comments</div>
+		<div id="comment_list">
+			<div id="comment_header">Comments</div>
+			<div>comment list here</div>
+		</div>
 	</div>
 
 {% endblock %}
