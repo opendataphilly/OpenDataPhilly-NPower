@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 from sorl.thumbnail.fields import ImageWithThumbnailsField
-#from djangoratings.fields import RatingField
+from djangoratings.fields import RatingField
 
 
 class Tag(models.Model):
@@ -87,7 +87,7 @@ class Resource(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     data_types = models.ManyToManyField(DataType, blank=True, null=True)
     
-    #rating = RatingField(range=5)
+    rating = RatingField(range=5, can_change_vote=True)
     
     def get_distinct_url_types(self):
         types = []

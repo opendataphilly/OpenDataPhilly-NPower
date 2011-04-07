@@ -133,6 +133,8 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates')
 )
 
+COMMENTS_APP = 'comments'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,7 +149,8 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'pagination',
     'django_sorting',
-    #'djangoratings'
+    'djangoratings',
+    'comments',
     
 )
 

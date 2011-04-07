@@ -45,8 +45,8 @@
 		</div>
 		{% endif %}
 	</div>
-{% autopaginate results 6 %}
 {% autosort results %}
+{% autopaginate results 6 %}
 	<div id="results_list">
 		<ul>
 		{% for r in results %}
@@ -56,7 +56,19 @@
 						<div class="url_image" style="background-image:url(/static/images/icon_{{u}}.png)" alt="{{u}}"></div>
 					{% endfor %}</div>
 				<div id="rating_image">
-					<div>*****</div>
+					<div id="rating">
+						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
+						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
+						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
+						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
+						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
+						<script type="text/javascript">
+							var rating = {{r.rating.score}};
+							if (rating != 0) {
+								$("input:radio.star_r{{r.id}}")[{{r.rating.score}}-1].checked = 'checked';
+							}
+						</script>
+					</div>
 					{% if r.get_first_image %}
 						<img src="{% thumbnail r.get_first_image 80x80 autocrop %}" alt="{{r.get_first_image.title}}">
 					{% else %}

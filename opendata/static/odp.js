@@ -46,9 +46,10 @@ var odp = {
     },
 
     setupSortLinks: function () {
-        if (window.location.search == "") {
+        //TODO: fix usage with a search string
+        if ($.getUrlVar('sort')!='name' && $.getUrlVar('sort') != 'rating_score') {
             $("#sort_name").attr("href", location.href + "?sort=name&dir=asc");
-            $("#sort_rating").attr("href", location.href + "?sort=rating&dir=asc");
+            $("#sort_rating").attr("href", location.href + "?sort=rating_score&dir=desc");
             return;
         }
         
@@ -60,10 +61,10 @@ var odp = {
         
         if ($.getUrlVar('sort') == 'name') {
             $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=" + dir).css("background-position", "top center");
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating&dir=asc");
+            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=desc");
         }
-        else if ($.getUrlVar('sort') == 'rating') {
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating&dir=" + dir).css("background-position", "top center");
+        else if ($.getUrlVar('sort') == 'rating_score') {
+            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=" + dir).css("background-position", "top center");
             $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=asc");
         }
     },

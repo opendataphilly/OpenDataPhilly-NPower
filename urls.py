@@ -18,8 +18,7 @@ urlpatterns = patterns('',
     
     (r'^tags/$', 'opendata.views.get_tag_list'),
     
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^comments/', include('django.contrib.comments.urls')), 
 
     # Uncomment the next line to enable the admin:
     url(r'^_admin_/', include(admin.site.urls)),
