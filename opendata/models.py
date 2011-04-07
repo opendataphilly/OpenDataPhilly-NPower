@@ -128,12 +128,13 @@ class Url(models.Model):
 
 class UrlImage(models.Model):
     def get_image_path(instance, filename):
-        test_path = os.path.join(settings.MEDIA_ROOT, 'url_images', str(instance.url_id), filename)
+        fsplit = filename.split('.')
         extra = 1
+        test_path = os.path.join(settings.MEDIA_ROOT, 'url_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
         while os.path.exists(test_path):
            extra += 1
-           test_path = os.path.join(settings.MEDIA_ROOT, 'url_images', str(instance.url_id), str(extra) + '_' + filename)
-        path = os.path.join('url_images', str(instance.url_id), str(extra) + '_' + filename)
+           test_path = os.path.join(settings.MEDIA_ROOT, 'url_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' +  fsplit[1])
+        path = os.path.join('url_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
         return path
         
     url = models.ForeignKey(Url)

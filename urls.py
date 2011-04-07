@@ -7,16 +7,16 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-urlpatterns = patterns('opendata.views',
+urlpatterns = patterns('',
     # Examples:
-    (r'^$', 'home'),
-    (r'^opendata/$', 'results'),
+    (r'^$', 'opendata.views.home'),
+    (r'^opendata/$', 'opendata.views.results'),
     
-    (r'^opendata/tag/(?P<tag_id>.*)/$', 'tag_results'),
-    (r'^opendata/search/$', 'search_results'),
-    (r'^opendata/resource/(?P<resource_id>.*)/$', 'resource_details'),
+    (r'^opendata/tag/(?P<tag_id>.*)/$', 'opendata.views.tag_results'),
+    (r'^opendata/search/$', 'opendata.views.search_results'),
+    (r'^opendata/resource/(?P<resource_id>.*)/$', 'opendata.views.resource_details'),
     
-    (r'^tags/$', 'get_tag_list'),
+    (r'^tags/$', 'opendata.views.get_tag_list'),
     
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -29,4 +29,6 @@ urlpatterns = patterns('opendata.views',
         {'document_root': settings.ADMIN_MEDIA_ROOT}), 
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.STATIC_DATA}),
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT}),
 )
