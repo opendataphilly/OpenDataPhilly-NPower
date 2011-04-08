@@ -431,39 +431,42 @@ padding: 12px;
 	color: #555;
 }
 #description {
-	margin-top: 15px;
+  font-size: .95em;
+  line-height: 1.35em;
+	margin-top: 9px;
 	margin-bottom: 30px;
 	font-weight: bold;
-	color: #9C9B9B;
+	color: #b0b0b0;
 }
 
-.tab_header{
+ul.tab_header{
 	position:relative;
 	height:40px;
 	z-index: 2;
 }
-.tab_button {
+ul.tab_header li.tab_button {
 	float: left;
 	margin-right:5px;
-	padding: 10px;
+	padding: 0 10px 0;
 	border: 2px solid white;
 	border-bottom: 0 none;
 	background: url(/static/images/background_tab_off.gif) repeat-x;
 	font-size: 0.85em;
-	font-weight: bold;
-	
+  font-family: "proxima-nova-1","proxima-nova-2";
 	-moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 	border-radius:3px;
 	-moz-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
 	-webkit-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
 	box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
-	
+}
+ul.tab_header li.tab_button.ui-tabs-selected {
+	background: #F5F5F5 none;
 }
 
-.tab_button.selected {
-	background: #F5F5F5 none;
-	
-}
+ul.tab_header li.tab_button a {color: #575656;}
+
+
 
 .tab_body {
 	position:relative;
@@ -491,9 +494,9 @@ padding: 12px;
 }
 .info_data {
 	margin-bottom:20px;
-	padding:2px 0 0 5px;
+	padding:5px 0 0 0;
 	font-size: 0.75em;
-	font-weight: bold;
+
 	color: #9C9B9B;
 }
 .info_data a {

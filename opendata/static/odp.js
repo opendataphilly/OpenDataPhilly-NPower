@@ -84,6 +84,10 @@ var odp = {
             tag_list += "<li><a class='tag' href='/opendata/tag/" + tag.pk + "'>" + tag.fields.tag_name + "</a></li>"
         }
         $("#tag_list").replaceWith(tag_list);
-    }
+    },
+    
+    makeTabs: function(div) {
+        $(div).tabs();
+        }
+  }    
 
-}
