@@ -234,31 +234,36 @@ a {text-decoration: none}
 	cursor: pointer;
 }
 
+
+
 #results_info  .url_image#filter_application {
-background:url(/static/images/icon_application.png) top center;
+background:url(/static/images/icon_application.png) 0 0 ;
 }
 
 #results_info  .url_image#filter_data {
-background:url(/static/images/icon_data.png) top center;
+background:url(/static/images/icon_data.png) 0 0;
 }
 
 #results_info  .url_image#filter_api {
-background:url(/static/images/icon_api.png) top center;
+background:url(/static/images/icon_api.png) 0 0;
 }
 
 #results_info  .url_image#sort_rating{
-background:url(/static/images/icon_ratings.png) top center;
-}
-#results_info  .url_image#sort_rating.active{
-background:url(/static/images/icon_ratings.png) bottom center;
+background:url(/static/images/icon_ratings.png) 0 0;
 }
 
 #results_info  .url_image#sort_name{
-background:url(/static/images/icon_alpha.png) top center;
+background:url(/static/images/icon_alpha.png) 0 0;
 }
-#results_info  .url_image#sort_name.active{
-background-position:bottom center;
+
+#results_info  .url_image#filter_application.active, #results_info  .url_image#filter_data.active, #results_info   .url_image#filter_api.active , #results_info   .url_image#sort_rating.active, #results_info   .url_image#sort_name.active{
+background-position: 0 -45px;
 }
+
+#results_info  .url_image#filter_application:hover, #results_info  .url_image#filter_data:hover, #results_info  .url_image#filter_api:hover , #results_info  .url_image#sort_rating:hover, #results_info  .url_image#sort_name:hover{
+background-position: 0 -89px;
+}
+
 
 #results_info .info_label {
 	font-size: 0.75em;
@@ -322,16 +327,16 @@ padding: 12px;
 	float:left;
 }
 .resource #url_types .url_image#resource_icon_Documentation {
-  background:url(/static/images/icon_documentation_sm.png) bottom center;
+  background:url(/static/images/icon_documentation_sm.png) 0 -44px;
 }
 .resource #url_types .url_image#resource_icon_Application {
-  background:url(/static/images/icon_application_sm.png) bottom center;
+  background:url(/static/images/icon_application_sm.png) 0 -44px;
 }
 .resource #url_types .url_image#resource_icon_Api {
-  background:url(/static/images/icon_api_sm.png) bottom center;
+  background:url(/static/images/icon_api_sm.png) 0 -44px;
 }
 .resource #url_types .url_image#resource_icon_Data {
-  background:url(/static/images/icon_data_sm.png) bottom center;
+  background:url(/static/images/icon_data_sm.png) 0 -44px;
 }
 
 .resource #rating_image {
