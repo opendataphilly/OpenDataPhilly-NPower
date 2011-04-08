@@ -60,11 +60,11 @@ var odp = {
         ($.getUrlVar('dir')=='asc') ? dir = 'desc' : dir = 'asc';
         
         if ($.getUrlVar('sort') == 'name') {
-            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=" + dir).css("background-position", "top center");
+            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=" + dir).addClass('active');
             $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=desc");
         }
         else if ($.getUrlVar('sort') == 'rating_score') {
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=" + dir).css("background-position", "top center");
+            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=" + dir).addClass('active');
             $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=asc");
         }
     },

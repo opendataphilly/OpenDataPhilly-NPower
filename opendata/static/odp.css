@@ -1,6 +1,6 @@
 .base_body {
 	background: url(/static/images/background.gif) repeat;
-	font-family: helvetica, arial, sans-seric;
+	font-family: arial, helvetica, sans-serif;
 	color: #575656;
 }
 
@@ -21,13 +21,20 @@
 	text-align: center;
 	color: white;
 	font-weight: bold;
-	
 	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	border-radius:4px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+
+
+.clear_left {clear:left}
+.clear_right {clear:right}
+.clear {clear: both}
+
+a {text-decoration: none}
 
 /* -------------------------------------------------
 	
@@ -39,30 +46,34 @@
 #wrapper {
 	position:relative;
 	width:900px;
-	margin-right:auto;
-	margin-left:25px;
+  margin: 0 auto; 
 	padding-top:50px;
 }
 
 
 #left_container {
 	float: left;
-	width: 249px;
+	width: 233px;
+}
+
+#left_container #logo {
+  margin-left: 5px;
+  display:block;
 }
 
 #left_container #tags {
-	margin-top: 60px;
+	margin-top: 30px;
 }
 
 #left_container ul {
 	width: 180px;
 	margin-top: 15px;
-	margin-left: 30px;
+	margin-left: 0;
 }
 
 #left_container ul li {
 	padding:7px;
-	padding-left:13px;
+	padding-left:9px;
 	font-size: 9pt;
 	font-weight: bold;
 	color: #7D7D7D;
@@ -74,15 +85,17 @@
 }
 
 #left_container ul li.header {
+  font-family: "proxima-nova-1","proxima-nova-2";
 	padding-left:9px;
 	background: url(/static/images/background_ul.gif) repeat;
 	color: #4C4C4C;
+  margin-bottom: 6px;
 }
 
 #left_container ul li.seperated {
 	padding-top: 12px;
-	margin-top: 5px;
-	border-top: dotted 1px #444;
+	margin-top: 8px;
+	border-top: dotted 1px #aaa;
 }
 
 
@@ -135,6 +148,7 @@
 	padding-left: 12px;
 	padding-top: 4px;
 	border: none medium;
+  font-family: Arial, Helvetica, sans-serif;
 	background: transparent 0 0;
 	font-size: 1.1em;
 	font-weight: bold;
@@ -161,8 +175,7 @@
 
 
 #center_content {
-	width:630px;
-	margin-top:50px;
+	margin-top:25px;
 }
 
 
@@ -172,43 +185,70 @@
 	
    ------------------------------------------------- */
 
-
 #tag_name {
 	font-size: 1.7em;
 	font-weight: bold;
-	color: #666;
+	color: #555;
 }
 
 #results_info {
 	position:relative;
-	height:40px;
-	margin-top:45px;
+	height:50px;
 }
 
 #results_info #count {
 	float:left;
-	font-size: 1.2em;
-	font-weight: bold;
-	color: #ADADAD;
+	font-size: 0.95em;
+	padding-top: 16px;
+  color: #bababa;
+  font-family: "proxima-nova-1","proxima-nova-2";
 }
 
 #results_info #sort, #results_info #filter {
 	float:right;
-	padding-left:36px;
-	font-size: 0.75em;
+	padding-left:18px;
 	font-weight: bold;
 	color: #ADADAD;
 }
 
 #results_info .url_image {
 	display: block;
-	width: 35px;
-	height: 35px;
+	width: 45px;
+	height: 45px;
 	cursor: pointer;
 }
 
+#results_info  .url_image#filter_application {
+background:url(/static/images/icon_application.png) top center;
+}
+
+#results_info  .url_image#filter_data {
+background:url(/static/images/icon_data.png) top center;
+}
+
+#results_info  .url_image#filter_api {
+background:url(/static/images/icon_api.png) top center;
+}
+
+#results_info  .url_image#sort_rating{
+background:url(/static/images/icon_ratings.png) top center;
+}
+#results_info  .url_image#sort_rating.active{
+background:url(/static/images/icon_ratings.png) bottom center;
+}
+
+#results_info  .url_image#sort_name{
+background:url(/static/images/icon_alpha.png) top center;
+}
+#results_info  .url_image#sort_name.active{
+background-position:bottom center;
+}
+
 #results_info .info_label {
-	padding-top: 12px;
+	font-size: 0.75em;
+	padding-top: 16px;
+  color: #bababa;
+  font-family: "proxima-nova-1","proxima-nova-2";
 }
 
 #results_info ul {
@@ -219,35 +259,63 @@
 
 #results_info ul li {
 	float:right;
-	padding-left: 2px;
+}
+
+.resource#promotion_header {
+background-color: #fbeac2;
+text-align:center;
+color: #ff935f;
+font-size: 1.1em;
+line-height: 1.25em;
+font-weight: bold;
+padding: 20px;
+}   
+.resource#promotion_header a {
+ color: #df5800;
+}
+
+.resource#promotion_header .tag_name  {
+ text-transform: lowercase;
 }
 
 .resource {
 	position: relative;
-	height: 115px;
-	padding: 25px;
+	padding: 27px 25px 21px;
 	margin-left: 6px;
 	margin-top: 12px;
 	margin-bottom: 32px;
 	border:2px solid white;
 	background-color: #F5F5F5;
-
-	-moz-border-radius: 3px;
-	border-radius:3px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius:4px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
 .resource #url_types {
 	position: absolute;
-	left: -10px;
-	top: -15px;
+	left: -18px;
+	top: -18px;
 }
 .resource #url_types .url_image {
-	width: 35px;
-	height: 35px;
+	width: 40px;
+	height: 38px;
 	float:left;
 }
+.resource #url_types .url_image#resource_icon_Documentation {
+  background:url(/static/images/icon_documentation_sm.png) bottom center;
+}
+.resource #url_types .url_image#resource_icon_Application {
+  background:url(/static/images/icon_application_sm.png) bottom center;
+}
+.resource #url_types .url_image#resource_icon_Api {
+  background:url(/static/images/icon_api_sm.png) bottom center;
+}
+.resource #url_types .url_image#resource_icon_Data {
+  background:url(/static/images/icon_data_sm.png) bottom center;
+}
+
 .resource #rating_image {
 	float: left;	
 	width: 90px;
@@ -265,32 +333,42 @@
 	box-shadow: 0 0 4px #ccc;
 }
 .resource #resource_info {
-	float: left;
-	padding-left: 15px;
+	padding-left: 100px;
 }
 .resource #resource_title {
 	font-weight: bold;
 	padding-bottom: 5px;
+  font-size: 1.1em;
 }
+.resource #resource_title a {
+  color: #646464;
+}
+
 .resource #resource_desc {
-	padding-bottom: 5px;
-	height: 50px;
+	padding-bottom: 20px;
 	overflow: hidden;
-	font-size: 0.8em;
+	font-size: 0.75em;
+  line-height: 1.4em;
 	font-weight: bold;
-	letter-spacing: -0.02em;
 	color: #9C9B9B;	
+}
+
+.resource #resource_button {
+  font-family: "proxima-nova-1","proxima-nova-2";
 }
 .resource #resource_button a {
 	font-size: 0.75em;	
 	text-decoration: none;
+  display: inline-block;
 }
 
 .pagination {
+  font-family: "proxima-nova-1","proxima-nova-2";
 	padding-bottom:50px;
 	text-align:center;
-	font-size:1em;
+	font-size:.8em;
 	font-weight: bold;
+  text-transform: uppercase;
 }
 .pagination a {
 	color: #575656;
@@ -298,6 +376,9 @@
 }
 .disabled {
 	color:#9C9B9B;
+}
+.prev, .next {
+  padding: 0 8px;
 }
 .page {
 	padding:2px 6px;
@@ -324,7 +405,7 @@
 #title {
 	font-size: 1.7em;
 	font-weight: bold;
-	color: #666;
+	color: #555;
 }
 #description {
 	margin-top: 15px;
@@ -548,11 +629,11 @@
 
 #footer {
 	position:relative;
-	float:left;
-	width: 850px;
+  float:left;
+  width: 100%;
+  clear:both;
 	height: 70px;
-	margin-left:30px;
-	margin-bottom:25px;
+	margin: 25px 0;
 	background: url(/static/images/background_ul.gif) repeat;
 }
 #footer #footer_logo {
