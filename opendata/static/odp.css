@@ -36,6 +36,22 @@
 
 a {text-decoration: none}
 
+
+/* -------------------------------------------------
+	
+	general icon declaration
+	
+   ------------------------------------------------- */ 
+
+.icon_idea {
+  display: inline-block;
+  background: url(images/icon_idea_gallery_lg.png) 0 0 no-repeat;
+  width: 28px;
+  height: 35px;
+  vertical-align: middle;
+}
+
+
 /* -------------------------------------------------
 	
 	site layout, left nav, search bar
@@ -268,8 +284,10 @@ color: #ff935f;
 font-size: 1.1em;
 line-height: 1.25em;
 font-weight: bold;
-padding: 20px;
+padding: 12px;
+
 }   
+
 .resource#promotion_header a {
  color: #df5800;
 }
