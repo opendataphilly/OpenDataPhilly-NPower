@@ -6,8 +6,10 @@
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
-      odp.getTags();
+      		odp.getTags();
 			odp.setupSearchInput();
+
+			odp.setupCommentForm();
 			odp.makeTabs('#content_resource, #content_data, #content_ratings');      odp.makeDialog('.tab_image');
 			odp.makeTabs('.tab_container');
 		});
@@ -46,7 +48,7 @@
           </div>
         </div>
         <ul class="tab_image_pager">
-          <li><a href="#tab_image_1"></a></li>      
+          <li><a href="#tab_image_1"></a></li>
         </ul>
         {% else %}
         <div class="tab_image" id="tab_image_1">
@@ -79,7 +81,7 @@
         </ul>
       </div>
     {% endif %}
-    
+
     {% if resource.get_grouped_urls.Documentation %}
       <div class="data_block" id="data_documention">
         <div class="url_header">
@@ -105,7 +107,7 @@
         </ul>
       </div>
       {% endif %}
-      
+
       {% if resource.get_grouped_urls.Application %}
       <div class="data_block" id="data_application">
         <div class="url_header">
@@ -118,7 +120,7 @@
         </ul>
       </div>
       {% endif %}
-      
+
     <div class="clear"></div>
     </div>
   </div>
@@ -137,7 +139,10 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            $("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            var rating = {{resource.rating.score}};
+            if (rating != 0) {
+            	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            }
           </script>
           <span>{{resource.rating.votes}} Votes</span>
         </div>
@@ -190,7 +195,10 @@
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <script type="text/javascript">
-                  $("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                  var rating = {{comment.rating}};
+                  if (rating != 0) {
+                  	$("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                  }
                 </script>
               </div>
               <div class="comment_user">{{ comment.user.username }}</div>
