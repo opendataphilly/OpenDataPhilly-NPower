@@ -90,7 +90,7 @@
 
     </div>
   </div>
-  
+
   <div class="tab_container" id="content_ratings">
     <ul class="tab_header">
       <li class="tab_button"><a href="#ratings-tab">RATINGS/COMMENTS</a></li>
@@ -173,94 +173,8 @@
           <div class="comment_item">No comments yet!</div>
         {% endfor %}
 
+
 	</div>
-
-
-	<div class="tab_header">
-		<div class="tab_button selected">RATINGS/COMMENTS</div>
-	</div>
-	<div class="tab_body">
-		<div id="social_meta">
-			<div id="avg_rating">Average Rating</div>
-			<div id="detail_rating">
-				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
-				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
-				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
-				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
-				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
-				<script type="text/javascript">
-					var rating = {{resource.rating.score}};
-					if (rating != 0) {
-						$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
-					}
-				</script>
-				<span>{{resource.rating.votes}} Votes</span>
-			</div>
-		</div>
-		<div id="comment_form">
-			<div id="comment_label">Add a comment? </div>
-			<div>
-				{% if user.is_authenticated %}
-				{% get_comment_form for resource as form %}
-					<form action="{% comment_form_target %}" method="post">{% csrf_token %}
-						<input type="hidden" name="next" value="{{request.get_full_path}}" />
-						{% for field in form %}
-						{% if field.is_hidden %}
-						  {{ field }}
-						{% else %}
-							{% ifequal field.name "rating" %}
-								<div id="rate_label">Rate this data  </div><div id="rate">{{ field }}</div>
-							{% else %}
-								{% if field.errors %}{{ field.errors }}{% endif %}
-								<div class="comment_field {% if field.errors %} error{% endif %}"
-								{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}
-								{% ifequal field.name "url" %} style="display:none;"{% endifequal %}
-								{% ifequal field.name "name" %} style="display:none;"{% endifequal %}
-								{% ifequal field.name "email" %} style="display:none;"{% endifequal %}>
-								{{ field }}
-								</div>
-							{% endifequal %}
-						{% endif %}
-						{% endfor %}
-						<div class="submit">
-							<input type="submit" name="post" class="submit-post buttonSmall" value="Post" />
-						</div>
-					</form>
-				{% else %}
-					<div>Please login to add comments</div>
-				{% endif %}
-			</div>
-		</div>
-		<div id="comment_list">
-			<div id="comment_header">Comments</div>
-
-			{% get_comment_list for resource as comment_list %}
-			{% for comment in comment_list %}
-				<div class="comment_item">
-					<div class="comment_head">
-						<div class="comment_rating">
-							<input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
-							<input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
-							<input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
-							<input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
-							<input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
-							<script type="text/javascript">
-								$("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
-							</script>
-						</div>
-						<div class="comment_user">{{ comment.user.username }}</div>
-						<div>{{ comment.submit_date|date:"m/d/Y"}}</div>
-					</div>
-					<div class="comment_body">
-						{{ comment.comment }}
-						{% if user.is_authenticated %}<a href="/comments/flag/{{ comment.id }}/">Flag</a>{% endif %}
-					</div>
-				</div>
-			{% empty %}
-				<div class="comment_item">No comments yet!</div>
-			{% endfor %}
-
-		</div>
-	</div>
+</div>
 
 {% endblock %}
