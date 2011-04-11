@@ -1,27 +1,9 @@
-$.extend({
-  getUrlVars: function(){
-    var vars = [], hash;
-    if (window.location.search == "") {return vars;}
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  },
-  getUrlVar: function(name){
-    return $.getUrlVars()[name];
-  }
-});
-
 var odp = {
     tags: null,
 
     setupSearchInput: function () {
-        if ($.getUrlVar('qs') && $.getUrlVar('qs') != "") {
-            $("#qs")[0].value = decodeURI($.getUrlVar('qs'));
+        if ($.query.get('qs') && $.query.get('qs') != "") {
+            $("#qs")[0].value = decodeURI($.query.get('qs'));
         }
     
         $("#qs").focus(function (evt) {
@@ -39,36 +21,76 @@ var odp = {
             if ($("#qs")[0].value != "" | $("#qs")[0].value != "Search for data")
             evt.stopImmediatePropagation();
             evt.preventDefault();
-            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);
-            
+            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);            
         });
         
     },
 
     setupSortLinks: function () {
-        //TODO: fix usage with a search string
-        if ($.getUrlVar('sort')!='name' && $.getUrlVar('sort') != 'rating_score') {
-            $("#sort_name").attr("href", location.href + "?sort=name&dir=asc");
-            $("#sort_rating").attr("href", location.href + "?sort=rating_score&dir=desc");
-            return;
+        var sort_name = $("#sort_name > a").addClass("url_image")[0];
+        sort_name.innerHTML = '';
+        
+        var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
+        sort_rating.innerHTML = '';
+        
+        if ($.query.get('sort')) {
+            st = $.query.get('sort');
+            $("#sort_" + st + " > a")[0].style.backgroundPosition="0 -45px";
         }
         
-        $("#sort_name").css('background_position', 'center bottom');
-        $("#sort_rating").css('background_position', 'center bottom');
+        $("#sort .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('sort_');
+                if ($.query.get('sort') && $.query.get('sort') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
+    },
+    
+    setupFilterLinks: function () {
+        var filter_api = $("#filter_api > a").addClass("url_image")[0];
+        filter_api.innerHTML = '';
         
-        var dir = "";
-        ($.getUrlVar('dir')=='asc') ? dir = 'desc' : dir = 'asc';
+        var filter_data = $("#filter_data > a").addClass("url_image")[0];
+        filter_data.innerHTML = '';
         
-        if ($.getUrlVar('sort') == 'name') {
-            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=" + dir).addClass('active');
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=desc");
+        var filter_application = $("#filter_application > a").addClass("url_image")[0];
+        filter_application.innerHTML = '';
+        
+        if ($.query.get('filter')) {
+            st = $.query.get('filter');
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -45px";
         }
-        else if ($.getUrlVar('sort') == 'rating_score') {
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=" + dir).addClass('active');
-            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=asc");
+        $("#filter .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('filter_');
+                if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
+    },
+    
+    getFiltered: function (value) {
+        if ($.query.get('filter') == value) {
+            var newQuery = "" + $.query.remove('filter');
+            window.location = "/opendata/search/" + newQuery;
+        } 
+        else {
+            var newQuery = "" + $.query.set('filter', value);
+            window.location = "/opendata/search/" + newQuery;
         }
     },
-
+    
     getTags: function() {
         $.getJSON('/tags/', function(tags){
             odp.tags = tags;
