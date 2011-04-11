@@ -130,7 +130,7 @@ var odp = {
            });
            // close the window when clicking the overlay background
            $('.ui-widget-overlay').live("click", function() {
-              $($dialogId).dialog("close");
+              $dialogId.dialog("close");
           });   
          });
       }

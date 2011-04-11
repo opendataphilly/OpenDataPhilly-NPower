@@ -13,14 +13,17 @@
 	font-weight:bold;
 	letter-spacing: -0.01em;
 }
-
+button::-moz-focus-inner{padding:0;border:none}
 .button {
-	padding: 7px 20px;
+  cursor: pointer;
+	padding: 6px 20px;
 	border: 2px solid white;
 	background: url(/static/images/background_button.gif) 0 0 repeat-x;
 	text-align: center;
 	color: white;
 	font-weight: bold;
+  font-family: "proxima-nova-1","proxima-nova-2";
+  text-transform: uppercase;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius:4px;
@@ -28,6 +31,8 @@
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+
+h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0}
 
 
 .clear_left {clear:left}
@@ -119,7 +124,7 @@ jquery ui basic themeing
 #left_container ul li.seperated {
 	padding-top: 12px;
 	margin-top: 8px;
-	border-top: dotted 1px #aaa;
+	border-top: dotted 1px #bbb;
 }
 
 
@@ -383,9 +388,6 @@ padding: 12px;
 	color: #9C9B9B;	
 }
 
-.resource #resource_button {
-  font-family: "proxima-nova-1","proxima-nova-2";
-}
 .resource #resource_button a {
 	font-size: 0.75em;	
 	text-decoration: none;
@@ -612,12 +614,10 @@ margin-left: 5px;
 
 #social_meta {
 	height:40px;
-	border-bottom: dotted 1px #444;
+	border-bottom: dotted 1px #bbb;
 }
 #avg_rating {
 	float: left;
-	font-size: 1.2em;
-	font-weight: bold;	
 }
 #detail_rating {
 	float:right;
@@ -637,44 +637,72 @@ margin-left: 5px;
 #comment_form {
 	margin-top:20px;
 	padding-bottom:20px;
-	border-bottom: dotted 1px #444;
+	border-bottom: dotted 1px #bbb; 
+  color: #AAAAAA;
+  font-weight: bold;
 }
+.comment_field {float:right}
 .comment_field textarea {
+  width: 485px;
 	border: 2px #D9D9D9 solid;
-	
 	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 	border-radius:3px;
 }
 #rate {
 	height:20px;
 }
+#rate_container {
+  float:left;
+  width: 115px;
+  }
+
+#rate_label {
+  margin-bottom: 10px;
+}  
+  
 #rate_label, #comment_label {
 	font-weight: bold;
 }
+.submit {
+  margin: 10px 0 0 120px;
+  }
+
 #comment_list {
 	margin-top:20px;	
 	line-height: 1.3em;
+
 }
 #comment_list .comment_item {
 	margin-top:20px;
+  border-bottom:1px dotted #ddd;
+  padding-bottom: 20px;
+  clear:both;
+  color: #AAAAAA;
+  font-weight: bold;
 }
 #comment_list .comment_head {
 	font-size: 0.75em;
-	font-style: italic;
 	font-weight: bold;
+  float:left;
+  clear:left;
+  width: 115px;
+  line-height: 1.4em
 }
+#comment_list .comment_rating {
+  margin-bottom: 20px;
+  }
 #comment_list .comment_body {
-	padding-bottom:10px;
-	border-bottom: 1px dotted #444;	
+	padding-bottom:10px;	
 	font-size: 0.8em;
-	font-weight: bold;
+  color: #888;
 }
 #comment_list .comment_body a {
 	color: #EAA77C; 
 }
-.comment_rating {
-	height:18px;
-}
+#comment_list .comment_date {font-size: .9em; color: #aaa;}
+
+#comment_list .comment_flag {display:block; margin-top: 10px; font-size: .9em}
 
 /* -------------------------------------------------
 	
