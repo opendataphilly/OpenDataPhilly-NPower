@@ -3,79 +3,175 @@
 {% load thumbnail %}
 {% load comments %}
 
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+      odp.getTags();
+			odp.setupSearchInput();
+			odp.makeTabs('#content_resource, #content_data, #content_ratings');
+		});
+	</script>
+{% endblock %}
+
 {% block center_container %}
 	<div id="title">{{resource}}</div>
 	<div id="description">{{resource.description}}</div>
 
+  <div class="tab_container" id="content_resource">
+    <ul class="tab_header">
+      <li class="tab_button"><a href="#tab_basic_info">BASIC INFO</a></li>
+      <li class="tab_button"><a href="#tab_extra_info">MORE INFO</a></li>
+    </ul>
+    <div class="tab_body" id="tab_basic_info">
+      <div id="tab_data">
+        <div class="info_label">Organization</div><div class="info_data"><a>{{resource.organization}}</a></div>
+        <div class="info_label">Division</div><div class="info_data"><a>{{resource.division}}</a></div>
+        <div class="info_label">Contact Email</div><div class="info_data"><a>{{resource.contact_email}}</a></div>
+        <div class="info_label">Contact Phone</div><div class="info_data"><a>{{resource.contact_phone}}</a></div>
+        <div class="info_label">Contact Website</div><div class="info_data">{{resource.contact_website}}</a></div>
+        <div class="info_label">Categories</div>
+        <div class="info_data">
+          {{resource.tags.all|join:", "}}
+        </div>
+        <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
+      </div>
+      <div id="tab_image">
+        {% if resource.get_images %}
+          <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
+          <div id="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
+        {% else %}
+          <img src="/static/images/detail_no_image.gif" alt="No Resource Images">
+          <div id="tab_image_detail">No Resource Images</div>
+        {% endif %}
+      </div>
+    </div>
 
-	<div class="tab_header">
-		<div class="tab_button selected">BASIC INFO</div>
-		<div class="tab_button">MORE INFO</div>
-	</div>
-	<div class="tab_body">
-		<div id="tab_data">
-			<div class="info_label">Organization</div><div class="info_data"><a>{{resource.organization}}</a></div>
-			<div class="info_label">Division</div><div class="info_data"><a>{{resource.division}}</div>
-			<div class="info_label">Contact Email</div><div class="info_data"><a>{{resource.contact_email}}</div>
-			<div class="info_label">Contact Phone</div><div class="info_data"><a>{{resource.contact_phone}}</div>
-			<div class="info_label">Contact Website</div><div class="info_data">{{resource.contact_website}}</div>
-			<div class="info_label">Categories</div>
-			<div class="info_data">
-				{{resource.tags.all|join:", "}}
-			</div>
-			<div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
-		</div>
-		<div id="tab_image">
-			{% if resource.get_images %}
-				<img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
-				<div id="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
-			{% else %}
-				<img src="/static/images/detail_no_image.gif" alt="No Resource Images">
-				<div id="tab_image_detail">No Resource Images</div>
-			{% endif %}
-		</div>
-	</div>
+    <div class="tab_body" id="tab_extra_info">**Extended Info Here**</div>
+  </div>
 
-	<div class="tab_body hidden">**Extended Info Here**</div>
+  <div class="tab_container" id="content_data">
+    <ul class="tab_header">
+      <li class="tab_button"><a href="#data-tab">DATA</a></li>
+    </ul>
+    <div class="tab_body" id="#data-tab">
+      <div class="data_block">
+        <div class="url_header">
+          <div id="raw_image"></div><div class="url_label">Raw Data</div>
+        </div>
+        {% for url in resource.get_grouped_urls.Data %}
+          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+        {% endfor %}
+      </div>
+      <div class="data_block">
+        <div class="url_header">
+          <div id="doc_image"></div><div class="url_label">Documentation</div>
+        </div>
+        {% for url in resource.get_grouped_urls.Documentation %}
+          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+        {% endfor %}
+      </div>
 
+      <div class="data_block">
+        <div class="url_header">
+          <div id="api_image"></div><div class="url_label">APIs</div>
+        </div>
+        {% for url in resource.get_grouped_urls.API %}
+          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+        {% endfor %}
+      </div>
+      <div class="data_block">
+        <div class="url_header">
+          <div id="app_image"></div><div class="url_label">Applications</div>
+        </div>
+        {% for url in resource.get_grouped_urls.Application %}
+          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+        {% endfor %}
+      </div>
 
-	<div class="tab_header">
-		<div class="tab_button selected">DATA</div>
-	</div>
-	<div class="tab_body">
-		<div class="data_block">
-			<div class="url_header">
-				<div id="raw_image"></div><div class="url_label">Raw Data</div>
-			</div>
-			{% for url in resource.get_grouped_urls.Data %}
-				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
-			{% endfor %}
-		</div>
-		<div class="data_block">
-			<div class="url_header">
-				<div id="doc_image"></div><div class="url_label">Documentation</div>
-			</div>
-			{% for url in resource.get_grouped_urls.Documentation %}
-				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
-			{% endfor %}
-		</div>
+    </div>
+  </div>
+  
+  <div class="tab_container" id="content_ratings">
+    <ul class="tab_header">
+      <li class="tab_button"><a href="#ratings-tab">RATINGS/COMMENTS</a></li>
+    </ul>
+    <div class="tab_body" id="ratings-tab">
+      <div id="social_meta">
+        <div id="avg_rating">Average Rating</div>
+        <div id="detail_rating">
+          <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
+          <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
+          <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
+          <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
+          <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
+          <script type="text/javascript">
+            $("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+          </script>
+          <span>{{resource.rating.votes}} Votes</span>
+        </div>
+      </div>
+      <div id="comment_form">
+        <div id="comment_label">Add a comment? </div>
+        <div>
+          {% if user.is_authenticated %}
+          {% get_comment_form for resource as form %}
+            <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+              <input type="hidden" name="next" value="{{request.get_full_path}}" />
+              {% for field in form %}
+              {% if field.is_hidden %}
+                {{ field }}
+              {% else %}
+                {% ifequal field.name "rating" %}
+                  <div id="rate_label">Rate this data  </div><div id="rate">{{ field }}</div>
+                {% else %}
+                  {% if field.errors %}{{ field.errors }}{% endif %}
+                  <div class="comment_field {% if field.errors %} error{% endif %}"
+                  {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}
+                  {% ifequal field.name "url" %} style="display:none;"{% endifequal %}
+                  {% ifequal field.name "name" %} style="display:none;"{% endifequal %}
+                  {% ifequal field.name "email" %} style="display:none;"{% endifequal %}>
+                  {{ field }}
+                  </div>
+                {% endifequal %}
+              {% endif %}
+              {% endfor %}
+              <div class="submit">
+                <input type="submit" name="post" class="submit-post buttonSmall" value="Post" />
+              </div>
+            </form>
+          {% else %}
+            <div>Please login to add comments</div>
+          {% endif %}
+        </div>
+      </div>
+      <div id="comment_list">
+        <div id="comment_header">Comments</div>
 
-		<div class="data_block">
-			<div class="url_header">
-				<div id="api_image"></div><div class="url_label">APIs</div>
-			</div>
-			{% for url in resource.get_grouped_urls.API %}
-				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
-			{% endfor %}
-		</div>
-		<div class="data_block">
-			<div class="url_header">
-				<div id="app_image"></div><div class="url_label">Applications</div>
-			</div>
-			{% for url in resource.get_grouped_urls.Application %}
-				<div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
-			{% endfor %}
-		</div>
+        {% get_comment_list for resource as comment_list %}
+        {% for comment in comment_list %}
+          <div class="comment_item">
+            <div class="comment_head">
+              <div class="comment_rating">
+                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
+                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
+                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
+                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
+                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
+                <script type="text/javascript">
+                  $("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                </script>
+              </div>
+              <div class="comment_user">{{ comment.user.username }}</div>
+              <div>{{ comment.submit_date|date:"m/d/Y"}}</div>
+            </div>
+            <div class="comment_body">
+              {{ comment.comment }}
+              {% if user.is_authenticated %}<a href="/comments/flag/{{ comment.id }}/">Flag</a>{% endif %}
+            </div>
+          </div>
+        {% empty %}
+          <div class="comment_item">No comments yet!</div>
+        {% endfor %}
 
 	</div>
 

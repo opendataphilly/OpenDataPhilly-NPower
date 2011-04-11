@@ -18,7 +18,13 @@
 
 {% block center_container %}
 
+
+
 	{% if tag %}
+  <div class="resource" id="promotion_header">
+    <span class="icon_idea"></span> See how <span class="tag_name">{{ tag }}</span> data is being used, at the <a href="/ideas">Idea Gallery</a>.
+  </div>
+  
 	<div id="tag_name">{{ tag }}</div>
 	{% endif %}
 	<div id="results_header">
@@ -26,7 +32,7 @@
 			<div id="description"></div>
 		{% endif %}
 		<div id="results_info">
-			<div id="count">{{results.count}} Results</div>
+			<div id="count">{{results.count}} RESULTS</div>
 			<div id="filter">
 				<ul>
 					<li id="filter_application"><a href="javascript:void()" onClick="odp.getFiltered('application');return false;" class="url_image" ></a></li>
@@ -52,7 +58,7 @@
 			<li class="resource">
 				<div id="url_types">
 					{% for u in r.get_distinct_url_types %}
-						<div class="url_image" style="background-image:url(/static/images/icon_{{u}}.png)" alt="{{u}}"></div>
+						<div class="url_image" id="resource_icon_{{u}}" alt="{{u}}" title="{{u}}"></div>
 					{% endfor %}</div>
 				<div id="rating_image">
 					<div id="rating">
@@ -75,10 +81,11 @@
 					{% endif %}
 				</div>
 				<div id="resource_info">
-					<div id="resource_title">{{r}}</div>
+					<div id="resource_title"><a href="/opendata/resource/{{r.id}}">{{r}}</a></div>
 					<div id="resource_desc">{{r.short_description|default:"No description available."}}</div>
 					<div id="resource_button"><a class="button" href="/opendata/resource/{{r.id}}">VIEW DETAILS</a></div>
 				</div>
+        <div class="clear"></div>
 			</li>
 		{% endfor %}
 		</ul>
