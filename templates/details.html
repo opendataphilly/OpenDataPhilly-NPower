@@ -6,9 +6,12 @@
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
-      odp.getTags();
+      		odp.getTags();
 			odp.setupSearchInput();
-      odp.makeDialog('.tab_image');
+
+			odp.setupCommentForm();
+			odp.makeTabs('#content_resource, #content_data, #content_ratings');
+			odp.makeDialog('.tab_image');
 			odp.makeTabs('.tab_container');
 		});
 	</script>
@@ -42,11 +45,13 @@
           <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
           <div class="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
           <div class="dialog" id="dialog1">
-            <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
+            <img src="/media/{{resource.get_first_image}}">
           </div>
         </div>
         <ul class="tab_image_pager">
-          <li><a href="#tab_image_1"></a></li>      
+          {% for i in resource.get_images %}
+          <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
+          {% endfor %}
         </ul>
         {% else %}
         <div class="tab_image" id="tab_image_1">
@@ -79,7 +84,7 @@
         </ul>
       </div>
     {% endif %}
-    
+
     {% if resource.get_grouped_urls.Documentation %}
       <div class="data_block" id="data_documention">
         <div class="url_header">
@@ -105,7 +110,7 @@
         </ul>
       </div>
       {% endif %}
-      
+
       {% if resource.get_grouped_urls.Application %}
       <div class="data_block" id="data_application">
         <div class="url_header">
@@ -118,7 +123,7 @@
         </ul>
       </div>
       {% endif %}
-      
+
     <div class="clear"></div>
     </div>
   </div>
@@ -137,7 +142,10 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            $("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            var rating = {{resource.rating.score}};
+            if (rating != 0) {
+            	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            }
           </script>
           <span>{{resource.rating.votes}} Votes</span>
         </div>
@@ -192,7 +200,10 @@
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <script type="text/javascript">
-                  $("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                  var rating = {{comment.rating}};
+                  if (rating != 0) {
+                  	$("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                  }
                 </script>
               </div>
               <div class="comment_user">{{ comment.user.username }}</div>

@@ -18,10 +18,17 @@ var odp = {
         });
         
         $("#search_form").submit(function(evt) {
-            if ($("#qs")[0].value != "" | $("#qs")[0].value != "Search for data")
             evt.stopImmediatePropagation();
             evt.preventDefault();
-            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);            
+            if ($("#qs")[0].value != "" && $("#qs")[0].value != "Search for data") {
+                window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value); 
+            } else {
+                window.location = "/opendata/search/";
+            }
+        });
+        
+        $("#search_img").click(function(evt) {
+            $("#search_form").submit();
         });
         
     },
@@ -91,6 +98,17 @@ var odp = {
         }
     },
     
+    setupCommentForm: function () {
+        $('#resource_comment_form').submit(function (evt) {
+            if ($("#id_comment")[0].value == "" || !$("#id_rating_0").hasClass("star-rating-on")) {
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+                $('#comment_field_errors')[0].innerHTML = "You must enter both a comment and select a rating."
+            }
+        });
+    },
+    
+    
     getTags: function() {
         $.getJSON('/tags/', function(tags){
             odp.tags = tags;
@@ -112,6 +130,10 @@ var odp = {
       $(div).each(function () {
         $(this).tabs();
       });
+    },
+    
+    setDialogImage: function(source) {        
+       $('#dialog1 img')[0].src = "/media/" + source;
     },
     
     makeDialog: function(div) {

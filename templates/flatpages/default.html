@@ -1,0 +1,17 @@
+{% extends "template1.html" %}
+{% load url from future %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+      		odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+
+{{flatpage.content}}
+
+{% endblock %}

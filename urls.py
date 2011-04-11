@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     (r'^tags/$', 'opendata.views.get_tag_list'),
     
     (r'^comments/', include('django.contrib.comments.urls')), 
+    (r'^accounts/', include('registration.backends.default.urls')),
+
 
     # Uncomment the next line to enable the admin:
     url(r'^_admin_/', include(admin.site.urls)),

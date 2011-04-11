@@ -1,13 +1,16 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
 from django.template import RequestContext
 from django.db.models import Q
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 from models import *
 
 def home(request):
-    return render_to_response('home.html')
+    return render_to_response('home.html', context_instance=RequestContext(request))
 
 def results(request):
     resources = Resource.objects.all()
@@ -35,8 +38,6 @@ def resource_details(request, resource_id):
     resource = Resource.objects.get(pk=resource_id)
     return render_to_response('details.html', {'resource': resource}, context_instance=RequestContext(request)) 
     
-    
-
 
 
 ## views called by js ajax for object lists

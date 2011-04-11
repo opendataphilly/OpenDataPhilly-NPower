@@ -8,6 +8,8 @@ ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
 )
 
+DEFAULT_FROM_EMAIL = 'contact@opendataphilly.com'
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -118,6 +120,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django_sorting.middleware.SortingMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -144,6 +147,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.comments',
+    'django.contrib.flatpages',
     'opendata',
     'registration',
     'sorl.thumbnail',
