@@ -8,7 +8,8 @@
 		$(document).ready(function () {
       odp.getTags();
 			odp.setupSearchInput();
-			odp.makeTabs('#content_resource, #content_data, #content_ratings');
+      odp.makeDialog('.tab_image');
+			odp.makeTabs('.tab_container');
 		});
 	</script>
 {% endblock %}
@@ -35,15 +36,27 @@
         </div>
         <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
       </div>
-      <div id="tab_image">
+      <div class="tab_container" id="tab_image_container">
         {% if resource.get_images %}
+        <div class="tab_image" id="tab_image_1">
           <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
-          <div id="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
+          <div class="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
+          <div class="dialog" id="dialog1">
+            <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
+          </div>
+        </div>
+        <ul class="tab_image_pager">
+          <li><a href="#tab_image_1"></a></li>      
+        </ul>
         {% else %}
+        <div class="tab_image" id="tab_image_1">
           <img src="/static/images/detail_no_image.gif" alt="No Resource Images">
-          <div id="tab_image_detail">No Resource Images</div>
+          <div class="tab_image_detail">No Resource Images</div>
+        </div>
         {% endif %}
+
       </div>
+      <div class="clear_left"></div>
     </div>
 
     <div class="tab_body" id="tab_extra_info">**Extended Info Here**</div>
@@ -54,40 +67,59 @@
       <li class="tab_button"><a href="#data-tab">DATA</a></li>
     </ul>
     <div class="tab_body" id="#data-tab">
+    {% if resource.get_grouped_urls.Data %}
       <div class="data_block">
         <div class="url_header">
-          <div id="raw_image"></div><div class="url_label">Raw Data</div>
+          <div id="resource_icon_Data" class="url_image"></div><div class="url_label">Raw Data</div>
         </div>
+        <ul>
         {% for url in resource.get_grouped_urls.Data %}
-          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+          <li class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></li>
         {% endfor %}
+        </ul>
       </div>
-      <div class="data_block">
+    {% endif %}
+    
+    {% if resource.get_grouped_urls.Documentation %}
+      <div class="data_block" id="data_documention">
         <div class="url_header">
-          <div id="doc_image"></div><div class="url_label">Documentation</div>
+          <div id="resource_icon_Documentation" class="url_image"></div><div class="url_label">Documentation</div>
         </div>
+        <ul>
         {% for url in resource.get_grouped_urls.Documentation %}
-          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+          <li class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></li>
         {% endfor %}
+        </ul>
       </div>
+    {% endif %}
 
-      <div class="data_block">
+      {% if resource.get_grouped_urls.API %}
+      <div class="data_block" id="data_api">
         <div class="url_header">
-          <div id="api_image"></div><div class="url_label">APIs</div>
+          <div id="resource_icon_Api" class="url_image"></div><div class="url_label">APIs</div>
         </div>
+        <ul>
         {% for url in resource.get_grouped_urls.API %}
-          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+          <li class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></li>
         {% endfor %}
+        </ul>
       </div>
-      <div class="data_block">
+      {% endif %}
+      
+      {% if resource.get_grouped_urls.Application %}
+      <div class="data_block" id="data_application">
         <div class="url_header">
-          <div id="app_image"></div><div class="url_label">Applications</div>
+          <div id="resource_icon_Application" class="url_image"></div><div class="url_label">Applications</div>
         </div>
+        <ul>
         {% for url in resource.get_grouped_urls.Application %}
-          <div class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></div>
+          <li class="url_link"><a href="{{url.url}}" target="_blank">{{url.url_label}}</a></li>
         {% endfor %}
+        </ul>
       </div>
-
+      {% endif %}
+      
+    <div class="clear"></div>
     </div>
   </div>
   
