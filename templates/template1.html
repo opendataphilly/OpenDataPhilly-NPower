@@ -50,7 +50,11 @@
 
 			<div id="account">
 				<div id="account_text" class="small_dark">Rate and suggest data:</div>
-				<div id="account_button" class="button">My Account</div>
+				{% if user.is_authenticated %}
+					<div id="account_button" class="button"><a href="/accounts/logout/?next=/">Logout</a></div>
+				{% else %}
+					<div id="account_button" class="button"><a href="/accounts/login/?next={{ request.get_full_path }}">Login</a></div>
+				{% endif %}
 			</div>
 		</div>
 		<div id="center_content">
@@ -62,7 +66,7 @@
 
 	<div id="footer">
 		<div id="footer_logo"><img src="/static/images/logo_azavea.png" /></div>
-		<div id="footer_copyright">Copyright 2011 c OpenDataPhilly <br> All Rights Reserved. Terms of Use.</div>
+		<div id="footer_copyright">Copyright 2011 &#169; OpenDataPhilly <br> All Rights Reserved. Terms of Use.</div>
 	</div>
 
 {% endblock %}

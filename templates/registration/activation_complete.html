@@ -1,0 +1,18 @@
+{% extends "template1.html" %}
+{% load url from future %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+      		odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+
+<div>Thanks for registering!</div>
+<div>Your account is now active and you can <a href="/accounts/login/">login</a>.</div>
+
+{% endblock %}

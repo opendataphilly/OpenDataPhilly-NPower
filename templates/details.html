@@ -9,6 +9,8 @@
       odp.getTags();
 			odp.setupSearchInput();
 			odp.makeTabs('#content_resource, #content_data, #content_ratings');
+
+			odp.setupCommentForm();
 		});
 	</script>
 {% endblock %}
@@ -105,7 +107,10 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            $("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            var rating = {{resource.rating.score}};
+			if (rating != 0) {
+            	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            }
           </script>
           <span>{{resource.rating.votes}} Votes</span>
         </div>
@@ -115,8 +120,9 @@
         <div>
           {% if user.is_authenticated %}
           {% get_comment_form for resource as form %}
-            <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+            <form id="resource_comment_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
               <input type="hidden" name="next" value="{{request.get_full_path}}" />
+              <div id="comment_field_errors"></div>
               {% for field in form %}
               {% if field.is_hidden %}
                 {{ field }}
@@ -124,8 +130,7 @@
                 {% ifequal field.name "rating" %}
                   <div id="rate_label">Rate this data  </div><div id="rate">{{ field }}</div>
                 {% else %}
-                  {% if field.errors %}{{ field.errors }}{% endif %}
-                  <div class="comment_field {% if field.errors %} error{% endif %}"
+                  <div class="comment_field "
                   {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}
                   {% ifequal field.name "url" %} style="display:none;"{% endifequal %}
                   {% ifequal field.name "name" %} style="display:none;"{% endifequal %}
@@ -158,7 +163,10 @@
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <script type="text/javascript">
-                  $("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                	var rating = {{comment.rating}};
+					if (rating != 0) {
+                  		$("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
+                  	}
                 </script>
               </div>
               <div class="comment_user">{{ comment.user.username }}</div>

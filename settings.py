@@ -8,6 +8,8 @@ ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
 )
 
+DEFAULT_FROM_EMAIL = 'contact@opendataphilly.com'
+
 MANAGERS = ADMINS
 
 DATABASES = {

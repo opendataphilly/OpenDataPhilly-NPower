@@ -62,7 +62,7 @@ a {text-decoration: none}
 #wrapper {
 	position:relative;
 	width:900px;
-  margin: 0 auto; 
+  	margin: 0 auto; 
 	padding-top:50px;
 }
 
@@ -73,8 +73,8 @@ a {text-decoration: none}
 }
 
 #left_container #logo {
-  margin-left: 5px;
-  display:block;
+  	margin-left: 5px;
+  	display:block;
 }
 
 #left_container #tags {
@@ -156,6 +156,7 @@ a {text-decoration: none}
 	position: absolute;
 	top: 21px;
 	right:20px;
+	cursor: pointer;
 }
 
 #search input {
@@ -188,7 +189,9 @@ a {text-decoration: none}
 	font-size:0.85em;
 	margin-top: 7px;
 }
-
+#account_button a {
+	color:white;
+}
 
 #center_content {
 	margin-top:25px;
@@ -255,13 +258,6 @@ background:url(/static/images/icon_ratings.png) 0 0;
 #results_info  #sort_name .url_image{
 background:url(/static/images/icon_alpha.png) 0 0;
 }
-
-
-
-#results_info #filter_application .url_image:hover, #results_info #filter_data .url_image:hover, #results_info #filter_api .url_image:hover , #results_info #sort_rating_score:.url_imagehover, #results_info #sort_name .url_image:hover{
-background-position: 0 -89px;
-}
-
 
 #results_info .info_label {
 	font-size: 0.75em;

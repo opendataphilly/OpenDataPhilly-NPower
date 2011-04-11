@@ -1,0 +1,19 @@
+{% extends "template1.html" %}
+{% load url from future %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+      		odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+
+<div>Thanks for registering!</div>
+<div>An activation link has been sent to the email address you provided.</div>
+<div>Once you've clicked on the link in your activation email you will be able to <a href="/accounts/login/">login</a>.</div>
+
+{% endblock %}
