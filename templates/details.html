@@ -10,7 +10,8 @@
 			odp.setupSearchInput();
 
 			odp.setupCommentForm();
-			odp.makeTabs('#content_resource, #content_data, #content_ratings');      odp.makeDialog('.tab_image');
+			odp.makeTabs('#content_resource, #content_data, #content_ratings');
+			odp.makeDialog('.tab_image');
 			odp.makeTabs('.tab_container');
 		});
 	</script>
@@ -44,11 +45,13 @@
           <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
           <div class="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
           <div class="dialog" id="dialog1">
-            <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
+            <img src="/media/{{resource.get_first_image}}">
           </div>
         </div>
         <ul class="tab_image_pager">
-          <li><a href="#tab_image_1"></a></li>
+          {% for i in resource.get_images %}
+          <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
+          {% endfor %}
         </ul>
         {% else %}
         <div class="tab_image" id="tab_image_1">

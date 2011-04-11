@@ -132,6 +132,10 @@ var odp = {
       });
     },
     
+    setDialogImage: function(source) {        
+       $('#dialog1 img')[0].src = "/media/" + source;
+    },
+    
     makeDialog: function(div) {
         $(div).each(function () {
             //make the dialog for each thumb
