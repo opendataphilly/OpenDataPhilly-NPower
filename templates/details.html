@@ -93,7 +93,10 @@
 				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
 				<input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
 				<script type="text/javascript">
-					$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+					var rating = {{resource.rating.score}};
+					if (rating != 0) {
+						$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+					}
 				</script>
 				<span>{{resource.rating.votes}} Votes</span>
 			</div>

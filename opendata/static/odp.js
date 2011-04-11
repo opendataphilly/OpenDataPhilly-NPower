@@ -1,27 +1,9 @@
-$.extend({
-  getUrlVars: function(){
-    var vars = [], hash;
-    if (window.location.search == "") {return vars;}
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  },
-  getUrlVar: function(name){
-    return $.getUrlVars()[name];
-  }
-});
-
 var odp = {
     tags: null,
 
     setupSearchInput: function () {
-        if ($.getUrlVar('qs') && $.getUrlVar('qs') != "") {
-            $("#qs")[0].value = decodeURI($.getUrlVar('qs'));
+        if ($.query.get('qs') && $.query.get('qs') != "") {
+            $("#qs")[0].value = decodeURI($.query.get('qs'));
         }
     
         $("#qs").focus(function (evt) {
@@ -39,36 +21,56 @@ var odp = {
             if ($("#qs")[0].value != "" | $("#qs")[0].value != "Search for data")
             evt.stopImmediatePropagation();
             evt.preventDefault();
-            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);
-            
+            window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value);            
         });
         
     },
 
     setupSortLinks: function () {
-        //TODO: fix usage with a search string
-        if ($.getUrlVar('sort')!='name' && $.getUrlVar('sort') != 'rating_score') {
-            $("#sort_name").attr("href", location.href + "?sort=name&dir=asc");
-            $("#sort_rating").attr("href", location.href + "?sort=rating_score&dir=desc");
-            return;
-        }
+        var sort_name = $("#sort_name > a").addClass("url_image")[0];
+        sort_name.innerHTML = '';
+        sort_name.style.background="url(/static/images/icon_alpha.png) bottom center no-repeat";
         
-        $("#sort_name").css('background_position', 'center bottom');
-        $("#sort_rating").css('background_position', 'center bottom');
+        var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
+        sort_rating.innerHTML = '';
+        sort_rating.style.background="url(/static/images/icon_ratings.png) bottom center no-repeat";
         
-        var dir = "";
-        ($.getUrlVar('dir')=='asc') ? dir = 'desc' : dir = 'asc';
-        
-        if ($.getUrlVar('sort') == 'name') {
-            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=" + dir).css("background-position", "top center");
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=desc");
-        }
-        else if ($.getUrlVar('sort') == 'rating_score') {
-            $("#sort_rating").attr("href", location.href.split(location.search)[0] + "?sort=rating_score&dir=" + dir).css("background-position", "top center");
-            $("#sort_name").attr("href", location.href.split(location.search)[0] + "?sort=name&dir=asc");
+        if ($.query.get('sort')) {
+            st = $.query.get('sort');
+            $("#sort_" + st + " > a")[0].style.backgroundPosition="top center";
         }
     },
-
+    
+    setupFilterLinks: function () {
+        var filter_api = $("#filter_api > a").addClass("url_image")[0];
+        filter_api.innerHTML = '';
+        filter_api.style.background="url(/static/images/icon_Api.png) bottom center no-repeat";
+        
+        var filter_data = $("#filter_data > a").addClass("url_image")[0];
+        filter_data.innerHTML = '';
+        filter_data.style.background="url(/static/images/icon_Data.png) bottom center no-repeat";
+        
+        var filter_application = $("#filter_application > a").addClass("url_image")[0];
+        filter_application.innerHTML = '';
+        filter_application.style.background="url(/static/images/icon_Application.png) bottom center no-repeat";
+        
+        if ($.query.get('filter')) {
+            st = $.query.get('filter');
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="top center";
+        }
+    },
+    
+    getFiltered: function (value) {
+        if ($.query.get('filter') == value) {
+            var newQuery = "" + $.query.remove('filter');
+            window.location = "/opendata/search/" + newQuery;
+        } 
+        else {
+            var newQuery = "" + $.query.set('filter', value);
+            window.location = "/opendata/search/" + newQuery;
+        }
+    },
+    
     getTags: function() {
         $.getJSON('/tags/', function(tags){
             odp.tags = tags;

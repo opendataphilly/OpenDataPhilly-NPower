@@ -11,6 +11,7 @@
 			odp.setupSearchInput();
 
 			odp.setupSortLinks();
+			odp.setupFilterLinks();
 		});
 	</script>
 {% endblock %}
@@ -24,26 +25,24 @@
 		{% if results.description %}
 			<div id="description"></div>
 		{% endif %}
-		{% if results %}
 		<div id="results_info">
 			<div id="count">{{results.count}} Results</div>
 			<div id="filter">
 				<ul>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_application.png);background-position:bottom center;"></a></li>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_data.png);background-position:bottom center;"></a></li>
-					<li><a class="url_image" style="background-image:url(/static/images/icon_api.png);background-position:bottom center;"></a></li>
+					<li id="filter_application"><a href="javascript:void()" onClick="odp.getFiltered('application');return false;" class="url_image" ></a></li>
+					<li id="filter_data"><a href="javascript:void()" onClick="odp.getFiltered('data');return false;" class="url_image"></a></li>
+					<li id="filter_api"><a href="javascript:void()" onClick="odp.getFiltered('api');return false;" class="url_image"></a></li>
 					<li class="info_label">FILTER:</li>
 				</ul>
 			</div>
 			<div id="sort">
 				<ul>
-					<li><a id="sort_rating" class="url_image" style="background-image:url(/static/images/icon_ratings.png);background-position:bottom center;"></a></li>
-					<li><a id="sort_name" class="url_image" style="background-image:url(/static/images/icon_alpha.png);background-position:bottom center;"></a></li>
+					<li id="sort_rating_score">{% anchor rating_score %}</li>
+					<li id="sort_name">{% anchor name %}<li>
 					<li class="info_label">SORT:</li>
 				</ul>
 			</div>
 		</div>
-		{% endif %}
 	</div>
 {% autosort results %}
 {% autopaginate results 6 %}

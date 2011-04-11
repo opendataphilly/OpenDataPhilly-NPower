@@ -25,7 +25,10 @@ def search_results(request):
     if 'qs' in request.GET:
         qs = request.GET['qs']
         search_resources = search_resources.filter(Q(name__icontains=qs) | Q(description__icontains=qs))
- 
+    if 'filter' in request.GET:
+        f = request.GET['filter']
+        search_resources = search_resources.filter(url__url_type__url_type__iexact=f).distinct()
+    
     return render_to_response('results.html', {'results': search_resources}, context_instance=RequestContext(request))
 
 def resource_details(request, resource_id):
