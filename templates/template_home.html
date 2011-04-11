@@ -13,7 +13,25 @@
 
 {% include "sidebar.html" %}
 
-	<div id="center_container">
+	<div id="center_container" class="home">
+  
+      <div id="account">
+				<div id="account_text" class="small_dark"></div>
+				{% if user.is_authenticated %}
+					<div id="account_button" class="button"><a href="/accounts/logout/?next=/">Logout</a></div>
+				{% else %}
+          <a href="">Register</a> or
+					<a href="/accounts/login/?next={{ request.get_full_path }}">Login</a>
+				{% endif %}
+			</div>
+  
+  
+  
+    <h1>Connecting <strong>people</strong> with <strong>data</strong></h1>
+    <h2>
+    Throughout the Philadelphia region, a multitude of organizations have assembled data. Find it here and start transforming your city.
+    </h2>
+  
 		<div id="center_header">
 			<div id="search">
 				<form method="GET" id="search_form" >
@@ -22,15 +40,6 @@
 					</div>
 				</form>
 				<div id="search_img"><img src="/static/images/glass.png"/></div>
-			</div>
-
-			<div id="account">
-				<div id="account_text" class="small_dark">Rate and suggest data:</div>
-				{% if user.is_authenticated %}
-					<div id="account_button" class="button"><a href="/accounts/logout/?next=/">Logout</a></div>
-				{% else %}
-					<div id="account_button" class="button"><a href="/accounts/login/?next={{ request.get_full_path }}">Login</a></div>
-				{% endif %}
 			</div>
 		</div>
 		<div id="center_content">

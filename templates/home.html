@@ -1,1 +1,51 @@
-{% extends "template1.html" %}
+{% extends "template_home.html" %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+
+<a class="resource" id="home_idea"></a>
+<div id="home_idea_label">
+  <a href="">Title of Article that Graphic is From</a> by Credit
+</div>
+<a id="home_idea_callout" href="">Need Inspiration? Visit the Idea Gallery</a>
+
+
+<div id="home_twitter">
+<h2 class="grid"><a href="http://twitter.com/opendataphilly" target="_blank">@OpenDataPhilly<span class="icon_twitter"></span></a></h2>
+
+<ul id="home_twitter_feed">
+  <li class="twitter_item">
+    <p class="date">Wednesday, February 26, 2011, 11:11pm</p>
+    <p class="post">
+      RT <a>@RuxandraGuidi</a> San Diego among fastest growing #refugee pops in US; many Iraqis & Somalis now encouraged to participate in <a>#redistricting</a>
+    </p>
+  </li>
+</ul>
+
+</div>
+
+
+<div id="home_additions">
+<a id="button_submission">Got data? Make a submission</a>
+
+  <h2 class="grid">Recent Additions</h2>
+  <ul id="home_additions_list">
+    <li>
+      <a href="">Philadelphia Contours</a>
+    </li>
+  </ul>
+
+
+</div>
+
+
+
+{% endblock %}
