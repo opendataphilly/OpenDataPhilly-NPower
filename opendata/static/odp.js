@@ -29,35 +29,55 @@ var odp = {
     setupSortLinks: function () {
         var sort_name = $("#sort_name > a").addClass("url_image")[0];
         sort_name.innerHTML = '';
-        sort_name.style.background="url(/static/images/icon_alpha.png) bottom center no-repeat";
         
         var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
         sort_rating.innerHTML = '';
-        sort_rating.style.background="url(/static/images/icon_ratings.png) bottom center no-repeat";
         
         if ($.query.get('sort')) {
             st = $.query.get('sort');
-            $("#sort_" + st + " > a")[0].style.backgroundPosition="top center";
+            $("#sort_" + st + " > a")[0].style.backgroundPosition="0 -45px";
         }
+        
+        $("#sort .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('sort_');
+                if ($.query.get('sort') && $.query.get('sort') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
     },
     
     setupFilterLinks: function () {
         var filter_api = $("#filter_api > a").addClass("url_image")[0];
         filter_api.innerHTML = '';
-        filter_api.style.background="url(/static/images/icon_Api.png) bottom center no-repeat";
         
         var filter_data = $("#filter_data > a").addClass("url_image")[0];
         filter_data.innerHTML = '';
-        filter_data.style.background="url(/static/images/icon_Data.png) bottom center no-repeat";
         
         var filter_application = $("#filter_application > a").addClass("url_image")[0];
         filter_application.innerHTML = '';
-        filter_application.style.background="url(/static/images/icon_Application.png) bottom center no-repeat";
         
         if ($.query.get('filter')) {
             st = $.query.get('filter');
-            $("#filter_" + st + " > a")[0].style.backgroundPosition="top center";
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -45px";
         }
+        $("#filter .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('filter_');
+                if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
     },
     
     getFiltered: function (value) {

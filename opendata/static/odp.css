@@ -236,31 +236,29 @@ a {text-decoration: none}
 
 
 
-#results_info  .url_image#filter_application {
+#results_info #filter_application .url_image {
 background:url(/static/images/icon_application.png) 0 0 ;
 }
 
-#results_info  .url_image#filter_data {
+#results_info #filter_data .url_image {
 background:url(/static/images/icon_data.png) 0 0;
 }
 
-#results_info  .url_image#filter_api {
+#results_info #filter_api .url_image {
 background:url(/static/images/icon_api.png) 0 0;
 }
 
-#results_info  .url_image#sort_rating{
+#results_info  #sort_rating_score .url_image{
 background:url(/static/images/icon_ratings.png) 0 0;
 }
 
-#results_info  .url_image#sort_name{
+#results_info  #sort_name .url_image{
 background:url(/static/images/icon_alpha.png) 0 0;
 }
 
-#results_info  .url_image#filter_application.active, #results_info  .url_image#filter_data.active, #results_info   .url_image#filter_api.active , #results_info   .url_image#sort_rating.active, #results_info   .url_image#sort_name.active{
-background-position: 0 -45px;
-}
 
-#results_info  .url_image#filter_application:hover, #results_info  .url_image#filter_data:hover, #results_info  .url_image#filter_api:hover , #results_info  .url_image#sort_rating:hover, #results_info  .url_image#sort_name:hover{
+
+#results_info #filter_application .url_image:hover, #results_info #filter_data .url_image:hover, #results_info #filter_api .url_image:hover , #results_info #sort_rating_score:.url_imagehover, #results_info #sort_name .url_image:hover{
 background-position: 0 -89px;
 }
 
