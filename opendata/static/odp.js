@@ -127,7 +127,31 @@ var odp = {
     },
     
     makeTabs: function(div) {
-        $(div).tabs();
-        }
-  }    
+      $(div).each(function () {
+        $(this).tabs();
+      });
+    },
+    
+    makeDialog: function(div) {
+        $(div).each(function () {
+            //make the dialog for each thumb
+            var $dialogId = $(this).find('.dialog');
+            $dialogId.dialog({
+              autoOpen: false,
+              modal: true,
+              draggable: false
+            });
+            //open dialog by clicking the thumb
+            $(this).click(function() {
+              $dialogId.dialog("open");
+              return false;
+           });
+           // close the window when clicking the overlay background
+           $('.ui-widget-overlay').live("click", function() {
+              $($dialogId).dialog("close");
+          });   
+         });
+      }
+    }
+      
 

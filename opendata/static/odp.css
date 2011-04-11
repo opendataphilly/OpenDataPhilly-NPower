@@ -51,7 +51,15 @@ a {text-decoration: none}
   vertical-align: middle;
 }
 
+/* -------------------------------------------------
+	
+jquery ui basic themeing
+	
+   ------------------------------------------------- */ 
 
+.ui-widget-overlay {background: #000; opacity: .3}
+.ui-dialog {background: #fff}   
+   
 /* -------------------------------------------------
 	
 	site layout, left nav, search bar
@@ -315,21 +323,22 @@ padding: 12px;
 	left: -18px;
 	top: -18px;
 }
-.resource #url_types .url_image {
+
+.url_image {
 	width: 40px;
 	height: 38px;
 	float:left;
 }
-.resource #url_types .url_image#resource_icon_Documentation {
+.url_image#resource_icon_Documentation {
   background:url(/static/images/icon_documentation_sm.png) 0 -44px;
 }
-.resource #url_types .url_image#resource_icon_Application {
+.url_image#resource_icon_Application {
   background:url(/static/images/icon_application_sm.png) 0 -44px;
 }
-.resource #url_types .url_image#resource_icon_Api {
+.url_image#resource_icon_Api {
   background:url(/static/images/icon_api_sm.png) 0 -44px;
 }
-.resource #url_types .url_image#resource_icon_Data {
+.url_image#resource_icon_Data {
   background:url(/static/images/icon_data_sm.png) 0 -44px;
 }
 
@@ -403,6 +412,7 @@ padding: 12px;
 	background-color: #E1E1E1;
 	
 	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 	border-radius:3px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
@@ -470,7 +480,6 @@ ul.tab_header li.tab_button a {color: #575656;}
 	margin-bottom: 20px;
 	padding:20px;
 	z-index: 1;
-	
 	-moz-border-radius: 0 5px 5px 5px;
 	border-radius: 0 5px 5px 5px;
 	-moz-box-shadow: 0 0 4px #ccc;
@@ -479,6 +488,7 @@ ul.tab_header li.tab_button a {color: #575656;}
 }
 
 #tab_data {
+  float:left;
 	width:50%;
 }
 
@@ -488,51 +498,85 @@ ul.tab_header li.tab_button a {color: #575656;}
 }
 .info_data {
 	margin-bottom:20px;
-	padding:5px 0 0 0;
+	padding:3px 0 0 0;
 	font-size: 0.75em;
-
+  line-height: 1.25em;
 	color: #9C9B9B;
 }
 .info_data a {
 	color: #EAA77C;
 }
 
-#tab_image {
-	position: absolute;
-	top: 20px;
-	right: 30px;
-	height:273px;
-	width: 238px;
-	border: #939393 1px solid;
-	
+#tab_image_container {
+  float:right;
+}
+
+.tab_image {
+  position:relative; 	
+  border: #939393 1px solid;
+  min-height: 150px;
+  min-width: 150px;
 	-moz-box-shadow: 2px 2px 6px #939393;
 	-webkit-box-shadow: 2px 2px 6px #939393;
 	box-shadow: 2px 2px 6px #939393;
-}
-#tab_image img {
+  }
+
+.tab_image img {
 	vertical-align: middle;
-	padding-left:5px;
 }
-#tab_image_detail {
+.tab_image_detail {
 	position:absolute;
 	bottom:0;
 	left:0;
-	width:218px;
+  right: 0;
 	padding:10px;
 	font-size: 0.7em;
 	font-weight: bold;
 	text-align: right;
 	color: #FFF;
 	background:url(/static/images/background_image_overlay.png) repeat;
-	
+}
+
+#tab_image_container .tab_image_pager  {
+  text-align:center;
+  margin: 10px 0;
+}
+
+#tab_image_container .tab_image_pager  li {
+  display: inline-block;
+  float:none
+  }
+
+#tab_image_container .tab_image_pager a {
+	padding:5px;
+	border: 2px white solid;
+	background-color: #E1E1E1;
+	-moz-border-radius: 18px;
+	-webkit-border-radius: 18px;
+	border-radius:12px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+#tab_image_container .tab_image_pager .ui-state-active a {
+  background-color: #616161;
 }
 
 .data_block {
+  float:left;
 	width: 49%;
+}
+
+.data_block .url_link 
+{
+background: url(images/bullet-arrow.png) 0 4px no-repeat;
+padding-left: 30px;
+margin-left: 8px;
 }
 
 .url_header {
 	height:35px;
+  margin-bottom: 5px;
 }
 
 .url_header div{
@@ -552,28 +596,15 @@ ul.tab_header li.tab_button a {color: #575656;}
 }
 .url_link a {
 	color: #EAA77C;
+
 }
 
-#raw_image {
-	height:35px;
-	width: 35px;
-	background: url(/static/images/icon_data.png) top center no-repeat;
+.url_filetype {
+clear:left;
+float:left; 
+margin-left: 5px;
 }
-#doc_image {
-	height:35px;
-	width: 35px;
-	background: url(/static/images/icon_documentation.png) top center no-repeat;
-}
-#api_image {
-	height:35px;
-	width: 35px;
-	background: url(/static/images/icon_api.png) top center no-repeat;
-}
-#app_image {
-	height:35px;
-	width: 35px;
-	background: url(/static/images/icon_application.png) top center no-repeat;
-}
+
 
 #social_meta {
 	height:40px;
