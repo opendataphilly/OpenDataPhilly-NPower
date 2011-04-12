@@ -9,6 +9,8 @@
       		odp.getTags();
 			odp.setupSearchInput();
 
+			odp.makeDialog('.tab_image');
+			odp.makeTabs('.tab_container');
 		});
 	</script>
 {% endblock %}
@@ -17,16 +19,16 @@
 	<div id="idea_title"><a href="/ideas/{{idea.id}}/">{{idea}}</a></div>
 
 	<div class="tab_container" id="tab_image_container">
-		{% if idea.image_set %}
+		{% if idea.ideaimage_set.count > 0 %}
 		<div class="tab_image" id="tab_image_1">
-		  <img src="{% thumbnail idea.image_set.0 300x300 autocrop %}" alt="{{idea.image_set.0.title}}">
-		  <div class="tab_image_detail">{{idea.image_set.0.title}} <img src="/static/images/icon_magnify.png"/></div>
+		  <img src="{% thumbnail idea.ideaimage_set.all.0 300x300 autocrop %}" alt="{{idea.ideaimage_set.all.0.title}}">
+		  <div class="tab_image_detail">{{idea.ideaimage_set.all.0.title}} <img src="/static/images/icon_magnify.png"/></div>
 		  <div class="dialog" id="dialog1">
-			<img src="/media/{{idea.image_set.0}}">
+			<img src="/media/{{idea.ideaimage_set.all.0}}">
 		  </div>
 		</div>
 		<ul class="tab_image_pager">
-		  {% for i in idea.image_set %}
+		  {% for i in idea.ideaimage_set.all %}
 		  <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
 		  {% endfor %}
 		</ul>
