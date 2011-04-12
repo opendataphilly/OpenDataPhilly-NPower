@@ -135,26 +135,27 @@ var odp = {
     },
     
     setDialogImage: function(source) {        
-       $('#dialog1 img')[0].src = "/media/" + source;
+
     },
     
     makeDialog: function(div) {
         $(div).each(function () {
             //make the dialog for each thumb
-            var $dialogId = $(this).find('.dialog');
-            $dialogId.dialog({
+            var $dialog = $(this).find('.dialog');
+            $dialog.dialog({
               autoOpen: false,
               modal: true,
-              draggable: false
+              draggable: false,
+              width: 'auto'
             });
             //open dialog by clicking the thumb
             $(this).click(function() {
-              $dialogId.dialog("open");
+              $dialog.dialog("open");
               return false;
            });
            // close the window when clicking the overlay background
            $('.ui-widget-overlay').live("click", function() {
-              $dialogId.dialog("close");
+              $dialog.dialog("close");
           });   
          });
       },
