@@ -53,23 +53,25 @@
       </div>
       <div class="tab_container" id="tab_image_container">
         {% if resource.get_images %}
-        <div class="tab_image" id="tab_image_1">
-          <img src="{% thumbnail resource.get_first_image 218x273 autocrop %}" alt="{{resource.get_first_image.title}}">
-          <div class="tab_image_detail">{{resource.get_first_image.title}} <img src="/static/images/icon_magnify.png"/></div>
-          <div class="dialog" id="dialog1">
-            <img src="/media/{{resource.get_first_image}}">
-          </div>
-        </div>
-        <ul class="tab_image_pager">
-          {% for i in resource.get_images %}
-          <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
-          {% endfor %}
-        </ul>
-        {% else %}
-        <div class="tab_image" id="tab_image_1">
-          <img src="/static/images/detail_no_image.gif" alt="No Resource Images">
-          <div class="tab_image_detail">No Resource Images</div>
-        </div>
+			{% for i in resource.get_images %}
+			<div class="tab_image" id="tab_image_{{i.id}}">
+			  <img src="{% thumbnail i 218x273 autocrop %}" alt="{{i.title}}">
+			  <div class="tab_image_detail">{{i.title}} <img src="/static/images/icon_magnify.png"/></div>
+			  <div class="dialog" id="dialog1">
+				<img src="/media/{{i}}">
+			  </div>
+			</div>
+			{% endfor %}
+			<ul class="tab_image_pager">
+			  {% for i in resource.get_images %}
+			  <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
+			  {% endfor %}
+			</ul>
+		{% else %}
+			<div class="tab_image" id="tab_image_1">
+			  <img src="/static/images/detail_no_image.gif" alt="No Resource Images">
+			  <div class="tab_image_detail">No Resource Images</div>
+			</div>
         {% endif %}
 
       </div>
