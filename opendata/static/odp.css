@@ -399,6 +399,7 @@ background-position: 0 -25px !important;
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #555;
+  margin-left: 3px;
 }
 
 #results_info {
@@ -411,6 +412,7 @@ background-position: 0 -25px !important;
 	font-size: 0.95em;
 	padding-top: 16px;
   color: #bababa;
+  margin-left: 4px;
   font-family: "proxima-nova-1","proxima-nova-2";
 }
 
