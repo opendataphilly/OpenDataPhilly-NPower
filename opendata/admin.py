@@ -50,7 +50,10 @@ class UrlAdmin(admin.ModelAdmin):
 class CoordSystemAdmin(admin.ModelAdmin):
     list_display = ('EPSG_code', 'name')
     search_fields = ['name', 'EPSG_code', 'description']
-    
+
+
+admin.site.register(Idea)
+admin.site.register(IdeaImage)
 admin.site.register(Tag)
 admin.site.register(UpdateFrequency)
 admin.site.register(UrlType)

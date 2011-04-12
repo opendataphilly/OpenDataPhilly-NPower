@@ -145,4 +145,38 @@ class UrlImage(models.Model):
     
     def __unicode__(self):
         return '%s' % (self.image)
-        
+
+class Idea(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    author = models.CharField(max_length=255)
+    created_by = models.ForeignKey(User, related_name="idea_created_by")
+    created_by_date = models.DateTimeField()
+    updated_by = models.ForeignKey(User, related_name="idea_updated_by")
+    updated_by_date = models.DateTimeField(auto_now=True)
+    
+    resources = models.ManyToManyField(Resource, blank=True, null=True)
+    
+    def __unicode__(self):
+        return '%s' % (self.title)
+
+
+class IdeaImage(models.Model):
+    def get_image_path(instance, filename):
+        fsplit = filename.split('.')
+        extra = 1
+        test_path = os.path.join(settings.MEDIA_ROOT, 'idea_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+        while os.path.exists(test_path):
+           extra += 1
+           test_path = os.path.join(settings.MEDIA_ROOT, 'idea_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' +  fsplit[1])
+        path = os.path.join('idea_images', str(instance.url_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+        return path
+
+    idea = models.ForeignKey(Idea)
+    image = ImageWithThumbnailsField(upload_to=get_image_path, thumbnail={'size': (300, 300)}, help_text="The site will resize this master image as necessary for page display")
+    title = models.CharField(max_length=255, help_text="For image alt tags")
+    source = models.CharField(max_length=255, help_text="Source location or person who created the image")
+    source_url = models.CharField(max_length=255, blank=True)
+
+    def __unicode__(self):
+        return '%s' % (self.image)

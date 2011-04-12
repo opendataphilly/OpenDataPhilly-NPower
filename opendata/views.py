@@ -39,6 +39,14 @@ def resource_details(request, resource_id):
     return render_to_response('details.html', {'resource': resource}, context_instance=RequestContext(request)) 
     
 
+def idea_results(request, idea_id=None):
+    if idea_id:
+        idea = Idea.objects.get(pk=idea_id)
+        return render_to_response('idea_details.html', {'idea': idea}, context_instance=RequestContext(request)) 
+    
+    ideas = Idea.objects.order_by("-created_by_date")
+    return render_to_response('ideas.html', {'ideas': ideas}, context_instance=RequestContext(request)) 
+
 
 ## views called by js ajax for object lists
 def get_tag_list(request):
