@@ -121,9 +121,11 @@ var odp = {
         var tag_list = "";
         for(var i = 0; i < odp.tags.length; i++) {
             var tag = odp.tags[i];
-            tag_list += "<li><a class='tag' href='/opendata/tag/" + tag.pk + "'>" + tag.fields.tag_name + "</a></li>"
+            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "'>" + tag.fields.tag_name + "</a></li>"
         }
         $("#tag_list").replaceWith(tag_list);
+        
+        odp.setNavLink();
     },
     
     makeTabs: function(div) {
@@ -155,7 +157,27 @@ var odp = {
               $dialogId.dialog("close");
           });   
          });
-      }
+      },
+    
+    setNavLink: function() {
+        var loc = window.location.href;
+        if(loc.indexOf("/tag/") != -1) {
+            var id = loc.split("/tag/")[1].split("/")[0];
+            $("#" + id).addClass('active_page');
+        } else {
+            loc = loc.split("/");
+            for(var i = 0; i < loc.length; i++) {
+                var val = loc.pop();
+                if (val != "") {
+                    var test = $("#" + val);
+                    if (test.length == 1) {
+                        test.addClass('active_page');
+                        return;
+                    }
+                }
+            }            
+        }
     }
+}
       
 

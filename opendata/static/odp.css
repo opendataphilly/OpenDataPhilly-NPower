@@ -15,15 +15,16 @@
 }
 
 .button {
-  cursor: pointer;
 	padding: 6px 20px;
 	border: 2px solid white;
 	background: url(/static/images/background_button.gif) 0 0 repeat-x;
 	text-align: center;
 	color: white;
 	font-weight: bold;
-  font-family: "proxima-nova-1","proxima-nova-2";
-  text-transform: uppercase;
+  	font-family: "proxima-nova-1","proxima-nova-2";
+  	text-transform: uppercase;
+  	cursor: pointer;
+	
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius:4px;
@@ -42,13 +43,13 @@ h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0}
 a {text-decoration: none}
 
 #wrapper h2.grid {
-  font-family: "proxima-nova-1","proxima-nova-2";
-  padding: 7px 7px 7px 9px;
+	padding: 7px 7px 7px 9px;
+	margin-bottom: 6px;
+	font-family: "proxima-nova-1","proxima-nova-2";
+	font-size: .85em;
+	text-transform:uppercase;
 	background: url(/static/images/background_ul.gif) repeat;
 	color: #4C4C4C;
-  margin-bottom: 6px;
-  text-transform:uppercase;
-  font-size: .85em;
   }
   
  #wrapper h2.grid a {	color: #4C4C4C;}
@@ -114,8 +115,8 @@ jquery ui basic themeing
 }
 
 #left_container h2.grid {
-  width: 165px;
-  margin-top: 25px;
+	width: 165px;
+	margin-top: 25px;
 }
 
 #left_container ul {
@@ -132,21 +133,21 @@ jquery ui basic themeing
 }
 
 #left_container ul li a{
+  	display:block;
+  	padding: 10px 0 4px; 
 	color: #7D7D7D;
 	text-decoration: none;
-  display:block;
-  padding: 10px 0 4px; 
-  }
-#left_container ul li a:hover {
-  color: #e68c52;
-  border-bottom: 1px solid #e68c52;
-  margin-bottom: -1px;
 }
-#left_container ul li a.active {
-  color: #DF5800;
-  border-bottom: 1px solid #DF5800;
-  padding-bottom: 3px;
-  margin-bottom: 1px;
+#left_container ul li a:hover {
+	border-bottom: 1px solid #e68c52;
+	margin-bottom: -1px;
+	color: #e68c52;
+}
+#left_container ul li a.active, #left_container ul li.active_page a {
+	padding-bottom: 3px;
+	margin-bottom: 1px;
+	border-bottom: 1px solid #DF5800;
+	color: #DF5800;
 }
 
 #left_container ul li.separator {
@@ -157,11 +158,20 @@ jquery ui basic themeing
 
 
 
-#left_container ul li#sidebar_ideas {background: url(/static/images/icon_idea_gallery_xsm.png) 0 2px no-repeat; padding-left: 30px}
-#left_container ul li#sidebar_suggest {background: url(/static/images/icon_add_xsm.png) 0 2px no-repeat; padding-left: 30px;}
+#left_container ul li#ideas {
+	padding-left: 30px;
+	background: url(/static/images/icon_idea_gallery_xsm.png) 0 2px no-repeat; 
+}
+#left_container ul li#ideas.active_page {
+	background-position: 0 -25px !important;
+}
+#left_container ul li#suggest {
+	padding-left: 30px;
+	background: url(/static/images/icon_add_xsm.png) 0 2px no-repeat; 
+}
 
 #left_container ul li.icon-xsm:hover  {
-background-position: 0 -25px !important;
+	background-position: 0 -25px !important;
 } 
 
 #center_container {
@@ -224,10 +234,10 @@ background-position: 0 -25px !important;
 
 #account {
 	float:right;
-  margin: 0 0 0 0;
-  font-weight: bold;
-  color: #b6b6b6; 
-  }
+	margin: 0 0 0 0;
+	font-weight: bold;
+	color: #b6b6b6; 
+}
 
 #account a {
   color: #df5800;
@@ -235,8 +245,6 @@ background-position: 0 -25px !important;
 #account_text {
 	padding-left:3px;
 }
-
-
 
 #center_content {
 	margin-top:25px;
