@@ -10,7 +10,9 @@ from django.contrib.auth.models import User
 from models import *
 
 def home(request):
-    return render_to_response('home.html', context_instance=RequestContext(request))
+    recent = Resource.objects.order_by("-created")[:3]
+    idea = Idea.objects.order_by("-created_by_date")[0]
+    return render_to_response('home.html', {'recent': recent, 'idea': idea},  context_instance=RequestContext(request))
 
 def results(request):
     resources = Resource.objects.all()

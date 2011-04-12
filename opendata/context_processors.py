@@ -9,7 +9,7 @@ def latest_tweets( request ):
     if tweets:
         return {"tweets": tweets}
 
-    tweets = twitter.Api().GetUserTimeline( settings.TWITTER_USER )[:7]
+    tweets = twitter.Api().GetUserTimeline( settings.TWITTER_USER )[:3]
     for tweet in tweets:
         tweet.date = datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" )
     cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
