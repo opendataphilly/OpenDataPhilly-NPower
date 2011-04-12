@@ -1,0 +1,9 @@
+      <div id="account">
+				<div id="account_text" class="small_dark"></div>
+				{% if user.is_authenticated %}
+					<div id="account_button" class="button"><a href="/accounts/logout/?next=/">Logout</a></div>
+				{% else %}
+          <a href="">Register</a> or
+					<a href="/accounts/login/?next={{ request.get_full_path }}">Login</a>
+				{% endif %}
+			</div>
