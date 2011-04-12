@@ -166,7 +166,7 @@ background-position: 0 -25px !important;
 
 #center_container {
 	float: left;
-	width: 650px;
+	width: 615px;
 }
 
 #center_header {
@@ -175,15 +175,19 @@ background-position: 0 -25px !important;
 	height: 80px;	
 }
 
+
+.home #search {width: 579px; padding:14px;}
+.home #search input {width: 567px;font-size: 1.1em;}
+.home #search #search_img {top: 21px;right: 20px;}
+
 #search {
 	position:relative;
 	float:left;
-	width:460px;
-	padding:14px;
-	margin:4px;
+	width:300px;
+	padding:9px;
+	margin:10px 4px 4px;
 	border:2px solid white;
 	background: url(/static/images/background_search.gif) repeat-x;
-	
 	-moz-border-radius: 3px;
 	border-radius:3px;
 	-moz-box-shadow: 0 0 4px #ccc;
@@ -203,8 +207,8 @@ background-position: 0 -25px !important;
 
 #search #search_img {
 	position: absolute;
-	top: 21px;
-	right:20px;
+	top: 17px;
+	right:14px;
 	cursor: pointer;
 }
 
@@ -216,9 +220,9 @@ background-position: 0 -25px !important;
 	border: none medium;
   font-family: Arial, Helvetica, sans-serif;
 	background: transparent 0 0;
-	font-size: 1.1em;
+	font-size: 1em;
 	font-weight: bold;
-	color: #646464;
+	color: #999;
 	vertical-align: middle;
 }
 
@@ -227,7 +231,9 @@ background-position: 0 -25px !important;
   margin: 0 0 0 0;
   font-weight: bold;
   color: #b6b6b6; 
+  font-size: .8em;
   }
+   #account {margin-top: 5px; margin: -25px -38px 0 0;} 
 
 #account a {
   color: #df5800;
@@ -239,7 +245,8 @@ background-position: 0 -25px !important;
 
 
 #center_content {
-	margin-top:25px;
+	padding-top:25px;
+  clear:both;
 }
 
 
@@ -251,8 +258,7 @@ background-position: 0 -25px !important;
    ------------------------------------------------- */
 
 .home#center_container {width: 615px;}
-.home #search {width: 579px}
-.home #search input {width: 567px}
+
 .home a { color: #ec974f}
    
 .home h1 {
@@ -274,12 +280,13 @@ background-position: 0 -25px !important;
   margin: 10px 0 20px 5px;
 }
    
- 
+
    
 #home_idea {
   height: 215px; 
   display:block; 
   margin-bottom:10px;
+  margin-top: 0;
 }
 
 #home_idea_callout {
@@ -461,22 +468,28 @@ background-position: 0 -25px !important;
 }
 
 .resource#promotion_header {
-	padding: 12px;
-	text-align:center;
-	font-size: 1.1em;
-	line-height: 1.25em;
-	font-weight: bold;
-	background-color: #fbeac2;
-	color: #ff935f;
+    background: #FBEAC2;
+    color: #FF935F;
+    float: right;
+    font-size: 0.7em;
+    font-weight: bold;
+    line-height: 1.2em;
+    margin-top: -95px;
+    padding: 11px 14px 10px 8px;
+    text-align: center;
+    width: 185px;
 
-}   
+} 
+
+.resource#promotion_header .icon_idea {
+float:left
+}
 
 .resource#promotion_header a {
  color: #df5800;
 }
 
 .resource#promotion_header .tag_name  {
- text-transform: lowercase;
 }
 
 .resource {
