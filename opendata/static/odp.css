@@ -41,7 +41,7 @@ h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0}
 
 a {text-decoration: none}
 
-h2.grid {
+#wrapper h2.grid {
   font-family: "proxima-nova-1","proxima-nova-2";
   padding: 7px 7px 7px 9px;
 	background: url(/static/images/background_ul.gif) repeat;
@@ -50,6 +50,8 @@ h2.grid {
   text-transform:uppercase;
   font-size: .85em;
   }
+  
+ #wrapper h2.grid a {	color: #4C4C4C;}
 
 
 /* -------------------------------------------------
@@ -60,11 +62,18 @@ h2.grid {
 
 .icon_idea {
   display: inline-block;
-  background: url(images/icon_idea_gallery_lg.png) 0 0 no-repeat;
+  background: url(/static/images/icon_idea_gallery_lg.png) 0 0 no-repeat;
   width: 28px;
   height: 35px;
   vertical-align: middle;
 }
+
+.icon_twitter {
+  background: url(/static/images/icon_twitter.png) 0 0 no-repeat;
+  width: 19px;
+  height: 18px;
+  display:block;
+  }
 
 /* -------------------------------------------------
 	
@@ -185,7 +194,7 @@ background-position: 0 -25px !important;
 #search #search_qs {
     position:relative;	
     height:36px;
-	background: url(/static/images/background_input.gif) no-repeat scroll 0 0 white;
+	background: #F2F2F2 url(/static/images/background_input.png) no-repeat scroll 0 0;
     border: white 1px solid;
     
     -moz-border-radius: 3px;
@@ -215,20 +224,19 @@ background-position: 0 -25px !important;
 
 #account {
 	float:right;
-  margin: -30px -30px 0 0;
-}
+  margin: 0 0 0 0;
+  font-weight: bold;
+  color: #b6b6b6; 
+  }
 
+#account a {
+  color: #df5800;
+}
 #account_text {
 	padding-left:3px;
 }
 
-#account_button {
-	font-size:0.85em;
-	margin-top: 7px;
-}
-#account_button a {
-	color:white;
-}
+
 
 #center_content {
 	margin-top:25px;
@@ -242,6 +250,11 @@ background-position: 0 -25px !important;
 	
    ------------------------------------------------- */
 
+.home#center_container {width: 615px;}
+.home #search {width: 579px}
+.home #search input {width: 567px}
+.home a { color: #ec974f}
+   
 .home h1 {
     font-size: 2.5em;
     font-weight: bold;
@@ -260,6 +273,8 @@ background-position: 0 -25px !important;
   line-height: 1.25em;
   margin: 10px 0 20px 5px;
 }
+   
+ 
    
 #home_idea {
   height: 215px; 
@@ -298,7 +313,7 @@ background-position: 0 -25px !important;
   }
   
   #home_additions {
-    margin-left: 50px;
+    margin-left: 45px;
     float:left;
     width: 285px;
     margin-top: 25px;
@@ -312,9 +327,61 @@ background-position: 0 -25px !important;
     text-indent: -9999em;
     margin: 0 0 20px;
   }
+  
+  .home .icon_twitter {
+  float:right
+  }
+  
+  .home ul {
+    color: #9d9d9d;
+    line-height: 1.35em;
+    font-size: .8em;
+    margin: 10px 15px 0 15px; 
+}
 
+  .home ul  li {
+    margin: 0 0 20px 0;
+    float:left;
+    clear:left;
+}  
   
   
+  .home ul  .icon_twitter {
+    float:right;
+    }
+  
+  .home ul .date {
+    font-size: .85em;
+    color: #6c6c6c;
+      font-weight:bold;
+    
+  }
+  
+  .home ul .time {
+    font-size: .85em;
+    color: #a3a3a3;
+      font-weight:bold;
+  }
+  
+  .home ul .post {
+    margin-top: 3px
+    }
+ 
+  .home ul .home_rating {
+    display:block;
+    margin-top: 2px;
+    margin-left: -2px;
+  }
+
+   #home_additions_list .data {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 3px;
+    display:block
+   }
+   
+   
+   
 /* -------------------------------------------------
 	
 	Results
@@ -817,7 +884,7 @@ margin-left: 5px;
   width: 100%;
   clear:both;
 	height: 70px;
-	margin: 25px 0;
+	margin: 50px 0 25px;
 	background: url(/static/images/background_ul.gif) repeat;
 }
 #footer #footer_logo {
