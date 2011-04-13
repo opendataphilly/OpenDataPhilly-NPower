@@ -1,5 +1,5 @@
 import os
-
+from operator import attrgetter
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -95,7 +95,7 @@ class Resource(models.Model):
         for url in self.url_set.all():
             if url.url_type not in types:
                 types.append(url.url_type)
-        return sorted(types, reverse=True)
+        return sorted(types, key=attrgetter('url_type'))
     
     def get_grouped_urls(self):
         urls = {}

@@ -597,7 +597,7 @@ a.resource:hover {
 .url_image#resource_icon_Application {
   background:url(/static/images/icon_application_sm.png) 0 -44px;
 }
-.url_image#resource_icon_Api {
+.url_image#resource_icon_API {
   background:url(/static/images/icon_api_sm.png) 0 -44px;
 }
 .url_image#resource_icon_Data {
