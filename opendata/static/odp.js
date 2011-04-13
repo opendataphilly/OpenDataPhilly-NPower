@@ -3,7 +3,7 @@ var odp = {
 
     setupSearchInput: function () {
         if ($.query.get('qs') && $.query.get('qs') != "") {
-            $("#qs")[0].value = decodeURI($.query.get('qs'));
+            $("#qs")[0].value = decodeURI($.query.get('qs')).replace(/\x2B/g, " ");
         }
     
         $("#qs").focus(function (evt) {

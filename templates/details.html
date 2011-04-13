@@ -210,7 +210,8 @@
         <div>
           {% if user.is_authenticated %}
           {% get_comment_form for resource as form %}
-            <form action="{% comment_form_target %}" method="post">{% csrf_token %}
+            <form id="resource_comment_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
+              <div id="comment_field_errors"></div>
               <input type="hidden" name="next" value="{{request.get_full_path}}" />
               {% for field in form %}
               {% if field.is_hidden %}
