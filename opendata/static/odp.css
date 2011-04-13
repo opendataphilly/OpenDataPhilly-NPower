@@ -560,6 +560,10 @@ float:left
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+a.resource:hover {
+	border:2px solid white;
+}
+
 .resource #url_types {
 	position: absolute;
 	left: -18px;
@@ -1131,7 +1135,15 @@ ul.tab_header li.tab_button a {
 #footer #footer_logo {
 	float:left;
 	margin:16px;
+  width: 126px;
+  height: 31px;
+  display:block;
+  background: url(/static/images/logo_azavea.png) 0 0 no-repeat;
 }
+#footer #footer_logo:hover {
+  background-position: 0 -31px;
+} 
+
 #footer #footer_copyright {
 	float:right;
 	margin:18px;
