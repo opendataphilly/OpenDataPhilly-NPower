@@ -17,7 +17,7 @@
 .button {
 	padding: 6px 20px;
 	border: 2px solid white;
-	background: url(/static/images/background_button.gif) 0 0 repeat-x;
+	background: url(/static/images/background_button.png) 0 0 repeat-x;
 	text-align: center;
 	color: white;
 	font-weight: bold;
@@ -32,15 +32,17 @@
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+.button:hover {background-position: 0 -32px; border: 2px solid white;}
 
 h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0}
-
+a {color:#FF935F; text-decoration: none}
+a:hover {border-bottom: 1px dotted #bbb}
 
 .clear_left {clear:left}
 .clear_right {clear:right}
 .clear {clear: both}
 
-a {text-decoration: none}
+
 
 #wrapper h2.grid {
 	padding: 7px 7px 7px 9px;
@@ -83,7 +85,37 @@ jquery ui basic themeing
    ------------------------------------------------- */ 
 
 .ui-widget-overlay {background: #000; opacity: .3}
-.ui-dialog {background: #fff}   
+ 
+   
+.ui-dialog .ui-dialog-titlebar-close  {background: url(/static/images/icon_close.png) 0 0 no-repeat;
+width: 25px;
+height: 25px;
+padding:0;
+}   
+.ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
+ background-position: 0 -27px;
+ border:none;
+}
+.ui-dialog .ui-dialog-content {
+  padding: 10px;
+}
+.ui-dialog {
+	border:2px solid white;
+	background-color: #F5F5F5;
+	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius:4px;
+	-moz-box-shadow: 0 0 10px -3px #000;
+	-webkit-box-shadow: 0 0 10px -3px #000;
+	box-shadow: 0 0 10px -3px #000;
+  }
+  
+.ui-dialog .ui-dialog-titlebar {
+  padding-left:10px;
+  font-weight: bold;
+  }
+  .ui-dialog .ui-dialog-title {line-height: 1.2em;}
    
 /* -------------------------------------------------
 	
@@ -172,7 +204,7 @@ jquery ui basic themeing
 
 #left_container ul li.icon-xsm:hover  {
 	background-position: 0 -25px !important;
-} 
+  } 
 
 #center_container {
 	float: left;
@@ -311,6 +343,11 @@ jquery ui basic themeing
   text-indent: -9999em;
   }
 
+#home_idea_callout:hover {
+  background-position: 0 -104px;
+  border:none;
+}  
+  
   #home_idea_label {
     float:right;
     color: #8c8c8c;
@@ -344,6 +381,10 @@ jquery ui basic themeing
     display:block;
     text-indent: -9999em;
     margin: 0 0 20px;
+  }
+  #button_submission:hover {
+    background-position: 0 -97px;
+    border:none;
   }
   
   .home .icon_twitter {
@@ -440,6 +481,7 @@ jquery ui basic themeing
 	height: 45px;
 	cursor: pointer;
 }
+#results_info .url_image:hover {border:none}
 
 
 
@@ -491,14 +533,14 @@ jquery ui basic themeing
     padding: 11px 14px 10px 8px;
     text-align: center;
     width: 185px;
-
 } 
+.resource#promotion_header:hover {	border:2px solid white;}
 
 .resource#promotion_header .icon_idea {
 float:left
 }
 
-.resource#promotion_header a {
+.resource#promotion_header strong{
  color: #df5800;
 }
 
@@ -521,6 +563,10 @@ float:left
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+a.resource:hover {
+	border:2px solid white;
+}
+
 .resource #url_types {
 	position: absolute;
 	left: -18px;
@@ -633,6 +679,7 @@ float:left
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #555;
+  margin-left: 3px;
 }
 #description {
 	font-size: .95em;
@@ -641,6 +688,7 @@ float:left
 	margin-bottom: 30px;
 	font-weight: bold;
 	color: #b0b0b0;
+  margin-left: 4px;
 }
 
 ul.tab_header{
@@ -773,12 +821,13 @@ ul.tab_header li.tab_button a {
 {
 	background: url(images/bullet-arrow.png) 0 4px no-repeat;
 	padding-left: 30px;
-	margin-left: 8px;
+  margin-right: 10px;
 }
 
 .url_header {
 	height:35px;
   	margin-bottom: 5px;
+    margin-left: -6px;
 }
 
 .url_header div{
@@ -789,6 +838,8 @@ ul.tab_header li.tab_button a {
 	padding-top: 11px;
 	font-size: 0.85em;
 	font-weight: bold;
+  margin-left: 3px;
+    	font-family: "proxima-nova-1","proxima-nova-2";
 }
 
 .url_link {
@@ -839,7 +890,7 @@ ul.tab_header li.tab_button a {
 }
 .comment_field {float:right}
 .comment_field textarea {
-  width: 485px;
+  width: 450px;
 	border: 2px #D9D9D9 solid;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -937,45 +988,138 @@ ul.tab_header li.tab_button a {
 	box-shadow: 0 0 4px #ccc;
 }
 .idea_item #tab_image_container {
-	padding-left:20px;
+	padding: 0 0 20px 30px
 }
 
-#idea_title {
-	padding-bottom: 20px;
+
+.idea_title {
+
 }
 
-#idea_title a {
-	font-size: 1.2em;
+
+.idea_title a {
+	font-size: 1.4em;
 	font-weight: bold;
-	color: #646464;
+	color: #575656;
 }
-#idea_description {
+.idea_description {
+  padding-top: 20px;
 	line-height: 1.8em;
 	font-size: 0.8em;
 	color: #9C9C9B;
+  margin-bottom: 20px;
 }
-#byline, #dateline {
+.byline {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #9C9C9B;
+  margin-top: 7px;
+}
+.byline strong {	color: #575656;}
+
+.byline, .dateline {
 	font-weight: bold;
 }
 #idea_footer {
-	position: relative;
-	height:20px;
-	padding-top:20px;
+	padding-top:36px;
 }
-#idea_button {
+
+.idea_resources_title {
+  font-weight: bold;
+  font-size: 0.9em;
+	font-weight: bold;
+	color: #575656;
+  margin-bottom: 10px;
+
+}
+
+.resource_item {
+	background: url(images/bullet-arrow.png) 0 1px no-repeat;
+	padding-left: 30px;
+	margin-left:0;
+  font-size: 0.75em;
+  margin: 8px 0 8px;
+  font-weight:bold
+  
+  
+  
+}
+
+.idea_button {
 	float:left;
 	font-size: 0.85em;
 }
-#idea_date {
+.idea_date {
 	float:right;
 	font-size: 0.9em;
 	font-weight: bold;
 	color: #9C9C9B;
 }
-#idea_date span {
+
+.idea_date strong {
 	color: #575656;
 }
 
+
+/* -------------------------------------------------
+	
+	Registration/Login
+	
+   ------------------------------------------------- */
+
+  #form_container table label {
+    display: block;
+    font-size: 1.2em;
+    padding: 10px 10px 10px 0 ;
+    text-align: right;
+    color: #7D7D7D;
+    font-size: 1.4em;
+    letter-spacing: -0.03em;
+  } 
+  
+  #form_container table input[type=text], #form_container table input[type=password]  {
+    color: #999999;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    height: 28px;
+    margin-left: 8px;
+    padding-left: 12px;
+    padding-top: 2px;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    background: url(/static/images/background_input.png) no-repeat #F2F2F2;
+    }
+    
+  #form_container .button {
+    margin: 15px 0 10px 8px;
+    }
+    
+    #form_container .error_message {
+   background: none repeat scroll 0 0 #FBEAC2;
+    color: #FF935F;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.2em;
+    padding: 11px 14px 10px 8px;
+    text-align: center;
+    margin-top: 0;
+    }
+    
+   #form_container .errorlist {
+    margin-left: 8px;
+    color: #FF935F;
+    font-size: .75em;
+    font-weight: bold;
+    margin-bottom: 3px;
+    }
+    
+   #form_container .register_or_reset {
+    margin-top: 15px; 
+    font-weight: bold;
+    text-align:right;
+    color: #B6B6B6
+   }
 /* -------------------------------------------------
 	
 	Footer
@@ -994,10 +1138,19 @@ ul.tab_header li.tab_button a {
 #footer #footer_logo {
 	float:left;
 	margin:16px;
+  width: 126px;
+  height: 31px;
+  display:block;
+  background: url(/static/images/logo_azavea.png) 0 0 no-repeat;
 }
+#footer #footer_logo:hover {
+  background-position: 0 -31px;
+} 
+
 #footer #footer_copyright {
 	float:right;
 	margin:18px;
+  text-align:right;
 	line-height: 1.4em;
 	font-size: 0.7em;
 	font-weight:bold;

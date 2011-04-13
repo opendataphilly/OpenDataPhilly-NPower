@@ -6,28 +6,37 @@
 		$(document).ready(function () {
       		odp.getTags();
 			odp.setupSearchInput();
+    $('table').append($('<tr>',{html:'<td></td><td><input type="submit" value="Login" class="button" /></td>'})) 
 		});
 	</script>
 {% endblock %}
 
 {% block center_container %}
 
+
+
+<div id="title">Login</div>
+<div id="description">Add ratings. Submit data. Suggest ideas.</div>
+
+
+<div class="resource" id="form_container">
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p class="resource error_message">Your username and password didn't match. </br>Please try again.</p>
 {% endif %}
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 {% csrf_token %}
 <table>
 {{form}}
+
 </table>
 
-<div>
+<div class="register_or_reset">
 	<a href="/accounts/register/">Register</a> or <a>Reset Password</a>
 </div>
 
-<input type="submit" value="Login" />
+
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
+</div>
 {% endblock %}

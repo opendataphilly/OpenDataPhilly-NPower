@@ -57,15 +57,17 @@
 			<div class="tab_image" id="tab_image_{{i.id}}">
 			  <img src="{% thumbnail i 218x273 autocrop %}" alt="{{i.title}}">
 			  <div class="tab_image_detail">{{i.title}} <img src="/static/images/icon_magnify.png"/></div>
-			  <div class="dialog" id="dialog1">
-				<img src="/media/{{i}}">
+			  <div title="{{i.title}}" class="dialog" id="dialog_{{i.id}}">
+				<img src="{% thumbnail i 700x550 autocrop %}">
 			  </div>
 			</div>
 			{% endfor %}
+      {% if resource.get_images.count > 1 %}
 			<ul class="tab_image_pager">
 			  {% for i in resource.get_images %}
-			  <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
+			  <li><a href="#tab_image_{{i.id}}"></a></li>
 			  {% endfor %}
+      {% endif %}
 			</ul>
 		{% else %}
 			<div class="tab_image" id="tab_image_1">

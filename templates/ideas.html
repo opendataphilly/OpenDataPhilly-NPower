@@ -30,38 +30,49 @@
 		<ul>
 		{% for idea in ideas %}
 			<li class="idea_item">
-				<div id="idea_title"><a href="/idea/{{idea.id}}/">{{idea}}</a></div>
-
+				<div class="idea_title"><a href="/idea/{{idea.id}}/">{{idea}}</a></div>
+        <div class="byline">By <strong>{{idea.author}}</strong></div>
+        
 				<div class="tab_container" id="tab_image_container">
 					{% if idea.ideaimage_set.count > 0 %}
 					{% for i in idea.ideaimage_set.all %}
-					<div class="tab_image" id="tab_image_1">
+					<div class="tab_image" id="tab_image_{{i.id}}">
 					  <img src="{% thumbnail i 300x300 autocrop %}" alt="{{i.title}}">
 					  <div class="tab_image_detail">{{i.title}} <img src="/static/images/icon_magnify.png"/></div>
-					  <div class="dialog" id="dialog1">
-						<img src="/media/{{i}}">
+					  <div title="{{i.title}}" class="dialog" id="dialog_{{i.id}}">
+						<img src="{% thumbnail i 700x550 autocrop %}">
 					  </div>
 					</div>
 					{% endfor %}
 					<ul class="tab_image_pager">
+          {% if idea.ideaimage_set.count > 1 %}
 					  {% for i in idea.ideaimage_set.all %}
-					  <li><a href="#tab_image_{{i.id}}" onclick="odp.setDialogImage('{{i}}');return false;"></a></li>
+					  <li><a href="#tab_image_{{i.id}}"></a></li>
 					  {% endfor %}
+          {% endif %}
 					</ul>
 					{% else %}
-					<div class="tab_image" id="tab_image_1">
+					<div class="tab_image" id="tab_image_{{i.id}}">
 					  <img src="/static/images/detail_no_image.gif" alt="No Idea Images">
 					  <div class="tab_image_detail">No Images</div>
 					</div>
 					{% endif %}
       			</div>
 
-				<div id="idea_description"><div id="byline">By: {{idea.author}}</div>{{idea.description}}</div>
-
+				<div class="idea_description">{{idea.description}}</div>
+         
+         
+         <h4 class="idea_resources_title">Data used:</h4>
+          <ul id="idea_resources">
+            {% for resource in idea.resources.all %}
+              <li class="resource_item"><a href="/opendata/resource/{{resource.id}}">{{resource}}</a></li>
+            {% endfor %}
+          </ul>
+        
 				<div id="idea_footer">
-					<div id="idea_button"><a href="/idea/{{idea.id}}/" class="button">More Info</a></div>
-					<div id="idea_date">Posted: <span>{{idea.created_by_date|date:"M d, Y"}}</span></div>
-
+					<div class="idea_button"><a href="/idea/{{idea.id}}/" class="button">Link to this idea</a></div>
+					<div class="idea_date">Posted: <strong>{{idea.created_by_date|date:"M d, Y"}}</strong></div>
+          <div class="clear"></div>
 				</div>
 
 
