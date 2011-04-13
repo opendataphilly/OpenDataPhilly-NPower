@@ -141,6 +141,9 @@ padding:0;
   	margin-left: 5px;
   	display:block;
 }
+#left_container #logo:hover { 
+  border:none;
+}
 
 #left_container #tags {
 	margin-top: 30px;
@@ -220,7 +223,7 @@ padding:0;
 
 .home #search {width: 579px; padding:14px;}
 .home #search input {width: 567px;font-size: 1.1em;}
-.home #search #search_img {top: 21px;right: 20px;}
+.home #search #search_img {top: 23px;right: 20px;}
 
 #search {
 	position:relative;
@@ -249,10 +252,17 @@ padding:0;
 
 #search #search_img {
 	position: absolute;
-	top: 17px;
+	top: 19px;
 	right:14px;
+  width: 19px;
+  height: 19px;
+  background: url(/static/images/icon_glass.png) 0 0 no-repeat;
 	cursor: pointer;
 }
+#search #search_img:hover {
+  background-position: 0 -19px;
+}
+
 
 #search input {
 	height: 32px;
@@ -598,11 +608,11 @@ a.resource:hover {
 }
 .resource #rating_image img {
 	margin-left:2px;
-	border: 1px solid #B6B6B6;
+	border: 1px solid #dbdbdb;
 	
-	-moz-box-shadow: 0 0 4px #ccc;
-	-webkit-box-shadow: 0 0 4px #ccc;
-	box-shadow: 0 0 4px #ccc;
+	-moz-box-shadow: 0 0 3px #ccc;
+	-webkit-box-shadow: 0 0 3px #ccc;
+	box-shadow: 0 0 3px #ccc;
 }
 .resource #resource_info {
 	padding-left: 100px;
@@ -759,12 +769,12 @@ ul.tab_header li.tab_button a {
 
 .tab_image {
 	position:relative; 	
-	border: #939393 1px solid;
+	border: #dbdbdb 1px solid;
 	min-height: 150px;
 	min-width: 150px;
-	-moz-box-shadow: 2px 2px 6px #939393;
-	-webkit-box-shadow: 2px 2px 6px #939393;
-	box-shadow: 2px 2px 6px #939393;
+	-moz-box-shadow: 0 0 3px #ccc;
+	-webkit-box-shadow: 0 0 3px #ccc;
+	box-shadow: 0 0 3px #ccc;
 }
 
 .tab_image img {
