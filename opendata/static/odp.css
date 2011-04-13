@@ -580,6 +580,15 @@ a.resource:hover {
 	border:2px solid white;
 }
 
+ .resource p {  
+  padding: 10px 0;
+	line-height: 1.8em;
+	font-size: 0.8em;
+	color: #9C9C9B;
+  }
+
+ .resource p strong {color: #888; font-weight: bold}
+
 .resource #url_types {
 	position: absolute;
 	left: -18px;
@@ -733,6 +742,9 @@ ul.tab_header li.tab_button.ui-tabs-selected {
 ul.tab_header li.tab_button a {
 	color: #575656;
 }
+ul.tab_header li.tab_button a:hover {
+  border-bottom: none
+  }
 
 .tab_body {
 	position:relative;
