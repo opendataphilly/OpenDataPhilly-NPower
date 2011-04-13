@@ -12,7 +12,7 @@
 {% block center_container %}
 <div id="title">Submit Your Data</div>
 <div id="description">Some info here about how this works and why you should do it.</div>
-<div id="form_container" class='resource'>
+<div id="form_container" class="resource">
 	<form action="/opendata/submit/" method="post">
 		{% csrf_token %}
 		{% if form.errors %}
