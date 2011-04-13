@@ -69,12 +69,13 @@ class Resource(models.Model):
     
     release_date = models.DateField(blank=True, null=True)
     time_period = models.CharField(max_length=50, blank=True)
-    update_frequency = models.CharField(max_length=255, blank=True)
     updates = models.ForeignKey(UpdateFrequency, null=True, blank=True)
-    data_formats = models.CharField(max_length=255, blank=True)
     area_of_interest = models.CharField(max_length=255, blank=True)
-    proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
     is_published = models.BooleanField(default=True, verbose_name="Public")
+    
+    update_frequency = models.CharField(max_length=255, blank=True)
+    data_formats = models.CharField(max_length=255, blank=True)
+    proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
     
     created_by = models.ForeignKey(User, related_name='created_by')
     last_updated_by = models.ForeignKey(User, related_name='updated_by')
@@ -94,7 +95,7 @@ class Resource(models.Model):
         for url in self.url_set.all():
             if url.url_type not in types:
                 types.append(url.url_type)
-        return types
+        return sorted(types, reverse=True)
     
     def get_grouped_urls(self):
         urls = {}

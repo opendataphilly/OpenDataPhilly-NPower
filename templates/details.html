@@ -19,7 +19,7 @@
 
 {% block center_container %}
 	<div id="title">{{resource}}</div>
-	<div id="description">{{resource.description}}</div>
+	<div id="description">{{resource.short_description}}</div>
 
   <div class="tab_container" id="content_resource">
     <ul class="tab_header">
@@ -28,25 +28,25 @@
     </ul>
     <div class="tab_body" id="tab_basic_info">
       <div id="tab_data">
-         {% if resource.organization %}
-        <div class="info_label">Organization</div><div class="info_data"><a>{{resource.organization}}</a></div>
+        {% if resource.organization %}
+        <div class="info_label">Organization</div><div class="info_data"><a href="/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
         {% endif %}
         {% if resource.division %}
-        <div class="info_label">Division</div><div class="info_data"><a>{{resource.division}}</a></div>
+        <div class="info_label">Division</div><div class="info_data"><a href="/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
         {% endif %}
         {% if resource.contact_email %}
-        <div class="info_label">Contact Email</div><div class="info_data"><a>{{resource.contact_email}}</a></div>
+        <div class="info_label">Contact Email</div><div class="info_data"><a href="mailto:{{resource.contact_email}}" target="_blank">{{resource.contact_email}}</a></div>
         {% endif %}
         {% if resource.contact_phone %}
         <div class="info_label">Contact Phone</div><div class="info_data">{{resource.contact_phone}}</div>
         {% endif %}
          {% if resource.contact_website %}
-        <div class="info_label">Contact Website</div><div class="info_data">{{resource.contact_website}}</a></div>
+        <div class="info_label">Contact Website</div><div class="info_data"><a href="{{resource.contact_website}}" target="_blank">{{resource.contact_website}}</a></div>
         {% endif %}
         <div class="info_label">Categories</div>
         <div class="info_data">
-          {% for i in resource.tags.all %}
-            <a>{{i}}</a>{% if not forloop.last %}, {% endif %}
+          {% for tag in resource.tags.all %}
+            <a href="/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
           {% endfor %}
         </div>
         <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
@@ -79,7 +79,47 @@
       <div class="clear_left"></div>
     </div>
 
-    <div class="tab_body" id="tab_extra_info">**Extended Info Here**</div>
+    <div class="tab_body" id="tab_extra_info">
+        {% if resource.release_date %}
+			<div class="info_label">Release Date</div><div class="info_data">{{resource.release_date}}</div>
+        {% endif %}
+		{% if resource.description %}
+        	<div class="info_label">Description</div><div class="info_data">{{resource.description}}</div>
+        {% endif %}
+        {% if resource.time_period %}
+			<div class="info_label">Valid Time Period</div><div class="info_data">{{resource.time_period}}</div>
+        {% endif %}
+        {% if resource.updates %}
+			<div class="info_label">Update Frequency</div><div class="info_data">{{resource.updates}}</div>
+        {% endif %}
+        {% if resource.area_of_interest %}
+			<div class="info_label">Area of Interest</div><div class="info_data">{{resource.area_of_interest}}</div>
+        {% endif %}
+        {% if resource.coord_sys.all.count > 0 %}
+			<div class="info_label">Coordinate Systems</div>
+			<div class="info_data">
+				{% for cs in resource.coord_sys.all %}
+					{{cs}}{% if not forloop.last %}, {% endif %}
+				{% endfor %}
+			</div>
+        {% endif %}
+        {% if resource.data_types.all.count > 0 %}
+			<div class="info_label">Data Types</div>
+			<div class="info_data">
+				{% for dt in resource.data_types.all %}
+					{{dt}}{% if not forloop.last %}, {% endif %}
+				{% endfor %}
+			</div>
+        {% endif %}
+        {% if resource.idea_set.all.count > 0 %}
+        <div class="info_label">Idea Gallery Entries</div>
+        <div class="info_data">
+			{% for i in resource.idea_set.all %}
+				<div><a href="/idea/{{i.id}}" target="_blank">{{i}}</a> By: {{i.author}}, Posted: {{i.created_by_date|date:"M d, Y"}}</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+    </div>
   </div>
 
   <div class="tab_container" id="content_data">
