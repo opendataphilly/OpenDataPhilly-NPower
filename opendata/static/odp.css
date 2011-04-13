@@ -228,7 +228,7 @@ jquery ui basic themeing
 	padding-left: 12px;
 	padding-top: 4px;
 	border: none medium;
-  font-family: Arial, Helvetica, sans-serif;
+  	font-family: Arial, Helvetica, sans-serif;
 	background: transparent 0 0;
 	font-size: 1em;
 	font-weight: bold;
@@ -238,15 +238,18 @@ jquery ui basic themeing
 
 #account {
 	float:right;
-  margin: 0 0 0 0;
-  font-weight: bold;
-  color: #b6b6b6; 
-  font-size: .8em;
-  }
-   #account {margin-top: 5px; margin: -25px -38px 0 0;} 
+	margin: 0 0 0 0;
+	font-weight: bold;
+	color: #b6b6b6; 
+	font-size: .8em;
+}
+#account {
+	margin-top: 5px; 
+	margin: -25px -38px 0 0;
+} 
 
 #account a {
-  color: #df5800;
+  	color: #df5800;
 }
 #account_text {
 	padding-left:3px;
@@ -254,7 +257,7 @@ jquery ui basic themeing
 
 #center_content {
 	padding-top:25px;
-  clear:both;
+  	clear:both;
 }
 
 
@@ -403,11 +406,11 @@ jquery ui basic themeing
 	
    ------------------------------------------------- */
 
-#tag_name {
+#results_label {
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #555;
-  margin-left: 3px;
+  	margin-left: 3px;
 }
 
 #results_info {
@@ -417,11 +420,11 @@ jquery ui basic themeing
 
 #results_info #count {
 	float:left;
-	font-size: 0.95em;
 	padding-top: 16px;
-  color: #bababa;
-  margin-left: 4px;
-  font-family: "proxima-nova-1","proxima-nova-2";
+	margin-left: 4px;
+	font-size: 0.95em;
+	font-family: "proxima-nova-1","proxima-nova-2";
+	color: #bababa;
 }
 
 #results_info #sort, #results_info #filter {

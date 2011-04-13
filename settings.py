@@ -113,7 +113,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     
-    "opendata.context_processors.latest_tweets"
+    "opendata.context_processors.latest_tweets",
+    "opendata.context_processors.get_current_path"
 )
 
 TWITTER_USER = "opendataphilly"

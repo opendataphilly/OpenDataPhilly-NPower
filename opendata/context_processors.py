@@ -15,3 +15,6 @@ def latest_tweets( request ):
     cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
 
     return {"tweets": tweets}
+
+def get_current_path(request):
+    return {'current_path': request.get_full_path()}

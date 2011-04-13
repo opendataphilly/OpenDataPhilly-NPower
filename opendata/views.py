@@ -29,7 +29,7 @@ def search_results(request):
     search_resources = Resource.objects.all()
     if 'qs' in request.GET:
         qs = request.GET['qs']
-        search_resources = search_resources.filter(Q(name__icontains=qs) | Q(description__icontains=qs))
+        search_resources = search_resources.filter(Q(name__icontains=qs) | Q(description__icontains=qs) | Q(organization__icontains=qs) | Q(division__icontains=qs))
     if 'filter' in request.GET:
         f = request.GET['filter']
         search_resources = search_resources.filter(url__url_type__url_type__iexact=f).distinct()

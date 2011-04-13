@@ -29,24 +29,24 @@
     <div class="tab_body" id="tab_basic_info">
       <div id="tab_data">
          {% if resource.organization %}
-        <div class="info_label">Organization</div><div class="info_data"><a>{{resource.organization}}</a></div>
+        <div class="info_label">Organization</div><div class="info_data"><a href="/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
         {% endif %}
         {% if resource.division %}
-        <div class="info_label">Division</div><div class="info_data"><a>{{resource.division}}</a></div>
+        <div class="info_label">Division</div><div class="info_data"><a href="/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
         {% endif %}
         {% if resource.contact_email %}
-        <div class="info_label">Contact Email</div><div class="info_data"><a>{{resource.contact_email}}</a></div>
+        <div class="info_label">Contact Email</div><div class="info_data"><a href="mailto:{{resource.contact_email}}" target="_blank">{{resource.contact_email}}</a></div>
         {% endif %}
         {% if resource.contact_phone %}
         <div class="info_label">Contact Phone</div><div class="info_data">{{resource.contact_phone}}</div>
         {% endif %}
          {% if resource.contact_website %}
-        <div class="info_label">Contact Website</div><div class="info_data">{{resource.contact_website}}</a></div>
+        <div class="info_label">Contact Website</div><div class="info_data"><a href="{{resource.contact_website}}" target="_blank">{{resource.contact_website}}</a></div>
         {% endif %}
         <div class="info_label">Categories</div>
         <div class="info_data">
-          {% for i in resource.tags.all %}
-            <a>{{i}}</a>{% if not forloop.last %}, {% endif %}
+          {% for tag in resource.tags.all %}
+            <a href="/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
           {% endfor %}
         </div>
         <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>

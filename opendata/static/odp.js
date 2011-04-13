@@ -168,7 +168,7 @@ var odp = {
             loc = loc.split("/");
             for(var i = 0; i < loc.length; i++) {
                 var val = loc.pop();
-                if (val != "") {
+                if (val != "" && val.indexOf("=") == -1) {
                     var test = $("#" + val);
                     if (test.length == 1) {
                         test.addClass('active_page');

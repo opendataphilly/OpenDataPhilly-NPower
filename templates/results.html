@@ -24,13 +24,15 @@
   <div class="resource" id="promotion_header">
     <span class="icon_idea"></span> See how <span class="tag_name">{{ tag }}</span> data is being used, at the <a href="/ideas">Idea&nbsp;Gallery</a>.
   </div>
-
-	<div id="tag_name">{{ tag }}</div>
+	<div id="results_label">{{ tag }}</div>
+	{% else %}
+		{% if "search" in current_path and "?" in current_path %}
+			<div id="results_label">Search Results</div>
+		{% else %}
+			<div id="results_label">All Records</div>
+		{% endif %}
 	{% endif %}
 	<div id="results_header">
-		{% if results.description %}
-			<div id="description"></div>
-		{% endif %}
 		<div id="results_info">
 			<div id="count">{{results.count}} RESULTS</div>
 			<div id="filter">

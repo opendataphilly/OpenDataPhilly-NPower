@@ -94,7 +94,7 @@ class Resource(models.Model):
         for url in self.url_set.all():
             if url.url_type not in types:
                 types.append(url.url_type)
-        return types
+        return sorted(types, reverse=True)
     
     def get_grouped_urls(self):
         urls = {}
