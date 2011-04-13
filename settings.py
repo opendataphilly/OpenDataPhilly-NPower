@@ -7,7 +7,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
 )
-
+CONTACT_EMAILS = ['cbrittain@azavea.com',]
 DEFAULT_FROM_EMAIL = 'contact@opendataphilly.com'
 
 MANAGERS = ADMINS

@@ -1,5 +1,6 @@
 from datetime import datetime
 from opendata.models import *
+from comments.models import *
 from django.contrib import admin
 
 class UrlImageInline(admin.TabularInline):
@@ -62,3 +63,5 @@ admin.site.register(DataType)
 admin.site.register(Url, UrlAdmin)
 admin.site.register(UrlImage, UrlImageAdmin)
 admin.site.register(Resource, ResourceAdmin)
+
+admin.site.register(CommentWithRating)

@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     (r'^opendata/resource/(?P<resource_id>.*)/$', 'opendata.views.resource_details'),
     (r'^ideas/$', 'opendata.views.idea_results'),
     (r'^idea/(?P<idea_id>.*)/$', 'opendata.views.idea_results'),
+    (r'^opendata/submit/$', 'opendata.views.suggest_content'),
+    (r'^thanks/$', 'opendata.views.thanks'),
     
     (r'^tags/$', 'opendata.views.get_tag_list'),
     

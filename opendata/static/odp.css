@@ -1088,7 +1088,7 @@ ul.tab_header li.tab_button a:hover {
 
 /* -------------------------------------------------
 	
-	Registration/Login
+	Registration/Login/Submit forms
 	
    ------------------------------------------------- */
 
@@ -1102,7 +1102,7 @@ ul.tab_header li.tab_button a:hover {
     letter-spacing: -0.03em;
   } 
   
-  #form_container table input[type=text], #form_container table input[type=password]  {
+  #form_container table textarea, select,  input[type=text], #form_container table input[type=password]  {
     color: #999999;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 1em;
@@ -1115,6 +1115,15 @@ ul.tab_header li.tab_button a:hover {
     border: 1px solid #ccc;
     background: url(/static/images/background_input.png) no-repeat #F2F2F2;
     }
+   #form_container table textarea {
+   	height:65px;
+   }
+   #form_container table select {
+   	width:210px;
+   }
+   #form_container table select[multiple=multiple] {
+      	height:65px;
+   }
     
   #form_container .button {
     margin: 15px 0 10px 8px;

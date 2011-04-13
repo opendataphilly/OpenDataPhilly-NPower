@@ -57,25 +57,26 @@ class CoordSystem(models.Model):
         verbose_name = 'Coordinate system'
     
 class Resource(models.Model):
+    # Basic Info
     name = models.CharField(max_length=255)
-    description = models.TextField()
-    short_description = models.CharField(max_length=255)
-    usage = models.TextField()
+    short_description = models.CharField(max_length=255)    
+    release_date = models.DateField(blank=True, null=True)
+    time_period = models.CharField(max_length=50, blank=True)
     organization = models.CharField(max_length=255)
     division = models.CharField(max_length=255, blank=True)
+    usage = models.TextField()
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    data_types = models.ManyToManyField(DataType, blank=True, null=True)
+        
+    # More Info
+    description = models.TextField()
     contact_phone = models.CharField(max_length=50, blank=True)
     contact_email = models.CharField(max_length=255, blank=True)
     contact_url = models.CharField(max_length=255, blank=True)
     
-    release_date = models.DateField(blank=True, null=True)
-    time_period = models.CharField(max_length=50, blank=True)
     updates = models.ForeignKey(UpdateFrequency, null=True, blank=True)
     area_of_interest = models.CharField(max_length=255, blank=True)
     is_published = models.BooleanField(default=True, verbose_name="Public")
-    
-    update_frequency = models.CharField(max_length=255, blank=True)
-    data_formats = models.CharField(max_length=255, blank=True)
-    proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
     
     created_by = models.ForeignKey(User, related_name='created_by')
     last_updated_by = models.ForeignKey(User, related_name='updated_by')
@@ -83,12 +84,13 @@ class Resource(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     metadata_contact = models.CharField(max_length=255, blank=True)
     metadata_notes = models.TextField(blank=True)
-    
     coord_sys = models.ManyToManyField(CoordSystem, blank=True, null=True, verbose_name="Coordinate system")
-    tags = models.ManyToManyField(Tag, blank=True, null=True)
-    data_types = models.ManyToManyField(DataType, blank=True, null=True)
-    
+        
     rating = RatingField(range=5, can_change_vote=True)
+    update_frequency = models.CharField(max_length=255, blank=True)
+    data_formats = models.CharField(max_length=255, blank=True)
+    proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
+    
     
     def get_distinct_url_types(self):
         types = []
@@ -181,3 +183,8 @@ class IdeaImage(models.Model):
 
     def __unicode__(self):
         return '%s' % (self.image)
+
+class Suggestion(models.Model):
+    user = models.ForeignKey(User)
+    sent_date = models.DateTimeField(auto_now=True)
+    email_text = models.TextField()

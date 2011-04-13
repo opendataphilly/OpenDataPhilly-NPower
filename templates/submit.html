@@ -1,0 +1,34 @@
+{% extends "template1.html" %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+      		odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+<div id="title">Submit Your Data</div>
+<div id="description">Some info here about how this works and why you should do it.</div>
+<div id="form_container" class='resource'>
+	<form action="/opendata/submit/" method="post">
+		{% csrf_token %}
+		{% if form.errors %}
+		<div class="error_message">The form has errors. Please try again.</div>
+		{% endif %}
+
+		<table>
+			{{form.as_table}}
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input class="button" type="submit" value="submit"/>
+					<input class="button" type="reset" value="reset" onclick="window.location='{{current_path}}'"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+{% endblock %}
