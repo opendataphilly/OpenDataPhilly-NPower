@@ -1,5 +1,5 @@
 
-.resource {
+.resource, .idea_item {
 filter:
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=45, Strength=3)
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=135, Strength=3)

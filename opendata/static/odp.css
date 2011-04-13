@@ -38,6 +38,8 @@ h3 {font-size: 1.2em; font-weight: bold; margin: 10px 0}
 a {color:#FF935F; text-decoration: none}
 a:hover {border-bottom: 1px dotted #bbb}
 
+textarea {font-family: Arial, Helvetica, sans-serif; padding: 4px;}
+
 .clear_left {clear:left}
 .clear_right {clear:right}
 .clear {clear: both}
@@ -86,6 +88,7 @@ jquery ui basic themeing
 
 .ui-widget-overlay {background: #000; opacity: .3}
  
+ .ui-tabs .ui-tabs-panel {border-width: 2px;}
    
 .ui-dialog .ui-dialog-titlebar-close  {background: url(/static/images/icon_close.png) 0 0 no-repeat;
 width: 25px;
@@ -266,7 +269,7 @@ padding:0;
 
 #search input {
 	height: 32px;
-	width: 400px;
+	width: 258px;
 	padding-left: 12px;
 	padding-top: 4px;
 	border: none medium;
@@ -900,7 +903,7 @@ ul.tab_header li.tab_button a {
 }
 .comment_field {float:right}
 .comment_field textarea {
-  width: 450px;
+  width: 437px;
 	border: 2px #D9D9D9 solid;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;

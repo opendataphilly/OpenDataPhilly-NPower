@@ -19,7 +19,7 @@
 
 {% block center_container %}
 	<div id="title">{{resource}}</div>
-	<div id="description">{{resource.short_description}}</div>
+	<div id="description">{{resource.description}}</div>
 
   <div class="tab_container" id="content_resource">
     <ul class="tab_header">
@@ -237,7 +237,7 @@
               </div>
             </form>
           {% else %}
-            <div>Please login to add comments</div>
+            <div>Please <a href="/accounts/login/">login</a> to add comments</div>
           {% endif %}
         </div>
       </div>
