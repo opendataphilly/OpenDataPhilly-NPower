@@ -143,6 +143,7 @@ padding:0;
 #left_container #logo {
   	margin-left: 5px;
   	display:block;
+    width: 157px;
 }
 #left_container #logo:hover { 
   border:none;
@@ -204,6 +205,10 @@ padding:0;
 	background-position: 0 -25px !important;
 }
 #left_container ul li#suggest {
+	padding-left: 30px;
+	background: url(/static/images/icon_suggest.png) 0 2px no-repeat; 
+}
+#left_container ul li#add {
 	padding-left: 30px;
 	background: url(/static/images/icon_add_xsm.png) 0 2px no-repeat; 
 }
@@ -270,7 +275,7 @@ padding:0;
 #search input {
 	height: 32px;
 	width: 258px;
-	padding-left: 12px;
+	padding-left: 9px;
 	padding-top: 4px;
 	border: none medium;
   	font-family: Arial, Helvetica, sans-serif;
@@ -354,6 +359,7 @@ padding:0;
   position: relative;
   display:block;
   text-indent: -9999em;
+  overflow:hidden;
   }
 
 #home_idea_callout:hover {
@@ -394,6 +400,7 @@ padding:0;
     display:block;
     text-indent: -9999em;
     margin: 0 0 20px;
+    overflow:hidden;
   }
   #button_submission:hover {
     background-position: 0 -97px;
@@ -1088,43 +1095,56 @@ ul.tab_header li.tab_button a:hover {
 
 /* -------------------------------------------------
 	
-	Registration/Login/Submit forms
+  Forms 
 	
    ------------------------------------------------- */
 
+ #form_container table th,  #form_container table td {vertical-align:middle; padding-bottom: 10px;}
+   
   #form_container table label {
     display: block;
-    font-size: 1.2em;
-    padding: 10px 10px 10px 0 ;
+    font-weight: bold;
+    padding: 0 10px 0 0;
     text-align: right;
     color: #7D7D7D;
-    font-size: 1.4em;
+    font-size:1em;
     letter-spacing: -0.03em;
+    line-height: 1.2em;
+    
   } 
-  
-  #form_container table textarea, select,  input[type=text], #form_container table input[type=password]  {
-    color: #999999;
+    
+ #form_container table select, #form_container table input[type=password], #form_container table input[type=text],   #form_container table textarea  {
+    color: #555555;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 1em;
     font-weight: bold;
-    height: 28px;
+    height: 26px;
     margin-left: 8px;
-    padding-left: 12px;
-    padding-top: 2px;
+    padding-left: 5px;
+    padding-top: 0;
     vertical-align: middle;
     border: 1px solid #ccc;
-    background: url(/static/images/background_input.png) no-repeat #F2F2F2;
+    width: 400px;
     }
    #form_container table textarea {
    	height:65px;
    }
    #form_container table select {
-   	width:210px;
+   	width:250px;
    }
    #form_container table select[multiple=multiple] {
-      	height:65px;
+      	height:100px;
+        font-size: .8em;
+        font-family: Arial, Helvetica, sans-serif;
+        padding:0
    }
-    
+   #form_container table select[multiple=multiple] option {
+    padding: 1px 5px;
+    margin: 0;
+   }
+   #form_container table input[type=checkbox] {
+    margin-left: 8px;
+   }   
   #form_container .button {
     margin: 15px 0 10px 8px;
     }
@@ -1154,6 +1174,20 @@ ul.tab_header li.tab_button a:hover {
     text-align:right;
     color: #B6B6B6
    }
+   
+   
+   /* login-reg form  override */
+    #form_container.login-reg table label {
+    font-size: 1.4em;
+    font-weight: normal
+  }
+ #form_container.login-reg table select, #form_container.login-reg table input[type=password], #form_container.login-reg table input[type=text]  {
+      width: 200px;
+      height: 28px;
+    }
+   
+   
+   
 /* -------------------------------------------------
 	
 	Footer
