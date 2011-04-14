@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     'django_sorting',
     'djangoratings',
     'comments',
+    'suggestions',
     
 )
 

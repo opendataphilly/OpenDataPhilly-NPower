@@ -87,6 +87,7 @@ class Resource(models.Model):
     coord_sys = models.ManyToManyField(CoordSystem, blank=True, null=True, verbose_name="Coordinate system")
         
     rating = RatingField(range=5, can_change_vote=True)
+    
     update_frequency = models.CharField(max_length=255, blank=True)
     data_formats = models.CharField(max_length=255, blank=True)
     proj_coord_sys = models.CharField(max_length=255, blank=True, verbose_name="Coordinate system")
@@ -184,7 +185,7 @@ class IdeaImage(models.Model):
     def __unicode__(self):
         return '%s' % (self.image)
 
-class Suggestion(models.Model):
+class Submission(models.Model):
     user = models.ForeignKey(User)
     sent_date = models.DateTimeField(auto_now=True)
     email_text = models.TextField()
