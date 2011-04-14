@@ -1,9 +1,10 @@
+from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.template import RequestContext
-from django.template.loader import get_template
+from django.template.loader import render_to_string
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
@@ -60,10 +61,40 @@ def suggest_content(request):
         if form.is_valid():
             #do something
             
+            coords, types, formats="", "", ""
+            for c in request.POST.getlist("coord_system"):
+                coords = coords + " EPSG:" + CoordSystem.objects.get(pk=c).EPSG_code.__str__()
+            for t in request.POST.getlist("types"):
+                types = types + " " + UrlType.objects.get(pk=t).url_type
+            for f in request.POST.getlist("formats"):
+                formats = formats + " " + DataType.objects.get(pk=f).data_type
+                
+            data = {
+                "submitter": request.user.username,
+                "submit_date": datetime.now(),
+                "dataset_name": request.POST.get("dataset_name"),
+                "organization": request.POST.get("organization"),
+                "copyright_holder": request.POST.get("copyright_holder"),
+                "contact_email": request.POST.get("contact_email"),
+                "contact_phone": request.POST.get("contact_phone"),
+                "url": request.POST.get("url"),
+                "time_period": request.POST.get("time_period"),
+                "release_date": request.POST.get("release_date"),
+                "area_of_interest": request.POST.get("area_of_interest"),
+                "update_frequency": request.POST.get("update_frequency"),
+                "coord_system": coords,
+                "types": types,
+                "formats": formats,
+                "usage_limitations": request.POST.get("usage_limitations"),
+                "collection_process": request.POST.get("collection_process"),
+                "data_purpose": request.POST.get("data_purpose"),
+                "intended_audience": request.POST.get("intended_audience"),
+                "why": request.POST.get("why"),
+            }
+            
+            
             subject, from_email, to_email = 'OpenDataPhilly - Data Submission', request.user.email, settings.CONTACT_EMAILS
-            plaintext = get_template('submit_email.txt')
-            d = RequestContext(request.POST)
-            text_content = plaintext.render(d)
+            text_content = render_to_string('submit_email.txt', data)
             msg = EmailMessage(subject, text_content, from_email, to_email)
             msg.send()
             
