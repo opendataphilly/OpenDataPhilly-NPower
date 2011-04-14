@@ -32,6 +32,42 @@ var odp = {
         });
         
     },
+    
+    setupNominate: function() {
+        $("#form_container").hide();
+        $("#nominate_button").click(function() {
+            $("#form_container").show()
+        });
+        
+        if ($.query.get('nqs') && $.query.get('nqs') != "") {
+            $("#nqs")[0].value = decodeURI($.query.get('nqs')).replace(/\x2B/g, " ");
+        }
+
+        $("#nqs").focus(function (evt) {
+            if (this.value == "Search for nominations") {
+                this.value = "";
+            }
+        });
+        $("#nqs").focusout(function (evt) {
+            if(this.value == "") {
+                this.value = "Search for nominations";
+            }
+        });
+        
+        $("#n_search_form").submit(function(evt) {
+            evt.stopImmediatePropagation();
+            evt.preventDefault();
+            if ($("#nqs")[0].value != "" && $("#nqs")[0].value != "Search for nominations") {
+                window.location = "/opendata/nominate/?nqs=" + decodeURI($("#nqs")[0].value); 
+            } else {
+                window.location = "/opendata/nominate/";
+            }
+        });
+
+        $("#n_search_img").click(function(evt) {
+            $("#n_search_form").submit();
+        });
+    },
 
     setupSortLinks: function () {
         var sort_name = $("#sort_name > a").addClass("url_image")[0];

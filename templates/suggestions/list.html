@@ -2,11 +2,23 @@
 {% load ratings %}
 {% load pagination_tags %}
 
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+
+			odp.setupNominate();
+		});
+	</script>
+{% endblock %}
+
 {% block center_container %}
 	<div id="title">Nominate Data</div>
 	<div id="description">Description and instructions here</div>
 
-	<div id="form_container">
+
+	<div id="form_container" class="nomination_form">
 		<form action="post/" method="POST">
 			{% csrf_token %}
 				{% if form.errors %}
@@ -18,8 +30,19 @@
 			</table>
 		</form>
 	</div>
-	<div id="count">{{suggestions.count}} Nominations So Far!</div>
+	<div id="center_header">
+      	<div id="n_search">
+			<form method="GET" id="n_search_form" >
+				<div id="n_search_qs">
+					<input type="text" id="nqs" value="Search for nominations" />
+				</div>
+			</form>
+			<div id="n_search_img"></div>
+			<div id="nominate_button" class="button">Add a Nomination</div>
+		</div>
+    </div>
 
+	<div id="count">{{suggestions.count}} Nominations So Far!</div>
 {% autopaginate suggestions 6 %}
 	<div id="suggestions">
 		<ul id="suggestion_list">

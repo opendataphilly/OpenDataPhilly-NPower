@@ -7,6 +7,10 @@ from forms import *
 
 def list_all(request):
     suggestions = Suggestion.objects.order_by("-rating_score")
+    if 'nqs' in request.GET:
+        qs = request.GET['nqs'].replace("+", " ")
+        suggestions = suggestions.filter(text__icontains=qs)
+    
     form = SuggestionForm()
     return render_to_response('suggestions/list.html', {'suggestions': suggestions, 'form': form}, context_instance=RequestContext(request))
     
