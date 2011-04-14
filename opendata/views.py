@@ -57,7 +57,7 @@ def idea_results(request, idea_id=None):
 
 def suggest_content(request):
     if request.method == 'POST':
-        form = SuggestionForm(request.POST)
+        form = SubmissionForm(request.POST)
         if form.is_valid():
             #do something
             
@@ -98,15 +98,15 @@ def suggest_content(request):
             msg = EmailMessage(subject, text_content, from_email, to_email)
             msg.send()
             
-            sug_object = Suggestion()
+            sug_object = Submission()
             sug_object.user = request.user
             sug_object.email_text = text_content
             
             sug_object.save()
             
-            return HTTPResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/thanks/')
     else: 
-        form = SuggestionForm()
+        form = SubmissionForm()
         
     return render_to_response('submit.html', {'form': form}, context_instance=RequestContext(request))
 

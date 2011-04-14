@@ -1,0 +1,45 @@
+{% extends "template1.html" %}
+{% load ratings %}
+{% load pagination_tags %}
+
+{% block center_container %}
+	<div id="title">Nominate Data</div>
+	<div id="description">Description and instructions here</div>
+
+	<div id="form_container">
+		<form action="post/" method="POST">
+			{% csrf_token %}
+				{% if form.errors %}
+				<div class="error_message">The form has errors. Please try again.</div>
+			{% endif %}
+			<table>
+				{{form.as_table}}
+				<tr><td>&nbsp;</td><td><input class="button" type="submit" value="submit"/></td></tr>
+			</table>
+		</form>
+	</div>
+	<div id="count">{{suggestions.count}} Nominations So Far!</div>
+
+{% autopaginate suggestions 6 %}
+	<div id="suggestions">
+		<ul id="suggestion_list">
+			{% for s in suggestions %}
+				{% rating_by_request request on s.rating as vote %}
+				<li class="resource">
+					<div>Suggested By: {{s.suggested_by}}</div>
+					<div>{{s}}</div>
+					<div>Votes: {{s.rating_votes}}</div>
+					{% if not vote %}
+						<div><a href="vote/{{s.id}}/">Up</a></div>
+					{% else %}
+						<div>You Already Voted</div>
+					{% endif %}
+				</li>
+			{% empty %}
+				<li class="resource">No nominations yet! What would you like to see added to this site?</li>
+			{% endfor %}
+		</ul>
+
+	</div>
+	<div id="pager">{% paginate %}</div>
+{% endblock %}

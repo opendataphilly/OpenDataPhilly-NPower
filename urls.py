@@ -18,13 +18,14 @@ urlpatterns = patterns('',
     (r'^ideas/$', 'opendata.views.idea_results'),
     (r'^idea/(?P<idea_id>.*)/$', 'opendata.views.idea_results'),
     (r'^opendata/submit/$', 'opendata.views.suggest_content'),
-    (r'^thanks/$', 'opendata.views.thanks'),
+    (r'^thanks/$', 'opendata.views.thanks'),    
     
     (r'^tags/$', 'opendata.views.get_tag_list'),
     
     (r'^comments/', include('django.contrib.comments.urls')), 
     (r'^accounts/', include('registration.backends.default.urls')),
-
+    (r'^opendata/nominate/', include('suggestions.urls')),
+    
 
     # Uncomment the next line to enable the admin:
     url(r'^_admin_/', include(admin.site.urls)),
