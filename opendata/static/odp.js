@@ -21,9 +21,9 @@ var odp = {
             evt.stopImmediatePropagation();
             evt.preventDefault();
             if ($("#qs")[0].value != "" && $("#qs")[0].value != "Search for data") {
-                window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value); 
+                window.location = "/opendata/search/?sort=name&dir=asc&qs=" + decodeURI($("#qs")[0].value); 
             } else {
-                window.location = "/opendata/search/";
+                window.location = "/opendata/search/?sort=name&dir=asc";
             }
         });
         
@@ -88,13 +88,14 @@ var odp = {
     },
     
     getFiltered: function (value) {
+        
         if ($.query.get('filter') == value) {
             var newQuery = "" + $.query.remove('filter');
-            window.location = "/opendata/search/" + newQuery;
+            window.location = window.location.pathname + newQuery;
         } 
         else {
             var newQuery = "" + $.query.set('filter', value);
-            window.location = "/opendata/search/" + newQuery;
+            window.location = window.location.pathname + newQuery;
         }
     },
     
@@ -121,7 +122,7 @@ var odp = {
         var tag_list = "";
         for(var i = 0; i < odp.tags.length; i++) {
             var tag = odp.tags[i];
-            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "'>" + tag.fields.tag_name + "</a></li>"
+            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "/?sort=name&dir=asc'>" + tag.fields.tag_name + "</a></li>"
         }
         $("#tag_list").replaceWith(tag_list);
         
