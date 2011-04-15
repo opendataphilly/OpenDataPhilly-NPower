@@ -69,19 +69,8 @@ var odp = {
             $("#n_search_form").submit();
         });
         
-        if ($.query.get('filter')) {
-            st = $.query.get('filter');
-            $("#filter a")[0].style.backgroundPosition="0 -40px";
-        }
-        $("#filter a").hover(function() {
-            this.style.backgroundPosition="0 -81px";
-        }, function () {
-            if ($.query.get('filter')) {
-                this.style.backgroundPosition="0 -40px";
-            } else {
-                this.style.backgroundPosition="0 0";
-            }
-        });
+        odp.setupNomFilterLinks();
+        odp.setupNomSortLinks();
         
     },
 
@@ -139,6 +128,52 @@ var odp = {
         });
     },
     
+    setupNomSortLinks: function () {
+        var sort_name = $("#sort_suggested_date > a").addClass("url_image")[0];
+        sort_name.innerHTML = '';
+
+        var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
+        sort_rating.innerHTML = '';
+
+        if ($.query.get('sort')) {
+            st = $.query.get('sort');
+            $("#sort_" + st + " > a")[0].style.backgroundPosition="0 -45px";
+        }
+
+        $("#sort .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('sort_');
+                if ($.query.get('sort') && $.query.get('sort') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
+    },
+    
+    setupNomFilterLinks: function () {
+        var filter_mine = $("#filter_mine > a").addClass("url_image")[0];
+        filter_mine.innerHTML = '';
+        
+        if ($.query.get('filter')) {
+            st = $.query.get('filter');
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -40px";
+        }
+        $("#filter .url_image").hover(function() {
+            this.style.backgroundPosition="0 -81px";
+        }, function () {
+            var filter_split = this.parentNode.id.split('filter_');
+            if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
+                this.style.backgroundPosition="0 -40px";
+            } else {
+                this.style.backgroundPosition="0 0";
+            }
+        });
+    },
+    
     getFiltered: function (value) {
         
         if ($.query.get('filter') == value) {
@@ -150,13 +185,13 @@ var odp = {
             window.location = window.location.pathname + newQuery;
         }
     },
-    getNomFilter: function () {
+    getNomFiltered: function () {
         if ($.query.get('filter') == 'mine') {
             var newQuery = "" + $.query.remove('filter');
             window.location = window.location.pathname + newQuery;
         } 
         else {
-            var newQuery = "" + $.query.set('filter', 'mine');
+            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc');
             window.location = window.location.pathname + newQuery;
         }
     },

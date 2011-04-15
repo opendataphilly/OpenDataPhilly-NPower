@@ -1267,37 +1267,20 @@ ul.tab_header li.tab_button a:hover {
 	vertical-align: middle;
 }
    
-#nom_info {
-	position:relative;
-	height:50px;
-}
-
-#nom_info #count {
-	float:left;
-}
-#nom_info #filter {
-	float: right;
-	font-size: 0.85em;
-	font-weight: bold;
-	color: #ADADAD;	
-}
-#nom_info #filter a {
-	display:block;
-	float: right;
-	height: 38px;
+#results_info  #filter_mine.nom_filter .url_image {
+	height: 41px;
 	width: 87px;
-	vertical-align: middle;
-	background: transparent url(/static/images/icon_filter.png) no-repeat 0 0;
-	cursor:pointer;
+	margin-top:2px;
+	background:url(/static/images/icon_filter.png) 0 0;
 }
-#nom_info #filter_label {
-	float:right;
-	padding-top: 14px;
+#results_info #sort_suggested_date .url_image {
+	background:url(/static/images/icon_date.png) 0 0;
 }
-
+   
 #suggestion_list .resource {
 	min-height:78px;
 }
+
 #nom_votes {
 	float: left;
     padding: 10px;
@@ -1328,6 +1311,11 @@ ul.tab_header li.tab_button a:hover {
 	bottom: 22px;
 	font-size: 0.85em;
 	font-weight: bold;
+}
+#nom_date {
+	padding-top: 3px;
+	font-size: 0.8em;
+	color: #999;
 }
 #nom_voted {
 	position: absolute;

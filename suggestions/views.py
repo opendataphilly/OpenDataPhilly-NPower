@@ -33,7 +33,7 @@ def add_suggestion(request):
             sug.save()            
             sug.rating.add(score=1, user=request.user, ip_address=request.META['REMOTE_ADDR'])
             
-            return HttpResponseRedirect('../?filter=mine')
+            return HttpResponseRedirect('../?sort=suggested_date&dir=desc&filter=mine')
     else: 
         form = SuggestionForm()
 

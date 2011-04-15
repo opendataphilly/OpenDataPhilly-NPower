@@ -1,6 +1,7 @@
 {% extends "template1.html" %}
 {% load ratings %}
 {% load pagination_tags %}
+{% load sorting_tags %}
 
 {% block js_ready %}
 	<script>
@@ -41,13 +42,25 @@
 			<div id="nominate_button" class="button">Add a Nomination</div>
 		</div>
     </div>
-	<div id="nom_info">
-		<div id="count">{{suggestions.count}} NOMINATIONS</div>
-		<div id="filter">
-			<a href="javascript:void();" onclick="odp.getNomFilter(); return false;"> </a>
-			<div id="filter_label">FILTER: </div>
+	<div id="results_header">
+		<div id="results_info">
+			<div id="count">{{results.count}} RESULTS</div>
+			<div id="filter">
+				<ul>
+					<li id="filter_mine" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered();return false;" class="url_image"></a></li>
+					<li class="info_label">FILTER:</li>
+				</ul>
+			</div>
+			<div id="sort">
+				<ul>
+					<li id="sort_rating_score">{% anchor rating_score Votes %}</li>
+					<li id="sort_suggested_date">{% anchor suggested_date Date %}<li>
+					<li class="info_label">SORT:</li>
+				</ul>
+			</div>
 		</div>
 	</div>
+{% autosort suggestions %}
 {% autopaginate suggestions 6 %}
 	<div id="suggestions">
 		<ul id="suggestion_list">
@@ -55,7 +68,7 @@
 				{% rating_by_request request on s.rating as vote %}
 				<li class="resource">
 					<div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes}}</div><div id="nom_votes_text">votes</div></div>
-					<div id="nom_text">{{s}}</div>
+					<div id="nom_text">{{s}} <div id="nom_date">Posted: {{s.suggested_date|date:"SHORT_DATE_FORMAT"}}</div></div>
 					<div id="nom_byline">
 						{% if vote %}
 							<a id="nom_unvote" href="unvote/{{s.id}}/">Undo vote</a>
