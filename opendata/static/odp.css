@@ -287,6 +287,7 @@ padding:0;
 }
 
 #account {
+  position:relative;
 	float:right;
 	margin: 0 0 0 0;
 	font-weight: bold;
@@ -577,7 +578,6 @@ float:left
 .resource {
 	position: relative;
 	padding: 27px 25px 21px;
-	margin-left: 6px;
 	margin-top: 12px;
 	margin-bottom: 32px;
 	border:2px solid white;
@@ -593,6 +593,9 @@ float:left
 a.resource:hover {
 	border:2px solid white;
 }
+
+
+#results_list .resource {margin-left: 6px;}
 
  .resource p {  
   padding: 10px 0;
@@ -801,6 +804,7 @@ ul.tab_header li.tab_button a:hover {
 #tab_image_container {
   	float:right;
 }
+
 
 .tab_image {
 	position:relative; 	
@@ -1030,7 +1034,7 @@ ul.tab_header li.tab_button a:hover {
 	box-shadow: 0 0 4px #ccc;
 }
 .idea_item #tab_image_container {
-	padding: 0 0 20px 30px
+	padding: 27px 0 20px 30px
 }
 
 
@@ -1243,10 +1247,11 @@ width: 440px;
 #n_search {
 	position:relative;
 	padding:9px;
-	margin:10px 4px 4px;
+	margin:10px 0 4px;
 	border:2px solid white;
 	background: url(/static/images/background_search.gif) repeat-x;
 	-moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 	border-radius:3px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
@@ -1257,9 +1262,10 @@ width: 440px;
     position:relative;	
     height:36px;
     width: 300px;
-	background: #F2F2F2 url(/static/images/background_input.png) no-repeat scroll 0 0;
+    background: #F2F2F2 url(/static/images/background_input.png) no-repeat scroll 0 0;
     border: white 1px solid;
-    
+    float:left;
+    -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 	border-radius:3px;
 }
@@ -1278,9 +1284,7 @@ width: 440px;
 }
 
 #n_search #nominate_button{
-	position:absolute;
-	top:13px;
-	right: 13px;
+  float:right;
 	font-size: 0.85em;
 	cursor:pointer;
 }

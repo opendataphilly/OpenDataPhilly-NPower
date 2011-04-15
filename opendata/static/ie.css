@@ -1,5 +1,8 @@
 
-.resource, .idea_item {
+
+
+
+.resource, .idea_item , .tab_body, .button, .nomination_form, #search, #n_search {
 filter:
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=45, Strength=3)
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=135, Strength=3)
@@ -8,3 +11,27 @@ progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=315, Strengt
 position: relative;
 zoom: 1;
 }
+
+
+ul.tab_header li.tab_button {
+filter:
+progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=45, Strength=3)
+progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=315, Strength=3);
+position: relative;
+zoom: 1;
+}
+
+
+/* to compensate for shadow filters */
+.tab_body {margin-top: 0; top: -6px;}
+.ui-tabs .ui-tabs-nav {margin-left: 3px; }
+#n_search, #search {padding:14px 5px 5px 14px}
+
+
+
+/* other fixes */
+#search_qs input,
+#n_search_qs input {margin-top: 5px;}
+.ui-widget-overlay {filter:alpha(opacity=30)}
+
+#form_container.nomination_form .button {padding-left: 10px; padding-right: 10px}

@@ -1,0 +1,42 @@
+/* ie6  */
+
+.clear {line-height: 1px; height: 1px;}
+
+body {text-align:center}
+#wrapper {text-align:left}
+
+#home_twitter  {width: 255px;}
+
+#home_additions li, #home_twitter li{
+    clear:none;
+    width: 230px;
+    }
+    
+#home_additions {
+  margin-right: -30px;
+}
+
+.resource {position: static; width: 100%}
+.resource #url_types {left: 0; top: 0; zoom: 1; position: relative; margin-left: -40px; margin-top: -40px;}
+
+#filter {width: 200px;}
+
+.tab_body {zoom: 1}
+
+#left_container ul li {height: 20px;}
+#left_container ul li.separator {height: 1px; padding: 0;}
+
+.tab_image {height: 150px}
+.tab_image_detail {width: 100%}
+
+.ui-dialog-content, .ui-dialog .ui-dialog-content {padding: 0}
+
+
+#tab_image_container .tab_image_pager li{width: 20px; float: right}
+
+.idea_item #tab_image_container {width: 300px;}
+
+#n_search {padding:10px 5px 0 10px}
+#search {padding:9px}
+
+#form_container.nomination_form .button {margin-top: -30px}
