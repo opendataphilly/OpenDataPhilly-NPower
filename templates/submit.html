@@ -26,7 +26,7 @@
 	<form action="/opendata/submit/" method="post">
 		{% csrf_token %}
 		{% if form.errors %}
-		<div class="error_message">The form has errors. Please try again.</div>
+		<div class="error_message resource">The form has errors. Please try again.</div>
 		{% endif %}
 
 		<table>
