@@ -16,7 +16,13 @@
 
 {% block center_container %}
 	<div id="title">Nominate Data</div>
-	<div id="description">Description and instructions here</div>
+	<div id="description">Do you want to see data on particular topic? We realize that OpenDataPhilly does not contain links to
+		every available data resource - often because open data might not be available. Add a nomination for a
+		type of data and vote on other nominations. Together, let's build a list of areas where we'd like to see
+		increased availability of open data.
+		<br/><br/>
+		This page is for suggesting general areas where you'd like to see more open data. If you have a specific
+		data set to add, visit the <a href="/opendata/submit/">Submit Data</a> page .</div>
 
 
 	<div id="form_container" class="nomination_form">
@@ -39,7 +45,12 @@
 				</div>
 			</form>
 			<div id="n_search_img"></div>
-			<a id="nominate_button" class="button">Add a Nomination</a><div class="clear"></div>
+			{% if user.is_authenticated %}
+				<a id="nominate_button" class="button">Add a Nomination</a>
+			{% else %}
+				<a id="nominate_login" href="/accounts/login/?next={{ request.get_full_path }}">Login to Nominate Data</a>
+			{% endif %}
+			<div class="clear"></div>
 		</div>
     </div>
 	<div id="results_header">
@@ -76,10 +87,12 @@
               {% endif %}
               By <strong>{{s.suggested_by}}</strong> on <strong>{{s.suggested_date|date:"SHORT_DATE_FORMAT"}}</strong>
             </div>
-            {% if not vote %}
-              <a id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</a>
-            {% else %}
-              <div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
+            {% if user.is_authenticated %}
+				{% if not vote %}
+				  <a id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</a>
+				{% else %}
+				  <div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
+				{% endif %}
             {% endif %}
           </div>
 				</li>

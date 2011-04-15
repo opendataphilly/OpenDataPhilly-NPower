@@ -120,7 +120,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 TWITTER_USER = "opendataphilly"
 TWITTER_TIMEOUT = 3600
 
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

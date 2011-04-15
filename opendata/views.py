@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from models import *
 from forms import *
@@ -55,6 +56,7 @@ def idea_results(request, idea_id=None):
     ideas = Idea.objects.order_by("-created_by_date")
     return render_to_response('ideas.html', {'ideas': ideas}, context_instance=RequestContext(request)) 
 
+@login_required
 def suggest_content(request):
     if request.method == 'POST':
         form = SubmissionForm(request.POST)
