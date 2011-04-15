@@ -1,12 +1,25 @@
 {% extends "template1.html" %}
 {% load ratings %}
 {% load pagination_tags %}
+{% load sorting_tags %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+
+			odp.setupNominate();
+		});
+	</script>
+{% endblock %}
 
 {% block center_container %}
 	<div id="title">Nominate Data</div>
 	<div id="description">Description and instructions here</div>
 
-	<div id="form_container">
+
+	<div id="form_container" class="nomination_form">
 		<form action="post/" method="POST">
 			{% csrf_token %}
 				{% if form.errors %}
@@ -18,21 +31,54 @@
 			</table>
 		</form>
 	</div>
-	<div id="count">{{suggestions.count}} Nominations So Far!</div>
-
+	<div id="center_header">
+      	<div id="n_search">
+			<form method="GET" id="n_search_form" >
+				<div id="n_search_qs">
+					<input type="text" id="nqs" value="Search for nominations" />
+				</div>
+			</form>
+			<div id="n_search_img"></div>
+			<div id="nominate_button" class="button">Add a Nomination</div>
+		</div>
+    </div>
+	<div id="results_header">
+		<div id="results_info">
+			<div id="count">{{results.count}} RESULTS</div>
+			<div id="filter">
+				<ul>
+					<li id="filter_mine" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered();return false;" class="url_image"></a></li>
+					<li class="info_label">FILTER:</li>
+				</ul>
+			</div>
+			<div id="sort">
+				<ul>
+					<li id="sort_rating_score">{% anchor rating_score Votes %}</li>
+					<li id="sort_suggested_date">{% anchor suggested_date Date %}<li>
+					<li class="info_label">SORT:</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+{% autosort suggestions %}
 {% autopaginate suggestions 6 %}
 	<div id="suggestions">
 		<ul id="suggestion_list">
 			{% for s in suggestions %}
 				{% rating_by_request request on s.rating as vote %}
 				<li class="resource">
-					<div>Suggested By: {{s.suggested_by}}</div>
-					<div>{{s}}</div>
-					<div>Votes: {{s.rating_votes}}</div>
+					<div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes}}</div><div id="nom_votes_text">votes</div></div>
+					<div id="nom_text">{{s}} <div id="nom_date">Posted: {{s.suggested_date|date:"SHORT_DATE_FORMAT"}}</div></div>
+					<div id="nom_byline">
+						{% if vote %}
+							<a id="nom_unvote" href="unvote/{{s.id}}/">Undo vote</a>
+						{% endif %}
+						Posted By: {{s.suggested_by}}
+					</div>
 					{% if not vote %}
-						<div><a href="vote/{{s.id}}/">Up</a></div>
+						<div id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</div>
 					{% else %}
-						<div>You Already Voted</div>
+						<div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
 					{% endif %}
 				</li>
 			{% empty %}

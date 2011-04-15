@@ -21,15 +21,56 @@ var odp = {
             evt.stopImmediatePropagation();
             evt.preventDefault();
             if ($("#qs")[0].value != "" && $("#qs")[0].value != "Search for data") {
-                window.location = "/opendata/search/?qs=" + decodeURI($("#qs")[0].value); 
+                window.location = "/opendata/search/?sort=name&dir=asc&qs=" + decodeURI($("#qs")[0].value); 
             } else {
-                window.location = "/opendata/search/";
+                window.location = "/opendata/search/?sort=name&dir=asc";
             }
         });
         
         $("#search_img").click(function(evt) {
             $("#search_form").submit();
         });
+        
+    },
+    
+    setupNominate: function() {
+        $("#form_container").hide();
+        $("#nominate_button").click(function() {
+            $("#form_container").show()
+            $("#nominate_button").hide()
+        });
+        
+        if ($.query.get('nqs') && $.query.get('nqs') != "") {
+            $("#nqs")[0].value = decodeURI($.query.get('nqs')).replace(/\x2B/g, " ");
+        }
+
+        $("#nqs").focus(function (evt) {
+            if (this.value == "Search for nominations") {
+                this.value = "";
+            }
+        });
+        $("#nqs").focusout(function (evt) {
+            if(this.value == "") {
+                this.value = "Search for nominations";
+            }
+        });
+        
+        $("#n_search_form").submit(function(evt) {
+            evt.stopImmediatePropagation();
+            evt.preventDefault();
+            if ($("#nqs")[0].value != "" && $("#nqs")[0].value != "Search for nominations") {
+                window.location = "/opendata/nominate/?nqs=" + decodeURI($("#nqs")[0].value); 
+            } else {
+                window.location = "/opendata/nominate/";
+            }
+        });
+
+        $("#n_search_img").click(function(evt) {
+            $("#n_search_form").submit();
+        });
+        
+        odp.setupNomFilterLinks();
+        odp.setupNomSortLinks();
         
     },
 
@@ -87,17 +128,73 @@ var odp = {
         });
     },
     
+    setupNomSortLinks: function () {
+        var sort_name = $("#sort_suggested_date > a").addClass("url_image")[0];
+        sort_name.innerHTML = '';
+
+        var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
+        sort_rating.innerHTML = '';
+
+        if ($.query.get('sort')) {
+            st = $.query.get('sort');
+            $("#sort_" + st + " > a")[0].style.backgroundPosition="0 -45px";
+        }
+
+        $("#sort .url_image").each(function () {
+            $(this).hover(function() {
+                this.style.backgroundPosition="0 -89px";
+            }, function () {
+                var filter_split = this.parentNode.id.split('sort_');
+                if ($.query.get('sort') && $.query.get('sort') == filter_split[1]) {
+                    this.style.backgroundPosition="0 -45px";
+                } else {
+                    this.style.backgroundPosition="0 0";
+                }
+            });
+        });
+    },
+    
+    setupNomFilterLinks: function () {
+        var filter_mine = $("#filter_mine > a").addClass("url_image")[0];
+        filter_mine.innerHTML = '';
+        
+        if ($.query.get('filter')) {
+            st = $.query.get('filter');
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -40px";
+        }
+        $("#filter .url_image").hover(function() {
+            this.style.backgroundPosition="0 -81px";
+        }, function () {
+            var filter_split = this.parentNode.id.split('filter_');
+            if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
+                this.style.backgroundPosition="0 -40px";
+            } else {
+                this.style.backgroundPosition="0 0";
+            }
+        });
+    },
+    
     getFiltered: function (value) {
+        
         if ($.query.get('filter') == value) {
             var newQuery = "" + $.query.remove('filter');
-            window.location = "/opendata/search/" + newQuery;
+            window.location = window.location.pathname + newQuery;
         } 
         else {
             var newQuery = "" + $.query.set('filter', value);
-            window.location = "/opendata/search/" + newQuery;
+            window.location = window.location.pathname + newQuery;
         }
     },
-    
+    getNomFiltered: function () {
+        if ($.query.get('filter') == 'mine') {
+            var newQuery = "" + $.query.remove('filter');
+            window.location = window.location.pathname + newQuery;
+        } 
+        else {
+            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc');
+            window.location = window.location.pathname + newQuery;
+        }
+    },
     setupCommentForm: function () {
         $('#resource_comment_form').submit(function (evt) {
             if ($("#id_comment")[0].value == "" || !$("#id_rating_0").hasClass("star-rating-on")) {
@@ -121,7 +218,7 @@ var odp = {
         var tag_list = "";
         for(var i = 0; i < odp.tags.length; i++) {
             var tag = odp.tags[i];
-            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "'>" + tag.fields.tag_name + "</a></li>"
+            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "/?sort=name&dir=asc'>" + tag.fields.tag_name + "</a></li>"
         }
         $("#tag_list").replaceWith(tag_list);
         

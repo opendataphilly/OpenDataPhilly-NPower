@@ -14,7 +14,7 @@ class Suggestion(models.Model):
     suggested_date = models.DateTimeField(auto_now_add=True)
     last_modified_date = models.DateTimeField(auto_now=True)
     
-    rating = RatingField(range=1)
+    rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
 
     def __unicode__(self):
         return '%s' % self.text

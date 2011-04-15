@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
+from registration.views import register
 
 
 # Uncomment the next two lines to enable the admin:
@@ -23,13 +24,15 @@ urlpatterns = patterns('',
     (r'^tags/$', 'opendata.views.get_tag_list'),
     
     (r'^comments/', include('django.contrib.comments.urls')), 
+    url(r'^accounts/register/$',register,
+           { 'backend': 'registration_backend.ODPBackend' },
+       name='registration_register'),
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^opendata/nominate/', include('suggestions.urls')),
     
 
     # Uncomment the next line to enable the admin:
     url(r'^_admin_/', include(admin.site.urls)),
-    #(r'^accounts/', include('registration.backends.default.urls')),
 
     (r'^/static/admin_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.ADMIN_MEDIA_ROOT}), 
