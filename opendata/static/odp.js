@@ -37,6 +37,7 @@ var odp = {
         $("#form_container").hide();
         $("#nominate_button").click(function() {
             $("#form_container").show()
+            $("#nominate_button").hide()
         });
         
         if ($.query.get('nqs') && $.query.get('nqs') != "") {
@@ -67,6 +68,21 @@ var odp = {
         $("#n_search_img").click(function(evt) {
             $("#n_search_form").submit();
         });
+        
+        if ($.query.get('filter')) {
+            st = $.query.get('filter');
+            $("#filter a")[0].style.backgroundPosition="0 -40px";
+        }
+        $("#filter a").hover(function() {
+            this.style.backgroundPosition="0 -81px";
+        }, function () {
+            if ($.query.get('filter')) {
+                this.style.backgroundPosition="0 -40px";
+            } else {
+                this.style.backgroundPosition="0 0";
+            }
+        });
+        
     },
 
     setupSortLinks: function () {
@@ -134,7 +150,16 @@ var odp = {
             window.location = window.location.pathname + newQuery;
         }
     },
-    
+    getNomFilter: function () {
+        if ($.query.get('filter') == 'mine') {
+            var newQuery = "" + $.query.remove('filter');
+            window.location = window.location.pathname + newQuery;
+        } 
+        else {
+            var newQuery = "" + $.query.set('filter', 'mine');
+            window.location = window.location.pathname + newQuery;
+        }
+    },
     setupCommentForm: function () {
         $('#resource_comment_form').submit(function (evt) {
             if ($("#id_comment")[0].value == "" || !$("#id_rating_0").hasClass("star-rating-on")) {

@@ -481,6 +481,9 @@ padding:0;
 
 #results_info #count {
 	float:left;
+}
+
+#count {
 	padding-top: 16px;
 	margin-left: 4px;
 	font-size: 0.95em;
@@ -1239,7 +1242,7 @@ ul.tab_header li.tab_button a:hover {
 	cursor: pointer;
 }
 #n_search #n_search_img:hover {
-  background-position: 0 -19px;
+  	background-position: 0 -19px;
 }
 
 #n_search #nominate_button{
@@ -1262,6 +1265,86 @@ ul.tab_header li.tab_button a:hover {
 	font-weight: bold;
 	color: #999;
 	vertical-align: middle;
+}
+   
+#nom_info {
+	position:relative;
+	height:50px;
+}
+
+#nom_info #count {
+	float:left;
+}
+#nom_info #filter {
+	float: right;
+	font-size: 0.85em;
+	font-weight: bold;
+	color: #ADADAD;	
+}
+#nom_info #filter a {
+	display:block;
+	float: right;
+	height: 38px;
+	width: 87px;
+	vertical-align: middle;
+	background: transparent url(/static/images/icon_filter.png) no-repeat 0 0;
+	cursor:pointer;
+}
+#nom_info #filter_label {
+	float:right;
+	padding-top: 14px;
+}
+
+#suggestion_list .resource {
+	min-height:78px;
+}
+#nom_votes {
+	float: left;
+    padding: 10px;
+	border: 1px solid #CCCCCC;
+	background-color: white;
+	text-align:center;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+#nom_votes #nom_votes_number {
+	font-size: 2em;
+	font-weight: bold;
+	color: #FC8E4A;
+}
+#nom_votes #nom_votes_text {
+	font-size: 1.2em;
+    font-weight: bold;
+}
+#nom_text {
+	margin-left: 90px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+#nom_byline {
+	position: absolute;
+	right: 24px;
+	bottom: 22px;
+	font-size: 0.85em;
+	font-weight: bold;
+}
+#nom_voted {
+	position: absolute;
+	left: 117px;
+	bottom: 22px;
+	font-size: 0.85em;
+	font-weight: bold;
+}
+#nom_voted img {
+	padding-right: 5px;
+	vertical-align: text-bottom;
+}
+#nom_unvote {
+	margin-right: 5px;
+    padding-right: 5px;
+	font-weight: normal;
+	border-right: 1px solid #CCCCCC;
 }
    
 /* -------------------------------------------------
