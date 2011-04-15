@@ -35,9 +35,14 @@ var odp = {
     
     setupNominate: function() {
         $("#form_container").hide();
-        $("#nominate_button").click(function() {
-            $("#form_container").show()
-            $("#nominate_button").hide()
+        $("#nominate_button").toggle(
+          function() {
+            $("#form_container").slideDown();
+            $("#nominate_button").html('Cancel');
+            },
+          function() {
+            $("#form_container").slideUp();
+            $("#nominate_button").html('Add Nomination');
         });
         
         if ($.query.get('nqs') && $.query.get('nqs') != "") {
@@ -163,11 +168,11 @@ var odp = {
             $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -40px";
         }
         $("#filter .url_image").hover(function() {
-            this.style.backgroundPosition="0 -81px";
+            this.style.backgroundPosition="0 -89px";
         }, function () {
             var filter_split = this.parentNode.id.split('filter_');
             if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
-                this.style.backgroundPosition="0 -40px";
+                this.style.backgroundPosition="0 -45px";
             } else {
                 this.style.backgroundPosition="0 0";
             }

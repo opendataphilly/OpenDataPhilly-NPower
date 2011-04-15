@@ -524,6 +524,10 @@ padding:0;
 	background:url(/static/images/icon_ratings.png) 0 0;
 }
 
+#results_info  .sort_nomination #sort_rating_score .url_image{
+	background:url(/static/images/icon_votesort.png) 0 0;
+}
+
 #results_info  #sort_name .url_image{
 	background:url(/static/images/icon_alpha.png) 0 0;
 }
@@ -669,8 +673,8 @@ a.resource:hover {
 .pagination {
 	padding-bottom:50px;
 	text-align:center;
-  	text-transform: uppercase;
-  	font-family: "proxima-nova-1","proxima-nova-2";
+  text-transform: uppercase;
+  font-family: "proxima-nova-1","proxima-nova-2";
 	font-size:.8em;
 	font-weight: bold;
 }
@@ -678,6 +682,7 @@ a.resource:hover {
 	color: #575656;
 	text-decoration: none;
 }
+
 .disabled {
 	color:#9C9B9B;
 }
@@ -696,6 +701,8 @@ a.resource:hover {
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
+.page:hover {border: 2px white solid; background: #888; color: #fff}
+
 .current {
 	background-color: #616161;
 	color: white;
@@ -1200,12 +1207,37 @@ ul.tab_header li.tab_button a:hover {
 	margin: 10px 4px -15px;
 	padding:20px 20px 0;
 	border:white 2px solid;
-	background-color: #F2F2F2;
+	background-color: #F5F5F5;
 	-moz-border-radius: 3px;
 	border-radius:3px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
+}
+
+.nomination_form#form_container table th  {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 60px
+}
+.nomination_form#form_container .button  {
+margin-top: -12px;
+float:right;
+vertical-align: middle
+}
+.nomination_form#form_container textarea {
+width: 440px;
+}
+.nomination_form#form_container .submit_footer{
+  vertical-align: middle;
+  font-family: "proxima-nova-1","proxima-nova-2";
+  text-transform: uppercase; 
+  color: #afaead;
+  font-size: .8em;
+  height: 30px;
+  padding-left: 8px;
+  padding-top: 12px;
 }
 
 #n_search {
@@ -1268,10 +1300,9 @@ ul.tab_header li.tab_button a:hover {
 }
    
 #results_info  #filter_mine.nom_filter .url_image {
-	height: 41px;
-	width: 87px;
-	margin-top:2px;
-	background:url(/static/images/icon_filter.png) 0 0;
+	height: 45px;
+	width: 91px;
+	background:url(/static/images/icon_yourvotes.png) 0 0;
 }
 #results_info #sort_suggested_date .url_image {
 	background:url(/static/images/icon_date.png) 0 0;
@@ -1284,9 +1315,10 @@ ul.tab_header li.tab_button a:hover {
 #nom_votes {
 	float: left;
     padding: 10px;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #dbdbdb;
 	background-color: white;
 	text-align:center;
+  width: 60px;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
@@ -1295,35 +1327,43 @@ ul.tab_header li.tab_button a:hover {
 	font-size: 2em;
 	font-weight: bold;
 	color: #FC8E4A;
+  font-family: "proxima-nova-1","proxima-nova-2";
 }
 #nom_votes #nom_votes_text {
 	font-size: 1.2em;
     font-weight: bold;
+    color: #999;
 }
 #nom_text {
-	margin-left: 90px;
+	margin: 0 0 25px;
 	font-size: 1.1em;
+  line-height: 1.35em;
+  color: #666;
 	font-weight: bold;
 }
 #nom_byline {
-	position: absolute;
-	right: 24px;
-	bottom: 22px;
-	font-size: 0.85em;
+  float:right;
+  color: #9C9C9B;
+  font-size: 0.85em;
 	font-weight: bold;
+  margin-top: 4px;
 }
-#nom_date {
-	padding-top: 3px;
-	font-size: 0.8em;
-	color: #999;
+
+#nom_byline strong {
+  color: #575656;
 }
+
 #nom_voted {
-	position: absolute;
-	left: 117px;
-	bottom: 22px;
+  font-family: "proxima-nova-1","proxima-nova-2";
 	font-size: 0.85em;
 	font-weight: bold;
+
 }
+#nom_voted.button {
+  font-size: 0.75em;
+  padding: 6px 9px;  
+}
+
 #nom_voted img {
 	padding-right: 5px;
 	vertical-align: text-bottom;
