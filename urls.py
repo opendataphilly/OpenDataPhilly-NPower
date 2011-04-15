@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$',register,
            { 'backend': 'registration_backend.ODPBackend' },
        name='registration_register'),
+    (r'^accounts/password_reset', 'django.contrib.auth.views.password_reset'),
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^opendata/nominate/', include('suggestions.urls')),
     

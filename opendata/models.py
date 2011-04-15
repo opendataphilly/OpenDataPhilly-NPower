@@ -189,3 +189,6 @@ class Submission(models.Model):
     user = models.ForeignKey(User)
     sent_date = models.DateTimeField(auto_now=True)
     email_text = models.TextField()
+
+class TwitterCache(models.Model):
+    text = models.TextField()

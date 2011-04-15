@@ -6,7 +6,7 @@
 		$(document).ready(function () {
       		odp.getTags();
 			odp.setupSearchInput();
-    $('table').append($('<tr>',{html:'<td></td><td><input type="submit" value="Register" class="button" /></td>'})) 
+    $('table').append($('<tr>',{html:'<td></td><td><input type="submit" value="Register" class="button" /></td>'}))
 		});
 	</script>
 {% endblock %}
@@ -15,7 +15,13 @@
 
 
 	<div id="title">Register</div>
-	<div id="description">Add ratings. Submit data. Suggest ideas.</div>
+	<div id="description">While you don't need to register to search and view the data sets, applications, and APIs cataloged on
+		OpenDataPhilly, creating a free account provides access to a few additional features. Registered users
+		can comment on and rate the data sets, vote on <a href="/opendata/nominate/?sort=rating_score&dir=desc">nominated data sets</a>, and
+		submit their own data sets, applications, or APIs for inclusion.
+		<br/><br/>
+		Complete the short form below to register for an account on OpenDataPhilly. Your privacy is important
+		to us. We promise that your contact info will never be sold or rented.</div>
 
 
 <div class="resource login-reg" id="form_container">
