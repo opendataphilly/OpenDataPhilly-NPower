@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from models import *
 from forms import *
@@ -20,7 +21,8 @@ def list_all(request):
     
     form = SuggestionForm()
     return render_to_response('suggestions/list.html', {'suggestions': suggestions, 'form': form}, context_instance=RequestContext(request))
-    
+
+@login_required
 def add_suggestion(request):
     if request.method == 'POST':
         form = SuggestionForm(request.POST)
@@ -40,6 +42,7 @@ def add_suggestion(request):
     suggestions = Suggestion.objects.order_by("rating_score")
     return render_to_response('suggestions/list.html', {'suggestions': suggestions, 'form': form}, context_instance=RequestContext(request))
 
+@login_required
 def add_vote(request, suggestion_id):
     suggestion = Suggestion.objects.get(pk=suggestion_id)
     did_vote = suggestion.rating.get_rating_for_user(request.user, request.META['REMOTE_ADDR'])
@@ -47,6 +50,7 @@ def add_vote(request, suggestion_id):
         suggestion.rating.add(score=1, user=request.user, ip_address=request.META['REMOTE_ADDR'])
     return HttpResponseRedirect('../../')
 
+@login_required
 def remove_vote(request, suggestion_id):    
     suggestion = Suggestion.objects.get(pk=suggestion_id)
     suggestion.rating.delete(request.user, request.META['REMOTE_ADDR'])

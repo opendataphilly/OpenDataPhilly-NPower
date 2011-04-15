@@ -283,7 +283,7 @@
               </div>
             </form>
           {% else %}
-            <div>Please <a href="/accounts/login/">login</a> to add comments</div>
+            <div>Please <a href="/accounts/login/?next={{ request.get_full_path }}">login</a> to add comments</div>
           {% endif %}
         </div>
       </div>

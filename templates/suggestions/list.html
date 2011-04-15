@@ -39,7 +39,11 @@
 				</div>
 			</form>
 			<div id="n_search_img"></div>
-			<div id="nominate_button" class="button">Add a Nomination</div>
+			{% if user.is_authenticated %}
+				<div id="nominate_button" class="button">Add a Nomination</div>
+			{% else %}
+				<div id="nominate_login"><a href="/accounts/login/?next={{ request.get_full_path }}">Login</a> to Nominate Data</div>
+			{% endif %}
 		</div>
     </div>
 	<div id="results_header">
@@ -75,10 +79,12 @@
 						{% endif %}
 						Posted By: {{s.suggested_by}}
 					</div>
-					{% if not vote %}
-						<div id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</div>
-					{% else %}
-						<div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
+					{% if user.is_authenticated %}
+						{% if not vote %}
+							<div id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</div>
+						{% else %}
+							<div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
+						{% endif %}
 					{% endif %}
 				</li>
 			{% empty %}

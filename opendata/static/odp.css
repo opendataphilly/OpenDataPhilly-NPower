@@ -1252,6 +1252,13 @@ ul.tab_header li.tab_button a:hover {
 	font-size: 0.85em;
 	cursor:pointer;
 }
+#n_search #nominate_login{
+	position:absolute;
+	top:20px;
+	right: 40px;
+	font-weight: bold;
+	cursor:pointer;
+}
 
 #n_search input {
 	height: 32px;
