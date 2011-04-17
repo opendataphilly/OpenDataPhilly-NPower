@@ -248,7 +248,9 @@ var odp = {
               autoOpen: false,
               modal: true,
               draggable: false,
-              width: 'auto'
+              resizable: false,
+              // width: auto does not work in ie7/ie6
+              width: 626
             });
             //open dialog by clicking the thumb
             $(this).click(function() {

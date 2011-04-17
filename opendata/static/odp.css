@@ -88,12 +88,13 @@ jquery ui basic themeing
 
 .ui-widget-overlay {background: #000; opacity: .3}
  
- .ui-tabs .ui-tabs-panel {border-width: 2px;}
+.ui-tabs .ui-tabs-panel {border-width: 2px;}
    
 .ui-dialog .ui-dialog-titlebar-close  {background: url(/static/images/icon_close.png) 0 0 no-repeat;
 width: 25px;
 height: 25px;
 padding:0;
+margin-top: -14px;
 }   
 .ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
  background-position: 0 -27px;
@@ -103,12 +104,12 @@ padding:0;
   padding: 10px;
 }
 .ui-dialog {
-	border:2px solid white;
-	background-color: #F5F5F5;
-	
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius:4px;
+  padding: 0;
+	border:1px solid #ccc;
+	background-color: #F5F5F5;  
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius:4px 4px 0 0;
 	-moz-box-shadow: 0 0 10px -3px #000;
 	-webkit-box-shadow: 0 0 10px -3px #000;
 	box-shadow: 0 0 10px -3px #000;
@@ -118,7 +119,9 @@ padding:0;
   padding-left:10px;
   font-weight: bold;
   }
-  .ui-dialog .ui-dialog-title {line-height: 1.2em;}
+.ui-dialog .ui-dialog-title {line-height: 1.2em;}
+   
+.ui-dialog .ui-dialog-content  {padding: 0}
    
 /* -------------------------------------------------
 	
