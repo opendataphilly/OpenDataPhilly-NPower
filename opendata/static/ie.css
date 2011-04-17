@@ -2,7 +2,7 @@
 
 
 
-.resource, .idea_item , .tab_body, .button, .nomination_form, #search, #n_search {
+.resource, .idea_item , .tab_body, .button, .nomination_form, #search, #n_search, #tab_image_container .tab_image_pager a  {
 filter:
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=45, Strength=3)
 progid:DXImageTransform.Microsoft.Shadow(color='#cccccc', Direction=135, Strength=3)
@@ -35,3 +35,5 @@ zoom: 1;
 .ui-widget-overlay {filter:alpha(opacity=30)}
 
 #form_container.nomination_form .button {padding-left: 10px; padding-right: 10px}
+
+.tab_image_detail {filter:alpha(opacity=70)}

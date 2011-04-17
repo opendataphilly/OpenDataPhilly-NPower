@@ -165,10 +165,10 @@ var odp = {
         
         if ($.query.get('filter')) {
             st = $.query.get('filter');
-            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -40px";
+            $("#filter_" + st + " > a")[0].style.backgroundPosition="0 -45px";
         }
         $("#filter .url_image").hover(function() {
-            this.style.backgroundPosition="0 -89px";
+            this.style.backgroundPosition="0 -90px";
         }, function () {
             var filter_split = this.parentNode.id.split('filter_');
             if ($.query.get('filter') && $.query.get('filter') == filter_split[1]) {
@@ -237,7 +237,6 @@ var odp = {
     },
     
     setDialogImage: function(source) {        
-
     },
     
     makeDialog: function(div) {

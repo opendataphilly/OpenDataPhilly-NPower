@@ -732,14 +732,13 @@ a.resource:hover {
 	margin-top: 9px;
 	margin-bottom: 30px;
 	font-weight: bold;
-	color: #b0b0b0;
+	color: #949494;
   margin-left: 4px;
 }
 
 ul.tab_header{
-	position:relative;
 	height:40px;
-	z-index: 2;
+
 }
 ul.tab_header li.tab_button {
 	float: left;
@@ -751,15 +750,18 @@ ul.tab_header li.tab_button {
 	font-size: 0.85em;
   	font-family: "proxima-nova-1","proxima-nova-2";
 	
-	-moz-border-radius: 3px;
-  	-webkit-border-radius: 3px;
-	border-radius:3px;
-	-moz-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
-	-webkit-box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
-	box-shadow: -2px -1px 2px #ddd, 2px -2px 2px #ddd;
+	-moz-border-radius: 3px 3px 0 0;
+  	-webkit-border-radius: 3px 3px 0 0;
+	border-radius:3px 3px 0 0;
+	-moz-box-shadow: -2px -2px 2px -1px #DDDDDD, 2px -2px 2px #DDDDDD;
+	-webkit-box-shadow: -2px -2px 2px -1px #DDDDDD, 2px -2px 2px #DDDDDD;
+	box-shadow: -2px -2px 2px -1px #DDDDDD, 2px -2px 2px #DDDDDD;
 }
 ul.tab_header li.tab_button.ui-tabs-selected {
 	background: #F5F5F5 none;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 2px;
 }
 
 ul.tab_header li.tab_button a {
@@ -771,7 +773,7 @@ ul.tab_header li.tab_button a:hover {
 
 .tab_body {
 	position:relative;
-	margin-top:-6px;
+	margin-top:-7px;
 	border: 2px solid white;
 	background-color: #F5F5F5;
 	margin-bottom: 20px;
@@ -832,7 +834,11 @@ ul.tab_header li.tab_button a:hover {
 	font-weight: bold;
 	text-align: right;
 	color: #FFF;
-	background:url(/static/images/background_image_overlay.png) repeat;
+  background: #000;
+  opacity: .7;
+}
+.tab_image_detail:hover {
+  
 }
 
 #tab_image_container .tab_image_pager  {
@@ -1037,7 +1043,8 @@ ul.tab_header li.tab_button a:hover {
 	box-shadow: 0 0 4px #ccc;
 }
 .idea_item #tab_image_container {
-	padding: 27px 0 20px 30px
+	padding: 27px 0 20px 30px;
+  cursor: pointer;
 }
 
 
@@ -1292,9 +1299,9 @@ width: 440px;
 	cursor:pointer;
 }
 #n_search #nominate_login{
-	position:absolute;
-	top:20px;
-	right: 40px;
+  float:right;
+  margin: 10px 15px 0 0;
+	cursor:pointer;
 	font-weight: bold;
 	cursor:pointer;
 }
