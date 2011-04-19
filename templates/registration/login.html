@@ -32,11 +32,11 @@
 </table>
 
 <div class="register_or_reset">
-	<a href="/accounts/register/">Register</a> or <a href="/accounts/password/reset/">Reset Password</a>
+	<a href="{{SITE_ROOT}}/accounts/register/">Register</a> or <a href="{{SITE_ROOT}}/accounts/password/reset/">Reset Password</a>
 </div>
 
 
-<input type="hidden" name="next" value="{{ next }}" />
+<input type="hidden" name="next" value="{{ next|default:'/' }}" />
 </form>
 </div>
 {% endblock %}

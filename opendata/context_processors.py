@@ -11,8 +11,8 @@ def latest_tweets( request ):
     if tweets:
         return {"tweets": tweets}
     
-    tweets = twitter.Api().GetUserTimeline( settings.TWITTER_USER )[:3]
-    if tweets.count < 3:
+    tweets = twitter.Api().GetUserTimeline( settings.TWITTER_USER )[:4]
+    if tweets.count < 4:
         tweet_cache = []
         for t in TwitterCache.objects.all():
             tc = json.JSONDecoder().decode(t.text)
@@ -32,3 +32,7 @@ def latest_tweets( request ):
 
 def get_current_path(request):
     return {'current_path': request.get_full_path()}
+
+def get_settings(request):
+    return {'SITE_ROOT': settings.SITE_ROOT}
+

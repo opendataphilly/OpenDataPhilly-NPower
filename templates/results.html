@@ -21,7 +21,7 @@
 
 
 	{% if tag %}
-  <a href="/ideas" class="resource" id="promotion_header">
+  <a href="{{SITE_ROOT}}/ideas" class="resource" id="promotion_header">
     <span class="icon_idea"></span> See how <span class="tag_name">{{ tag }}</span> data are being used, in the <strong>Idea&nbsp;Gallery</strong>.
   </a>
 	<div id="results_label">{{ tag }}</div>
@@ -72,7 +72,7 @@
 						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
 						<input name="star_r{{r.id}}" type="radio" class="star star_r{{r.id}}" disabled="disabled"/>
 						<script type="text/javascript">
-							var rating = {{r.rating.score}};
+							var rating = {{r.rating.score|default:"0"}};
 							if (rating != 0) {
 								$("input:radio.star_r{{r.id}}")[{{r.rating.score}}-1].checked = 'checked';
 							}
@@ -85,9 +85,9 @@
 					{% endif %}
 				</div>
 				<div id="resource_info">
-					<div id="resource_title"><a href="/opendata/resource/{{r.id}}">{{r}}</a></div>
+					<div id="resource_title"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}">{{r}}</a></div>
 					<div id="resource_desc">{{r.short_description|default:"No description available."}}</div>
-					<div id="resource_button"><a class="button" href="/opendata/resource/{{r.id}}">VIEW DETAILS</a></div>
+					<div id="resource_button"><a class="button" href="{{SITE_ROOT}}/opendata/resource/{{r.id}}">VIEW DETAILS</a></div>
 				</div>
         <div class="clear"></div>
 			</li>
@@ -96,7 +96,7 @@
       <li class="resource">
       <p><strong>Can't find what you're looking for? Try limiting your search terms.</strong></p>
 
-      <p><strong>Dont know what to look for. Check out our <a href="/ideas/">Idea Gallery</a>.</strong></p>
+      <p><strong>Dont know what to look for. Check out our <a href="{{SITE_ROOT}}/ideas/">Idea Gallery</a>.</strong></p>
       </li>
     {% endif %}
 

@@ -2,7 +2,7 @@ from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import send_mail, mail_admins, EmailMessage
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.db.models import Q
@@ -16,7 +16,7 @@ from forms import *
 
 def home(request):
     recent = Resource.objects.order_by("-created")[:3]
-    idea = Idea.objects.order_by("-created_by_date")[0]
+    idea = Idea.objects.order_by("?")[:1]
     return render_to_response('home.html', {'recent': recent, 'idea': idea},  context_instance=RequestContext(request))
 
 def results(request):
@@ -63,13 +63,15 @@ def suggest_content(request):
         if form.is_valid():
             #do something
             
-            coords, types, formats="", "", ""
+            coords, types, formats, updates ="", "", "", ""
             for c in request.POST.getlist("coord_system"):
                 coords = coords + " EPSG:" + CoordSystem.objects.get(pk=c).EPSG_code.__str__()
             for t in request.POST.getlist("types"):
                 types = types + " " + UrlType.objects.get(pk=t).url_type
             for f in request.POST.getlist("formats"):
                 formats = formats + " " + DataType.objects.get(pk=f).data_type
+            for u in request.POST.getlist("update_frequency"):
+                updates = updates + " " + UpdateFrequency.objects.get(pk=u).update_frequency
                 
             data = {
                 "submitter": request.user.username,
@@ -83,7 +85,7 @@ def suggest_content(request):
                 "time_period": request.POST.get("time_period"),
                 "release_date": request.POST.get("release_date"),
                 "area_of_interest": request.POST.get("area_of_interest"),
-                "update_frequency": request.POST.get("update_frequency"),
+                "update_frequency": updates,
                 "coord_system": coords,
                 "types": types,
                 "formats": formats,
@@ -95,9 +97,12 @@ def suggest_content(request):
             }
             
             
-            subject, from_email, to_email = 'OpenDataPhilly - Data Submission', request.user.email, settings.CONTACT_EMAILS
+            subject, user_email = 'OpenDataPhilly - Data Submission', (request.user.first_name + " " + request.user.last_name,request.user.email)
             text_content = render_to_string('submit_email.txt', data)
-            msg = EmailMessage(subject, text_content, from_email, to_email)
+            text_content_copy = render_to_string('submit_email_copy.txt', data)
+            mail_admins(subject, text_content)
+
+            msg = EmailMessage(subject, text_content_copy, settings.DEFAULT_FROM_EMAIL, user_email)
             msg.send()
             
             sug_object = Submission()
@@ -106,7 +111,7 @@ def suggest_content(request):
             
             sug_object.save()
             
-            return HttpResponseRedirect('/thanks/')
+            return render_to_response('thanks.html', context_instance=RequestContext(request))
     else: 
         form = SubmissionForm()
         

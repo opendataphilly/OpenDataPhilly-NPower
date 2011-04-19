@@ -32,7 +32,7 @@
 		<ul>
 		{% for idea in ideas %}
 			<li class="idea_item">
-				<div class="idea_title"><a href="/idea/{{idea.id}}/">{{idea}}</a></div>
+				<div class="idea_title"><a href="{{SITE_ROOT}}/idea/{{idea.id}}/">{{idea}}</a></div>
         <div class="byline">By <strong>{{idea.author}}</strong></div>
 
 				<div class="tab_container" id="tab_image_container">
@@ -67,12 +67,12 @@
          <h4 class="idea_resources_title">Data used:</h4>
           <ul id="idea_resources">
             {% for resource in idea.resources.all %}
-              <li class="resource_item"><a href="/opendata/resource/{{resource.id}}">{{resource}}</a></li>
+              <li class="resource_item"><a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}">{{resource}}</a></li>
             {% endfor %}
           </ul>
 
 				<div id="idea_footer">
-					<div class="idea_button"><a href="/idea/{{idea.id}}/" class="button">Link to this idea</a></div>
+					<div class="idea_button"><a href="{{SITE_ROOT}}/idea/{{idea.id}}/" class="button">Link to this idea</a></div>
 					<div class="idea_date">Posted: <strong>{{idea.created_by_date|date:"M d, Y"}}</strong></div>
           <div class="clear"></div>
 				</div>

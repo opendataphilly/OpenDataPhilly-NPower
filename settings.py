@@ -1,6 +1,8 @@
 import os
 # Django settings for opendata project.
 
+SITE_ROOT = "/test"
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -8,7 +10,7 @@ ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
 )
 CONTACT_EMAILS = ['cbrittain@azavea.com',]
-DEFAULT_FROM_EMAIL = 'contact@opendataphilly.com'
+DEFAULT_FROM_EMAIL = ('OpenDataPhilly.org', 'contact@opendataphilly.com')
 
 MANAGERS = ADMINS
 
@@ -114,7 +116,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     
     "opendata.context_processors.latest_tweets",
-    "opendata.context_processors.get_current_path"
+    "opendata.context_processors.get_current_path",
+    "opendata.context_processors.get_settings",
 )
 
 TWITTER_USER = "opendataphilly"

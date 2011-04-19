@@ -17,7 +17,7 @@
 	<div id="title">Register</div>
 	<div id="description">While you don't need to register to search and view the data sets, applications, and APIs cataloged on
 		OpenDataPhilly, creating a free account provides access to a few additional features. Registered users
-		can comment on and rate the data sets, vote on <a href="/opendata/nominate/?sort=rating_score&dir=desc">nominated data sets</a>, and
+		can comment on and rate the data sets, vote on <a href="{{SITE_ROOT}}/opendata/nominate/?sort=rating_score&dir=desc">nominated data sets</a>, and
 		submit their own data sets, applications, or APIs for inclusion.
 		<br/><br/>
 		Complete the short form below to register for an account on OpenDataPhilly. Your privacy is important
@@ -28,7 +28,7 @@
 {% if form.errors %}
 <p class="resource error_message">The form has errors. Please try again.</p>
 {% endif %}
-  <form method="post" action="/accounts/register/">
+  <form method="post" action="{{SITE_ROOT}}/accounts/register/">
   {% csrf_token %}
   <table>
   {{form}}

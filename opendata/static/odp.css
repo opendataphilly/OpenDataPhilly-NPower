@@ -207,7 +207,7 @@ margin-top: -14px;
 #left_container ul li#ideas.active_page {
 	background-position: 0 -25px !important;
 }
-#left_container ul li#suggest {
+#left_container ul li#nominate {
 	padding-left: 30px;
 	background: url(/static/images/icon_suggest.png) 0 2px no-repeat; 
 }
@@ -626,7 +626,7 @@ a.resource:hover {
 .url_image#resource_icon_Application {
   background:url(/static/images/icon_application_sm.png) 0 -44px;
 }
-.url_image#resource_icon_API {
+.url_image#resource_icon_Api {
   background:url(/static/images/icon_api_sm.png) 0 -44px;
 }
 .url_image#resource_icon_Data {
@@ -784,6 +784,10 @@ ul.tab_header li.tab_button a:hover {
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
+}
+
+#tab_basic_info {
+    min-height: 190px;
 }
 
 #tab_data {

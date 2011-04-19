@@ -19,7 +19,7 @@
 
 {% block center_container %}
 	<div id="title">{{resource}}</div>
-	<div id="description">{{resource.description}}</div>
+	<div id="description">{{resource.short_description}}</div>
 
   <div class="tab_container" id="content_resource">
     <ul class="tab_header">
@@ -29,10 +29,10 @@
     <div class="tab_body" id="tab_basic_info">
       <div id="tab_data">
         {% if resource.organization %}
-        <div class="info_label">Organization</div><div class="info_data"><a href="/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
+        <div class="info_label">Organization</div><div class="info_data"><a href="{{SITE_ROOT}}/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
         {% endif %}
         {% if resource.division %}
-        <div class="info_label">Division</div><div class="info_data"><a href="/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
+        <div class="info_label">Division</div><div class="info_data"><a href="{{SITE_ROOT}}/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
         {% endif %}
         {% if resource.release_date %}
         <div class="info_label">Release Date</div><div class="info_data">{{resource.release_date}}</a></div>
@@ -42,14 +42,16 @@
         {% endif %}
         {% if resource.data_types.all.count > 0 %}
         <div class="info_label">Data Types</div>
+        <div class="info_data">
         	{% for dt in resource.data_types.all %}
 		    	{{dt}}{% if not forloop.last %}, {% endif %}
           	{% endfor %}
+        </div>
         {% endif %}
         <div class="info_label">Categories</div>
         <div class="info_data">
           {% for tag in resource.tags.all %}
-            <a href="/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
+            <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
           {% endfor %}
         </div>
         <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
@@ -85,10 +87,10 @@
     <div class="tab_body" id="tab_extra_info">
 	  <div id="tab_data">
 		{% if resource.organization %}
-		<div class="info_label">Organization</div><div class="info_data"><a href="/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
+		<div class="info_label">Organization</div><div class="info_data"><a href="{{SITE_ROOT}}/opendata/search/?qs={{resource.organization}}">{{resource.organization}}</a></div>
 		{% endif %}
 		{% if resource.division %}
-		<div class="info_label">Division</div><div class="info_data"><a href="/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
+		<div class="info_label">Division</div><div class="info_data"><a href="{{SITE_ROOT}}/opendata/search/?qs={{resource.division}}">{{resource.division}}</a></div>
 		{% endif %}
 		{% if resource.release_date %}
 		<div class="info_label">Release Date</div><div class="info_data">{{resource.release_date}}</a></div>
@@ -107,7 +109,7 @@
 		<div class="info_label">Categories</div>
 		<div class="info_data">
 		  {% for tag in resource.tags.all %}
-			<a href="/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
+			<a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
 		  {% endfor %}
 		</div>
 		<div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
@@ -130,10 +132,10 @@
 			<div class="info_label">Contact Phone</div><div class="info_data">{{resource.contact_phone}}</a></div>
 		{% endif %}
 		{% if resource.contact_email %}
-			<div class="info_label">Contact Email</div><div class="info_data">{{resource.contact_email}}</a></div>
+			<div class="info_label">Contact Email</div><div class="info_data"><a href="mailto:{{resource.contaact_email}}" target="_blank">{{resource.contact_email}}</a></div>
 		{% endif %}
 		{% if resource.contact_url %}
-			<div class="info_label">Contact Url</div><div class="info_data">{{resource.contact_url}}</a></div>
+			<div class="info_label">Contact Url</div><div class="info_data"><a href="{{resource.contact_url}}" target="_blank">{{resource.contact_url}}</a></div>
 		{% endif %}
 
 
@@ -243,12 +245,12 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            var rating = {{resource.rating.score}};
+            var rating = {{resource.rating.score|default:"0"}};
             if (rating != 0) {
             	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
             }
           </script>
-          <span>{{resource.rating.votes}} Votes</span>
+          <span>{{resource.rating.votes|default:"0"}} Votes</span>
         </div>
       </div>
       <div id="comment_form">
@@ -284,7 +286,7 @@
               </div>
             </form>
           {% else %}
-            <div>Please <a href="/accounts/login/?next={{ request.get_full_path }}">login</a> to add comments</div>
+            <div>Please <a href="{{SITE_ROOT}}/accounts/login/?next={{ request.get_full_path }}">login</a> to add comments</div>
           {% endif %}
         </div>
       </div>
@@ -302,7 +304,7 @@
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled"/>
                 <script type="text/javascript">
-                  var rating = {{comment.rating}};
+                  var rating = {{comment.rating|default:"0"}};
                   if (rating != 0) {
                   	$("input:radio.star_{{comment.id}}")[{{comment.rating}}-1].checked = 'checked';
                   }

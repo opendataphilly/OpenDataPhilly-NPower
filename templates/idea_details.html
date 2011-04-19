@@ -21,13 +21,13 @@
   <div id="header_title">Idea Gallery</div>
   <div id="header_description">
 
-      <a href="/ideas">&laquo; Return to list</a>
+      <a href="{{SITE_ROOT}}/ideas">&laquo; Return to list</a>
 
   </div>
 </div>
   
 <div class="idea_item">
-	<div class="idea_title"><a href="/ideas/{{idea.id}}/">{{idea}}</a></div>
+	<div class="idea_title"><a href="{{SITE_ROOT}}/ideas/{{idea.id}}/">{{idea}}</a></div>
   <div class="byline">By <strong>{{idea.author}}</strong></div>
 	<div class="tab_container" id="tab_image_container">
 		{% if idea.ideaimage_set.count > 0 %}
@@ -61,7 +61,7 @@
   <h4 class="idea_resources_title">Data used:</h4>
   	<ul id="idea_resources">
 		{% for resource in idea.resources.all %}
-			<li class="resource_item"><a href="/opendata/resource/{{resource.id}}">{{resource}}</a></li>
+			<li class="resource_item"><a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}">{{resource}}</a></li>
 		{% endfor %}
 	</ul>
   

@@ -1,5 +1,6 @@
 var odp = {
     tags: null,
+    site_root:"",
 
     setupSearchInput: function () {
         if ($.query.get('qs') && $.query.get('qs') != "") {
@@ -21,9 +22,9 @@ var odp = {
             evt.stopImmediatePropagation();
             evt.preventDefault();
             if ($("#qs")[0].value != "" && $("#qs")[0].value != "Search for data") {
-                window.location = "/opendata/search/?sort=name&dir=asc&qs=" + decodeURI($("#qs")[0].value); 
+                window.location = odp.site_root + "/opendata/search/?sort=name&dir=asc&qs=" + decodeURI($("#qs")[0].value); 
             } else {
-                window.location = "/opendata/search/?sort=name&dir=asc";
+                window.location = odp.site_root + "/opendata/search/?sort=name&dir=asc";
             }
         });
         
@@ -64,9 +65,9 @@ var odp = {
             evt.stopImmediatePropagation();
             evt.preventDefault();
             if ($("#nqs")[0].value != "" && $("#nqs")[0].value != "Search for nominations") {
-                window.location = "/opendata/nominate/?nqs=" + decodeURI($("#nqs")[0].value); 
+                window.location = odp.site_root + "/opendata/nominate/?nqs=" + decodeURI($("#nqs")[0].value); 
             } else {
-                window.location = "/opendata/nominate/";
+                window.location = odp.site_root + "/opendata/nominate/";
             }
         });
 
@@ -212,7 +213,7 @@ var odp = {
     
     
     getTags: function() {
-        $.getJSON('/tags/', function(tags){
+        $.getJSON(odp.site_root + '/tags/', function(tags){
             odp.tags = tags;
             odp.setupTagList();
         });
@@ -223,7 +224,7 @@ var odp = {
         var tag_list = "";
         for(var i = 0; i < odp.tags.length; i++) {
             var tag = odp.tags[i];
-            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='/opendata/tag/" + tag.pk + "/?sort=name&dir=asc'>" + tag.fields.tag_name + "</a></li>"
+            tag_list += "<li id='" + tag.pk + "'><a class='tag' href='" + odp.site_root + "/opendata/tag/" + tag.pk + "/?sort=name&dir=asc'>" + tag.fields.tag_name + "</a></li>"
         }
         $("#tag_list").replaceWith(tag_list);
         

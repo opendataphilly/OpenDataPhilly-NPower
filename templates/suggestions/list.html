@@ -22,7 +22,7 @@
 		increased availability of open data.
 		<br/><br/>
 		This page is for suggesting general areas where you'd like to see more open data. If you have a specific
-		data set to add, visit the <a href="/opendata/submit/">Submit Data</a> page .</div>
+		data set to add, visit the <a href="{{SITE_ROOT}}/opendata/submit/">Submit Data</a> page .</div>
 
 
 	<div id="form_container" class="nomination_form">
@@ -48,7 +48,7 @@
 			{% if user.is_authenticated %}
 				<a id="nominate_button" class="button">Add a Nomination</a>
 			{% else %}
-				<a id="nominate_login" href="/accounts/login/?next={{ request.get_full_path }}">Login to Nominate Data</a>
+				<a id="nominate_login" href="{{SITE_ROOT}}/accounts/login/?next={{ request.get_full_path }}">Login to Nominate Data</a>
 			{% endif %}
 			<div class="clear"></div>
 		</div>

@@ -1,6 +1,7 @@
 from datetime import datetime
 from opendata.models import *
 from comments.models import *
+from suggestions.models import *
 from django.contrib import admin
 
 class UrlImageInline(admin.TabularInline):
@@ -52,7 +53,7 @@ class CoordSystemAdmin(admin.ModelAdmin):
     list_display = ('EPSG_code', 'name')
     search_fields = ['name', 'EPSG_code', 'description']
 
-
+admin.site.register(Suggestion)
 admin.site.register(Idea)
 admin.site.register(IdeaImage)
 admin.site.register(Tag)
