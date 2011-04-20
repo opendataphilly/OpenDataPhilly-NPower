@@ -3,6 +3,12 @@
 {% load thumbnail %}
 {% load comments %}
 
+{% block meta %}
+    <meta name="Keywords" content="{{resource.tags.all|join:','}}" />
+{% endblock %}
+
+{% block title %} - {{resource}}{% endblock %}
+
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
@@ -137,6 +143,8 @@
 		{% if resource.contact_url %}
 			<div class="info_label">Contact Url</div><div class="info_data"><a href="{{resource.contact_url}}" target="_blank">{{resource.contact_url}}</a></div>
 		{% endif %}
+        <div class="info_label">Date Added</div><div class="info_data">{{resource.created}}</div>
+        <div class="info_label">Last Update</div><div class="info_data">{{resource.last_updated}}</div>
 
 
 
@@ -204,7 +212,7 @@
       {% if resource.get_grouped_urls.API %}
       <div class="data_block" id="data_api">
         <div class="url_header">
-          <div id="resource_icon_Api" class="url_image"></div><div class="url_label">APIs</div>
+          <div id="resource_icon_API" class="url_image"></div><div class="url_label">APIs</div>
         </div>
         <ul>
         {% for url in resource.get_grouped_urls.API %}

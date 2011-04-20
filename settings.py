@@ -1,7 +1,7 @@
 import os
 # Django settings for opendata project.
 
-SITE_ROOT = "/test"
+SITE_ROOT = ""
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
