@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -16,7 +17,11 @@ from forms import *
 
 def home(request):
     recent = Resource.objects.order_by("-created")[:3]
-    idea = Idea.objects.order_by("?")
+    idea = Idea.objects.order_by("-created_by_date")[:4]
+    if idea.count() > 0:
+        ct = idea.count() - 1     
+        ran = random.randint(0, ct)
+        return render_to_response('home.html', {'recent': recent, 'idea': idea[ran]},  context_instance=RequestContext(request))
     return render_to_response('home.html', {'recent': recent, 'idea': idea},  context_instance=RequestContext(request))
 
 def results(request):

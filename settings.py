@@ -98,7 +98,7 @@ SECRET_KEY = 'hj)r1eouk0rc!kxqzn*s+phha$-m3$)!)j=e7q%18x)&9#v7w)'
 
 ### Package settings
 ACCOUNT_ACTIVATION_DAYS = 7
-
+THUMBNAIL_EXTENSION = 'png'
 ###
 
 # List of callables that know how to import templates from various sources.

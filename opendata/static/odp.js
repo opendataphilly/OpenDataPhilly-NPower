@@ -183,21 +183,21 @@ var odp = {
     getFiltered: function (value) {
         
         if ($.query.get('filter') == value) {
-            var newQuery = "" + $.query.remove('filter');
+            var newQuery = "" + $.query.remove('filter').remove('page');
             window.location = window.location.pathname + newQuery;
         } 
         else {
-            var newQuery = "" + $.query.set('filter', value);
+            var newQuery = "" + $.query.set('filter', value).remove('page');
             window.location = window.location.pathname + newQuery;
         }
     },
     getNomFiltered: function () {
         if ($.query.get('filter') == 'mine') {
-            var newQuery = "" + $.query.remove('filter');
+            var newQuery = "" + $.query.remove('filter').remove('page');
             window.location = window.location.pathname + newQuery;
         } 
         else {
-            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc');
+            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc').remove('page');
             window.location = window.location.pathname + newQuery;
         }
     },
