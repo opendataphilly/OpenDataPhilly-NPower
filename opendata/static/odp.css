@@ -21,7 +21,7 @@
 	text-align: center;
 	color: white;
 	font-weight: bold;
-  	font-family: "proxima-nova-1","proxima-nova-2";
+  	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
   	text-transform: uppercase;
   	cursor: pointer;
 	
@@ -49,7 +49,7 @@ textarea {font-family: Arial, Helvetica, sans-serif; padding: 4px;}
 #wrapper h2.grid {
 	padding: 7px 7px 7px 9px;
 	margin-bottom: 6px;
-	font-family: "proxima-nova-1","proxima-nova-2";
+	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	font-size: .85em;
 	text-transform:uppercase;
 	background: url(/static/images/background_ul.gif) repeat;
@@ -123,7 +123,34 @@ margin-top: -14px;
    
 .ui-dialog .ui-dialog-content  {padding: 0}
    
-/* -------------------------------------------------
+.ui-icon-circle-triangle-e,
+.ui-icon-circle-triangle-s,
+.ui-icon-circle-triangle-w, 
+.ui-icon-circle-triangle-n 
+ { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png)/*{iconsContent}*/; }
+
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }   
+   
+
+ .ui-datepicker {
+	background-color: #fff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius:4px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+  font-size: .9em;
+} 
+.ui-datepicker .ui-datepicker-title  {
+  text-transform: uppercase;
+  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica
+}
+   
+   /* -------------------------------------------------
 	
 	site layout, left nav, search bar
 	
@@ -285,7 +312,7 @@ margin-top: -14px;
 	background: transparent 0 0;
 	font-size: 1em;
 	font-weight: bold;
-	color: #999;
+  color: #FF935F;
 	vertical-align: middle;
 }
 
@@ -491,7 +518,7 @@ margin-top: -14px;
 	padding-top: 16px;
 	margin-left: 4px;
 	font-size: 0.95em;
-	font-family: "proxima-nova-1","proxima-nova-2";
+	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	color: #bababa;
 }
 
@@ -540,7 +567,7 @@ margin-top: -14px;
 	font-size: 0.75em;
 	padding-top: 16px;
 	color: #bababa;
-	font-family: "proxima-nova-1","proxima-nova-2";
+	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 }
 
 #results_info ul {
@@ -680,7 +707,7 @@ a.resource:hover {
 	padding-bottom:50px;
 	text-align:center;
   text-transform: uppercase;
-  font-family: "proxima-nova-1","proxima-nova-2";
+  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	font-size:.8em;
 	font-weight: bold;
 }
@@ -748,7 +775,7 @@ ul.tab_header li.tab_button {
 	border-bottom: 0 none;
 	background: url(/static/images/background_tab_off.gif) repeat-x;
 	font-size: 0.85em;
-  	font-family: "proxima-nova-1","proxima-nova-2";
+  	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	
 	-moz-border-radius: 3px 3px 0 0;
   	-webkit-border-radius: 3px 3px 0 0;
@@ -898,7 +925,7 @@ ul.tab_header li.tab_button a:hover {
 	font-size: 0.85em;
 	font-weight: bold;
   margin-left: 3px;
-    	font-family: "proxima-nova-1","proxima-nova-2";
+    	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 }
 
 .url_link {
@@ -1249,7 +1276,7 @@ width: 440px;
 }
 .nomination_form#form_container .submit_footer{
   vertical-align: middle;
-  font-family: "proxima-nova-1","proxima-nova-2";
+  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
   text-transform: uppercase; 
   color: #afaead;
   font-size: .8em;
@@ -1352,7 +1379,7 @@ width: 440px;
 	font-size: 2em;
 	font-weight: bold;
 	color: #FC8E4A;
-  font-family: "proxima-nova-1","proxima-nova-2";
+  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 }
 #nom_votes #nom_votes_text {
 	font-size: 1.2em;
@@ -1379,7 +1406,7 @@ width: 440px;
 }
 
 #nom_voted {
-  font-family: "proxima-nova-1","proxima-nova-2";
+  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	font-size: 0.85em;
 	font-weight: bold;
 
