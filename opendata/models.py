@@ -155,12 +155,19 @@ class Idea(models.Model):
     description = models.TextField()
     author = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, related_name="idea_created_by")
-    created_by_date = models.DateTimeField()
+    created_by_date = models.DateTimeField(verbose_name="Created on")
     updated_by = models.ForeignKey(User, related_name="idea_updated_by")
-    updated_by_date = models.DateTimeField(auto_now=True)
+    updated_by_date = models.DateTimeField(auto_now=True, verbose_name="Updated on")
     
     resources = models.ManyToManyField(Resource, blank=True, null=True)
     
+    def get_home_page_image(self): 
+        images = IdeaImage.objects.filter(idea=self)
+        home = images.filter(home_page=True)
+        if home.count() == 0:
+            return images[0]
+        return home[0]
+
     def __unicode__(self):
         return '%s' % (self.title)
 
@@ -181,6 +188,7 @@ class IdeaImage(models.Model):
     title = models.CharField(max_length=255, help_text="For image alt tags")
     source = models.CharField(max_length=255, help_text="Source location or person who created the image")
     source_url = models.CharField(max_length=255, blank=True)
+    home_page = models.BooleanField(default=False, help_text="Select this image for use on the home page.")
 
     def __unicode__(self):
         return '%s' % (self.image)
@@ -192,3 +200,10 @@ class Submission(models.Model):
 
 class TwitterCache(models.Model):
     text = models.TextField()
+
+class ODPUserProfile(models.Model):
+    organization = models.CharField(max_length=255, blank=True)
+    can_notify = models.BooleanField(default=False)
+    
+    user = models.ForeignKey(User, unique=True)
+

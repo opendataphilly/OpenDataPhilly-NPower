@@ -14,6 +14,10 @@ class UrlInline(admin.TabularInline):
     verbose_name = 'Resource Url'
     verbose_name_plural = 'Resource Urls'
 
+class IdeaImageInline(admin.TabularInline):
+    model = IdeaImage
+    extra = 1
+
 class ResourceAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields':[('name', 'is_published'), 'description', 'short_description', 'usage', 
@@ -53,8 +57,38 @@ class CoordSystemAdmin(admin.ModelAdmin):
     list_display = ('EPSG_code', 'name')
     search_fields = ['name', 'EPSG_code', 'description']
 
-admin.site.register(Suggestion)
-admin.site.register(Idea)
+class IdeaAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields':[('title', 'author'),  'description', ('created_by', 'created_by_date'), 
+                ('updated_by', 'updated_by_date'), 'resources']})
+    ]
+    readonly_fields = ['created_by', 'created_by_date', 'updated_by', 'updated_by_date']
+    inlines = [IdeaImageInline, ]
+
+    list_display = ('title', 'created_by', 'created_by_date', 'updated_by', 'updated_by_date')
+    search_fields = ['title',]
+    
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.created_by = request.user
+            obj.created_by_date = datetime.now()
+        
+        obj.updated_by = request.user
+        obj.save()
+
+class SuggestionAdmin(admin.ModelAdmin):
+    list_display = ['text', 'suggested_by']
+    search_fields = ['text', 'suggested_by']
+
+class ODPUserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user',]
+    fieldsets = [(None, {'fields':['user', 'organization', 'can_notify']}),]
+    readonly_fields = ['user',]
+    
+
+admin.site.register(ODPUserProfile, ODPUserProfileAdmin)
+admin.site.register(Suggestion, SuggestionAdmin)
+admin.site.register(Idea, IdeaAdmin)
 admin.site.register(IdeaImage)
 admin.site.register(Tag)
 admin.site.register(UpdateFrequency)
@@ -66,3 +100,4 @@ admin.site.register(UrlImage, UrlImageAdmin)
 admin.site.register(Resource, ResourceAdmin)
 
 admin.site.register(CommentWithRating)
+

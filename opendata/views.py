@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -16,11 +17,18 @@ from forms import *
 
 def home(request):
     recent = Resource.objects.order_by("-created")[:3]
-    idea = Idea.objects.order_by("?")[:1]
+    idea = Idea.objects.order_by("-created_by_date")[:4]
+    if idea.count() > 0:
+        ct = idea.count() - 1     
+        ran = random.randint(0, ct)
+        return render_to_response('home.html', {'recent': recent, 'idea': idea[ran]},  context_instance=RequestContext(request))
     return render_to_response('home.html', {'recent': recent, 'idea': idea},  context_instance=RequestContext(request))
 
 def results(request):
     resources = Resource.objects.all()
+    if 'filter' in request.GET:
+        f = request.GET['filter']
+        resources = resources.filter(url__url_type__url_type__iexact=f).distinct()
     return render_to_response('results.html', {'results': resources}, context_instance=RequestContext(request))
 
 def thanks(request):
@@ -29,7 +37,10 @@ def thanks(request):
 def tag_results(request, tag_id):
     tag = Tag.objects.get(pk=tag_id)
     tag_resources = Resource.objects.filter(tags=tag)
-
+    if 'filter' in request.GET:
+        f = request.GET['filter']
+        tag_resources = tag_resources.filter(url__url_type__url_type__icontains=f).distinct()
+    
     return render_to_response('results.html', {'results': tag_resources, 'tag': tag}, context_instance=RequestContext(request))
 
 def search_results(request):
@@ -97,12 +108,12 @@ def suggest_content(request):
             }
             
             
-            subject, user_email = 'OpenDataPhilly - Data Submission', (request.user.first_name + " " + request.user.last_name,request.user.email)
+            subject, user_email = 'OpenDataPhilly - Data Submission', (request.user.first_name + " " + request.user.last_name, request.user.email)
             text_content = render_to_string('submit_email.txt', data)
             text_content_copy = render_to_string('submit_email_copy.txt', data)
             mail_admins(subject, text_content)
 
-            msg = EmailMessage(subject, text_content_copy, settings.DEFAULT_FROM_EMAIL, user_email)
+            msg = EmailMessage(subject, text_content_copy, to=user_email)
             msg.send()
             
             sug_object = Submission()

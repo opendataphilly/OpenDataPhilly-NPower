@@ -1,7 +1,7 @@
 import os
 # Django settings for opendata project.
 
-SITE_ROOT = "/test"
+SITE_ROOT = ""
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,7 +10,9 @@ ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
 )
 CONTACT_EMAILS = ['cbrittain@azavea.com',]
-DEFAULT_FROM_EMAIL = ('OpenDataPhilly.org', 'contact@opendataphilly.com')
+DEFAULT_FROM_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.com>'
+EMAIL_SUBJECT_PREFIX = '[OpenDataPhilly.org] '
+SERVER_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.com>'
 
 MANAGERS = ADMINS
 
@@ -98,8 +100,16 @@ SECRET_KEY = 'hj)r1eouk0rc!kxqzn*s+phha$-m3$)!)j=e7q%18x)&9#v7w)'
 
 ### Package settings
 ACCOUNT_ACTIVATION_DAYS = 7
-
+TWITTER_USER = "opendataphilly"
+TWITTER_TIMEOUT = 3600
+THUMBNAIL_EXTENSION = 'png'
 ###
+
+LOGIN_URL = SITE_ROOT + "/accounts/login/"
+
+COMMENTS_APP = 'comments'
+
+AUTH_PROFILE_MODULE = 'opendata.odpuserprofile'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -120,8 +130,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "opendata.context_processors.get_settings",
 )
 
-TWITTER_USER = "opendataphilly"
-TWITTER_TIMEOUT = 3600
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -144,7 +152,6 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates')
 )
 
-COMMENTS_APP = 'comments'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -4,6 +4,8 @@
 {% load sorting_tags %}
 {% load pagination_tags %}
 
+{% block title %} - Search Results{% endblock %}
+
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
@@ -16,15 +18,17 @@
 	</script>
 {% endblock %}
 
+            
 {% block center_container %}
 
 
 
 	{% if tag %}
-  <a href="{{SITE_ROOT}}/ideas" class="resource" id="promotion_header">
-    <span class="icon_idea"></span> See how <span class="tag_name">{{ tag }}</span> data are being used, in the <strong>Idea&nbsp;Gallery</strong>.
-  </a>
-	<div id="results_label">{{ tag }}</div>
+
+        <a href="{{SITE_ROOT}}/ideas" class="resource" id="promotion_header">
+            <span class="icon_idea"></span> See how <span class="tag_name">{{ tag }}</span> data are being used, in the <strong>Idea&nbsp;Gallery</strong>.
+        </a>
+	    <div id="results_label">{{ tag }}</div>
 	{% else %}
 		{% if "search" in current_path and "?" in current_path %}
 			<div id="results_label">Search Results</div>
@@ -79,9 +83,9 @@
 						</script>
 					</div>
 					{% if r.get_first_image %}
-						<img src="{% thumbnail r.get_first_image 80x80 autocrop %}" alt="{{r.get_first_image.title}}">
+						<a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}"><img src="{% thumbnail r.get_first_image 80x80 autocrop %}" alt="{{r.get_first_image.title}}"></a>
 					{% else %}
-						<img src="/static/images/results_no_image.png" alt="No Resource Images">
+						<a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}"><img src="/static/images/results_no_image.png" alt="No Resource Images"></a>
 					{% endif %}
 				</div>
 				<div id="resource_info">
@@ -94,9 +98,9 @@
 		{% endfor %}
     {% else %}
       <li class="resource">
-      <p><strong>Can't find what you're looking for? Try limiting your search terms.</strong></p>
+      <p><strong>Did your search return zero results? Try limiting or expanding your search terms.</strong></p>
 
-      <p><strong>Dont know what to look for. Check out our <a href="{{SITE_ROOT}}/ideas/">Idea Gallery</a>.</strong></p>
+      <p><strong>Not sure what data you are trying to find? Visit our <a href="{{SITE_ROOT}}/ideas/">Idea Gallery</a> for inspiration.</strong></p>
       </li>
     {% endif %}
 

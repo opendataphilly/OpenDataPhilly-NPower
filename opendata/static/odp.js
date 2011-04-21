@@ -2,6 +2,13 @@ var odp = {
     tags: null,
     site_root:"",
 
+    trackEvent: function(category, action, label, value) {       
+        _gaq.push(['_trackEvent', category, action, label, value]);        
+    },
+    trackPageview: function(url) {        
+        _gaq.push(['_trackPageview', url]);        
+    },
+
     setupSearchInput: function () {
         if ($.query.get('qs') && $.query.get('qs') != "") {
             $("#qs")[0].value = decodeURI($.query.get('qs')).replace(/\x2B/g, " ");
@@ -40,10 +47,12 @@ var odp = {
           function() {
             $("#form_container").slideDown();
             $("#nominate_button").html('Cancel');
+            odp.trackEvent('Nominate Data', 'Show Form');
             },
           function() {
             $("#form_container").slideUp();
             $("#nominate_button").html('Add Nomination');
+            odp.trackEvent('Nominate Data', 'Hide Form');
         });
         
         if ($.query.get('nqs') && $.query.get('nqs') != "") {
@@ -75,6 +84,10 @@ var odp = {
             $("#n_search_form").submit();
         });
         
+        $("#nominate_form").submit(function(evt) {
+            odp.trackEvent('Nominate Data', 'Submit Form');
+        });
+
         odp.setupNomFilterLinks();
         odp.setupNomSortLinks();
         
@@ -183,21 +196,21 @@ var odp = {
     getFiltered: function (value) {
         
         if ($.query.get('filter') == value) {
-            var newQuery = "" + $.query.remove('filter');
+            var newQuery = "" + $.query.remove('filter').remove('page');
             window.location = window.location.pathname + newQuery;
         } 
         else {
-            var newQuery = "" + $.query.set('filter', value);
+            var newQuery = "" + $.query.set('filter', value).remove('page');
             window.location = window.location.pathname + newQuery;
         }
     },
     getNomFiltered: function () {
         if ($.query.get('filter') == 'mine') {
-            var newQuery = "" + $.query.remove('filter');
+            var newQuery = "" + $.query.remove('filter').remove('page');
             window.location = window.location.pathname + newQuery;
         } 
         else {
-            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc');
+            var newQuery = "" + $.query.set('filter', 'mine').set('sort', 'suggested_date').set('dir', 'desc').remove('page');
             window.location = window.location.pathname + newQuery;
         }
     },
@@ -208,6 +221,7 @@ var odp = {
                 evt.preventDefault();
                 $('#comment_field_errors')[0].innerHTML = "You must enter both a comment and select a rating."
             }
+            odp.trackEvent('Resource Comment', 'Post')
         });
     },
     
@@ -237,9 +251,6 @@ var odp = {
       });
     },
     
-    setDialogImage: function(source) {        
-    },
-    
     makeDialog: function(div) {
         $(div).each(function () {
             //make the dialog for each thumb
@@ -255,6 +266,7 @@ var odp = {
             //open dialog by clicking the thumb
             $(this).click(function() {
               $dialog.dialog("open");
+              odp.trackEvent('View Image', 'Large Image', 'Image', this.id)
               return false;
            });
            // close the window when clicking the overlay background

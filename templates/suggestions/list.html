@@ -3,6 +3,8 @@
 {% load pagination_tags %}
 {% load sorting_tags %}
 
+{% block title %} - Nominate Data{% endblock %}
+
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
@@ -22,11 +24,11 @@
 		increased availability of open data.
 		<br/><br/>
 		This page is for suggesting general areas where you'd like to see more open data. If you have a specific
-		data set to add, visit the <a href="{{SITE_ROOT}}/opendata/submit/">Submit Data</a> page .</div>
+		data set to add, visit the <a href="{{SITE_ROOT}}/opendata/submit/" >Submit Data</a> page .</div>
 
 
 	<div id="form_container" class="nomination_form">
-		<form action="post/" method="POST">
+		<form id="nominate_form" action="post/" method="POST">
 			{% csrf_token %}
 				{% if form.errors %}
 				<div class="error_message resource">The form has errors. Please try again.</div>
@@ -83,13 +85,13 @@
             <div id="nom_text">{{s}}</div>
             <div id="nom_byline">
               {% if vote %}
-                <a id="nom_unvote" href="unvote/{{s.id}}/">Undo vote</a>
+                <a id="nom_unvote" href="unvote/{{s.id}}/" onclick="odp.trackEvent('Nominate Data', 'Undo Vote', 'Suggestion', '{{s.id}}');return false;">Undo vote</a>
               {% endif %}
               By <strong>{{s.suggested_by}}</strong> on <strong>{{s.suggested_date|date:"SHORT_DATE_FORMAT"}}</strong>
             </div>
             {% if user.is_authenticated %}
 				{% if not vote %}
-				  <a id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</a>
+				  <a id="nom_voted" class="button" onclick="window.location='vote/{{s.id}}'" onclick="odp.trackEvent('Nominate Data', 'Vote', 'Suggestion', '{{s.id}}');return false;"><img src="/static/images/icon_thumb_white.png" />VOTE FOR THIS</a>
 				{% else %}
 				  <div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
 				{% endif %}

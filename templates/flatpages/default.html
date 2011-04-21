@@ -1,6 +1,8 @@
 {% extends "template1.html" %}
 {% load url from future %}
 
+{% block title %} - {{flatpage.title}}{% endblock %}
+
 {% block js_ready %}
 	<script>
 		$(document).ready(function () {
