@@ -24,7 +24,6 @@ def latest_tweets( request ):
     for tweet in tweets:
         tweet.date = datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" )
         t = TwitterCache(text=tweet.AsJsonString())
-        print t.text
         t.save()
     cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
     

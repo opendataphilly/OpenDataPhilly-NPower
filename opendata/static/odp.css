@@ -736,6 +736,12 @@ a.resource:hover {
   margin-left: 4px;
 }
 
+#admin_link {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
 ul.tab_header{
 	height:40px;
 
@@ -1399,7 +1405,29 @@ width: 440px;
 	font-weight: normal;
 	border-right: 1px solid #CCCCCC;
 }
-   
+
+/* -------------------------------------------------
+	
+	Footer
+	
+   ------------------------------------------------- */
+
+ul.flatpage_list {
+    list-style: circle;
+    padding-left: 16px;
+}
+
+ul.flatpage_list li {
+    color: #9C9C9B;
+    font-size: 0.8em;
+    line-height: 1.8em;
+}
+p.title {
+    font-weight:bold;
+    font-size: 1em;
+    color: #7D7D7D;
+}
+
 /* -------------------------------------------------
 	
 	Footer
