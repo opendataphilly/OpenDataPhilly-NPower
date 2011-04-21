@@ -267,7 +267,6 @@ margin-top: -14px;
 	position:relative;
 	float:left;
 	width:300px;
-	padding:9px;
 	margin:10px 4px 4px;
 	border:2px solid white;
 	background: url(/static/images/background_search.gif) repeat-x;
@@ -280,10 +279,9 @@ margin-top: -14px;
 
 #search #search_qs {
     position:relative;	
-    height:36px;
 	background: #F2F2F2 url(/static/images/background_input.png) no-repeat scroll 0 0;
     border: white 1px solid;
-    
+    	margin:9px;
     -moz-border-radius: 3px;
 	border-radius:3px;
 }
@@ -303,12 +301,12 @@ margin-top: -14px;
 
 
 #search input {
-	height: 32px;
 	width: 258px;
 	padding-left: 9px;
-	padding-top: 4px;
+	padding-top: 8px;
+  padding-bottom: 8px;
 	border: none medium;
-  	font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 	background: transparent 0 0;
 	font-size: 1em;
 	font-weight: bold;
@@ -1173,10 +1171,10 @@ ul.tab_header li.tab_button a:hover {
     font-family: Arial,Helvetica,sans-serif;
     font-size: 1em;
     font-weight: bold;
-    height: 26px;
     margin-left: 8px;
     padding-left: 5px;
-    padding-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
     vertical-align: middle;
     border: 1px solid #ccc;
     width: 400px;
@@ -1203,6 +1201,8 @@ ul.tab_header li.tab_button a:hover {
   #form_container .button {
     margin: 15px 0 10px 8px;
     }
+    
+      #form_container .helptext {font-size: .8em; font-weight:bold}
     
     #form_container .error_message {
    background: none repeat scroll 0 0 #FBEAC2;
@@ -1338,10 +1338,9 @@ width: 440px;
 }
 
 #n_search input {
-	height: 32px;
 	width: 258px;
 	padding-left: 9px;
-	padding-top: 4px;
+	padding-top: 10px;
 	border: none medium;
   	font-family: Arial, Helvetica, sans-serif;
 	background: transparent 0 0;

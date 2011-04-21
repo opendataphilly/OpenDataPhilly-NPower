@@ -25,15 +25,22 @@ zoom: 1;
 /* to compensate for shadow filters */
 .tab_body {margin-top: 0; top: -6px;}
 .ui-tabs .ui-tabs-nav {margin-left: 3px; }
-#n_search, #search {padding:14px 5px 5px 14px}
 
 
+input {position:relative}
+
+/*iie7 doesnt like this */
+#search #search_qs {margin: 14px 9px 2px 14px}
 
 /* other fixes */
-#search_qs input,
+/*#search_qs input,
 #n_search_qs input {margin-top: 5px;}
+#n_search, #search {padding:14px 5px 5px 14px}*/
+
 .ui-widget-overlay {filter:alpha(opacity=30)}
 
 #form_container.nomination_form .button {padding-left: 10px; padding-right: 10px}
 
 .tab_image_detail {filter:alpha(opacity=70)}
+
+ .ui-datepicker {border: 1px solid #ccc;}
