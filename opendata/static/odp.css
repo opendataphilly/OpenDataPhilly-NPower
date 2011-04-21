@@ -625,14 +625,7 @@ a.resource:hover {
 
 #results_list .resource {margin-left: 6px;}
 
- .resource p {  
-  padding: 10px 0;
-	line-height: 1.8em;
-	font-size: 0.8em;
-	color: #9C9C9B;
-  }
 
- .resource p strong {color: #888; font-weight: bold}
 
 .resource #url_types {
 	position: absolute;
@@ -909,7 +902,7 @@ ul.tab_header li.tab_button a:hover {
 
 .data_block .url_link 
 {
-	background: url(images/bullet-arrow.png) 0 4px no-repeat;
+	background: url(images/bullet-arrow.png) 0 7px no-repeat;
 	padding-left: 30px;
   margin-right: 10px;
 }
@@ -1432,27 +1425,59 @@ width: 440px;
 	border-right: 1px solid #CCCCCC;
 }
 
+
+
 /* -------------------------------------------------
 	
-	Footer
+	Flatpages
 	
    ------------------------------------------------- */
 
-ul.flatpage_list {
-    list-style: circle;
-    padding-left: 16px;
-}
-
-ul.flatpage_list li {
-    color: #9C9C9B;
-    font-size: 0.8em;
-    line-height: 1.8em;
-}
-p.title {
+.flatpage.resource {
+  padding-top:15px
+} 
+   
+ .flatpage p {  
+  padding: 10px 0;
+	line-height: 1.8em;
+	font-size: 0.8em;
+	color: #8a8a8a;
+  }
+  
+  .flatpage p.title, .flatpage h2 {
     font-weight:bold;
-    font-size: 1em;
-    color: #7D7D7D;
-}
+      font-size: 1.2em;
+      line-height: 1.5em;
+      color: #555;
+      margin:25px 0 5px;
+  }
+
+ .flatpage p strong {color: #888; font-weight: bold}
+
+ .flatpage ul {
+  }
+
+ .flatpage li {
+       list-style: none;
+       background: url(images/bullet-arrow.png) 0 7px no-repeat;
+      color: #9C9C9B;
+      font-size: 0.8em;
+      line-height: 1.4em;
+      padding: 4px 0 4px 28px
+  }
+
+  .flatpage #partners p {
+      margin-left: 200px;
+  }
+  .flatpage #partners .partner_logo {
+    float: left;
+    display:block;
+    width: 200px;
+    clear:left;
+    padding-top: 20px;
+    }
+  
+  
 
 /* -------------------------------------------------
 	
