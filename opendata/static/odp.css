@@ -171,8 +171,9 @@ margin-top: -14px;
 #wrapper {
 	position:relative;
 	width:900px;
-  	margin: 0 auto; 
+  margin: 0 auto; 
 	padding-top:50px;
+  overflow:hidden; /* chrome, safari, ie bottom padding fix */
 }
 
 
