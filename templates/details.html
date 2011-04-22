@@ -60,7 +60,7 @@
         <div class="info_label">Categories</div>
         <div class="info_data">
           {% for tag in resource.tags.all %}
-            <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}">{{tag}}</a>{% if not forloop.last %}, {% endif %}
+            <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}" onclick="odp.trackEvent('Search Link', 'Resource Tag', 'Tag', '{{tag}}');return false;">{{tag}}</a>{% if not forloop.last %}, {% endif %}
           {% endfor %}
         </div>
         <div class="info_label">Usage</div><div class="info_data">{{resource.usage}}</div>
@@ -79,7 +79,7 @@
       {% if resource.get_images.count > 1 %}
 			<ul class="tab_image_pager">
 			  {% for i in resource.get_images %}
-			  <li><a href="#tab_image_{{i.id}}"></a></li>
+			  <li><a href="#tab_image_{{i.id}}" onclick="odp.trackEvent('View Small Image', 'Resource Url Image', 'Image', {{i.id}});return false;"></a></li>
 			  {% endfor %}
       {% endif %}
 			</ul>
@@ -141,7 +141,7 @@
 			<div class="info_label">Contact Phone</div><div class="info_data">{{resource.contact_phone}}</a></div>
 		{% endif %}
 		{% if resource.contact_email %}
-			<div class="info_label">Contact Email</div><div class="info_data"><a href="mailto:{{resource.contact_email}}" target="_blank" onclick="odp.trackEvent('External Link', 'Resource Email', 'Email', '{{resource.contact_email}}');return false;>{{resource.contact_email}}</a></div>
+			<div class="info_label">Contact Email</div><div class="info_data"><a href="mailto:{{resource.contact_email}}" target="_blank" onclick="odp.trackEvent('External Link', 'Resource Email', 'Email', '{{resource.contact_email}}');return false;">{{resource.contact_email}}</a></div>
 		{% endif %}
 		{% if resource.contact_url %}
 			<div class="info_label">Contact Url</div><div class="info_data"><a href="{{resource.contact_url}}" target="_blank" onclick="odp.trackEvent('External Link', 'Resource Contact Url', 'Url', '{{resource.contact_url}}');return false;">{{resource.contact_url}}</a></div>
@@ -257,9 +257,11 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            var rating = {{resource.rating.score|default:"0"}};
-            if (rating != 0) {
-            	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            var rating_test = {{resource.rating.score|default:"0"}};
+            if (rating_test != 0) {
+                var rating = rating_test/{{resource.rating.votes}};
+                rating = Math.floor(rating);
+            	$("input:radio.star_resource")[rating-1].checked = 'checked';
             }
           </script>
         </div>
