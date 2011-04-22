@@ -136,7 +136,10 @@ margin-top: -14px;
    
 
  .ui-datepicker {
-	background-color: #fff;
+	background-color: #FBEAC2;
+  border: 2px solid #fff;
+  font-weight: bold;
+  padding: 5px 10px 5px 5px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius:4px;
@@ -149,6 +152,12 @@ margin-top: -14px;
   text-transform: uppercase;
   font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica
 }
+   
+ .ui-datepicker a:hover {border:none}   
+   
+ .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+  cursor:pointer;
+  } 
    
    /* -------------------------------------------------
 	
@@ -1177,9 +1186,7 @@ ul.tab_header li.tab_button a:hover {
     font-size: 1em;
     font-weight: bold;
     margin-left: 8px;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px;
     vertical-align: middle;
     border: 1px solid #ccc;
     width: 400px;
@@ -1194,7 +1201,8 @@ ul.tab_header li.tab_button a:hover {
       	height:100px;
         font-size: .8em;
         font-family: Arial, Helvetica, sans-serif;
-        padding:0
+        padding:0;
+        width: 400px;
    }
    #form_container table select[multiple=multiple] option {
     padding: 1px 5px;
