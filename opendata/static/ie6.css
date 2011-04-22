@@ -10,3 +10,7 @@ li.resource {width: 100%; padding-top: 30px;}
 
 #search #search_qs {margin: 10px}
 #search #search_qs input {height: 35px;}
+
+#n_search #n_search_qs input {height: 35px;}
+
+#nom_votes {width: 85px}

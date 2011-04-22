@@ -41,12 +41,13 @@
 	</div>
 	<div id="center_header">
       	<div id="n_search">
+        			<div id="n_search_img"></div>
 			<form method="GET" id="n_search_form" >
 				<div id="n_search_qs">
 					<input type="text" id="nqs" value="Search for nominations" />
 				</div>
 			</form>
-			<div id="n_search_img"></div>
+
 			{% if user.is_authenticated %}
 				<a id="nominate_button" class="button">Add a Nomination</a>
 			{% else %}

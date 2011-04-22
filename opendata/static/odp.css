@@ -1368,7 +1368,7 @@ width: 440px;
 	width: 19px;
 	height: 19px;
 	background: url(/static/images/icon_glass.png) 0 0 no-repeat;
-	cursor: pointer;
+	cursor: pointer; z-index:1
 }
 #n_search #n_search_img:hover {
   	background-position: 0 -19px;
