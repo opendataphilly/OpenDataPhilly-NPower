@@ -656,6 +656,11 @@ a.resource:hover {
 	width: 90px;
 	height: 100%;
 }
+
+.resource #rating_image a:hover {
+  border:none
+}
+
 .resource #rating {
 	height:24px;
 }
@@ -1444,6 +1449,10 @@ width: 440px;
 	color: #8a8a8a;
   }
   
+  .flatpage h2:first-child {
+  margin-top: 10px
+  }
+  
   .flatpage p.title, .flatpage h2 {
     font-weight:bold;
       font-size: 1.2em;
@@ -1452,18 +1461,40 @@ width: 440px;
       margin:25px 0 5px;
   }
 
- .flatpage p strong {color: #888; font-weight: bold}
+ .flatpage strong, .flatpage b  {color: #888; font-weight: bold}
+.flatpage em, .flatpage i {font-style: italic;
 
  .flatpage ul {
   }
 
- .flatpage li {
-       list-style: none;
-       background: url(images/bullet-arrow.png) 0 7px no-repeat;
-      color: #9C9C9B;
+ .flatpage ul li {
+    list-style: none;
+    background: url(images/bullet-arrow.png) 0 7px no-repeat;
+    color: #8a8a8a;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    padding: 4px 0 4px 28px
+  }
+  
+  .flatpage ul ul {
+    margin: 5px 0;
+    }
+    
+.flatpage ul li li {
+  list-style: disc;
+  background:none;
+  padding-left: 0;
+  margin-left: 15px;
+  font-size: 1em;
+}
+  
+   .flatpage ol li {
+      list-style: decimal;
+      color: #8a8a8a;
       font-size: 0.8em;
       line-height: 1.4em;
-      padding: 4px 0 4px 28px
+      padding: 4px 0 4px 0;
+      margin-left: 20px;
   }
 
   .flatpage #partners p {
@@ -1476,9 +1507,31 @@ width: 440px;
     clear:left;
     padding-top: 20px;
     }
+  .flatpage #partners .partner_logo:hover {border:none}
   
-  
-
+    .flatpage #partners .partner_logo#logo_technicallyphilly {
+    margin-top: -16px;
+    padding-top: 0;
+    }
+    
+    .flatpage .resource.highlight {
+      background: none repeat scroll 0 0 #FBEAC2;
+      color: #FF935F;
+      font-size: 1.1em;
+      font-weight: bold;
+      line-height: 1.2em;
+      padding: 11px 14px 10px 8px;
+      margin-top: 0;
+      margin-top: 10px;
+    }
+    
+        .flatpage .resource.highlight li {
+        background:none;
+        list-style: disc;
+        margin-left: 25px; 
+        padding-left:0;
+        color: #FF935F;
+        }
 /* -------------------------------------------------
 	
 	Footer
