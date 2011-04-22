@@ -313,7 +313,7 @@ margin-top: -14px;
 
 
 #search input {
-	width: 258px;
+	width: 243px;
 	padding-left: 9px;
 	padding-top: 8px;
   padding-bottom: 8px;
@@ -324,6 +324,7 @@ margin-top: -14px;
 	font-weight: bold;
   color: #EA5412;
 	vertical-align: middle;
+  margin:0; /*chrome likes this */
 }
 
 #account {
