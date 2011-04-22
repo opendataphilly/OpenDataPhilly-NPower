@@ -69,10 +69,10 @@
         {% if resource.get_images %}
 			{% for i in resource.get_images %}
 			<div class="tab_image" id="tab_image_{{i.id}}">
-			  <img src="{% thumbnail i 218x273 autocrop %}" alt="{{i.title}}">
+			  <img src="{% thumbnail i 218x273 %}" alt="{{i.title}}">
 			  <div class="tab_image_detail">{{i.title}} <img src="/static/images/icon_magnify.png"/></div>
 			  <div title="{{i.title}}" class="dialog" id="dialog_{{i.id}}">
-				<img src="{% thumbnail i 626x520 autocrop %}">
+				<img src="{% thumbnail i 626x520 %}">
 			  </div>
 			</div>
 			{% endfor %}
@@ -156,7 +156,7 @@
 		{% if resource.get_images %}
 			{% for i in resource.get_images %}
 			<div class="tab_image" id="tab_image_{{i.id}}">
-			  <img src="{% thumbnail i 218x273 autocrop %}" alt="{{i.title}}">
+			  <img src="{% thumbnail i 218x273 %}" alt="{{i.title}}">
 			  <div class="tab_image_detail">{{i.title}} <img src="/static/images/icon_magnify.png"/></div>
 			  <div title="{{i.title}}" class="dialog" id="dialog_{{i.id}}">
 				<img src="{% thumbnail i 626x520 %}">
@@ -250,6 +250,7 @@
       <div id="social_meta">
         <h3 id="avg_rating">Average Rating</h3>
         <div id="detail_rating">
+          <span>{{resource.rating.votes|default:"0"}} Votes</span>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
@@ -261,7 +262,6 @@
             	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
             }
           </script>
-          <span>{{resource.rating.votes|default:"0"}} Votes</span>
         </div>
       </div>
       <div id="comment_form">
