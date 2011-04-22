@@ -98,9 +98,10 @@
 		{% endfor %}
     {% else %}
       <li class="resource">
-      <p><strong>Did your search return zero results? Try limiting or expanding your search terms.</strong></p>
-
-      <p><strong>Not sure what data you are trying to find? Visit our <a href="{{SITE_ROOT}}/ideas/">Idea Gallery</a> for inspiration.</strong></p>
+        <div class="resource error_message">
+      Did your search return zero results? Try limiting or expanding your search terms.</div>
+      <h2 class="center">Need inspiration? Visit our <a href="{{SITE_ROOT}}/ideas/">Idea Gallery</a></h2>
+        </div>
       </li>
     {% endif %}
 
