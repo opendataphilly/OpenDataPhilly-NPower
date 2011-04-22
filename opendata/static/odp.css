@@ -259,8 +259,9 @@ margin-top: -14px;
 }
 
 
-.home #search {width: 579px; padding:14px;}
-.home #search input {width: 567px;font-size: 1.1em;}
+.home #search {margin: 10px 0 0 0; width: 611px;}
+.home #search input {width: 540px;font-size: 1.1em;}
+.home #search #search_qs  {margin: 12px}
 .home #search #search_img {top: 23px;right: 20px;}
 
 #search {
@@ -1462,7 +1463,7 @@ width: 440px;
   }
 
  .flatpage strong, .flatpage b  {color: #888; font-weight: bold}
-.flatpage em, .flatpage i {font-style: italic;
+.flatpage em, .flatpage i {font-style: italic;}
 
  .flatpage ul {
   }
@@ -1532,6 +1533,7 @@ width: 440px;
         padding-left:0;
         color: #FF935F;
         }
+        
 /* -------------------------------------------------
 	
 	Footer
