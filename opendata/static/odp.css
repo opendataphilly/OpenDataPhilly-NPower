@@ -311,7 +311,7 @@ margin-top: -14px;
 	background: transparent 0 0;
 	font-size: 1em;
 	font-weight: bold;
-  color: #FF935F;
+  color: #EA5412;
 	vertical-align: middle;
 }
 
@@ -1202,12 +1202,14 @@ ul.tab_header li.tab_button a:hover {
    }
    #form_container table input[type=checkbox] {
     margin-left: 8px;
+    float:left;
+    margin: 8px
    }   
   #form_container .button {
     margin: 15px 0 10px 8px;
     }
     
-      #form_container .helptext {font-size: .8em; font-weight:bold}
+      #form_container .helptext {display:block; line-height: 1.3em; margin:5px 0 0 15px;  font-size: .8em; font-weight:bold}
     
     #form_container .error_message {
    background: none repeat scroll 0 0 #FBEAC2;
