@@ -256,9 +256,11 @@
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <input name="star_resource" type="radio" class="star star_resource" disabled="disabled"/>
           <script type="text/javascript">
-            var rating = {{resource.rating.score|default:"0"}};
-            if (rating != 0) {
-            	$("input:radio.star_resource")[{{resource.rating.score}}-1].checked = 'checked';
+            var rating_test = {{resource.rating.score|default:"0"}};
+            if (rating_test != 0) {
+                var rating = rating_test/{{resource.rating.votes}};
+                rating = Math.floor(rating);
+            	$("input:radio.star_resource")[rating-1].checked = 'checked';
             }
           </script>
           <span>{{resource.rating.votes|default:"0"}} Votes</span>
