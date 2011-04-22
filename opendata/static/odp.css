@@ -659,7 +659,7 @@ a.resource:hover {
 }
 
 
-#results_list .resource {margin-left: 6px;}
+#results_list li.resource {margin-left: 6px;}
 
 
 
@@ -1501,7 +1501,7 @@ width: 440px;
       margin:25px 0 5px;
   }
 
- .flatpage strong, .flatpage b  {color: #888; font-weight: bold}
+ .flatpage strong, .flatpage b  {color: #555555; font-weight: bold}
 .flatpage em, .flatpage i {font-style: italic;}
 
  .flatpage ul {

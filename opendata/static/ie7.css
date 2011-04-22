@@ -35,6 +35,8 @@ body {text-align:center}
 
 .idea_item {padding-bottom:0}
 
+#search #search_qs {margin: 10px}
+#search #search_img {top: 18px}
 /*
 #n_search {padding:10px 5px 0 10px}
 #search {padding:9px}

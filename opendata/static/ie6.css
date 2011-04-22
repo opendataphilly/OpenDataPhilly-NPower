@@ -1,9 +1,12 @@
 /* IE6  */
 
-.resource {width: 100%}
+li.resource {width: 100%; padding-top: 30px;}
 
 #left_container ul li {height: 20px;}
 
 .tab_image_detail {width: 100%}
 
 .idea_item #tab_image_container {width: 150px;}
+
+#search #search_qs {margin: 10px}
+#search #search_qs input {height: 35px;}

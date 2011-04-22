@@ -31,6 +31,7 @@ input {position:relative}
 
 /*iie7 doesnt like this */
 #search #search_qs {margin: 14px 9px 2px 14px}
+#search #search_img {top: 22px}
 
 /* other fixes */
 /*#search_qs input,
