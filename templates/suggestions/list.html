@@ -50,7 +50,7 @@
 			{% if user.is_authenticated %}
 				<a id="nominate_button" class="button">Add a Nomination</a>
 			{% else %}
-				<a id="nominate_login" href="{{SITE_ROOT}}/accounts/login/?next={{ request.get_full_path }}">Login to Nominate Data</a>
+				<a id="nominate_login" href="{{SITE_ROOT}}/accounts/login/?next={{ request.get_full_path }}">Login to Add your Nomination</a>
 			{% endif %}
 			<div class="clear"></div>
 		</div>
@@ -95,8 +95,11 @@
 				{% else %}
 				  <div id="nom_voted"><img src="/static/images/icon_thumb.png" />YOU VOTED!</div>
 				{% endif %}
+        {% else %}
+        <a class="nom_vote_login" href="{{SITE_ROOT}}/accounts/login/?next={{ request.get_full_path }}">Login to vote</a>
             {% endif %}
           </div>
+          <div class="clear"></div>
 				</li>
 			{% empty %}
 				<li class="resource">No nominations yet! What would you like to see added to this site?</li>

@@ -1458,8 +1458,15 @@ width: 440px;
   font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	font-size: 0.85em;
 	font-weight: bold;
-
 }
+
+.nom_vote_login {
+font-size: .8em;
+font-weight: bold;
+padding-top: 4px;
+float:left;
+}
+
 #nom_voted.button {
   font-size: 0.75em;
   padding: 6px 9px;  
