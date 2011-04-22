@@ -28,7 +28,7 @@
 
 <div class="resource login-reg" id="form_container">
 {% if form.errors %}
-<p class="resource error_message">The form has errors. Please try again.</p>
+<div class="resource error_message">The form has errors. Please try again.</div>
 {% endif %}
   <form method="post" action="{{SITE_ROOT}}/accounts/register/">
   {% csrf_token %}
