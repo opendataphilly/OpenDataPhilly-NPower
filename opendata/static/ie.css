@@ -34,9 +34,10 @@ input {position:relative}
 #search #search_img {top: 22px}
 
 /* other fixes */
-/*#search_qs input,
-#n_search_qs input {margin-top: 5px;}
-#n_search, #search {padding:14px 5px 5px 14px}*/
+#n_search {padding: 6px 8px 0 8px}
+#n_search #n_search_img {top:24px}
+#n_search_qs {margin-top: 8px; margin-bottom: 3px; margin-left: 5px;}
+.button#nominate_button {margin-top: 6px;}
 
 .ui-widget-overlay {filter:alpha(opacity=30)}
 

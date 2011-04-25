@@ -104,6 +104,8 @@ margin-top: -14px;
 }
 .ui-dialog .ui-dialog-content {
   padding: 10px;
+  text-align: center;
+  background-color: #fff;
 }
 .ui-dialog {
   padding: 0;
@@ -120,6 +122,7 @@ margin-top: -14px;
 .ui-dialog .ui-dialog-titlebar {
   padding-left:10px;
   font-weight: bold;
+  border-bottom: 1px solid #ddd;
   }
 .ui-dialog .ui-dialog-title {line-height: 1.2em;}
    
@@ -455,7 +458,7 @@ margin-top: -14px;
   }
   
   .home ul {
-    color: #9d9d9d;
+    color: #888;
     line-height: 1.35em;
     font-size: .8em;
     margin: 10px 15px 0 15px; 
@@ -768,7 +771,7 @@ a.resource:hover {
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
 }
-.page:hover {border: 2px white solid; background: #888; color: #fff}
+.page:hover {border: 2px white solid; background: #8a8a8a; color: #fff}
 
 .current {
 	background-color: #616161;
@@ -860,7 +863,7 @@ ul.tab_header li.tab_button a:hover {
 
 #tab_data {
   	float:left;
-	width:58%;
+    width: 340px;
 }
 
 .info_label {
@@ -875,7 +878,7 @@ ul.tab_header li.tab_button a:hover {
 	color: #9C9B9B;
 }
 .info_data a {
-	color: #EAA77C;
+	color: #EC974F;
 }
 
 #tab_image_container {
@@ -1002,6 +1005,7 @@ ul.tab_header li.tab_button a:hover {
 }
 #detail_rating span {
 	padding-left:6px;
+  float:right;
 }
 #comment_header {
 	font-size: 1.2em;
@@ -1014,6 +1018,9 @@ ul.tab_header li.tab_button a:hover {
 	border-bottom: dotted 1px #bbb; 
   color: #AAAAAA;
   font-weight: bold;
+}
+#comment_form #comment_field_errors {
+color: #333; margin-bottom: 5px;
 }
 .comment_field {float:right}
 .comment_field textarea {
@@ -1069,7 +1076,7 @@ ul.tab_header li.tab_button a:hover {
 #comment_list .comment_body {
 	padding-bottom:10px;	
 	font-size: 0.8em;
-  color: #888;
+  color: #8a8a8a;
 }
 #comment_list .comment_body a {
 	color: #EAA77C; 
@@ -1090,7 +1097,8 @@ ul.tab_header li.tab_button a:hover {
 }
 
 #idea_header #header_description {
-    padding-top: 13px;
+  margin-bottom: 30px;
+  padding-top: 13px;
 	line-height: 1.4em;
 	font-size: 1.1em;
 	font-weight: bold;
@@ -1103,7 +1111,7 @@ ul.tab_header li.tab_button a:hover {
 
 .idea_item {
 	padding: 24px;
-    margin-top: 30px;
+    margin-bottom: 30px;
 	border: 2px white solid;
 	background-color: #F5F5F5;
 		
@@ -1134,13 +1142,13 @@ ul.tab_header li.tab_button a:hover {
   padding-top: 20px;
 	line-height: 1.8em;
 	font-size: 0.8em;
-	color: #9C9C9B;
+	color: #8a8a8a;
   margin-bottom: 20px;
 }
 .byline {
 	font-size: 0.9em;
 	font-weight: bold;
-	color: #9C9C9B;
+	color: #8a8a8a;
   margin-top: 7px;
 }
 .byline strong {	color: #575656;}
@@ -1181,7 +1189,7 @@ ul.tab_header li.tab_button a:hover {
 	float:right;
 	font-size: 0.9em;
 	font-weight: bold;
-	color: #9C9C9B;
+	color: #8a8a8a;
 }
 
 .idea_date strong {
@@ -1285,7 +1293,7 @@ ul.tab_header li.tab_button a:hover {
   }
  #form_container.login-reg table select, #form_container.login-reg table input[type=password], #form_container.login-reg table input[type=text]  {
       width: 200px;
-      height: 28px;
+      padding: 9px;
     }
    
    
@@ -1365,7 +1373,7 @@ width: 440px;
 	width: 19px;
 	height: 19px;
 	background: url(/static/images/icon_glass.png) 0 0 no-repeat;
-	cursor: pointer;
+	cursor: pointer; z-index:1
 }
 #n_search #n_search_img:hover {
   	background-position: 0 -19px;
@@ -1441,7 +1449,7 @@ width: 440px;
 }
 #nom_byline {
   float:right;
-  color: #9C9C9B;
+  color: #8a8a8a;
   font-size: 0.85em;
 	font-weight: bold;
   margin-top: 4px;
@@ -1455,8 +1463,15 @@ width: 440px;
   font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
 	font-size: 0.85em;
 	font-weight: bold;
-
 }
+
+.nom_vote_login {
+font-size: .8em;
+font-weight: bold;
+padding-top: 4px;
+float:left;
+}
+
 #nom_voted.button {
   font-size: 0.75em;
   padding: 6px 9px;  
