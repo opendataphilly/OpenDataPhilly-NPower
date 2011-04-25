@@ -285,7 +285,7 @@ var odp = {
             loc = loc.split("/");
             for(var i = 0; i < loc.length; i++) {
                 var val = loc.pop();
-                if (val != "" && val.indexOf("=") == -1) {
+                if (val != "" && !odp.isNumber(val) && val.indexOf("=") == -1) {
                     var test = $("#" + val);
                     if (test.length == 1) {
                         test.addClass('active_page');
@@ -294,7 +294,12 @@ var odp = {
                 }
             }            
         }
+    },
+
+    isNumber: function(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
     }
+
 }
       
 

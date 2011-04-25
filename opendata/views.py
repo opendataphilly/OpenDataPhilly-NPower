@@ -3,7 +3,7 @@ from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
-from django.core.mail import send_mail, mail_admins, EmailMessage
+from django.core.mail import send_mail, mail_managers, EmailMessage
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.db.models import Q
@@ -82,7 +82,8 @@ def suggest_content(request):
             for f in request.POST.getlist("formats"):
                 formats = formats + " " + DataType.objects.get(pk=f).data_type
             for u in request.POST.getlist("update_frequency"):
-                updates = updates + " " + UpdateFrequency.objects.get(pk=u).update_frequency
+                if u:
+                    updates = updates + " " + UpdateFrequency.objects.get(pk=u).update_frequency
                 
             data = {
                 "submitter": request.user.username,
@@ -111,7 +112,7 @@ def suggest_content(request):
             subject, user_email = 'OpenDataPhilly - Data Submission', (request.user.first_name + " " + request.user.last_name, request.user.email)
             text_content = render_to_string('submit_email.txt', data)
             text_content_copy = render_to_string('submit_email_copy.txt', data)
-            mail_admins(subject, text_content)
+            mail_managers(subject, text_content)
 
             msg = EmailMessage(subject, text_content_copy, to=user_email)
             msg.send()

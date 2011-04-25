@@ -80,12 +80,17 @@ class SuggestionAdmin(admin.ModelAdmin):
     list_display = ['text', 'suggested_by']
     search_fields = ['text', 'suggested_by']
 
+class SubmissionAdmin(admin.ModelAdmin):    
+    list_display = ['user', 'sent_date']
+    search_fields = ['email_text', 'user']
+    readonly_fields = ['user',]
+
 class ODPUserProfileAdmin(admin.ModelAdmin):
     list_display = ['user',]
     fieldsets = [(None, {'fields':['user', 'organization', 'can_notify']}),]
     readonly_fields = ['user',]
     
-
+admin.site.register(Submission, SubmissionAdmin)
 admin.site.register(ODPUserProfile, ODPUserProfileAdmin)
 admin.site.register(Suggestion, SuggestionAdmin)
 admin.site.register(Idea, IdeaAdmin)

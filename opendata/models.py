@@ -84,7 +84,7 @@ class Resource(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     metadata_contact = models.CharField(max_length=255, blank=True)
     metadata_notes = models.TextField(blank=True)
-    coord_sys = models.ManyToManyField(CoordSystem, blank=True, null=True, verbose_name="Coordinate system")
+    coord_sys = models.ManyToManyField(CoordSystem, blank=True, null=True,  verbose_name="Coordinate system")
         
     rating = RatingField(range=5, can_change_vote=True)
     

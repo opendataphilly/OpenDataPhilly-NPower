@@ -1,1 +1,17 @@
-404 - File not found
+{% extends "template1.html" %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+
+		});
+	</script>
+{% endblock %}
+
+{% block center_container %}
+<div id="title">404 - File not found</div>
+<div id="description"></div>
+
+{% endblock %}

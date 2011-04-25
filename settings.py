@@ -8,13 +8,16 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
      ('Carissa Brittain', 'cbrittain@azavea.com'),
+     ('OpenDataPhilly Admins', 'admin@opendataphilly.org'),
 )
 CONTACT_EMAILS = ['cbrittain@azavea.com',]
-DEFAULT_FROM_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.com>'
+DEFAULT_FROM_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.org>'
 EMAIL_SUBJECT_PREFIX = '[OpenDataPhilly.org] '
-SERVER_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.com>'
+SERVER_EMAIL = 'OpenDataPhilly Team <info@opendataphilly.org>'
 
-MANAGERS = ADMINS
+MANAGERS = (
+     ('OpenDataPhilly Team', 'info@opendataphilly.org'),
+)
 
 DATABASES = {
     'default': {

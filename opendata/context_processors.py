@@ -1,4 +1,6 @@
 from datetime import datetime
+import pytz
+from pytz import timezone
 from django.conf import settings
 from django.core.cache import cache
 from models import TwitterCache
@@ -8,6 +10,9 @@ import simplejson as json
 def latest_tweets( request ):
     tweets = cache.get( 'tweets' )
 
+    utc = pytz.utc
+    local = timezone('US/Eastern')
+
     if tweets:
         return {"tweets": tweets}
     
@@ -16,13 +21,13 @@ def latest_tweets( request ):
         tweet_cache = []
         for t in TwitterCache.objects.all():
             tc = json.JSONDecoder().decode(t.text)
-            tc['date'] = datetime.strptime( tc['created_at'], "%a %b %d %H:%M:%S +0000 %Y" )
+            tc['date'] = datetime.strptime( tc['created_at'], "%a %b %d %H:%M:%S +0000 %Y" ).replace(tzinfo=utc).astimezone(local)
             tweet_cache.append(tc)
         return {'tweets': tweet_cache}
         
     TwitterCache.objects.all().delete()
     for tweet in tweets:
-        tweet.date = datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" )
+        tweet.date = datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" ).replace(tzinfo=utc).astimezone(local)
         t = TwitterCache(text=tweet.AsJsonString())
         t.save()
     cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )

@@ -12,10 +12,10 @@ class SubmissionForm(forms.Form):
     release_date = forms.DateField()
     area_of_interest = forms.CharField(max_length=255, label="Geographic area")
     
-    update_frequency = forms.ModelChoiceField(queryset=UpdateFrequency.objects.all())
-    coord_system = forms.ModelMultipleChoiceField(queryset=CoordSystem.objects.all(), label="Coordinate system")
-    types = forms.ModelMultipleChoiceField(queryset=UrlType.objects.all(), label="Data types")
-    formats = forms.ModelMultipleChoiceField(queryset=DataType.objects.all(), label="Data formats")
+    update_frequency = forms.ModelChoiceField(required=False, queryset=UpdateFrequency.objects.all())
+    coord_system = forms.ModelMultipleChoiceField(required=False, queryset=CoordSystem.objects.all(), label="Coordinate system")
+    types = forms.ModelMultipleChoiceField(required=False, queryset=UrlType.objects.all(), label="Data types")
+    formats = forms.ModelMultipleChoiceField(required=False, queryset=DataType.objects.all(), label="Data formats")
     
     usage_limitations = forms.CharField(max_length=1000, widget=forms.Textarea, label="Are there usage limitations?")
     collection_process = forms.CharField(max_length=1000, widget=forms.Textarea, label="How was the data collected?")
@@ -23,5 +23,5 @@ class SubmissionForm(forms.Form):
     intended_audience = forms.CharField(max_length=1000, widget=forms.Textarea, label="Who is the intended audience?")
     why = forms.CharField(max_length=1000, widget=forms.Textarea, label="Why should the data be included in this site?")
     certified = forms.BooleanField(label="", help_text="I am the copyright holder or have permission to release this data")
-    terms = forms.BooleanField(label="", help_text="I have read and agree with the site's terms of use")
+    terms = forms.BooleanField(label="", help_text="I have read and agree with the site's <a href='/terms/' target='_blank'>terms of use</a>")
     
