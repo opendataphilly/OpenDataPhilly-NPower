@@ -102,7 +102,7 @@ class Resource(models.Model):
     
     def get_grouped_urls(self):
         urls = {}
-        for utype in UrlType.objects.all():            
+        for utype in UrlType.objects.all():
             urls[utype.url_type] = self.url_set.filter(url_type=utype)            
         return urls
     
@@ -122,9 +122,9 @@ class Resource(models.Model):
         return '%s' % self.name
     
 class Url(models.Model):
-    url = models.CharField(max_length=255, blank=True)
-    url_label = models.CharField(max_length=255, blank=True)
-    url_type = models.ForeignKey(UrlType, null=True, blank=True)
+    url = models.CharField(max_length=255)
+    url_label = models.CharField(max_length=255)
+    url_type = models.ForeignKey(UrlType)
     resource = models.ForeignKey(Resource)
 
     def __unicode__(self):

@@ -52,7 +52,7 @@
 					<ul class="tab_image_pager">
           {% if idea.ideaimage_set.count > 1 %}
 					  {% for i in idea.ideaimage_set.all %}
-					  <li><a href="#tab_image_{{i.id}}" onclick="odp.trackEvent('View Small Image', 'Idea Image', 'Image', {{i.id}});return false;"></a></li>
+					  <li><a href="#tab_image_{{i.id}}" onclick="odp.trackEvent('View Small Image', 'Idea Image', 'Image', {{i.id}})"></a></li>
 					  {% endfor %}
           {% endif %}
 					</ul>
@@ -64,13 +64,13 @@
 					{% endif %}
       			</div>
 
-				<div class="idea_description">{{idea.description|truncatewords:100}}</div>
+				<div class="idea_description">{{idea.description|safe|truncatewords:100}}</div>
 
 
          <h4 class="idea_resources_title">Data used:</h4>
           <ul id="idea_resources">
             {% for resource in idea.resources.all %}
-              <li class="resource_item"><a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}" onclick="odp.trackEvent('Resource Link', 'Idea List', 'Idea', {{idea.id}});return false;">{{resource}}</a></li>
+              <li class="resource_item"><a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}" onclick="odp.trackEvent('Resource Link', 'Idea List', 'Idea', {{idea.id}})">{{resource}}</a></li>
             {% endfor %}
           </ul>
 

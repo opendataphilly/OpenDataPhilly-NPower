@@ -90,7 +90,7 @@
 				</div>
 				<div id="resource_info">
 					<div id="resource_title"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}">{{r}}</a></div>
-					<div id="resource_desc">{{r.short_description|default:"No description available."}}</div>
+					<div id="resource_desc">{{r.short_description|safe|default:"No description available."}}</div>
 					<div id="resource_button"><a class="button" href="{{SITE_ROOT}}/opendata/resource/{{r.id}}">VIEW DETAILS</a></div>
 				</div>
         <div class="clear"></div>
