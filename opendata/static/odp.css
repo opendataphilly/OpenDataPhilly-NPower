@@ -104,6 +104,8 @@ margin-top: -14px;
 }
 .ui-dialog .ui-dialog-content {
   padding: 10px;
+  text-align: center;
+  background-color: #fff;
 }
 .ui-dialog {
   padding: 0;
@@ -1016,6 +1018,9 @@ ul.tab_header li.tab_button a:hover {
 	border-bottom: dotted 1px #bbb; 
   color: #AAAAAA;
   font-weight: bold;
+}
+#comment_form #comment_field_errors {
+color: #333; margin-bottom: 5px;
 }
 .comment_field {float:right}
 .comment_field textarea {
