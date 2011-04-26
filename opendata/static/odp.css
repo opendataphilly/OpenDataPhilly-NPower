@@ -417,8 +417,9 @@ margin-top: -14px;
     float:right;
     color: #8c8c8c;
     font-size: .8em;
-    width: 390px;
+    width: 350px;
     text-align:right;
+    line-height: 1.4em;
   }
 
   #home_idea_label a {
@@ -429,7 +430,7 @@ margin-top: -14px;
   #home_twitter {
     float:left;
     width: 285px;
-    margin-top: 40px
+    margin-top: 27px
   }
   
   #home_additions {
