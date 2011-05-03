@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 from registration.views import register
 
+from opendata.feeds import ResourcesFeed, TagFeed
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -13,13 +14,15 @@ urlpatterns = patterns('',
     (r'^$', 'opendata.views.home'),
     (r'^opendata/$', 'opendata.views.results'),
     
-    (r'^opendata/tag/(?P<tag_id>.*)/$', 'opendata.views.tag_results'),
+    (r'^opendata/tag/(?P<tag_id>\d+)/$', 'opendata.views.tag_results'),
     (r'^opendata/search/$', 'opendata.views.search_results'),
-    (r'^opendata/resource/(?P<resource_id>.*)/$', 'opendata.views.resource_details'),
+    (r'^opendata/resource/(?P<resource_id>\d+)/$', 'opendata.views.resource_details'),
     (r'^ideas/$', 'opendata.views.idea_results'),
-    (r'^idea/(?P<idea_id>.*)/$', 'opendata.views.idea_results'),
+    (r'^idea/(?P<idea_id>\d+)/$', 'opendata.views.idea_results'),
     (r'^opendata/submit/$', 'opendata.views.suggest_content'),
     (r'^thanks/$', 'opendata.views.thanks'),    
+    (r'^feeds/resources/$', ResourcesFeed()),
+    (r'^feeds/tag/(?P<tag_id>\d+)/$', TagFeed()),
     
     (r'^tags/$', 'opendata.views.get_tag_list'),
     
