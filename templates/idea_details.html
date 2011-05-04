@@ -7,9 +7,9 @@
     <meta name="Description" content="{{idea.description|striptags|truncatewords:25}}" />
     <link rel="canonical" href="http://www.opendataphilly.org{{SITE_ROOT}}{{idea.get_absolute_url}}" />
     {% if idea.ideaimage_set.count > 0 %}
-    <link rel="image_src" href="{% thumbnail idea.ideaimage_set.0 300x300 autocrop %}"/>
+    <link rel="image_src" href="http://www.opendataphilly.org{{SITE_ROOT}}{% thumbnail idea.ideaimage_set.all.0 300x300 autocrop %}"/>
     {% else %}
-    <link rel="image_src" href="/static/images/logo.png"/>
+    <link rel="image_src" href="http://www.opendataphilly.org{{SITE_ROOT}}/static/images/logo.png"/>
     {% endif %}
 
 {% endblock %}

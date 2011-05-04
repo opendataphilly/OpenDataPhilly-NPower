@@ -8,9 +8,9 @@
     <meta name="Description" content="{{resource.short_description}}" />
     <link rel="canonical" href="http://www.opendataphilly.org{{SITE_ROOT}}{{resource.get_absolute_url}}" />
     {% if resource.get_images %}
-    <link rel="image_src" href="{% thumbnail i 218x273 %}"/>
+    <link rel="image_src" href="http://www.opendataphilly.org{{SITE_ROOT}}{% thumbnail resource.get_images.0 218x273 %}"/>
     {% else %}
-    <link rel="image_src" href="/static/images/logo.png"/>
+    <link rel="image_src" href="http://www.opendataphilly.org{{SITE_ROOT}}/static/images/logo.png"/>
     {% endif %}
 
 {% endblock %}
