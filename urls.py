@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.views.generic.simple import direct_to_template
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.conf import settings
 from registration.views import register
@@ -45,6 +46,8 @@ urlpatterns = patterns('',
     (r'^feeds/ideas/$', IdeasFeed()),
     (r'^feeds/tag/(?P<tag_id>\d+)/$', TagFeed()),
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+    (r'^robots\.txt$', direct_to_template, {'template': 'robots.txt'}),
+    
 
     # Uncomment the next line to enable the admin:
     url(r'^_admin_/', include(admin.site.urls)),
