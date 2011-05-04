@@ -54,12 +54,12 @@ def search_results(request):
     
     return render_to_response('results.html', {'results': search_resources}, context_instance=RequestContext(request))
 
-def resource_details(request, resource_id):
+def resource_details(request, resource_id, slug=""):
     resource = Resource.objects.get(pk=resource_id)
     return render_to_response('details.html', {'resource': resource}, context_instance=RequestContext(request)) 
     
 
-def idea_results(request, idea_id=None):
+def idea_results(request, idea_id=None, slug=""):
     if idea_id:
         idea = Idea.objects.get(pk=idea_id)
         return render_to_response('idea_details.html', {'idea': idea}, context_instance=RequestContext(request)) 

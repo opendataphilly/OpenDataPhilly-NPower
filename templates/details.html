@@ -4,7 +4,15 @@
 {% load comments %}
 
 {% block meta %}
-    <meta name="Keywords" content="{{resource.tags.all|join:','}}" />
+    <meta name="Keywords" content="{{resource.tags.all|join:', '}}" />
+    <meta name="Description" content="{{resource.short_description}}" />
+    <link rel="canonical" href="http://www.opendataphilly.org{{SITE_ROOT}}{{resource.get_absolute_url}}" />
+    {% if resource.get_images %}
+    <link rel="image_src" href="{% thumbnail i 218x273 %}"/>
+    {% else %}
+    <link rel="image_src" href="/static/images/logo.png"/>
+    {% endif %}
+
 {% endblock %}
 
 {% block title %} - {{resource}}{% endblock %}
@@ -60,7 +68,7 @@
         <div class="info_label">Categories</div>
         <div class="info_data">
           {% for tag in resource.tags.all %}
-            <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}" onclick="odp.trackEvent('Search Link', 'Resource Tag', 'Tag', '{{tag}}')">{{tag}}</a>{% if not forloop.last %}, {% endif %}
+            <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}/?sort=name&dir=asc" onclick="odp.trackEvent('Search Link', 'Resource Tag', 'Tag', '{{tag}}')">{{tag}}</a>{% if not forloop.last %}, {% endif %}
           {% endfor %}
         </div>
         <div class="info_label">Description</div><div class="info_data">{{resource.description|safe}}</div>

@@ -3,6 +3,7 @@ from operator import attrgetter
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 from djangoratings.fields import RatingField
@@ -118,6 +119,10 @@ class Resource(models.Model):
             return None
         return images
     
+    def get_absolute_url(self):
+        slug = slugify(self.name)
+        return "/opendata/resource/%i/%s" % (self.id, slug)
+
     def __unicode__(self):
         return '%s' % self.name
     
@@ -167,6 +172,10 @@ class Idea(models.Model):
         if home.count() == 0:
             return images[0]
         return home[0]
+    
+    def get_absolute_url(self):
+        slug = slugify(self.title)
+        return "/idea/%i/%s" % (self.id, slug)
 
     def __unicode__(self):
         return '%s' % (self.title)

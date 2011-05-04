@@ -63,7 +63,7 @@
   <h4 class="idea_resources_title">Data used:</h4>
   	<ul id="idea_resources">
 		{% for resource in idea.resources.all %}
-			<li class="resource_item"><a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}"  onclick="odp.trackEvent('Resource Link', 'Idea Detail', 'Idea', {{idea.id}})">{{resource}}</a></li>
+			<li class="resource_item"><a href="{{SITE_ROOT}}{{resource.get_absolute_url}}"  onclick="odp.trackEvent('Resource Link', 'Idea Detail', 'Idea', {{idea.id}})">{{resource}}</a></li>
 		{% endfor %}
 	</ul>
   
