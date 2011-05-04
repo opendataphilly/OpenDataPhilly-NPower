@@ -13,9 +13,9 @@
 
 {% block center_container %}
 
-<a class="resource" id="home_idea" href="{{SITE_ROOT}}/idea/{{idea.id}}" style="background: #F5F5F5 url(/media/{{idea.get_home_page_image.image|default:'/static/images/detail_no_image.gif'}}) center no-repeat;"></a>
+<a class="resource" id="home_idea" href="{{SITE_ROOT}}{{idea.get_absolute_url}}" style="background: #F5F5F5 url(/media/{{idea.get_home_page_image.image|default:'/static/images/detail_no_image.gif'}}) center no-repeat;"></a>
 <div id="home_idea_label">
-  <a href="{{SITE_ROOT}}/idea/{{idea.id}}">{{idea.title}}</a> by {{idea.author}}
+  <a href="{{SITE_ROOT}}{{idea.get_absolute_url}}">{{idea.title}}</a> by {{idea.author}}
 </div>
 <a id="home_idea_callout" href="{{SITE_ROOT}}/ideas/">Need Inspiration? Visit the Idea Gallery</a>
 
@@ -45,7 +45,7 @@
     {% for resource in recent %}
 		<li>
 		  <p class="date">{{resource.created|date:"l, F d, Y"}}</p>
-		  <a href="{{SITE_ROOT}}/opendata/resource/{{resource.id}}" class="data">{{resource}}</a>
+		  <a href="{{SITE_ROOT}}{{resource.get_absolute_url}}" class="data">{{resource}}</a>
 		  <div class="home_rating">
 		  	  <input name="star_r_{{resource.id}}" type="radio" class="star star_r_{{resource.id}}" disabled="disabled"/>
 			  <input name="star_r_{{resource.id}}" type="radio" class="star star_r_{{resource.id}}" disabled="disabled"/>
