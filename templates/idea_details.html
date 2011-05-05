@@ -31,16 +31,14 @@
 {% block center_container %}
 
 <div id="idea_header">
-  <div id="header_title">Idea Gallery</div>
-  <div id="header_description">
-
+  <h1 id="header_title">Idea Gallery</h1>
+  <h2 id="header_description">
       <a href="{{SITE_ROOT}}/ideas">&laquo; Return to list</a>
-
-  </div>
+  </h2>
 </div>
   
 <div class="idea_item">
-	<div class="idea_title"><a href="{{SITE_ROOT}}/idea/{{idea.id}}/">{{idea}}</a></div>
+	<h3 class="idea_title"><a href="{{SITE_ROOT}}/idea/{{idea.id}}/">{{idea}}</a></h3>
   <div class="byline">By <strong>{{idea.author}}</strong></div>
 	<div class="tab_container" id="tab_image_container">
 		{% if idea.ideaimage_set.count > 0 %}

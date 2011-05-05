@@ -17,14 +17,14 @@
 {% endblock %}
 
 {% block center_container %}
-	<div id="title">Nominate Data</div>
-	<div id="description">Do you want to see data on particular topic? We realize that OpenDataPhilly does not contain links to
+	<h1 id="title">Nominate Data</h1>
+	<h2 id="description">Do you want to see data on particular topic? We realize that OpenDataPhilly does not contain links to
 		every available data resource - often because open data might not be available. Add a nomination for a
 		type of data and vote on other nominations. Together, let's build a list of areas where we'd like to see
 		increased availability of open data.
 		<br/><br/>
 		This page is for suggesting general areas where you'd like to see more open data. If you have a specific
-		data set to add, visit the <a href="{{SITE_ROOT}}/opendata/submit/" >Submit Data</a> page .</div>
+		data set to add, visit the <a href="{{SITE_ROOT}}/opendata/submit/" >Submit Data</a> page .</h2>
 
 
 	<div id="form_container" class="nomination_form">
@@ -83,7 +83,7 @@
 				<li class="resource">
           <div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes}}</div><div id="nom_votes_text">vote{% if s.rating_votes != 1 %}s{% endif %}</div></div>
           <div id="resource_info">
-            <div id="nom_text">{{s}}</div>
+            <h3 id="nom_text">{{s}}</h3>
             <div id="nom_byline">
               {% if vote %}
                 <a id="nom_unvote" href="unvote/{{s.id}}/" onclick="odp.trackEvent('Nominate Data', 'Undo Vote', 'Suggestion', '{{s.id}}')">Undo vote</a>

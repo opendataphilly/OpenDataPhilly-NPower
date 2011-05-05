@@ -721,6 +721,7 @@ a.resource:hover {
 	font-weight: bold;
 	padding-bottom: 5px;
   font-size: 1.1em;
+  margin:0;
 }
 .resource #resource_title a {
   color: #646464;
@@ -733,6 +734,7 @@ a.resource:hover {
   	line-height: 1.4em;
 	font-weight: bold;
 	color: #9C9B9B;	
+  margin: 0;
 }
 
 .resource #resource_button a {
@@ -1130,12 +1132,12 @@ color: #333; margin-bottom: 5px;
 
 
 .idea_title {
-
+	font-size: 1.4em;
 }
 
 
 .idea_title a {
-	font-size: 1.4em;
+
 	font-weight: bold;
 	color: #575656;
 }
