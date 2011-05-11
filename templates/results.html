@@ -28,17 +28,17 @@
         <a href="{{SITE_ROOT}}/ideas" class="resource" id="promotion_header">
             <span class="icon_idea"></span> See how data sets are being used, in the <strong>Idea&nbsp;Gallery</strong>.
         </a>
-	    <div id="results_label">{{ tag }}</div>
+	    <h1 id="results_label">{{ tag }}</h1>
 	{% else %}
 		{% if "search" in current_path and "?" in current_path %}
-			<div id="results_label">Search Results</div>
+			<h1 id="results_label">Search Results</h1>
 		{% else %}
-			<div id="results_label">All Records</div>
+			<h1 id="results_label">All Records</h1>
 		{% endif %}
 	{% endif %}
 	<div id="results_header">
 		<div id="results_info">
-			<div id="count">{{results.count}} RESULTS</div>
+			<h2 id="count">{{results.count}} RESULTS</h2>
 			<div id="filter">
 				<ul>
 					<li id="filter_application"><a href="javascript:void()" onClick="odp.getFiltered('application');return false;" class="url_image" ></a></li>
@@ -89,8 +89,8 @@
 					{% endif %}
 				</div>
 				<div id="resource_info">
-					<div id="resource_title"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}/{{r.name|slugify}}">{{r}}</a></div>
-					<div id="resource_desc">{{r.short_description|safe|default:"No description available."}}</div>
+					<h3 id="resource_title"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}/{{r.name|slugify}}">{{r}}</a></h3>
+					<h4 id="resource_desc">{{r.short_description|safe|default:"No description available."}}</h4>
 					<div id="resource_button"><a class="button" href="{{SITE_ROOT}}/opendata/resource/{{r.id}}/{{r.name|slugify}}">VIEW DETAILS</a></div>
 				</div>
         <div class="clear"></div>

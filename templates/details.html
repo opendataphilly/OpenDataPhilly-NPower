@@ -32,8 +32,8 @@
 {% endblock %}
 
 {% block center_container %}
-	<div id="title">{{resource}}</div>
-	<div id="description">{{resource.short_description|safe}}</div>
+	<h1 id="title">{{resource}}</h1>
+	<h2 id="description">{{resource.short_description|safe}}</h2>
 
   <div class="tab_container" id="content_resource">
     {% if perms.opendata.change_resource %}
