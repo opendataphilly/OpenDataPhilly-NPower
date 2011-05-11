@@ -174,8 +174,11 @@ var odp = {
     },
     
     setupNomFilterLinks: function () {
-        var filter_mine = $("#filter_mine > a").addClass("url_image")[0];
-        filter_mine.innerHTML = '';
+        var filter_mine = $("#filter_mine > a")
+        if (filter_mine) {
+            filter_mine.addClass("url_image");
+            filter_mine.innerHTML = '';
+        }
         
         if ($.query.get('filter')) {
             st = $.query.get('filter');

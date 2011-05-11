@@ -59,12 +59,14 @@
 	<div id="results_header">
 		<div id="results_info">
 			<div id="count">{{results.count}} RESULTS</div>
+            {% if user.is_authenticated %}
 			<div id="filter">
 				<ul>
 					<li id="filter_mine" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered();return false;" class="url_image"></a></li>
 					<li class="info_label">FILTER:</li>
 				</ul>
 			</div>
+            {% endif %}
 			<div id="sort" class="sort_nomination">
 				<ul>
 					<li id="sort_rating_score">{% anchor rating_score Votes %}</li>

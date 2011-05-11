@@ -12,13 +12,16 @@ def list_all(request):
         qs = request.GET['nqs'].replace("+", " ")
         suggestions = suggestions.filter(text__icontains=qs)
     if 'filter' in request.GET:
-        user = User.objects.get(username=request.user)
-        for s in suggestions:
-            voted = s.rating.get_rating_for_user(user=user, ip_address=request.META['REMOTE_ADDR'])
-            print s.id, voted
-            if not voted:
-                suggestions = suggestions.exclude(pk=s.id)
-    
+        try:
+            user = User.objects.get(username=request.user)
+            for s in suggestions:
+                voted = s.rating.get_rating_for_user(user=user, ip_address=request.META['REMOTE_ADDR'])
+                print s.id, voted
+                if not voted:
+                    suggestions = suggestions.exclude(pk=s.id)
+        except:
+            pass    
+
     form = SuggestionForm()
     return render_to_response('suggestions/list.html', {'suggestions': suggestions, 'form': form}, context_instance=RequestContext(request))
 
