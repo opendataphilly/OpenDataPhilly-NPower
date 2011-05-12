@@ -18,6 +18,7 @@ Update Frequency: {{update_frequency}}
 Coordinate Systems: {{coord_system}}
 Types: {{types}}
 Formats: {{formats}}
+Description: {{description}}
 Usage Limitations:  {{usage_limitations}}
 Collection Process: {{collection_process}}
 Data Purpose:  {{data_purpose}}
