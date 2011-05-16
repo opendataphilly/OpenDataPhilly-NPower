@@ -42,6 +42,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^opendata/nominate/', include('suggestions.urls')),
      
+    (r'^feeds/$', 'opendata.views.feed_list'),
     (r'^feeds/resources/$', ResourcesFeed()),
     (r'^feeds/updates/$', UpdatesFeed()),
     (r'^feeds/ideas/$', IdeasFeed()),

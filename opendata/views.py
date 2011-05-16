@@ -96,6 +96,10 @@ def idea_results(request, idea_id=None, slug=""):
     ideas = Idea.objects.order_by("-created_by_date")
     return render_to_response('ideas.html', {'ideas': ideas}, context_instance=RequestContext(request)) 
 
+def feed_list(request):
+    tags = Tag.objects.all()
+    return render_to_response('feeds/list.html', {'tags': tags}, context_instance=RequestContext(request)) 
+
 @login_required
 def suggest_content(request):
     if request.method == 'POST':
