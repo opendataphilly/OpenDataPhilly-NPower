@@ -1491,7 +1491,10 @@ float:left;
 	border-right: 1px solid #CCCCCC;
 }
 
-
+.nom_close {
+    font-size: 0.8em;
+    cursor: pointer;
+}
 
 /* -------------------------------------------------
 	
