@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 from djangoratings.fields import RatingField
+from opendata.models import Resource
 
 
 class Suggestion(models.Model):
@@ -16,6 +17,8 @@ class Suggestion(models.Model):
     completed = models.BooleanField(default=False)
     
     rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
+
+    resources = models.ManyToManyField(Resource, related_name="resources_added", null=True, blank=True)
 
     def __unicode__(self):
         return '%s' % self.text

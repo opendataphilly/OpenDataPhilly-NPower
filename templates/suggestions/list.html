@@ -59,14 +59,15 @@
 	<div id="results_header">
 		<div id="results_info">
 			<div id="count">{{results.count}} RESULTS</div>
-            {% if user.is_authenticated %}
 			<div id="filter">
 				<ul>
-					<li id="filter_mine" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered();return false;" class="url_image"></a></li>
+                    <li id="filter_done" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered('done');return false;" class="url_image"></a></li>
+                    {% if user.is_authenticated %}
+					    <li id="filter_mine" class="nom_filter"><a href="javascript:void()" onClick="odp.getNomFiltered('mine');return false;" class="url_image"></a></li>
+                    {% endif %}
 					<li class="info_label">FILTER:</li>
 				</ul>
 			</div>
-            {% endif %}
 			<div id="sort" class="sort_nomination">
 				<ul>
 					<li id="sort_rating_score">{% anchor rating_score Votes %}</li>
@@ -106,7 +107,14 @@
                     <a class="nom_close" onclick="odp.trackEvent('Nominate Data', 'Vote', 'Suggestion', '{{s.id}}');window.location='close/{{s.id}}'">Close Nomination</a>
                 {% endif %}
             {% else %}
-                <div id="closed">Nomination Closed</div>
+                <div id="closed">Success! </div>
+                {% for r in s.resources.all %}
+                    <div class="nom_resource"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}/{{r.name|slugify}}">{{r}}</a></div>
+                {% empty %}
+                    {% if user.is_staff %}
+                        <div class="nom_resource"><a href="{{SITE_ROOT}}/_admin_/suggestions/suggestion/{{s.id}}">Add resources</a></div>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
           </div>
           <div class="clear"></div>
