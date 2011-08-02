@@ -21,7 +21,8 @@
 	text-align: center;
 	color: white;
 	font-weight: bold;
-  	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+  	font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
   	text-transform: uppercase;
   	cursor: pointer;
 	
@@ -51,11 +52,12 @@ textarea {font-family: Arial, Helvetica, sans-serif; padding: 4px;}
 #wrapper h2.grid {
 	padding: 7px 7px 7px 9px;
 	margin-bottom: 6px;
-	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+	font-family: "Open Sans","Open Sans", Arial, Helvetica;
 	font-size: .85em;
 	text-transform:uppercase;
 	background: url(/static/images/background_ul.gif) repeat;
 	color: #4C4C4C;
+    letter-spacing:-1px;
   }
   
  #wrapper h2.grid a {	color: #4C4C4C;}
@@ -155,7 +157,8 @@ margin-top: -14px;
 } 
 .ui-datepicker .ui-datepicker-title  {
   text-transform: uppercase;
-  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica
+  font-family: "Open Sans","Open Sans", Arial, Helvetica
+    letter-spacing:-1px;
 }
    
  .ui-datepicker a:hover {border:none}   
@@ -534,8 +537,9 @@ margin-top: -14px;
 	padding-top: 16px;
 	margin-left: 4px;
 	font-size: 0.95em;
-	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+	font-family: "Open Sans","Open Sans", Arial, Helvetica;
 	color: #bababa;
+    letter-spacing:-1px;
 }
 
 #results_info #sort, #results_info #filter {
@@ -583,7 +587,7 @@ margin-top: -14px;
 	font-size: 0.75em;
 	padding-top: 16px;
 	color: #bababa;
-	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+	font-family: "Open Sans","Open Sans", Arial, Helvetica;
 }
 
 #results_info ul {
@@ -747,9 +751,11 @@ a.resource:hover {
 	padding-bottom:50px;
 	text-align:center;
   text-transform: uppercase;
-  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+  font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
 	font-size:.8em;
 	font-weight: bold;
+    letter-spacing:-1px;
 }
 .pagination a {
 	color: #575656;
@@ -821,8 +827,10 @@ ul.tab_header li.tab_button {
 	border: 2px solid white;
 	border-bottom: 0 none;
 	background: url(/static/images/background_tab_off.gif) repeat-x;
-	font-size: 0.85em;
-  	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+	font-size: 0.8em;
+  	font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
+    line-height:18px;
 	
 	-moz-border-radius: 3px 3px 0 0;
   	-webkit-border-radius: 3px 3px 0 0;
@@ -972,7 +980,8 @@ ul.tab_header li.tab_button a:hover {
 	font-size: 0.85em;
 	font-weight: bold;
   margin-left: 3px;
-    	font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+    	font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
 }
 
 .url_link {
@@ -1334,13 +1343,14 @@ width: 440px;
 }
 .nomination_form#form_container .submit_footer{
   vertical-align: middle;
-  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+  font-family: "Open Sans","Open Sans", Arial, Helvetica;
   text-transform: uppercase; 
   color: #afaead;
   font-size: .8em;
   height: 30px;
   padding-left: 8px;
   padding-top: 12px;
+    letter-spacing:-1px;
 }
 
 #n_search {
@@ -1441,7 +1451,8 @@ width: 440px;
 	font-size: 2em;
 	font-weight: bold;
 	color: #FC8E4A;
-  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+  font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
 }
 #nom_votes #nom_votes_text {
 	font-size: 1.2em;
@@ -1468,9 +1479,10 @@ width: 440px;
 }
 
 #nom_voted {
-  font-family: "proxima-nova-1","proxima-nova-2", Arial, Helvetica;
+  font-family: "Open Sans","Open Sans", Arial, Helvetica;
 	font-size: 0.85em;
 	font-weight: bold;
+    letter-spacing:-1px;
 }
 
 .nom_vote_login {
