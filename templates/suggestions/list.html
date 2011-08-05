@@ -84,7 +84,11 @@
 			{% for s in suggestions %}
 				{% rating_by_request request on s.rating as vote %}
 				<li class="resource">
-          <div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes}}</div><div id="nom_votes_text">vote{% if s.rating_votes != 1 %}s{% endif %}</div></div>
+          {% if not s.completed %}
+            <div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes}}</div><div id="nom_votes_text">vote{% if s.rating_votes != 1 %}s{% endif %}</div></div>
+          {% else %}
+            <div id="nom_votes"><div id="nom_votes_done"><img src="/static/images/icon_done.png" /></div><div id="nom_votes_text">Done!</div></div>        
+          {% endif %}
           <div id="resource_info">
             <h3 id="nom_text">{{s}}</h3>
             <div id="nom_byline">
@@ -107,7 +111,7 @@
                     <a class="nom_close" onclick="odp.trackEvent('Nominate Data', 'Vote', 'Suggestion', '{{s.id}}');window.location='close/{{s.id}}'">Close Nomination</a>
                 {% endif %}
             {% else %}
-                <div id="closed">Success! </div>
+                <div id="closed">Check out the data: </div>
                 {% for r in s.resources.all %}
                     <div class="nom_resource"><a href="{{SITE_ROOT}}/opendata/resource/{{r.id}}/{{r.name|slugify}}">{{r}}</a></div>
                 {% empty %}
