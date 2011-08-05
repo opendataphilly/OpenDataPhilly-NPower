@@ -1514,6 +1514,12 @@ float:left;
 }
 .nom_resource {
     padding-top:5px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+#closed {
+    font-size: 0.85em;
+    font-weight: bold;
 }
 
 /* -------------------------------------------------
