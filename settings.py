@@ -175,6 +175,7 @@ INSTALLED_APPS = (
     'djangoratings',
     'comments',
     'suggestions',
+    'contest',
     
 )
 
