@@ -2,6 +2,9 @@ import os
 # Django settings for opendata project.
 
 SITE_ROOT = ""
+RECAPTCHA_PUBLIC_KEY = "6Ldpa8cSAAAAAH9NiO_P7ZEvUBHhyF1OBv-q9ACr"
+RECAPTCHA_PRIVATE_KEY = "6Ldpa8cSAAAAAHXqFq5iHZIkblHN_TsnrUozq1il"
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
