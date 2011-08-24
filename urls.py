@@ -41,7 +41,10 @@ urlpatterns = patterns('',
     (r'^accounts/password_reset', 'django.contrib.auth.views.password_reset'),
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^opendata/nominate/', include('suggestions.urls')),
-     
+
+    (r'^contest/(?P<contest_id>\d+)/$', 'contest.views.get_entries'),
+    (r'^contest/(?P<contest_id>\d+)/rules/$', 'contest.views.get_rules'),
+
     (r'^feeds/$', 'opendata.views.feed_list'),
     (r'^feeds/resources/$', ResourcesFeed()),
     (r'^feeds/updates/$', UpdatesFeed()),
