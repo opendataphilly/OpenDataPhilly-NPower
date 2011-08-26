@@ -9,3 +9,7 @@ def get_entries(request, contest_id):
 def get_rules(request, contest_id):
     contest = Contest.objects.get(pk=contest_id)
     return render_to_response('contest/rules.html', {'contest': contest}, context_instance=RequestContext(request))
+
+def get_entry(request, entry_id):
+    entry = Entry.objects.get(pk=entry_id)
+    return render_to_response('contest/entry.html', {'entry': entry}, context_instance=RequestContext(request))

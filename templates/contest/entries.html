@@ -1,9 +1,58 @@
 {% extends "template2.html" %}
 
+{% load sorting_tags %}
+{% load pagination_tags %}
+
+{% block body_id %}id="contest"{% endblock %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.setupSortLinks();
+		});
+	</script>
+{% endblock %}
 
 {% block center_container %}
 
-
+<div id="contest_logo">
 <a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
+</div>
+
+
+<div id="contest_description">
+    <h2>Open<span class="orange">Data</span>Race</h2>
+    <div>Short description here. Check out the <a href="{{SITE_ROOT}}/contest/{{contest.id}}/rules/">rules</a>.</div>
+</div>
+
+<div id="results_header">
+	<div id="results_info">
+		<h2 id="count">{{contest.entry_set.count}} ENTRIES</h2>
+		<div id="sort">
+			<ul>
+				<li id="sort_rating_score">{% anchor rating_score %}</li>
+				<li id="sort_name">{% anchor title %}</li>
+				<li class="info_label">SORT:</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% autosort contest.entry_set.all %}
+{% autopaginate contest.entry_set.all 6 %}
+<div id="contest_entries">
+
+    {% for entry in contest.entry_set.all %}
+        <div class="resource">
+        {{entry.title}}
+        </div>
+
+
+    {% endfor %}
+
+</div>
+
+
+<div id="pager">{% paginate %}</div>
 
 {% endblock %}

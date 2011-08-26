@@ -308,7 +308,7 @@ margin-top: -14px;
 #search #search_img {
 	position: absolute;
 	top: 19px;
-	right:14px;
+	right:14px;{% block body_id %}{% endblock %}
   width: 19px;
   height: 19px;
   background: url(/static/images/icon_glass.png) 0 0 no-repeat;
@@ -1659,3 +1659,59 @@ float:left;
 	font-weight:bold;
 	color: #7D7D7D;
 }
+
+ 
+/* -------------------------------------------------
+	
+	Contest pages
+	
+   ------------------------------------------------- */
+
+#contest #center_container {
+    width:100%
+}
+
+#contest #account {
+    margin-right: 14px;
+}
+
+#contest #results_header {
+    clear:both;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+
+#contest_logo {
+    float:left;
+    margin-top:-25px;
+    margin-left: 5px;
+}
+
+#contest_description {
+    float:left;
+    height: 150px;
+    margin-left: 30px;
+}
+#contest_description h2 {
+   font-size: 1.5em;
+   font-weight: bold;
+   line-height: 1.25em;
+}
+#contest_description h2 .orange {
+   color: #DF5800;
+}
+
+#contest_entries {
+    clear:both;
+    margin-left: 20px;
+    margin-right: 50px;
+    
+}
+#contest_rules {
+    clear:both;
+    margin-left: 5px;
+    margin-right: 5px;    
+}
+
+
