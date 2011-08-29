@@ -1,5 +1,5 @@
 from django.db import models
-from djangoratings.fields import RatingField
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +7,7 @@ class Contest(models.Model):
     title = models.CharField(max_length=255)    
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
+    vote_frequency = models.IntegerField()
     rules = models.TextField()
 
     def __str__(self):
@@ -20,7 +21,16 @@ class Entry(models.Model):
     
     contest = models.ForeignKey(Contest)
 
-    rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
 
     def __str__(self):
         return self.title
+
+    def get_vote_count(self):
+        return self.vote_set.objects.count()
+
+class Vote(models.Model):
+    user = models.ForeignKey(User)
+    timestamp = models.DateTimeField(auto_now=True)
+
+    entry = models.ForeignKey(Entry)
+
