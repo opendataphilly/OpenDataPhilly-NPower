@@ -110,6 +110,7 @@ TWITTER_USER = "opendataphilly"
 TWITTER_TIMEOUT = 3600
 THUMBNAIL_EXTENSION = 'png'
 PAGINATION_DEFAULT_WINDOW = 2
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 ###
 
 LOGIN_URL = SITE_ROOT + "/accounts/login/"
@@ -131,6 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
     
     "opendata.context_processors.get_current_path",
     "opendata.context_processors.get_settings",
