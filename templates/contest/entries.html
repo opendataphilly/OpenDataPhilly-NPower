@@ -41,15 +41,17 @@
 {% autosort contest.entry_set.all %}
 {% autopaginate contest.entry_set.all 6 %}
 <div id="contest_entries">
-
+    <ul id="contest_list">
     {% for entry in contest.entry_set.all %}
-        <div class="resource">
-        {{entry.title}}
-        </div>
+        <li class="resource">
+            <div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes|default:0}}</div><div id="nom_votes_text">vote{% if s.rating_votes != 1 %}s{% endif %}</div></div>
 
-
+            <div id="resource_info">
+                <h3>{{entry.title}}</h3>
+            </div>
+        </li>
     {% endfor %}
-
+    </ul>
 </div>
 
 
