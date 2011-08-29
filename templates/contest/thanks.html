@@ -1,0 +1,21 @@
+{% extends "template2.html" %}
+
+{% block body_id %}id="contest"{% endblock %}
+
+{% block center_container %}
+
+<div id="contest_logo">
+<a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
+</div>
+
+
+<div id="contest_description"><h2>Open<span class="orange">Data</span>Race</h2>Short description here. Check out the <a href="{{SITE_ROOT}}/contest/{{contest.id}}/">entries</a>.</div>
+
+<div id="contest_rules" class="resource">
+
+Thanks for your entry!
+
+</div>
+
+
+{% endblock %}
