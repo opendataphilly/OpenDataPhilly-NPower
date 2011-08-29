@@ -1710,7 +1710,58 @@ float:left;
 #contest_rules {
     clear:both;
     margin-left: 5px;
-    margin-right: 5px;    
+    margin-right: 5px;
+	font-size: 0.8em;
+	line-height: 1.35em;
 }
-
-
+#contest_rules .rules_header {
+	font-size: 14px;
+	border-top: #CCC solid 1px;
+	padding: 15px 0;
+	margin-top: 20px;
+	color: #bababa;
+	font-family: "Open Sans","Open Sans", Arial, Helvetica;
+}
+#contest_rules .rules_header:first-child {
+	border: none;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+#contest_rules ol, #contest_rules ul {
+	padding: 15px 30px;
+}
+#contest_rules ul li {
+	list-style: disc;
+	padding-left: 10px;
+	line-height: 1.5em;
+}
+#contest_rules ol li {
+	list-style: decimal;
+	padding-left: 5px;
+	line-height: 1.5em;
+}
+#contest_rules table td {
+	padding: 0 10px 0 0;
+	width: 140px;
+	text-align: left;
+}
+#contest_rules table.key_dates td {
+	padding: 0 10px 0 0;
+	width: 210px;
+	text-align: left;
+}
+#contest_rules table.key_dates th {
+	text-align: left;
+	font-weight: bold;
+}
+#contest_rules .partner_logos {
+	text-align: center;
+	padding-top: 20px;
+}
+#contest_rules a.partner_logo {
+	padding-right: 20px;
+	vertical-align: top;
+}
+#contest_rules a.partner_logo:hover {
+	border: none;
+}
