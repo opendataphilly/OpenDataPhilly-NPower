@@ -21,13 +21,13 @@ def add_vote(request, entry_id):
     entry = Entry.objects.get(pk=entry_id)
     user = User.objects.get(username=request.user)
 
-    do_vote, next_vote_date = entry.user_can_vote(user)
-
-    if do_vote:
+    if entry.user_can_vote(user):
         new_vote = Vote(user=user, entry=entry)
         new_vote.save()
+        next_vote_date = entry.get_next_vote_date(user)
         messages.success(request, 'Your vote has been recorded. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y'))
     else:
+        next_vote_date = entry.get_next_vote_date(user)
         messages.error(request, 'You have already voted for ' + entry.title + '. You may vote for this entry again on ' + next_vote_date.strftime('%A, %b %d %Y'))    
 
     return render_to_response('contest/entries.html', {'contest': entry.contest}, context_instance=RequestContext(request))

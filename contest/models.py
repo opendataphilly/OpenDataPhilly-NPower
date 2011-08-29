@@ -31,16 +31,20 @@ class Entry(models.Model):
     def get_vote_count(self):
         return self.vote_set.count()
 
-    def user_can_vote(self, user):
+    def get_next_vote_date(self, user):
         votes = self.vote_set.filter(user=user).order_by('timestamp')
         increment = datetime.timedelta(days=self.contest.vote_frequency)
-        if votes:
-            last_vote_date = votes[0].timestamp
-            next_vote_date = last_vote_date + increment 
-            if dt.today() < next_vote_date and dt.today() < self.contest.end_date:
-                return False, next_vote_date
-        next_vote = dt.today() + increment
-        return True, next_vote
+        last_vote_date = votes[0].timestamp
+        next_vote_date = last_vote_date + increment 
+        return next_vote_date
+
+    def user_can_vote(self, user):
+        votes = self.vote_set.filter(user=user).order_by('timestamp')
+        next_date = self.get_next_vote_date(user)
+        if votes:           
+            if dt.today() < next_date and dt.today() < self.contest.end_date:
+                return False
+        return True
 
 class Vote(models.Model):
     user = models.ForeignKey(User)
