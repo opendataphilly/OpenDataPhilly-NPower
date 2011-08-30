@@ -9,7 +9,8 @@ from datetime import datetime
 
 def get_entries(request, contest_id):
     contest = Contest.objects.get(pk=contest_id)
-    return render_to_response('contest/entries.html', {'contest': contest}, context_instance=RequestContext(request))
+    entries = Entry.objects.filter(contest=contest).order_by('vote')
+    return render_to_response('contest/entries.html', {'contest': contest, 'entries': entries}, context_instance=RequestContext(request))
 
 def get_rules(request, contest_id):
     contest = Contest.objects.get(pk=contest_id)

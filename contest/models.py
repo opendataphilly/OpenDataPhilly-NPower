@@ -19,6 +19,7 @@ class Contest(models.Model):
 class Entry(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    short_description = models.CharField(max_length=120)
     nominator = models.CharField(max_length=255)
     nominator_link = models.CharField(max_length=255)
     

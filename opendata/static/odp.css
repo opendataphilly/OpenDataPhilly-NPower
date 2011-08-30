@@ -1667,46 +1667,138 @@ float:left;
 	
    ------------------------------------------------- */
 
-#contest #center_container {
-    width:100%
-}
+#contest .orange {color: #DF5800;}
 
 #contest #account {
     margin-right: 14px;
 }
 
+#contest_header {
+    margin-bottom:50px;
+}
+
+#contest_menu {
+    float: right;
+    text-align: right;
+    margin-top: 20px;
+}
+#contest_menu li {
+    padding: 5px 10px 5px 30px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #DF5800;
+}
+#contest_menu li.selected {
+    font-size: .95em;
+    color: white;
+    background-color: #DF5800;
+    border: 1px solid white;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	border-radius:3px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+
+#contest_info {
+    background-color: gray;
+    height:50px;
+}
+
+#contest #center_container {
+    width: 100%
+}
 #contest #results_header {
     clear:both;
     margin-left: 20px;
     margin-right: 50px;
 }
 
-#contest_logo {
+#contest_list li {
     float:left;
-    margin-top:-25px;
-    margin-left: 5px;
+    width: 26%;
+    margin: 1.5%
 }
-
-#contest_description {
-    float:left;
-    height: 150px;
-    margin-left: 30px;
+#contest_list .resource {
+    padding: 20px 15px 15px;
 }
-#contest_description h2 {
-   font-size: 1.5em;
-   font-weight: bold;
-   line-height: 1.25em;
-}
-#contest_description h2 .orange {
-   color: #DF5800;
-}
-
 #contest_entries {
     clear:both;
     margin-left: 20px;
     margin-right: 50px;
-    
 }
+#entry_place {
+    font-size: 0.75em;
+    font-weight: bold;
+    color: #7D7D7D;
+}
+#entry_title {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    overflow: hidden;
+    font-weight: bold;
+}
+#entry_nominator {
+    overflow: hidden;
+    font-size: 0.75em;
+    color: #7D7D7D;    
+}
+#entry_shortdesc {
+    padding: 10px 0;
+    height: 35px;
+    overflow: hidden;
+    font-size: 0.75em;
+    font-style: italic;
+    color: #7D7D7D;
+}
+#entry_buttons {
+    float:left;    
+}
+#entry_buttons div{
+    margin: 10px 10px 0;
+    padding: 5px 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #DF5800;
+    border: 1px solid white;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+	border-radius: 15px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+#entry_buttons #details {
+    background-color: gray;
+    margin-top: 5px;
+}
+#entry_votes {
+	float: right;
+    padding: 10px;
+	border: 1px solid #dbdbdb;
+	background-color: white;
+	text-align:center;
+    width: 60px;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+}
+#entry_votes #nom_votes_number {
+	font-size: 2em;
+	font-weight: bold;
+	color: #FC8E4A;
+  font-family: "Open Sans","Open Sans", Arial, Helvetica;
+    letter-spacing:-1px;
+}
+#entry_votes #nom_votes_text {
+	font-size: 1.2em;
+    font-weight: bold;
+    color: #999;
+}
+
 #contest_rules {
     clear:both;
     margin-left: 5px;

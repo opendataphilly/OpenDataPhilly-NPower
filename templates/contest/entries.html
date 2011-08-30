@@ -1,7 +1,8 @@
-{% extends "template2.html" %}
+{% extends "contest/contest_template.html" %}
 
 {% load sorting_tags %}
 {% load pagination_tags %}
+{% load humanize %}
 
 {% block body_id %}id="contest"{% endblock %}
 
@@ -15,17 +16,11 @@
 
 {% block center_container %}
 
-<div id="contest_logo">
-<a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
-</div>
-
-
-<div id="contest_description">
-    <h2>Open<span class="orange">Data</span>Race</h2>
-    <div>Short description here. Check out the <a href="{{SITE_ROOT}}/contest/{{contest.id}}/rules/">rules</a>.</div>
-</div>
 
 <div id="results_header">
+    {%for message in messages%}
+        <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message}}</div>
+     {%endfor%}
 	<div id="results_info">
 		<h2 id="count">{{contest.entry_set.count}} ENTRIES</h2>
 		<div id="sort">
@@ -38,23 +33,34 @@
 	</div>
 </div>
 
-{% autosort contest.entry_set.all %}
-{% autopaginate contest.entry_set.all 6 %}
+{% autosort entries %}
+{% autopaginate entries 6 %}
 <div id="contest_entries">
     <ul id="contest_list">
-    {% for entry in contest.entry_set.all %}
+    {% for entry in entries %}
         <li class="resource">
-            <div id="nom_votes"><div id="nom_votes_number">{{s.rating_votes|default:0}}</div><div id="nom_votes_text">vote{% if s.rating_votes != 1 %}s{% endif %}</div></div>
-
-            <div id="resource_info">
-                <h3>{{entry.title}}</h3>
+            <div id="entry_info">
+                <div id="entry_place"><span class="orange">{{forloop.counter|ordinal}}</span> PLACE</div>
+                <div id="entry_title">{{entry.title}}</div>
+                <div id="entry_nominator">{{entry.nominator}}</div>
+                <div id="entry_shortdesc">{{entry.short_description}}</div>
+                
             </div>
+            <div id="entry_buttons">
+                <div id="details">DETAILS</div>
+                <div id="vote">VOTE</div>
+            </div>
+            <div id="entry_votes">
+                <div id="nom_votes_number">{{entry.get_vote_count|default:0}}</div>
+                <div id="nom_votes_text">vote{% if entry.get_vote_count != 1 %}s{% endif %}</div>
+            </div>
+
         </li>
     {% endfor %}
     </ul>
 </div>
 
 
-<div id="pager">{% paginate %}</div>
+<div id="pager" class="clear">{% paginate %}</div>
 
 {% endblock %}

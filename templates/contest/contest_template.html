@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.getTags();
+			odp.setupSearchInput();
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+
+
+
+	<div id="center_container">
+    {% include "loginlogout.html" %}
+        <div id="contest_header">
+            <a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
+            <div id="contest_menu">
+                <ul>
+                    <li id="menu_vote" class="selected">CAST YOUR VOTE</li>
+                    <li id="menu_rules">RULES</li>
+                    <li id="menu_nominate">NOMINATE</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="contest_info" class="clear">
+
+        </div>
+		<div id="center_content">
+			{% block center_container %}
+			{% endblock %}
+		</div>
+
+	</div>
+
+  {% include "footer.html" %}
+
+
+{% endblock %}
