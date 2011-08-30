@@ -1765,3 +1765,25 @@ float:left;
 #contest_rules a.partner_logo:hover {
 	border: none;
 }
+
+#contest_form {
+	float: left;
+	margin: 12px 5px 32px;
+	padding: 27px 40px 21px;
+}
+#contest_form form label {
+	width: 220px;
+	padding-right: 40px;
+	vertical-align: top;
+	display: block;
+	font-weight: bold;
+	float: left;
+}
+#contest_form form p input {
+	width: 350px;
+	height: 20px;
+}
+#contest_form form p textarea {
+	width: 346px;
+	height: 100px;
+}
