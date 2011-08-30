@@ -177,9 +177,9 @@ margin-top: -14px;
 #wrapper {
 	position:relative;
 	width:900px;
-  margin: 0 auto; 
+    margin: 0 auto; 
 	padding-top:50px;
-  overflow:hidden; /* chrome, safari, ie bottom padding fix */
+    overflow: visible; /* chrome, safari, ie bottom padding fix */
 }
 
 
@@ -1704,6 +1704,7 @@ float:left;
 #contest_info {
     background-color: gray;
     height:50px;
+	margin: 0 -55.8%;
 }
 
 #contest #center_container {
