@@ -1,21 +1,24 @@
-{% extends contest/contest_template.html" %}
+{% extends "contest/contest_template.html" %}
 
 {% block body_id %}id="contest"{% endblock %}
 
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {            
+            $(".contest_menu").removeClass('selected');
+            $("#menu_rules").addClass('selected');
+		});
+	</script>
+{% endblock %}
+
+
 {% block center_container %}
 
-<div id="contest_logo">
-<a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
-</div>
+    <div id="contest_rules" class="resource">
 
+    {{contest.rules|safe}}
 
-<div id="contest_description"><h2>Open<span class="orange">Data</span>Race</h2>Short description here. Check out the <a href="{{SITE_ROOT}}/contest/{{contest.id}}/">entries</a>.</div>
-
-<div id="contest_rules" class="resource">
-
-{{contest.rules|safe}}
-
-</div>
+    </div>
 
 
 {% endblock %}

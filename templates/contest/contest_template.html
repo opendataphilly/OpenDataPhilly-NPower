@@ -9,9 +9,20 @@
 	</script>
 {% endblock %}
 
+{% block body_top %}
+
+    <div id="contest_info" class="clear">
+        <div id="box_wrapper">
+            <div id="date_box" class="info_box">
+                <div id="days_left"><div id="days">20</div><div id="left">DAYS LEFT TO VOTE!</div></div>
+            </div>
+            <div class="info_box"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
 {% block content %}
-
-
 
 	<div id="center_container">
     {% include "loginlogout.html" %}
@@ -19,16 +30,13 @@
             <a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
             <div id="contest_menu">
                 <ul>
-                    <li id="menu_vote" class="selected">CAST YOUR VOTE</li>
-                    <li id="menu_rules">RULES</li>
-                    <li id="menu_nominate">NOMINATE</li>
+                    <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/">CAST YOUR VOTE</a></li>
+                    <li id="menu_rules" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/rules/">RULES</a></li>
+                    <li id="menu_nominate" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/add/">NOMINATE</a></li>
                 </ul>
             </div>
         </div>
 
-        <div id="contest_info" class="clear">
-
-        </div>
 		<div id="center_content">
 			{% block center_container %}
 			{% endblock %}

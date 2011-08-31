@@ -12,17 +12,43 @@ class Contest(models.Model):
     end_date = models.DateTimeField()
     vote_frequency = models.IntegerField()
     rules = models.TextField()
+    
+    def get_next_vote_date(self, user):
+        votes = user.vote_set.order_by('timestamp')
+        increment = datetime.timedelta(days=self.vote_frequency)
+        last_vote_date = votes[0].timestamp
+        next_vote_date = last_vote_date + increment 
+        return next_vote_date
+
+    def user_can_vote(self, user):
+        votes = user.vote_set.filter(user=user).order_by('timestamp')
+        next_date = self.get_next_vote_date(user)
+        if votes:           
+            if dt.today() < next_date and dt.today() < self.end_date:
+                return False
+        return True
 
     def __str__(self):
         return self.title
 
 class Entry(models.Model):
+    def get_image_path(instance, filename):
+        fsplit = filename.split('.')
+        extra = 1
+        test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+        while os.path.exists(test_path):
+           extra += 1
+           test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' +  fsplit[1])
+        path = os.path.join('contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+        return path
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     short_description = models.CharField(max_length=120)
     nominator = models.CharField(max_length=255)
     nominator_link = models.CharField(max_length=255)
-    
+    nominator_image = models.ImageField(upload_to=get_image_path)        
+
     contest = models.ForeignKey(Contest)
 
 
@@ -32,20 +58,10 @@ class Entry(models.Model):
     def get_vote_count(self):
         return self.vote_set.count()
 
-    def get_next_vote_date(self, user):
-        votes = self.vote_set.filter(user=user).order_by('timestamp')
-        increment = datetime.timedelta(days=self.contest.vote_frequency)
-        last_vote_date = votes[0].timestamp
-        next_vote_date = last_vote_date + increment 
-        return next_vote_date
-
-    def user_can_vote(self, user):
-        votes = self.vote_set.filter(user=user).order_by('timestamp')
-        next_date = self.get_next_vote_date(user)
-        if votes:           
-            if dt.today() < next_date and dt.today() < self.contest.end_date:
-                return False
-        return True
+    def get_place(self):
+        entries = Entry.objects.filter(contest=self.contest).order_by('vote')
+        for i, entry in enumerate(entries):
+            if entry == self: return i+1
 
 class Vote(models.Model):
     user = models.ForeignKey(User)

@@ -10,6 +10,19 @@
 	<script>
 		$(document).ready(function () {
 			odp.setupSortLinks();
+            
+            $(".contest_menu").removeClass('selected');
+            $("#menu_vote").addClass('selected');
+
+            $(".details").click(function (evt) {
+                event_id = this.id.split('_')[1];
+                location = "{{SITE_ROOT}}/contest/entry/" + event_id + "/";
+            });
+            $(".vote").click(function (evt) {
+                event_id = this.id.split('_')[1];
+                location = "{{SITE_ROOT}}/contest/entry/" + event_id + "/vote/";
+            });
+
 		});
 	</script>
 {% endblock %}
@@ -18,15 +31,15 @@
 
 
 <div id="results_header">
-    {%for message in messages%}
+    {% for message in messages %}
         <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message}}</div>
-     {%endfor%}
+     {% endfor %}
 	<div id="results_info">
-		<h2 id="count">{{contest.entry_set.count}} ENTRIES</h2>
+		<h2 id="count">{{entries.count}} ENTRIES</h2>
 		<div id="sort">
 			<ul>
-				<li id="sort_rating_score">{% anchor rating_score %}</li>
-				<li id="sort_name">{% anchor title %}</li>
+				<li id="sort_vote">{% anchor vote %}</li>
+				<li id="sort_title">{% anchor title %}</li>
 				<li class="info_label">SORT:</li>
 			</ul>
 		</div>
@@ -40,15 +53,15 @@
     {% for entry in entries %}
         <li class="resource">
             <div id="entry_info">
-                <div id="entry_place"><span class="orange">{{forloop.counter|ordinal}}</span> PLACE</div>
+                <div id="entry_place"><span class="orange">{{entry.get_place|ordinal}}</span> PLACE</div>
                 <div id="entry_title">{{entry.title}}</div>
                 <div id="entry_nominator">{{entry.nominator}}</div>
                 <div id="entry_shortdesc">{{entry.short_description}}</div>
                 
             </div>
             <div id="entry_buttons">
-                <div id="details">DETAILS</div>
-                <div id="vote">VOTE</div>
+                <div id="details_{{entry.id}}" class="details">DETAILS</div>
+                <div id="vote_{{entry.id}}" class="vote">VOTE</div>
             </div>
             <div id="entry_votes">
                 <div id="nom_votes_number">{{entry.get_vote_count|default:0}}</div>

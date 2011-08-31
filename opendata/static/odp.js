@@ -95,10 +95,16 @@ var odp = {
 
     setupSortLinks: function () {
         var sort_name = $("#sort_name > a").addClass("url_image")[0];
-        sort_name.innerHTML = '';
+        if (sort_name) {sort_name.innerHTML = '';}
+
+        var sort_title = $("#sort_title > a").addClass("url_image")[0];
+         if (sort_title) {sort_title.innerHTML = '';}
         
         var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
-        sort_rating.innerHTML = '';
+         if (sort_rating) {sort_rating.innerHTML = '';}
+    
+        var sort_vote = $("#sort_vote > a").addClass("url_image")[0];
+         if (sort_vote) {sort_vote.innerHTML = '';}
         
         if ($.query.get('sort')) {
             st = $.query.get('sort');

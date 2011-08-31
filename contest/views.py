@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.core.mail import send_mail, mail_managers, EmailMessage
@@ -18,7 +18,7 @@ def get_rules(request, contest_id):
 
 def get_entry(request, entry_id):
     entry = Entry.objects.get(pk=entry_id)
-    return render_to_response('contest/entry.html', {'entry': entry}, context_instance=RequestContext(request))
+    return render_to_response('contest/entry.html', {'contest': entry.contest, 'entry': entry}, context_instance=RequestContext(request))
 
 def add_entry(request, contest_id):
     contest = Contest.objects.get(pk=contest_id)
@@ -59,15 +59,17 @@ def add_entry(request, contest_id):
 @login_required
 def add_vote(request, entry_id):
     entry = Entry.objects.get(pk=entry_id)
+    contest = entry.contest
     user = User.objects.get(username=request.user)
 
-    if entry.user_can_vote(user):
+    if contest.user_can_vote(user):
         new_vote = Vote(user=user, entry=entry)
         new_vote.save()
-        next_vote_date = entry.get_next_vote_date(user)
-        messages.success(request, 'Your vote has been recorded. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y'))
+        next_vote_date = contest.get_next_vote_date(user)
+        messages.success(request, 'Your vote has been recorded. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p'))
     else:
-        next_vote_date = entry.get_next_vote_date(user)
-        messages.error(request, 'You have already voted for ' + entry.title + '. You may vote for this entry again on ' + next_vote_date.strftime('%A, %b %d %Y'))    
-
-    return render_to_response('contest/entries.html', {'contest': entry.contest}, context_instance=RequestContext(request))
+        next_vote_date = contest.get_next_vote_date(user)
+        messages.error(request, 'You have already voted. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p'))    
+    
+    return redirect('/contest/' + str(entry.contest.id) + '/')
+    

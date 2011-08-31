@@ -1,11 +1,23 @@
 {% extends "contest/contest_template.html" %}
 
+{% load humanize %}
 
 {% block body_id %}id="contest"{% endblock %}
 
 {% block center_container %}
 
+<div id="contest_entry" class="resource">
 
-<a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
+    <div id="entry_votes">
+        <div id="nom_votes_number">{{entry.get_vote_count|default:0}}</div>
+        <div id="nom_votes_text">vote{% if entry.get_vote_count != 1 %}s{% endif %}</div>
+    </div>
+
+    <h1 id="title">{{entry.title}}</h1> 
+    <div class="entry_label">Current Standing</div><div class="entry_data" >{{entry.get_place|ordinal}} Place</div>
+    <div class="entry_label">Nominated By</div><div class="entry_data"><a href="{{entry.nominator_link}}" target="_blank">{{entry.nominator}}</a></div>
+    <div class="entry_label">Description</div><div class="entry_data">{{entry.description}}</div>
+</div>
+
 
 {% endblock %}
