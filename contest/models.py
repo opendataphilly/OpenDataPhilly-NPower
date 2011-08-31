@@ -1,6 +1,8 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
+import os
 import datetime
 from datetime import datetime as dt
 
@@ -35,11 +37,11 @@ class Entry(models.Model):
     def get_image_path(instance, filename):
         fsplit = filename.split('.')
         extra = 1
-        test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+        test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
         while os.path.exists(test_path):
            extra += 1
-           test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' +  fsplit[1])
-        path = os.path.join('contest_images', str(instance.idea_id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
+           test_path = os.path.join(settings.MEDIA_ROOT, 'contest_images', str(instance.id), fsplit[0] + '_' + str(extra) + '.' +  fsplit[1])
+        path = os.path.join('contest_images', str(instance.id), fsplit[0] + '_' + str(extra) + '.' + fsplit[1])
         return path
 
     title = models.CharField(max_length=255)

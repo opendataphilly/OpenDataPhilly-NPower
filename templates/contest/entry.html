@@ -15,7 +15,7 @@
 
     <h1 id="title">{{entry.title}}</h1> 
     <div class="entry_label">Current Standing</div><div class="entry_data" >{{entry.get_place|ordinal}} Place</div>
-    <div class="entry_label">Nominated By</div><div class="entry_data"><a href="{{entry.nominator_link}}" target="_blank">{{entry.nominator}}</a></div>
+    <div class="entry_label">Nominated By</div><div class="entry_data"><img height="50" src="{{entry.nominator_image.url}}" /> <a href="{{entry.nominator_link}}" target="_blank">{{entry.nominator}}</a></div>
     <div class="entry_label">Description</div><div class="entry_data">{{entry.description}}</div>
 </div>
 
