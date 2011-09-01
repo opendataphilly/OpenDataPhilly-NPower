@@ -30,18 +30,16 @@
                             <div id="days">{{contest.get_days_till_start}}</div>
                             <div id="left">DAY{% if contest.get_days_till_start != 1 %}S{% endif %} TILL VOTING STARTS!</div>
                         </div>
-                        <div id="days_header">Upcoming Event Information</div>
-                        <table class="key_dates">
-                            <tr><td>Sept 29, 2011</td><td>Nominations close</td></tr>        
-                            <tr><td>Oct 3, 2011</td><td>Voting begins</td></tr>        
-                            <tr><td>Oct 27, 2011</td><td>Voting ends at midnight</td></tr>        
-                            <tr><td>Oct 28, 2011</td><td>Winners announced</td></tr>           
-                        </table>
-                        <div id="days_info">For more information, check out the <a href="{{SITE_ROOT}}/contest/rules/">rules</a>.</div>
+                        <div id="days_events">
+                            <div id="days_header">Upcoming Event Information</div>
+                            <div class="days_label">Tuesday, Oct 3 2011</div><div class="days_data">Voting begins</div>
+                            <div class="days_label">Thurs, Oct 27 2011, 11:59pm</div><div class="days_data">Voting ends</div>
+                            <div class="days_label">Fri, Oct 28 2011</div><div class="days_data">Winners announced</div>
+                        </div>
                     {% endif %}    
                 {% endifnotequal %}
                 </div>
-            <div class="info_box"></div>
+            <div class="info_box" id="pic_box"></div>
         </div>
     </div>
 
