@@ -1707,6 +1707,7 @@ float:left;
 }
 #contest_info {
     position: absolute;
+    z-index: 10;
     top: 230px;
     width: 100%;
     padding: 10px 0;
@@ -1737,6 +1738,7 @@ float:left;
     padding: 15px;
     margin: 10px;
     border: 1px solid white;
+    color: white;
     background-color: #F5F5F5;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -1752,8 +1754,10 @@ float:left;
     float:left;
     width: 60px;
     padding: 8px;
+    margin-right: 10px;
     text-align: center;
     background-color: white;
+    color: #575656;
 }
 #days_left #days {
     font-size: 2.4em;
@@ -1764,7 +1768,24 @@ float:left;
     font-size: 0.7em;
     line-height: 15px;
 }
-
+#date_box #days_header {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+#date_box table td {
+	padding: 0 10px 0 0;
+    font-size: .8em;
+	text-align: left;
+    line-height: 17px;
+}
+#days_info {
+    clear: both;
+    padding-top:15px;
+}
+#days_info a {
+    color:white;
+    text-decoration: underline;
+}
 
 #contest_list li {
     float:left;

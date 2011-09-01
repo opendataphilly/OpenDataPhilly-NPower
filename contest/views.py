@@ -7,12 +7,12 @@ from django.contrib import messages
 from contest.models import *
 from datetime import datetime
 
-def get_entries(request, contest_id):
+def get_entries(request, contest_id=1):
     contest = Contest.objects.get(pk=contest_id)
     entries = Entry.objects.filter(contest=contest).order_by('vote')
     return render_to_response('contest/entries.html', {'contest': contest, 'entries': entries}, context_instance=RequestContext(request))
 
-def get_rules(request, contest_id):
+def get_rules(request, contest_id=1):
     contest = Contest.objects.get(pk=contest_id)
     return render_to_response('contest/rules.html', {'contest': contest}, context_instance=RequestContext(request))
 
@@ -20,7 +20,8 @@ def get_entry(request, entry_id):
     entry = Entry.objects.get(pk=entry_id)
     return render_to_response('contest/entry.html', {'contest': entry.contest, 'entry': entry}, context_instance=RequestContext(request))
 
-def add_entry(request, contest_id):
+@login_required
+def add_entry(request, contest_id=1):
     contest = Contest.objects.get(pk=contest_id)
     if request.method == 'POST':
         form = EntryForm(request.POST)
@@ -71,5 +72,5 @@ def add_vote(request, entry_id):
         next_vote_date = contest.get_next_vote_date(user)
         messages.error(request, 'You have already voted. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p'))    
     
-    return redirect('/contest/' + str(entry.contest.id) + '/')
+    return redirect('/contest/')
     

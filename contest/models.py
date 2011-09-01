@@ -15,6 +15,24 @@ class Contest(models.Model):
     vote_frequency = models.IntegerField()
     rules = models.TextField()
     
+    def get_days_left(self):
+        today = dt.today()
+        left = self.end_date - today 
+        if left.days < 0:
+            return 0
+        return left.days
+    
+    def get_days_till_start(self):
+        till = self.start_date - dt.today()
+        return till.days +1
+
+    def has_ended(self):
+        return dt.today() >= self.end_date
+
+    def has_started(self):
+        return dt.today() >= self.start_date
+
+
     def get_next_vote_date(self, user):
         votes = user.vote_set.order_by('timestamp')
         increment = datetime.timedelta(days=self.vote_frequency)

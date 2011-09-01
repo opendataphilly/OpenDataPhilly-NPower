@@ -14,8 +14,33 @@
     <div id="contest_info" class="clear">
         <div id="box_wrapper">
             <div id="date_box" class="info_box">
-                <div id="days_left"><div id="days">20</div><div id="left">DAYS LEFT TO VOTE!</div></div>
-            </div>
+                {% ifnotequal contest.has_started contest.has_ended %}
+                    <div id="days_left">
+                        <div id="days">{{contest.get_days_left}}</div>
+                        <div id="left">DAY{% if contest.get_days_left != 1 %}S{% endif %} LEFT TO VOTE!</div>
+                    </div>
+                {% else %}
+                    {% if contest.has_started %}                    
+                        <div id="days_left">
+                            <div id="days">VOTING IS OVER!</div>
+                        </div>
+                        <div id="days_header">Thank you for participating!</div>
+                    {% else %}
+                        <div id="days_left">
+                            <div id="days">{{contest.get_days_till_start}}</div>
+                            <div id="left">DAY{% if contest.get_days_till_start != 1 %}S{% endif %} TILL VOTING STARTS!</div>
+                        </div>
+                        <div id="days_header">Upcoming Event Information</div>
+                        <table class="key_dates">
+                            <tr><td>Sept 29, 2011</td><td>Nominations close</td></tr>        
+                            <tr><td>Oct 3, 2011</td><td>Voting begins</td></tr>        
+                            <tr><td>Oct 27, 2011</td><td>Voting ends at midnight</td></tr>        
+                            <tr><td>Oct 28, 2011</td><td>Winners announced</td></tr>           
+                        </table>
+                        <div id="days_info">For more information, check out the <a href="{{SITE_ROOT}}/contest/rules/">rules</a>.</div>
+                    {% endif %}    
+                {% endifnotequal %}
+                </div>
             <div class="info_box"></div>
         </div>
     </div>
@@ -30,9 +55,9 @@
             <a href="{{SITE_ROOT}}/" id="logo"><img src="/static/images/logo.png"/></a>
             <div id="contest_menu">
                 <ul>
-                    <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/">CAST YOUR VOTE</a></li>
-                    <li id="menu_rules" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/rules/">RULES</a></li>
-                    <li id="menu_nominate" class="contest_menu"><a href="{{SITE_ROOT}}/contest/{{contest.id}}/add/">NOMINATE</a></li>
+                    <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/">CAST YOUR VOTE</a></li>
+                    <li id="menu_rules" class="contest_menu"><a href="{{SITE_ROOT}}/contest/rules/">RULES</a></li>
+                    <li id="menu_nominate" class="contest_menu"><a href="{{SITE_ROOT}}/contest/add/">NOMINATE</a></li>
                 </ul>
             </div>
         </div>

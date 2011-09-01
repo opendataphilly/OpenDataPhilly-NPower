@@ -16,7 +16,7 @@
 
 <div id="contest_form" class="resource">
 
-<form action="{{SITE_ROOT}}/contest/{{contest.id}}/add/" method="POST">
+<form action="{{SITE_ROOT}}/contest/add/" method="POST">
 
 	{% csrf_token %}
 	{% if form.errors %}

@@ -42,9 +42,9 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^opendata/nominate/', include('suggestions.urls')),
 
-    (r'^contest/(?P<contest_id>\d+)/$', 'contest.views.get_entries'),
-    (r'^contest/(?P<contest_id>\d+)/rules/$', 'contest.views.get_rules'),
-    (r'^contest/(?P<contest_id>\d+)/add/$', 'contest.views.add_entry'),
+    (r'^contest/$', 'contest.views.get_entries'),
+    (r'^contest/rules/$', 'contest.views.get_rules'),
+    (r'^contest/add/$', 'contest.views.add_entry'),
     (r'^contest/entry/(?P<entry_id>\d+)/$', 'contest.views.get_entry'),
     (r'^contest/entry/(?P<entry_id>\d+)/vote/$', 'contest.views.add_vote'),
 
