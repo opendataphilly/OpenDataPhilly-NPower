@@ -32,13 +32,13 @@
 
 <div id="results_header">
     {% for message in messages %}
-        <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message}}</div>
+        <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message|safe}}</div>
      {% endfor %}
 	<div id="results_info">
 		<h2 id="count">{{entries.count}} ENTRIES</h2>
 		<div id="sort">
 			<ul>
-				<li id="sort_vote">{% anchor vote %}</li>
+				<li id="sort_vote_count">{% anchor vote_count %}</li>
 				<li id="sort_title">{% anchor title %}</li>
 				<li class="info_label">SORT:</li>
 			</ul>
@@ -66,8 +66,8 @@
                 {% endif %}
             </div>
             <div id="entry_votes">
-                <div id="nom_votes_number">{{entry.get_vote_count|default:0}}</div>
-                <div id="nom_votes_text">vote{% if entry.get_vote_count != 1 %}s{% endif %}</div>
+                <div id="nom_votes_number">{{entry.vote_count|default:0}}</div>
+                <div id="nom_votes_text">vote{% if entry.vote_count != 1 %}s{% endif %}</div>
             </div>
 
         </li>

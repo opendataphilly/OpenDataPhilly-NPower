@@ -103,7 +103,7 @@ var odp = {
         var sort_rating = $("#sort_rating_score > a").addClass("url_image")[0];
          if (sort_rating) {sort_rating.innerHTML = '';}
     
-        var sort_vote = $("#sort_vote > a").addClass("url_image")[0];
+        var sort_vote = $("#sort_vote_count > a").addClass("url_image")[0];
          if (sort_vote) {sort_vote.innerHTML = '';}
         
         if ($.query.get('sort')) {

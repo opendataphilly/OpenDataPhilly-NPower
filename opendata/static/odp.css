@@ -571,7 +571,7 @@ margin-top: -14px;
 	background:url(/static/images/icon_api.png) 0 0;
 }
 
-#results_info  #sort_rating_score .url_image, #results_info  #sort_vote .url_image{
+#results_info  #sort_rating_score .url_image, #results_info  #sort_vote_count .url_image{
 	background:url(/static/images/icon_ratings.png) 0 0;
 }
 

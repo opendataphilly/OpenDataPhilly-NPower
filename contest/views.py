@@ -9,7 +9,7 @@ from datetime import datetime
 
 def get_entries(request, contest_id=1):
     contest = Contest.objects.get(pk=contest_id)
-    entries = Entry.objects.filter(contest=contest).order_by('vote')
+    entries = Entry.objects.filter(contest=contest)
     return render_to_response('contest/entries.html', {'contest': contest, 'entries': entries}, context_instance=RequestContext(request))
 
 def get_rules(request, contest_id=1):
@@ -66,11 +66,13 @@ def add_vote(request, entry_id):
     if contest.user_can_vote(user):
         new_vote = Vote(user=user, entry=entry)
         new_vote.save()
+        entry.vote_count = entry.vote_set.count()
+        entry.save()
         next_vote_date = contest.get_next_vote_date(user)
-        messages.success(request, 'Your vote has been recorded. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p'))
+        messages.success(request, '<div style="font-weight:bold;">Your vote has been recorded.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')
     else:
         next_vote_date = contest.get_next_vote_date(user)
-        messages.error(request, 'You have already voted. You may vote again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p'))    
+        messages.error(request, '<div style="font-weight:bold;">You have already voted.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')    
     
     return redirect('/contest/')
     

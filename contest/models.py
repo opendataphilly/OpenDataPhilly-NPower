@@ -34,14 +34,14 @@ class Contest(models.Model):
 
 
     def get_next_vote_date(self, user):
-        votes = user.vote_set.order_by('timestamp')
+        votes = user.vote_set.order_by('-timestamp')
         increment = datetime.timedelta(days=self.vote_frequency)
         last_vote_date = votes[0].timestamp
         next_vote_date = last_vote_date + increment 
         return next_vote_date
 
     def user_can_vote(self, user):
-        votes = user.vote_set.filter(user=user).order_by('timestamp')
+        votes = user.vote_set.filter(user=user).order_by('-timestamp')
         next_date = self.get_next_vote_date(user)
         if votes:           
             if dt.today() < next_date and dt.today() < self.end_date:
@@ -70,16 +70,14 @@ class Entry(models.Model):
     nominator_image = models.ImageField(upload_to=get_image_path)        
 
     contest = models.ForeignKey(Contest)
+    vote_count = models.IntegerField()
 
 
     def __str__(self):
         return self.title
 
-    def get_vote_count(self):
-        return self.vote_set.count()
-
     def get_place(self):
-        entries = Entry.objects.filter(contest=self.contest).order_by('vote')
+        entries = Entry.objects.filter(contest=self.contest).order_by('-vote_count')
         for i, entry in enumerate(entries):
             if entry == self: return i+1
 
