@@ -193,7 +193,8 @@ margin-top: -14px;
   	display:block;
     width: 157px;
 }
-#left_container #logo:hover { 
+#left_container #logo:hover,
+#logo:hover { 
   border:none;
 }
 
