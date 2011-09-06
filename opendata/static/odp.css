@@ -1681,9 +1681,11 @@ float:left;
     float: left;
 }
 #contest_desc {
-    width: 500px;
+    width: 440px;
     height: 170px;
-    padding-left:200px;
+    padding-left:220px;
+	font-size: 10pt;
+	line-height: 13pt;
 }
 #contest_menu {
     float: right;
@@ -1798,7 +1800,9 @@ float:left;
 #info_text {
     float:left;    
     padding-left: 10px;
-    padding-top: 7px;
+    padding-top: 10px;
+	color: #777;
+	font-size: 9pt;
 }
 
 #contest_list li {
