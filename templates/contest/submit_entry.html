@@ -12,9 +12,24 @@
 	</script>
 {% endblock %}
 
+{% block header_description %}
+
+    <div>OpenDataRace is a contest to uncover Philadelphia-related data sets that are not yet available 
+        to the public. Sponsored by OpenDataPhilly, in partnership with Azavea, NPower Pennsylvania, 
+        Technically Philly, and the William Penn Foundation, we want to know what data sets would better 
+        help your non-profit accomplish your mission if they were made available to the public. Do you 
+        have some data in mind? Nominate a data set now by filling out the following form. </div>
+
+{% endblock %}
+
 {% block center_container %}
 
 <div id="contest_form" class="resource">
+
+<div>Complete contest rules are available <a href="{{SITE_ROOT}}/contest/rules/">here</a>. The OpenDataPhilly team will select a certain 
+    number of nominations for public voting in October. The non-profits who nominated the three data sets 
+    that receive the most votes will receive cash prizes and the assistance of the OpenDataPhilly team in 
+    opening the data for public use. </div>
 
 <form action="{{SITE_ROOT}}/contest/add/" method="POST">
 

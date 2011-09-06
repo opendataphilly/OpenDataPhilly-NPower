@@ -1675,9 +1675,16 @@ float:left;
 }
 
 #contest_header {
-    margin-bottom:215px;
+    margin-bottom:195px;
 }
-
+#logo {
+    float: left;
+}
+#contest_desc {
+    width: 500px;
+    height: 170px;
+    padding-left:200px;
+}
 #contest_menu {
     float: right;
     text-align: right;
@@ -1728,14 +1735,14 @@ float:left;
 }
 #contest_info #box_wrapper {
     position: relative;
-    width: 800px;
+    width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 .info_box {
     float: left;
-    width: 42%;
-    height: 140px;
+    width: 290px;
+    height: 125px;
     padding: 15px;
     margin: 10px;
     border: 1px solid white;
@@ -1786,6 +1793,12 @@ float:left;
     padding-bottom: 10px;
     font-size: .8em;
     font-style: italic;    
+}
+
+#info_text {
+    float:left;    
+    padding-left: 10px;
+    padding-top: 7px;
 }
 
 #contest_list li {

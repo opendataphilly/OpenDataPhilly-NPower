@@ -27,6 +27,17 @@
 	</script>
 {% endblock %}
 
+{% block header_description %}
+
+    <div>OpenDataRace is a contest to uncover Philadelphia-related data sets that are 
+        not yet available to the public. Non-profit organizations across the city have nominated 
+        data that would help them accomplish their missions and improve our region. Vote now 
+        for the data set that you think should be open and available. The top three data sets will 
+        earn cash prizes for their nominators and the assistance of the OpenDataPhilly team in opening the 
+        data for public use. </div>
+
+{% endblock %}
+
 {% block center_container %}
 
 
@@ -35,7 +46,8 @@
         <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message|safe}}</div>
      {% endfor %}
 	<div id="results_info">
-		<h2 id="count">{{entries.count}} ENTRIES</h2>
+		<div id="info_text">You may vote once per week and must be <a href="{{SITE_ROOT}}/accounts/register/">registered</a> with
+            OpenDataPhilly to vote. <br>Spread the word and join the race toward more open data!</div>
 		<div id="sort">
 			<ul>
 				<li id="sort_vote_count">{% anchor vote_count %}</li>
