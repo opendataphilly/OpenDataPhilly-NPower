@@ -1800,9 +1800,10 @@ float:left;
 #info_text {
     float:left;    
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 8px;
 	color: #777;
 	font-size: 9pt;
+	line-height: 11pt;
 }
 
 #contest_list li {
