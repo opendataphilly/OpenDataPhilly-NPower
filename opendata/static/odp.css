@@ -1677,7 +1677,7 @@ float:left;
 #contest_header {
     margin-bottom:195px;
 }
-#logo {
+#contest_header #logo {
     float: left;
 }
 #contest_desc {

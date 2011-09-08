@@ -83,6 +83,8 @@
             </div>
 
         </li>
+    {% empty %}
+        <li class="resource" style="width:95%;text-align:center;">No contest entries have been added yet. Until then, check out the <a href="{{SITE_ROOT}}/contest/rules/">rules</a> or the <a  href="{{SITE_ROOT}}/contest/add/">nomination</a> form. </li>
     {% endfor %}
     </ul>
 </div>
