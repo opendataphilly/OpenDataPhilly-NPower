@@ -1805,6 +1805,15 @@ float:left;
 	font-size: 9pt;
 	line-height: 11pt;
 }
+#nomination_text {
+    float:left;    
+    margin-bottom: 25px;
+	color: #777;
+	font-size: 9pt;
+	line-height: 11pt;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #CCC;
+}
 
 #contest_list li {
     float:left;
