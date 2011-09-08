@@ -67,10 +67,10 @@ class Entry(models.Model):
     short_description = models.CharField(max_length=120)
     nominator = models.CharField(max_length=255)
     nominator_link = models.CharField(max_length=255)
-    nominator_image = models.ImageField(upload_to=get_image_path)        
+    nominator_image = models.ImageField(upload_to=get_image_path, null=True, blank=True, help_text="Save the entries before adding images.")        
 
     contest = models.ForeignKey(Contest)
-    vote_count = models.IntegerField()
+    vote_count = models.IntegerField(default=0)
 
 
     def __str__(self):
