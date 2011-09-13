@@ -45,11 +45,11 @@ def add_entry(request, contest_id=1):
             #subject, user_email = 'OpenDataPhilly - Contest Submission', (request.user.first_name + " " + request.user.last_name, request.user.email)
             subject = 'OpenDataPhilly - Contest Submission'
             text_content = render_to_string('contest/submit_email.txt', data)
-            #text_content_copy = render_to_string('contest/submit_email_copy.txt', data)
+            text_content_copy = render_to_string('contest/submit_email_copy.txt', data)
             mail_managers(subject, text_content)
 
-            #msg = EmailMessage(subject, text_content_copy, to=user_email)
-            #msg.send()
+            msg = EmailMessage(subject, text_content_copy, to=request.POST.get("contact_email"))
+            msg.send()
 
             return render_to_response('contest/thanks.html', {'contest': contest}, context_instance=RequestContext(request))
 

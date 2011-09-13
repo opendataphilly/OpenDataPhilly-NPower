@@ -1,4 +1,3 @@
-Submitter: {{submitter}}
 Date: {{submit_date}}
 
 Organization Name: {{org_name}}
