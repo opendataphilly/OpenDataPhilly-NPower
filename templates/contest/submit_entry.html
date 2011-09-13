@@ -29,10 +29,11 @@
 <div id="nomination_text">Complete contest rules are available <a href="{{SITE_ROOT}}/contest/rules/">here</a>. The OpenDataPhilly team will select a certain 
     number of nominations for public voting in October. The non-profits who nominated the three data sets 
     that receive the most votes will receive cash prizes and the assistance of the OpenDataPhilly team in 
-    opening the data for public use. Please contact <a href="mailto:info@opendataphilly.org">info@opendataphilly.org</a> with any questions.</div>
+    opening the data for public use. Please contact <a href="mailto:info@opendataphilly.org">info@opendataphilly.org</a> with any questions.
+    <br> <br>Data sets for the OpenDataRace should be nominated by non-profit organizations. Individuals may suggest data sets on the 
+    OpenDataPhilly <a href="{{SITE_ROOT}}/suggestions/">Nominate Data</a> page.</div>
 
-<form action="{{SITE_ROOT}}/contest/add/" method="POST">
-
+<form action="{{SITE_ROOT}}/contest/add/" method="POST">   
 	{% csrf_token %}
 	{% if form.errors %}
 	<div class="error_message resource">All fields below are required. Please add any missing information and click Submit again.</div>
@@ -43,9 +44,11 @@
     <p><label for="id_contact_person">Contact Person:</label> {{form.contact_person}}</p>
     <p><label for="id_contact_phone">Contact Phone Number:</label> {{form.contact_phone}}</p>
 
-    <p><label for="id_contact_email">Contact Email:</label> {{form.contact_email}}</p>
+    <p><label style="height:50px;" for="id_contact_email">Contact Email:</label> {{form.contact_email}}
+        <br><span style="line-height:1.1em;">A copy of the nomination will be sent to this email address.</span>
+    </p>
     <p><label style="height:50px;" for="id_data_set">Data Set to Nominate:</label> {{form.data_set}}
-        <br><span style="line-height:1.1em; width:350px;">For example, a civic advocacy group nominates data on polling 
+        <br><span style="line-height:1.1em;">For example, a civic advocacy group nominates data on polling 
         <br>locations and a transit group requests parking lot data.</span>
     </p>
 
