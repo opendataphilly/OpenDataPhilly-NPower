@@ -1675,7 +1675,7 @@ float:left;
 }
 
 #contest_header {
-    margin-bottom:195px;
+    margin-bottom:220px;
 }
 #contest_header #logo {
     float: left;
@@ -1744,7 +1744,7 @@ float:left;
 .info_box {
     float: left;
     width: 290px;
-    height: 125px;
+    height: 150px;
     padding: 15px;
     margin: 10px;
     border: 1px solid white;
@@ -1768,7 +1768,7 @@ float:left;
     width: 60px;
     padding: 8px;
     margin-right: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 65px;
     text-align: center;
     background-color: white;
     color: #575656;
@@ -1792,7 +1792,7 @@ float:left;
     font-weight: bold;
 }
 .days_data {
-    padding-bottom: 10px;
+    padding-bottom: 9px;
     font-size: .8em;
     font-style: italic;    
 }
@@ -1806,7 +1806,6 @@ float:left;
 	line-height: 11pt;
 }
 #nomination_text {
-    float:left;    
     margin-bottom: 25px;
 	color: #777;
 	font-size: 9pt;

@@ -29,16 +29,29 @@
 <div id="nomination_text">Complete contest rules are available <a href="{{SITE_ROOT}}/contest/rules/">here</a>. The OpenDataPhilly team will select a certain 
     number of nominations for public voting in October. The non-profits who nominated the three data sets 
     that receive the most votes will receive cash prizes and the assistance of the OpenDataPhilly team in 
-    opening the data for public use. </div>
+    opening the data for public use. Please contact <a href="mailto:info@opendataphilly.org">info@opendataphilly.org</a> with any questions.</div>
 
 <form action="{{SITE_ROOT}}/contest/add/" method="POST">
 
 	{% csrf_token %}
 	{% if form.errors %}
-	<div class="error_message resource">The form has errors. Please try again.</div>
+	<div class="error_message resource">All fields below are required. Please add any missing information and click Submit again.</div>
 	{% endif %}
 
-	{{form.as_p}}
+    <p><label for="id_org_name">Organization Name:</label> {{form.org_name}}</p>
+    <p><label for="id_org_url">Organization Url:</label> {{form.org_url}}</p>
+    <p><label for="id_contact_person">Contact Person:</label> {{form.contact_person}}</p>
+    <p><label for="id_contact_phone">Contact Phone Number:</label> {{form.contact_phone}}</p>
+
+    <p><label for="id_contact_email">Contact Email:</label> {{form.contact_email}}</p>
+    <p><label style="height:50px;" for="id_data_set">Data Set to Nominate:</label> {{form.data_set}}
+        <br><span style="line-height:1.1em; width:350px;">For example, a civic advocacy group nominates data on polling 
+        <br>locations and a transit group requests parking lot data.</span>
+    </p>
+
+    <p><label for="id_data_use">If this data set were available, how would your organization use it?</label> {{form.data_use}}</p>
+    <p><label for="id_data_mission">How would this data set contribute to your organization's mission?</label> {{form.data_mission}}</p>
+
 	<input class="button" type="submit" value="submit"/>
 	<input class="button" type="reset" value="reset" onclick="window.location='{{current_path}}'"/>
 		
