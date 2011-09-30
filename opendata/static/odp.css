@@ -1827,19 +1827,32 @@ float:left;
     margin-left: 20px;
     margin-right: 50px;
 }
+#entry_logo {
+	background: #FFF;
+	border: 1px solid #dbdbdb;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+	float: right;
+	height: 80px;
+	position: relative;
+	right: -25px;
+	top: -30px;
+	width: 90px;
+}
 #entry_place {
     font-size: 0.75em;
     font-weight: bold;
     color: #7D7D7D;
+	margin-bottom: 10px;
 }
 #entry_title {
     padding-top: 3px;
-    padding-bottom: 3px;
+    padding-bottom: 9px;
     overflow: hidden;
     font-weight: bold;
 }
 #entry_nominator {
-    overflow: hidden;
     font-size: 0.75em;
     color: #7D7D7D;    
 }
