@@ -1817,7 +1817,8 @@ float:left;
 #contest_list li {
     float:left;
     width: 26%;
-    margin: 1.5%
+    margin: 1.5%;
+	height: 240px;
 }
 #contest_list .resource {
     padding: 20px 15px 15px;
