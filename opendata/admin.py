@@ -128,6 +128,7 @@ admin.site.register(Resource, ResourceAdmin)
 
 admin.site.register(Contest, ContestAdmin)
 admin.site.register(Entry, EntryAdmin)
+admin.site.register(Vote)
 
 admin.site.register(CommentWithRating)
 
