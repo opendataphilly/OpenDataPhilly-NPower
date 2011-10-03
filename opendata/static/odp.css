@@ -798,7 +798,10 @@ a.resource:hover {
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #555;
-  margin-left: 3px;
+	margin-left: 3px;
+}
+#contest_entry #title {
+	margin-right: 100px;
 }
 #description {
 	font-size: .95em;
@@ -2008,6 +2011,7 @@ float:left;
 }
 .entry_data {
     padding-top: 4px;
+	font-size: 0.75em;
+	line-height: 1.25em;
+	padding-top: 4px;
 }
-
-
