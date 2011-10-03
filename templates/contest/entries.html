@@ -1,7 +1,6 @@
 {% extends "contest/contest_template.html" %}
 
 {% load sorting_tags %}
-{% load pagination_tags %}
 {% load humanize %}
 
 {% block body_id %}id="contest"{% endblock %}
@@ -59,12 +58,11 @@
 </div>
 
 {% autosort entries %}
-{% autopaginate entries 6 %}
 <div id="contest_entries">
     <ul id="contest_list">
     {% for entry in entries %}
         <li class="resource">
-			<div id="entry_logo"><img height="80" src="{{entry.nominator_image.url}}" /></div>
+			<div id="entry_logo"><img src='{{entry.nominator_image.url}}'/></div>
             <div id="entry_info">
                 <div id="entry_place"><span class="orange">{{entry.get_place|ordinal}}</span> PLACE</div>
                 <div id="entry_title">{{entry.title}}</div>
@@ -93,6 +91,5 @@
 </div>
 
 
-<div id="pager" class="clear">{% paginate %}</div>
 
 {% endblock %}
