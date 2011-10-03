@@ -1,7 +1,6 @@
 {% extends "contest/contest_template.html" %}
 
 {% load sorting_tags %}
-{% load pagination_tags %}
 {% load humanize %}
 
 {% block body_id %}id="contest"{% endblock %}
@@ -59,7 +58,6 @@
 </div>
 
 {% autosort entries %}
-{% autopaginate entries 6 %}
 <div id="contest_entries">
     <ul id="contest_list">
     {% for entry in entries %}
@@ -93,6 +91,5 @@
 </div>
 
 
-<div id="pager" class="clear">{% paginate %}</div>
 
 {% endblock %}
