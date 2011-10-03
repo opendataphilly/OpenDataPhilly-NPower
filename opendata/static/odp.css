@@ -798,7 +798,10 @@ a.resource:hover {
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #555;
-  margin-left: 3px;
+	margin-left: 3px;
+}
+#contest_entry #title {
+	margin-right: 100px;
 }
 #description {
 	font-size: .95em;
@@ -1869,7 +1872,9 @@ float:left;
     color: #7D7D7D;
 }
 #entry_buttons {
-    float:left;    
+    float:left;  
+	position: absolute;
+	bottom: 15px;
 }
 #entry_buttons div{
     margin: 10px 10px 0;
@@ -1892,7 +1897,9 @@ float:left;
     background-color: gray;
 }
 #entry_votes {
-	float: right;
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
     padding: 10px;
 	border: 1px solid #dbdbdb;
 	background-color: white;
@@ -2008,6 +2015,7 @@ float:left;
 }
 .entry_data {
     padding-top: 4px;
+	font-size: 0.75em;
+	line-height: 1.25em;
+	padding-top: 4px;
 }
-
-
