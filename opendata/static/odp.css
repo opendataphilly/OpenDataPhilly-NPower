@@ -1818,7 +1818,8 @@ float:left;
     float:left;
     width: 26%;
     margin: 1.5%;
-	height: 240px;
+	height: 260px;
+	font-family: Helvetica,Arial,sans-serif;
 }
 #contest_list .resource {
     padding: 20px 15px 15px;
@@ -1849,9 +1850,10 @@ float:left;
 }
 #entry_title {
     padding-top: 3px;
-    padding-bottom: 9px;
-    overflow: hidden;
-    font-weight: bold;
+    padding-bottom: 8px;
+    font-weight: normal;
+	font-family: "Open Sans", Arial, Helvetica;
+	line-height: 13pt;
 }
 #entry_nominator {
     font-size: 0.75em;
@@ -1863,6 +1865,7 @@ float:left;
     overflow: hidden;
     font-size: 0.75em;
     font-style: italic;
+	line-height: 11pt;
     color: #7D7D7D;
 }
 #entry_buttons {
@@ -1887,7 +1890,6 @@ float:left;
 }
 #entry_buttons .details {
     background-color: gray;
-    margin-top: 5px;
 }
 #entry_votes {
 	float: right;
