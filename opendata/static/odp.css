@@ -1897,9 +1897,6 @@ float:left;
     background-color: gray;
 }
 #entry_votes {
-	position: absolute;
-	right: 15px;
-	bottom: 15px;
     padding: 10px;
 	border: 1px solid #dbdbdb;
 	background-color: white;
@@ -1908,6 +1905,11 @@ float:left;
 	-moz-box-shadow: 0 0 4px #ccc;
 	-webkit-box-shadow: 0 0 4px #ccc;
 	box-shadow: 0 0 4px #ccc;
+}
+li.resource #entry_votes {
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
 }
 #entry_votes #nom_votes_number {
 	font-size: 2em;
