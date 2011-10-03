@@ -62,11 +62,11 @@
     <ul id="contest_list">
     {% for entry in entries %}
         <li class="resource">
-			<div id="entry_logo"><img src='{{entry.nominator_image.url}}'/></div>
+			<div id="entry_logo">{% if entry.nominator_image %}<a href="{{entry.nominator_link}}" target="_blank"><img src='{{entry.nominator_image.url}}'/></a>{% endif %}</div>
             <div id="entry_info">
                 <div id="entry_place"><span class="orange">{{entry.get_place|ordinal}}</span> PLACE</div>
                 <div id="entry_title">{{entry.title}}</div>
-                <div id="entry_nominator">{{entry.nominator}}</div>
+                <div id="entry_nominator"><a href="{{entry.nominator_link}}" target="_blank">{{entry.nominator}}</a></div>
                 <div id="entry_shortdesc">{{entry.short_description}}</div>
             </div>
             <div id="entry_buttons">
