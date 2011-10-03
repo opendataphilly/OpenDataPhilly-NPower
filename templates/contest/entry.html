@@ -8,9 +8,9 @@
 
 <div id="contest_entry" class="resource">
 
-    <div id="entry_votes">
-        <div id="nom_votes_number">{{entry.get_vote_count|default:0}}</div>
-        <div id="nom_votes_text">vote{% if entry.get_vote_count != 1 %}s{% endif %}</div>
+    <div style="float:right;" id="entry_votes">
+        <div id="nom_votes_number">{{entry.vote_count|default:0}}</div>
+        <div id="nom_votes_text">vote{% if entry.vote_count != 1 %}s{% endif %}</div>
     </div>
 
     <h1 id="title">{{entry.title}}</h1> 
