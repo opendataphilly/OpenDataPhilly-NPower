@@ -75,5 +75,5 @@ def add_vote(request, entry_id):
         next_vote_date = contest.get_next_vote_date(user)
         messages.error(request, '<div style="font-weight:bold;">You have already voted.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')    
     
-    return redirect('/contest/')
+    return redirect('/contest/?sort=vote_count')
     
