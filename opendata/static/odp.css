@@ -1872,7 +1872,9 @@ float:left;
     color: #7D7D7D;
 }
 #entry_buttons {
-    float:left;    
+    float:left;  
+	position: absolute;
+	bottom: 15px;
 }
 #entry_buttons div{
     margin: 10px 10px 0;
@@ -1895,7 +1897,9 @@ float:left;
     background-color: gray;
 }
 #entry_votes {
-	float: right;
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
     padding: 10px;
 	border: 1px solid #dbdbdb;
 	background-color: white;
