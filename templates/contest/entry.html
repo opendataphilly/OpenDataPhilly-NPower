@@ -4,6 +4,19 @@
 
 {% block body_id %}id="contest"{% endblock %}
 
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			
+            $(".vote").click(function (evt) {
+                event_id = this.id.split('_')[1];
+                location = "{{SITE_ROOT}}/contest/entry/" + event_id + "/vote/";
+            });
+
+		});
+	</script>
+{% endblock %}
+
 {% block center_container %}
 
 <div id="contest_entry" class="resource">
@@ -17,6 +30,13 @@
     <div class="entry_label">Current Standing</div><div class="entry_data" >{{entry.get_place|ordinal}} Place</div>
     <div class="entry_label">Nominated By</div><div class="entry_data">{% if entry.nominator_image %}<a href="{{entry.nominator_link}}" target="_blank"><img height="50" src="{{entry.nominator_image.url}}" /> {% endif %}{{entry.nominator}}</a></div>
     <div class="entry_label">Description</div><div class="entry_data">{{entry.description|safe}}</div>
+
+    {% if entry.contest.has_started %}
+        <div style="position:relative;bottom:0;float:none;width:87px;" id="entry_buttons">
+            <div id="vote_{{entry.id}}" class="vote">VOTE</div>
+        </div>
+    {% endif %}
+
 </div>
 
 
