@@ -93,9 +93,10 @@ class SubmissionAdmin(admin.ModelAdmin):
     readonly_fields = ['user',]
 
 class ODPUserProfileAdmin(admin.ModelAdmin):
-    list_display = ['user',]
+    list_display = ['user', 'can_notify',]
     fieldsets = [(None, {'fields':['user', 'organization', 'can_notify']}),]
     readonly_fields = ['user',]
+    list_filter = ['can_notify',]
     
 class EntryAdmin(admin.ModelAdmin):
     list_display = ['title', 'nominator', 'contest']
@@ -111,6 +112,11 @@ class ContestAdmin(admin.ModelAdmin):
     list_display = ['title', 'start_date', 'end_date']
     search_fields = ['title', 'rules']
     inlines = [EntryInline, ]
+
+class VoteAdmin(admin.ModelAdmin):
+    list_display= ['entry', 'user', 'timestamp']
+    search_fields = ['entry']
+    list_filter = ['entry',]
 
 admin.site.register(Submission, SubmissionAdmin)
 admin.site.register(ODPUserProfile, ODPUserProfileAdmin)
@@ -128,7 +134,7 @@ admin.site.register(Resource, ResourceAdmin)
 
 admin.site.register(Contest, ContestAdmin)
 admin.site.register(Entry, EntryAdmin)
-admin.site.register(Vote)
+admin.site.register(Vote, VoteAdmin)
 
 admin.site.register(CommentWithRating)
 

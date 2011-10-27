@@ -22,7 +22,7 @@
                     <div id="days_events">
                         <div id="days_header">Upcoming Event Information</div>
                         <div class="days_label">Thurs, Sept 29, 2011</div><div class="days_data">Nominations close</div>
-                        <div class="days_label">Tuesday, Oct 3, 2011</div><div class="days_data">Voting begins</div>
+                        <div class="days_label">Monday, Oct 3, 2011</div><div class="days_data">Voting begins</div>
                         <div class="days_label">Thurs, Oct 27, 2011, 11:59pm</div><div class="days_data">Voting ends</div>
                         <div class="days_label">Fri, Oct 28, 2011</div><div class="days_data">Winners announced</div>
                     </div>
@@ -31,7 +31,7 @@
                         <div id="days_left">
                             <div id="days">VOTING IS OVER!</div>
                         </div>
-                        <div id="days_events">Thank you for participating in the OpenDataRace! The contest is now finished, but you can 
+                        <div id="days_events">Congratulations to the winners and thank you for participating in the OpenDataRace! The contest is now finished, but you can 
                         continue to <a href="{{SITE_ROOT}}/opendata/nominate/?sort=rating_score&dir=desc">nominate</a> data sets for OpenDataPhilly.</div>
                     {% else %}
                         <div id="days_left">
@@ -41,7 +41,7 @@
                         <div id="days_events">
                             <div id="days_header">Upcoming Event Information</div>
                             <div class="days_label">Thurs, Sept 29, 2011</div><div class="days_data">Nominations close</div>
-                            <div class="days_label">Monday, Oct 3, 2011</div><div class="days_data">Voting begins</div>
+                            <div class="days_label">Tuesday, Oct 4, 2011</div><div class="days_data">Voting begins</div>
                             <div class="days_label">Thurs, Oct 27, 2011, 11:59pm</div><div class="days_data">Voting ends</div>
                             <div class="days_label">Fri, Oct 28, 2011</div><div class="days_data">Winners announced</div>
                         </div>
@@ -62,9 +62,9 @@
             <a href="{{SITE_ROOT}}/contest/?sort=vote_count" id="logo"><img src="/static/images/contest/opendatarace_logo.png"/></a>
             <div id="contest_menu">
                 <ul>
-                    <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/?sort=vote_count&dir=desc">CAST YOUR VOTE</a></li>
+                    <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/?sort=vote_count&dir=desc">
+                        {% if contest.has_ended %}VIEW RESULTS{% else %}CAST YOUR VOTE{% endif %}</a></li>
                     <li id="menu_rules" class="contest_menu"><a href="{{SITE_ROOT}}/contest/rules/">RULES</a></li>
-                    <li id="menu_nominate" class="contest_menu"><a href="{{SITE_ROOT}}/contest/add/">NOMINATE</a></li>
                     <li id="menu_odp" class="contest_menu"><a href="{{SITE_ROOT}}/">OpenDataPhilly</a></li>
                 </ul>
             </div>
