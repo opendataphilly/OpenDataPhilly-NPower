@@ -29,10 +29,10 @@
                 {% else %}
                     {% if contest.has_started %}                    
                         <div id="days_left">
-                            <div id="days">VOTING IS OVER!</div>
+                            <div id="voting_over">VOTING IS OVER!</div>
                         </div>
-                        <div id="days_events">Congratulations to the winners and thank you for participating in the OpenDataRace! The contest is now finished, but you can 
-                        continue to <a href="{{SITE_ROOT}}/opendata/nominate/?sort=rating_score&dir=desc">nominate</a> data sets for OpenDataPhilly.</div>
+                        <div id="days_events" class="days_over">Congratulations to the winners and thank you for participating in the OpenDataRace! The contest is now finished, but you can 
+                        continue to <a href="{{SITE_ROOT}}/opendata/nominate/?sort=rating_score&dir=desc" class="white_link">nominate</a> data sets for OpenDataPhilly.</div>
                     {% else %}
                         <div id="days_left">
                             <div id="days">{{contest.get_days_till_start}}</div>
@@ -59,11 +59,12 @@
 	<div id="center_container">
     {% include "loginlogout.html" %}
         <div id="contest_header">
-            <a href="{{SITE_ROOT}}/contest/?sort=vote_count" id="logo"><img src="/static/images/contest/opendatarace_logo.png"/></a>
+            <a href="{% if contest.has_ended %}{{SITE_ROOT}}/contest/winners/{% else %}{{SITE_ROOT}}/contest/?sort=vote_count{% endif %}" id="logo"><img src="/static/images/contest/opendatarace_logo.png"/></a>
             <div id="contest_menu">
                 <ul>
+                    {% if contest.has_ended %}<li id="menu_winner" class="contest_menu"><a href="{{SITE_ROOT}}/contest/winners">CONTEST WINNERS</a></li>{% endif %}
                     <li id="menu_vote" class="contest_menu"><a href="{{SITE_ROOT}}/contest/?sort=vote_count&dir=desc">
-                        {% if contest.has_ended %}VIEW RESULTS{% else %}CAST YOUR VOTE{% endif %}</a></li>
+                        {% if contest.has_ended %}ALL RESULTS{% else %}CAST YOUR VOTE{% endif %}</a></li>
                     <li id="menu_rules" class="contest_menu"><a href="{{SITE_ROOT}}/contest/rules/">RULES</a></li>
                     <li id="menu_odp" class="contest_menu"><a href="{{SITE_ROOT}}/">OpenDataPhilly</a></li>
                 </ul>

@@ -1672,6 +1672,7 @@ float:left;
    ------------------------------------------------- */
 
 #contest .orange {color: #DF5800;}
+#contest .white_link {color: #FFF; font-style:italic; border-bottom: 1px dotted #bbb}
 
 #contest #account {
     margin-right: 14px;
@@ -1679,6 +1680,9 @@ float:left;
 
 #contest_header {
     margin-bottom:220px;
+}
+.winner #contest_header{
+    margin-bottom:0;
 }
 #contest_header #logo {
     float: left;
@@ -1785,6 +1789,12 @@ float:left;
     font-size: 0.7em;
     line-height: 15px;
 }
+#days_left #voting_over {
+    font-size: 1em;
+    font-weight: bold;
+    color: #DF5800;
+}
+
 #date_box #days_header {
     padding-bottom: 10px;
     font-size: .8em;
@@ -1798,6 +1808,10 @@ float:left;
     padding-bottom: 9px;
     font-size: .8em;
     font-style: italic;    
+}
+.days_over {
+    font-size: 0.9em;
+    line-height: 17px;
 }
 
 #info_text {
@@ -1827,6 +1841,24 @@ float:left;
 #contest_list .resource {
     padding: 20px 15px 15px;
 }
+#contest_list .winner_text{
+    height:900px;
+    padding-right: 30px;
+}
+#contest_list .winner_text_small {
+    padding-top: 20px;
+    font-size: 0.8em;
+    line-height: 17px;
+    font-style: italic;
+}
+#contest_list .winner_text_large {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 25px;
+}
+#contest_list .first{
+    width: 59.5%;
+}
 #contest_entries {
     clear:both;
     margin-left: 20px;
@@ -1850,6 +1882,13 @@ float:left;
     font-weight: bold;
     color: #7D7D7D;
 	margin-bottom: 10px;
+}
+.winner #entry_place {
+    font-size: 1.1em;
+    font-style: italic;
+}
+.honerable #entry_place {
+    font-size: 0.85em;
 }
 #entry_title {
     padding-top: 3px;
@@ -1895,6 +1934,12 @@ float:left;
 }
 #entry_buttons .details {
     background-color: gray;
+}
+.winner #entry_buttons {
+    bottom: 36px;
+}
+.first #entry_buttons {
+    bottom: 20px;
 }
 #entry_votes {
     padding: 10px;

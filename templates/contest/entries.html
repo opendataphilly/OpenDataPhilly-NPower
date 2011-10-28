@@ -45,8 +45,10 @@
         <div style="border: 1px solid rgb(221, 221, 221); padding: 10px; background-color: white; margin: 5px; text-align: center;"> {{message|safe}}</div>
      {% endfor %}
 	<div id="results_info">
+        {% if not contest.has_ended %}
 		<div id="info_text">You may vote once per week and must be <a href="{{SITE_ROOT}}/accounts/register/">registered</a> with
             OpenDataPhilly to vote. <br>Spread the word and join the race toward more open data!</div>
+        {% endif %}
 		<div id="sort">
 			<ul>
 				<li id="sort_vote_count">{% anchor vote_count %}</li>
