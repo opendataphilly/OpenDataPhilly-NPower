@@ -6,7 +6,12 @@ import os
 import datetime
 from datetime import datetime as dt
 
-# Create your models here.
+DATA_STATUS = (
+    ('Released', 'Released'), 
+    ('Not Released', 'Not Released'), 
+    ('Under Discussion', 'Under Discussion'), 
+    ('Cannot Be Released', 'Cannot Be Released')
+)
 
 class Contest(models.Model):
     title = models.CharField(max_length=255)    
@@ -68,6 +73,8 @@ class Entry(models.Model):
     nominator = models.CharField(max_length=255)
     nominator_link = models.CharField(max_length=255)
     nominator_image = models.ImageField(upload_to=get_image_path, null=True, blank=True, help_text="Save the entries before adding images.")        
+    status = models.CharField(max_length=255, choices=DATA_STATUS, default="Not Released")
+    links = models.CharField(max_length=400, null=True, blank=True)
 
     contest = models.ForeignKey(Contest)
     vote_count = models.IntegerField(default=0)

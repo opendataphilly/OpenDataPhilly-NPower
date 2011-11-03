@@ -2066,3 +2066,16 @@ li.resource #entry_votes {
 	line-height: 1.25em;
 	padding-top: 4px;
 }
+
+#entry_list_table {
+    width: 100%;
+    background-color: white;
+}
+#entry_list_table th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+#entry_list_table td {
+    padding: 8px;
+}
+

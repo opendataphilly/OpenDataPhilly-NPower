@@ -1,0 +1,54 @@
+{% extends "contest/contest_template.html" %}
+
+{% load sorting_tags %}
+{% load humanize %}
+
+{% block body_id %}id="contest"{% endblock %}
+
+{% block js_ready %}
+	<script>
+		$(document).ready(function () {
+			odp.setupSortLinks();
+            
+            $(".contest_menu").removeClass('selected');
+
+		});
+	</script>
+{% endblock %}
+
+{% block header_description %}
+
+    <div>OpenDataRace is a contest to uncover Philadelphia-related data sets that are 
+        not yet available to the public. Non-profit organizations across the city have nominated 
+        data that would help them accomplish their missions and improve our region. <span style="color:#E05B26; font-weight: bold;">Vote now 
+        for the data set that you think should be open and available.</span> The top three data sets will 
+        earn cash prizes for their nominators and the assistance of the <a href="{{SITE_ROOT}}/">OpenDataPhilly</a> team in opening the 
+        data for public use. </div>
+
+{% endblock %}
+
+{% block center_container %}
+
+
+
+
+{% autosort entries %}
+<div id="contest_entries">
+    <table id="entry_list_table">
+        <tr><th>{% anchor vote_count "Votes" %}</th><th>{% anchor title "Title" %}</th><th>{% anchor nominator "Nominated By" %}</th><th>Description</th><th>{% anchor status "Status" %}</th><th>Links</th></tr>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.vote_count }}</td>
+                <td>{{ entry.title }}</td>
+                <td>{{ entry.nominator }}</td>
+                <td>{{ entry.short_description }}</td>
+                <td>{{ entry.status }}</td>
+                <td>{{ entry.links }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+{% endblock %}
