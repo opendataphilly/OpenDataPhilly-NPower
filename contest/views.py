@@ -77,10 +77,16 @@ def add_vote(request, entry_id):
         entry.vote_count = entry.vote_set.count()
         entry.save()
         next_vote_date = contest.get_next_vote_date(user)
-        messages.success(request, '<div style="font-weight:bold;">Your vote has been recorded.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')
+        if next_vote_date > contest.end_date:
+            messages.success(request, '<div style="font-weight:bold;">Your vote has been recorded.</div>Thank you for your vote! You will not be able to vote again before the end of the contest. <br><br>Please encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')
+        else:
+            messages.success(request, '<div style="font-weight:bold;">Your vote has been recorded.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')
     else:
         next_vote_date = contest.get_next_vote_date(user)
-        messages.error(request, '<div style="font-weight:bold;">You have already voted.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')    
+        if next_vote_date > contest.end_date:
+            messages.error(request, '<div style="font-weight:bold;">You have already voted.</div>You will not be able to vote again before the end of the contest. <br><br>Please encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')
+        else:
+            messages.error(request, '<div style="font-weight:bold;">You have already voted.</div>You may vote once per week, so come back and visit us again on ' + next_vote_date.strftime('%A, %b %d %Y, %I:%M%p') + '. <br><br>Until then, encourage others to visit <a href="/">OpenDataPhilly</a> and to join the race toward more open data!')    
     
     return redirect('/contest/?sort=vote_count')
     
