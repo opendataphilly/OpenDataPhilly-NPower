@@ -33,7 +33,7 @@
 
 
 {% autosort entries %}
-<div id="contest_entries">
+<div id="contest_entries_wrapper">
     <table id="entry_list_table">
         <tr><th>{% anchor vote_count "Votes" %}</th><th>{% anchor title "Title" %}</th><th>{% anchor nominator "Nominated By" %}</th><th>Description</th><th>{% anchor status "Status" %}</th><th>Links</th></tr>
         {% for entry in entries %}

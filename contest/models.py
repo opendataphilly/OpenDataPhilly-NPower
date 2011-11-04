@@ -75,6 +75,7 @@ class Entry(models.Model):
     nominator_image = models.ImageField(upload_to=get_image_path, null=True, blank=True, help_text="Save the entries before adding images.")        
     status = models.CharField(max_length=255, choices=DATA_STATUS, default="Not Released")
     links = models.CharField(max_length=400, null=True, blank=True)
+    is_visible = models.BooleanField(default=True)
 
     contest = models.ForeignKey(Contest)
     vote_count = models.IntegerField(default=0)

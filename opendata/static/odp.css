@@ -2066,7 +2066,18 @@ li.resource #entry_votes {
 	line-height: 1.25em;
 	padding-top: 4px;
 }
-
+#contest_entries_wrapper {
+    padding: 4px;    
+    font-size: .85em;
+	border: 1px solid #dbdbdb;
+    background-color: white;
+	-moz-box-shadow: 0 0 4px #ccc;
+	-webkit-box-shadow: 0 0 4px #ccc;
+	box-shadow: 0 0 4px #ccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	border-radius:3px;
+}
 #entry_list_table {
     width: 100%;
     background-color: white;
