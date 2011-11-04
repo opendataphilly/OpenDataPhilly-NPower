@@ -76,6 +76,8 @@ class Entry(models.Model):
     status = models.CharField(max_length=255, choices=DATA_STATUS, default="Not Released")
     links = models.CharField(max_length=400, null=True, blank=True)
     is_visible = models.BooleanField(default=True)
+    data_owner = models.CharField(max_length=255)
+    rejected_reason = models.CharField(max_length=255, null=True, blank=True)
 
     contest = models.ForeignKey(Contest)
     vote_count = models.IntegerField(default=0)

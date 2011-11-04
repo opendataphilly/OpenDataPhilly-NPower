@@ -2084,9 +2084,13 @@ li.resource #entry_votes {
 }
 #entry_list_table th {
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
 }
 #entry_list_table td {
     padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+#entry_list_table tr:last-child td {
+    border-bottom: none;
 }
 

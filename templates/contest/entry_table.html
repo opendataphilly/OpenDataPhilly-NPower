@@ -35,15 +35,22 @@
 {% autosort entries %}
 <div id="contest_entries_wrapper">
     <table id="entry_list_table">
-        <tr><th>{% anchor vote_count "Votes" %}</th><th>{% anchor title "Title" %}</th><th>{% anchor nominator "Nominated By" %}</th><th>Description</th><th>{% anchor status "Status" %}</th><th>Links</th></tr>
+        <tr>
+            <th>{% anchor is_visible "In Contest" %}</th>
+            <th>{% anchor vote_count "Votes" %}</th>
+            <th>{% anchor title "Title" %}</th>
+            <th>{% anchor nominator "Nominated By" %}</th>
+            <th>{% anchor nominator "Data Owner" %}</th>
+            <th>{% anchor status "Status" %}</th>
+        </tr>
         {% for entry in entries %}
             <tr>
+                <td>{{ entry.is_visible|yesno:"Yes,No" }}{% if not entry.is_visible %} - {{ entry.rejected_reason }}{% endif %}</td>                
                 <td>{{ entry.vote_count }}</td>
-                <td>{{ entry.title }}</td>
+                <td><a href="{{SITE_ROOT}}/contest/entry/{{entry.id}}/">{{ entry.title }}</a></td>
                 <td>{{ entry.nominator }}</td>
-                <td>{{ entry.short_description }}</td>
+                <td>{{ entry.data_owner }}</td>
                 <td>{{ entry.status }}</td>
-                <td>{{ entry.links }}</td>
             </tr>
         {% endfor %}
     </table>

@@ -27,9 +27,12 @@
     </div>
 
     <h1 id="title">{{entry.title}}</h1> 
-    <div class="entry_label">Current Standing</div><div class="entry_data" >{{entry.get_place|ordinal}} Place</div>
+    <div class="entry_label">Current Standing</div><div class="entry_data" >{% if entry.is_visible %}{{entry.get_place|ordinal}} Place{% else %}Rejected - {{ entry.rejected_reaason }}{% endif %}</div>
     <div class="entry_label">Nominated By</div><div class="entry_data">{% if entry.nominator_image %}<a href="{{entry.nominator_link}}" target="_blank"><img height="50" src="{{entry.nominator_image.url}}" /> {% endif %}{{entry.nominator}}</a></div>
+    <div class="entry_label">Data Owner</div><div class="entry_data">{{entry.data_owner}}</div>
     <div class="entry_label">Description</div><div class="entry_data">{{entry.description|safe}}</div>
+
+    {% if entry.links %}<div class="entry_label">Links</div><div class="entry_data">{{entry.links|urlize}}</div> {% endif %}
 
     {% if entry.contest.has_started %} {% if not entry.contest.has_ended %}
         <div style="position:relative;bottom:0;float:none;width:87px;" id="entry_buttons">
