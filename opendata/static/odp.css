@@ -1635,32 +1635,33 @@ float:left;
 
 #footer {
 	position:relative;
-  float:left;
-  width: 100%;
-  clear:both;
+    float: left;
+    width: 100%;
+    clear: both;
 	height: 70px;
 	margin: 50px 0 25px;
 	background: url(/static/images/background_ul.gif) repeat;
 }
 #footer #footer_logo {
-	float:left;
-	margin:16px;
-  width: 126px;
-  height: 31px;
-  display:block;
-  background: url(/static/images/logo_azavea.png) 0 0 no-repeat;
+	float: left;
+	margin: 18px;
+    width: 126px;
+    height: 31px;
+    display: block;
+    background: url(/static/images/logo_azavea.png) 0 0 no-repeat;
 }
 #footer #footer_logo:hover {
-  background-position: 0 -31px;
+    background-position: 0 -31px;
 } 
 
 #footer #footer_copyright {
-	float:right;
-	margin:18px;
-  text-align:right;
+	float: right;
+    margin-top: 11px;
+	margin-right: 18px;
+    text-align: right;
 	line-height: 1.4em;
 	font-size: 0.7em;
-	font-weight:bold;
+	font-weight: bold;
 	color: #7D7D7D;
 }
 
@@ -2068,7 +2069,7 @@ li.resource #entry_votes {
 }
 #contest_entries_wrapper {
     padding: 4px;    
-    font-size: .85em;
+    font-size: .8em;
 	border: 1px solid #dbdbdb;
     background-color: white;
 	-moz-box-shadow: 0 0 4px #ccc;
@@ -2092,5 +2093,20 @@ li.resource #entry_votes {
 }
 #entry_list_table tr:last-child td {
     border-bottom: none;
+}
+#entry_list_table a {
+    color: #DF5800;
+}
+#entry_list_table #included {
+    background: transparent url(/static/images/icon_done_small.png) no-repeat;
+    height: 20px;
+    width: 20px;
+}
+
+#entry_list_table #not_included {
+    background: transparent url(/static/images/icon_not_done.png) no-repeat;
+    height: 20px;
+    width: 20px;
+    
 }
 

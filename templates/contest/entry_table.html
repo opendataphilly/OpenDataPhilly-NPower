@@ -11,7 +11,6 @@
 			odp.setupSortLinks();
             
             $(".contest_menu").removeClass('selected');
-
 		});
 	</script>
 {% endblock %}
@@ -36,21 +35,21 @@
 <div id="contest_entries_wrapper">
     <table id="entry_list_table">
         <tr>
-            <th>{% anchor is_visible "In Contest" %}</th>
+            <th>{% anchor is_visible "Included" %}</th>
             <th>{% anchor vote_count "Votes" %}</th>
-            <th>{% anchor title "Title" %}</th>
+            <th>{% anchor data_owner "Agency" %}</th>
             <th>{% anchor nominator "Nominated By" %}</th>
-            <th>{% anchor nominator "Data Owner" %}</th>
-            <th>{% anchor status "Status" %}</th>
+            <th>{% anchor title "Data Set" %}</th>
+            <th>{% anchor status "Remarks" %}</th>
         </tr>
         {% for entry in entries %}
             <tr>
-                <td>{{ entry.is_visible|yesno:"Yes,No" }}{% if not entry.is_visible %} - {{ entry.rejected_reason }}{% endif %}</td>                
+                <td>{{ entry.is_visible|yesno:"<div id='not_included' />,<div id='included' />"|safe }}</td>
                 <td>{{ entry.vote_count }}</td>
-                <td><a href="{{SITE_ROOT}}/contest/entry/{{entry.id}}/">{{ entry.title }}</a></td>
-                <td>{{ entry.nominator }}</td>
                 <td>{{ entry.data_owner }}</td>
-                <td>{{ entry.status }}</td>
+                <td>{{ entry.nominator }}</td>
+                <td><a href="{{SITE_ROOT}}/contest/entry/{{entry.id}}/">{{ entry.title }}</a></td>
+                <td>{{ entry.status }}{% if not entry.is_visible %}, {{ entry.rejected_reason }}{% endif %} {{entry.links|urlize}}</td>
             </tr>
         {% endfor %}
     </table>
