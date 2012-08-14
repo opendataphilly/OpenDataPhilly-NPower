@@ -28,7 +28,7 @@ DATABASES = {
         'NAME': 'opendataphilly',                      # Or path to database file if using sqlite3.
         'USER': 'odpuser',                      # Not used with sqlite3.
         'PASSWORD': '12345',                  # Not used with sqlite3.
-        'HOST': 'sajara01',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
