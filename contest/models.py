@@ -10,7 +10,8 @@ DATA_STATUS = (
     ('Released', 'Released'), 
     ('Not Released', 'Not Released'), 
     ('Under Discussion', 'Under Discussion'), 
-    ('Cannot Be Released', 'Cannot Be Released')
+    ('Cannot Be Released', 'Cannot Be Released'),
+    ('Rejected', 'Rejected')
 )
 
 class Contest(models.Model):
@@ -78,6 +79,7 @@ class Entry(models.Model):
     is_visible = models.BooleanField(default=True)
     data_owner = models.CharField(max_length=255)
     rejected_reason = models.CharField(max_length=255, null=True, blank=True)
+    comments = models.TextField(null=True, blank=True)
 
     contest = models.ForeignKey(Contest)
     vote_count = models.IntegerField(default=0)

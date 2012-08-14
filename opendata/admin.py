@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime as dt
 from opendata.models import *
 from comments.models import *
 from suggestions.models import *
@@ -42,7 +42,7 @@ class ResourceAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not change:
             obj.created_by = request.user
-            obj.created = datetime.now()
+            obj.created = dt.now()
         
         obj.last_updated_by = request.user
         obj.save()
@@ -76,7 +76,7 @@ class IdeaAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not change:
             obj.created_by = request.user
-            obj.created_by_date = datetime.now()
+            obj.created_by_date = dt.now()
         
         obj.updated_by = request.user
         obj.save()
@@ -115,7 +115,6 @@ class ContestAdmin(admin.ModelAdmin):
 
 class VoteAdmin(admin.ModelAdmin):
     list_display= ['entry', 'user', 'timestamp']
-    search_fields = ['entry']
     list_filter = ['entry',]
 
 admin.site.register(Submission, SubmissionAdmin)

@@ -48,6 +48,7 @@ textarea {font-family: Arial, Helvetica, sans-serif; padding: 4px;}
 .center {text-align: center}
 .right {text-align: right}
 
+.bold {font-weight: bold;}
 
 #wrapper h2.grid {
 	padding: 7px 7px 7px 9px;
@@ -2090,6 +2091,7 @@ li.resource #entry_votes {
 #entry_list_table td {
     padding: 8px;
     border-bottom: 1px solid #eee;
+    line-height: 17px;
 }
 #entry_list_table tr:last-child td {
     border-bottom: none;
