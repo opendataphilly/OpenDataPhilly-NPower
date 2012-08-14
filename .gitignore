@@ -3,5 +3,5 @@
 *.csv
 media/*
 static/*
-static/*
 venv
+.DS_Store
