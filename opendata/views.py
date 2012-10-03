@@ -54,7 +54,7 @@ def home(request):
     return render_to_response('home.html', {'recent': recent, 'idea': idea, 'tweets': tweets},  context_instance=RequestContext(request))
 
 def results(request):
-    resources = Resource.objects.all()
+    resources = Resource.objects.filter(is_published=True)
     if 'filter' in request.GET:
         f = request.GET['filter']
         resources = resources.filter(url__url_type__url_type__iexact=f).distinct()
@@ -65,7 +65,7 @@ def thanks(request):
 
 def tag_results(request, tag_id):
     tag = Tag.objects.get(pk=tag_id)
-    tag_resources = Resource.objects.filter(tags=tag)
+    tag_resources = Resource.objects.filter(tags=tag, is_published=True)
     if 'filter' in request.GET:
         f = request.GET['filter']
         tag_resources = tag_resources.filter(url__url_type__url_type__icontains=f).distinct()
@@ -73,7 +73,7 @@ def tag_results(request, tag_id):
     return render_to_response('results.html', {'results': tag_resources, 'tag': tag}, context_instance=RequestContext(request))
 
 def search_results(request):
-    search_resources = Resource.objects.all()
+    search_resources = Resource.objects.filter(is_published=True)
     if 'qs' in request.GET:
         qs = request.GET['qs'].replace("+", " ")
         search_resources = search_resources.filter(Q(name__icontains=qs) | Q(description__icontains=qs) | Q(organization__icontains=qs) | Q(division__icontains=qs))
@@ -84,7 +84,7 @@ def search_results(request):
     return render_to_response('results.html', {'results': search_resources}, context_instance=RequestContext(request))
 
 def resource_details(request, resource_id, slug=""):
-    resource = get_object_or_404(Resource, pk=resource_id)
+    resource = get_object_or_404(Resource, pk=resource_id, is_published=True)
     return render_to_response('details.html', {'resource': resource}, context_instance=RequestContext(request)) 
 
 def idea_results(request, idea_id=None, slug=""):
