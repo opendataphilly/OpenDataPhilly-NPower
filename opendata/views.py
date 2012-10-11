@@ -23,7 +23,8 @@ from models import *
 from forms import *
 
 def home(request):
-    tweets = cache.get( 'tweets' )
+    #tweets = cache.get( 'tweets' )
+    tweets = {'':''}
 
     utc = pytz.utc
     local = timezone('US/Eastern')
