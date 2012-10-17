@@ -14,7 +14,6 @@ pytz==2012c
 recaptcha-client==1.0.6
 simplejson==2.5.0
 sorl-thumbnail==3.2.5
-twitter==1.7.2
 wsgiref==0.1.2
 pyproj==1.8.9
 lxml==2.2.8
