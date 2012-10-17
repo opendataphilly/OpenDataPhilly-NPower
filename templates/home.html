@@ -20,17 +20,10 @@
   <a id="home_idea_callout" href="{{SITE_ROOT}}/ideas/">Need Inspiration? Visit the Idea Gallery</a>
 
   <div id="home_twitter">
-    <h2 class="grid"><a href="http://twitter.com/opendataphilly" target="_blank"><span class="icon_twitter"></span>@OpenDataPhilly</a></h2>
-    <ul id="home_twitter_feed">
-      {% for tweet in tweets %}
-      <li class="twitter_item">
-        <p><a href="http://www.twitter.com/opendataphilly/statuses/{{tweet.id}}" target="_blank" class="date">{{tweet.date|date:"l, F d, Y"}}</a>, <span class="time">{{tweet.date|date:"g:ia"}}</span></p>
-        <p class="post">
-          {{tweet.text|urlize}}
-        </p>
-      </li>
-      {% endfor %}
-    </ul>
+    <a class="twitter-timeline"  href="https://twitter.com/opendataphilly" data-widget-id="258664344257167360">Tweets by @opendataphilly</a>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
   </div>
 
   <div id="home_additions">

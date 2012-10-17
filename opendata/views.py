@@ -23,36 +23,13 @@ from models import *
 from forms import *
 
 def home(request):
-    #tweets = cache.get( 'tweets' )
-    tweets = {'':''}
-
-    utc = pytz.utc
-    local = timezone('US/Eastern')
-
-    if not tweets:    
-        tweets = twitter.Api().GetUserTimeline( settings.TWITTER_USER )[:4]
-        if tweets.count < 4:
-            tweet_cache = []
-            for t in TwitterCache.objects.all():
-                tc = json.JSONDecoder().decode(t.text)
-                tc['date'] = datetime.strptime( tc['created_at'], "%a %b %d %H:%M:%S +0000 %Y" ).replace(tzinfo=utc).astimezone(local)
-                tweet_cache.append(tc)
-            tweets = tweet_cache
-        else:
-            TwitterCache.objects.all().delete()
-            for tweet in tweets:
-                tweet.date = datetime.strptime( tweet.created_at, "%a %b %d %H:%M:%S +0000 %Y" ).replace(tzinfo=utc).astimezone(local)
-                t = TwitterCache(text=tweet.AsJsonString())
-                t.save()
-            cache.set( 'tweets', tweets, settings.TWITTER_TIMEOUT )
-    
     recent = Resource.objects.order_by("-created")[:3]
     idea = Idea.objects.order_by("-created_by_date")[:4]
     if idea.count() > 0:
-        ct = idea.count() - 1     
+        ct = idea.count() - 1
         ran = random.randint(0, ct)
-        return render_to_response('home.html', {'recent': recent, 'idea': idea[ran], 'tweets': tweets},  context_instance=RequestContext(request))
-    return render_to_response('home.html', {'recent': recent, 'idea': idea, 'tweets': tweets},  context_instance=RequestContext(request))
+        return render_to_response('home.html', {'recent': recent, 'idea': idea[ran]},  context_instance=RequestContext(request))
+    return render_to_response('home.html', {'recent': recent, 'idea': idea},  context_instance=RequestContext(request))
 
 def results(request):
     resources = Resource.objects.filter(is_published=True)

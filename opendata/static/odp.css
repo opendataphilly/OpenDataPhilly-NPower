@@ -435,7 +435,8 @@ margin-top: -14px;
   #home_twitter {
     float:left;
     width: 285px;
-    margin-top: 27px
+    margin-top: 27px;
+    padding-top: 11px;
   }
   
   #home_additions {
