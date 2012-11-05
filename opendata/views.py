@@ -16,7 +16,6 @@ import pytz
 from pytz import timezone
 from django.core.cache import cache
 from models import TwitterCache
-import twitter
 import simplejson as json
 
 from models import *
