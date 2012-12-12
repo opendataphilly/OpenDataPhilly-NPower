@@ -22,7 +22,7 @@ from models import *
 from forms import *
 
 def home(request):
-    recent = Resource.objects.order_by("-created")[:3]
+    recent = Resource.objects.filter(is_published=True).order_by("-created")[:3]
     idea = Idea.objects.order_by("-created_by_date")[:4]
     if idea.count() > 0:
         ct = idea.count() - 1
