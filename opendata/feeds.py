@@ -121,3 +121,6 @@ class CommentFeed(Feed):
 
     def item_pubdate(self, item):
         return item.submit_date
+
+    def item_guid(self, item):
+        return 'OpenDataPhilly.org Comment ID ' + str(item.pk)
