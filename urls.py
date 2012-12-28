@@ -4,7 +4,7 @@ from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.conf import settings
 from registration.views import register
 
-from opendata.feeds import ResourcesFeed, TagFeed, IdeasFeed, UpdatesFeed
+from opendata.feeds import ResourcesFeed, TagFeed, IdeasFeed, UpdatesFeed, CommentFeed
 from opendata.models import Resource, Idea
 
 # Uncomment the next two lines to enable the admin:
@@ -54,6 +54,7 @@ urlpatterns = patterns('',
     (r'^feeds/resources/$', ResourcesFeed()),
     (r'^feeds/updates/$', UpdatesFeed()),
     (r'^feeds/ideas/$', IdeasFeed()),
+    (r'^feeds/comments/$', CommentFeed()),
     (r'^feeds/tag/(?P<tag_id>\d+)/$', TagFeed()),
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     (r'^robots\.txt$', direct_to_template, {'template': 'robots.txt'}),

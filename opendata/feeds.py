@@ -95,3 +95,29 @@ class TagFeed(BaseResourceFeed):
 
     def items(self, obj):
         return Resource.objects.filter(tags=obj).order_by('-created')
+
+
+class CommentFeed(Feed):
+    title = "OpenDataPhilly.org: Comments"
+    link = "/feeds/comments/"
+    description = "List of OpenDataPhilly.org resource comments listed in reverse chronological order"
+    description_template = "feeds/comment.html"
+    feed_type = Rss2
+
+    def items(self):
+        return Comment.objects.order_by('-submit_date')
+
+    def item_title(self, item):
+        return 'Comment on ' + item.content_object.name + ' by ' + item.name
+
+    def item_link(self, item):
+        return item.content_object.get_absolute_url()
+
+    def item_author_name(self, item):
+        return item.name
+
+    def item_description(self, item):
+        return item.comment
+
+    def item_pubdate(self, item):
+        return item.submit_date
