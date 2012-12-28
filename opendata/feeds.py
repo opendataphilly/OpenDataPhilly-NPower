@@ -123,4 +123,4 @@ class CommentFeed(Feed):
         return item.submit_date
 
     def item_guid(self, item):
-        return 'OpenDataPhilly.org Comment ID ' + str(item.pk)
+        return 'http://www.opendataphilly.org/comment/' + str(item.pk)
