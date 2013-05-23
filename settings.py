@@ -182,7 +182,7 @@ INSTALLED_APPS = (
     'comments',
     'suggestions',
     'contest',
-    
+    'api'
 )
 
 # A sample logging configuration. The only tangible logging

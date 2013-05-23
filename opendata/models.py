@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.db.models import Q
 
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 from djangoratings.fields import RatingField
@@ -122,6 +123,16 @@ class Resource(models.Model):
     def get_absolute_url(self):
         slug = slugify(self.name)
         return "/opendata/resource/%i/%s" % (self.id, slug)
+
+    @classmethod
+    def search(cls, qs=None, objs=None):
+        if objs is None:
+            objs = cls.objects.filter(is_published=True)
+
+        if qs:
+            objs = objs.filter(Q(name__icontains=qs) | Q(description__icontains=qs) | Q(organization__icontains=qs) | Q(division__icontains=qs))
+
+        return objs
 
     def __unicode__(self):
         return '%s' % self.name
