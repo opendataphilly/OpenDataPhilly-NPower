@@ -1,4 +1,3 @@
-# Create your views here
 from django.http import HttpResponse, Http404
 from opendata.models import *
 #from opendata.views import send_email
@@ -25,14 +24,14 @@ def vote(request, suggestion_id):
         if did_vote is not None:
             suggestion.rating.add(score=1, user=request.user, ip_address=remote_addr)
 
-        return HttpResponse(json_encode(suggestion))
+        return HttpResponse(json_encode(suggestion), content_type="application/json")
 
     elif request.method == "DELETE" and suggestion is not None:
         vote = suggestion.rating.get_ratings().filter(user=request.user)
         if vote:
             vote.delete()
 
-        return HttpResponse(json_encode(suggestion))
+        return HttpResponse(json_encode(suggestion), content_type="application/json")
 
     raise Http404
 
@@ -58,14 +57,14 @@ def add_suggestion_view(request):
 
     text = json_dict["text"]
 
-    return HttpResponse(json_encode(add_suggestion(request.user, text, request.META['REMOTE_ADDR'])))
+    return HttpResponse(json_encode(add_suggestion(request.user, text, request.META['REMOTE_ADDR'])), content_type="application/json")
 
 
 def suggestion(request, suggestion_id):
     objs = Suggestion.objects.filter(pk=suggestion_id)
 
     if objs and len(objs) == 1:
-        return HttpResponse(json_encode(objs[0]))
+        return HttpResponse(json_encode(objs[0]), content_type="application/json")
     else:
         raise Http404
 
@@ -75,7 +74,7 @@ def suggestions(request):
     if (request.method == 'POST'):
         return add_suggestion_view(request)
     elif (request.method == 'GET'):
-        return HttpResponse(json_encode(list(Suggestion.objects.all())))
+        return HttpResponse(json_encode(list(Suggestion.objects.all())), content_type="application/json")
     else:
         raise Http404
 
@@ -84,30 +83,30 @@ def search_suggestions(request):
     if 'qs' in request.GET:
         qs = request.GET['qs'].replace("+", " ")
 
-        return HttpResponse(json_encode(list(Suggestion.objects.filter(text__icontains=qs))))
+        return HttpResponse(json_encode(list(Suggestion.objects.filter(text__icontains=qs))), content_type="application/json")
     else:
-        return http_badreq("Missing required parameter qs")
+        return HttpResponse(json_encode({'error': "Missing required query parameter 'qs'"}), content_type="application/json")
 
 
 def ideas(request):
-    return HttpResponse(json_encode(list(Idea.objects.all()), tiny_resource_encoder))
+    return HttpResponse(json_encode(list(Idea.objects.all()), tiny_resource_encoder), content_type="application/json")
 
 
 def idea(request, idea_id):
     obj = Idea.objects.filter(id=idea_id)
     if obj and len(obj) == 1:
-        return HttpResponse(json_encode(obj[0]))
+        return HttpResponse(json_encode(obj[0]), content_type="application/json")
     else:
-        raise Http404
+        return HttpResponse(json_encode({'error': "No idea entity found with the provided id"}), content_type="application/json")
 
 
 def tags(request):
-    return HttpResponse(json_encode(list(Tag.objects.all())))
+    return HttpResponse(json_encode(list(Tag.objects.all())), content_type="application/json")
 
 
 def by_tag(request, tag_name):
     tag_name = tag_name.replace('-', ' / ').title()  # unsuglify
-    return HttpResponse(json_encode(list(Resource.objects.filter(tags__tag_name=tag_name))))
+    return HttpResponse(json_encode(list(Resource.objects.filter(tags__tag_name=tag_name))), content_type="application/json")
 
 
 def resource_search(request):
@@ -115,21 +114,21 @@ def resource_search(request):
         qs = request.GET['qs'].replace("+", " ")
         search_resources = Resource.search(qs)
 
-        return HttpResponse(json_encode(list(search_resources), short_resource_encoder))
+        return HttpResponse(json_encode(list(search_resources), short_resource_encoder), content_type="application/json")
     else:
-        return http_badreq("Must specify qs search param")
+        return HttpResponse(json_encode({'error': "Must specify qs search param"}), content_type="application/json")
 
 
 def resource(request, resource_id):
     rsrc = Resource.objects.filter(id=resource_id, is_published=True)
     if rsrc and len(rsrc) == 1:
-        return HttpResponse(json_encode(rsrc[0], full_resource_encoder))
+        return HttpResponse(json_encode(rsrc[0], full_resource_encoder), content_type="application/json")
     else:
-        raise Http404
+        return HttpResponse(json_encode({'error': "No resource entity found with the provided id"}), content_type="application/json")
 
 
 def resources(request):
-    return HttpResponse(json_encode(list(Resource.objects.filter(is_published=True)), short_resource_encoder))
+    return HttpResponse(json_encode(list(Resource.objects.filter(is_published=True)), short_resource_encoder), content_type="application/json")
 
 
 def safe_key_getter(dic):
