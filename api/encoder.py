@@ -66,6 +66,11 @@ def full_resource_encoder(obj):
 
 def encode_resource(resource_encoder):
     def encode_resource_with_encoder(obj):
+        try:
+            thumb_url = '/media/' + obj.image.thumbnail.relative_url
+        except:
+            thumb_url = ''
+
         if isinstance(obj, Resource):
             return resource_encoder(obj)
         elif isinstance(obj, Suggestion):
@@ -104,7 +109,7 @@ def encode_resource(resource_encoder):
             return { "title" : obj.title,
                      "source" : obj.source,
                      "source_url" : obj.source_url,
-                     "image_thumb_url" : "/media/" + obj.image.thumbnail.relative_url,
+                     "image_thumb_url" : thumb_url,
                      "image_url" : obj.image.url
                      }
         elif isinstance(obj, DataType):
