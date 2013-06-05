@@ -2125,7 +2125,7 @@ li.resource #entry_votes {
   
    ------------------------------------------------- */
 pre {
-  margin: 0px;
+  margin: 0 0 25px 0;
   padding: 10px;
   overflow-x: auto;
   background-color: #333;
