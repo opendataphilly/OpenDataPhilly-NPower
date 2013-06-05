@@ -2135,4 +2135,6 @@ code {
   color: #ccc;
   font-size: 12px;
   font-family: monospace;
+  padding: 3px 6px;
+  background: #333;
 }
