@@ -1,7 +1,7 @@
 .base_body {
 	background: url(/static/images/background.gif) repeat;
 	font-family: arial, helvetica, sans-serif;
-	color: #575656;
+	color: #444;
 }
 
 .hidden {
@@ -57,11 +57,11 @@ textarea {font-family: Arial, Helvetica, sans-serif; padding: 4px;}
 	font-size: .85em;
 	text-transform:uppercase;
 	background: url(/static/images/background_ul.gif) repeat;
-	color: #4C4C4C;
+	color: #444;
     letter-spacing:-1px;
   }
   
- #wrapper h2.grid a {	color: #4C4C4C;}
+ #wrapper h2.grid a {	color: #444;}
 
 
 /* -------------------------------------------------
@@ -218,13 +218,13 @@ margin-top: -14px;
 	padding-left:9px;
 	font-size: 9pt;
 	font-weight: bold;
-	color: #7D7D7D;
+	color: #444;
 }
 
 #left_container ul li a{
   	display:block;
   	padding: 10px 0 4px; 
-	color: #7D7D7D;
+	color: #444;
 	text-decoration: none;
 }
 #left_container ul li a:hover {
@@ -653,7 +653,7 @@ float:left
   }
 
   .resource p strong {
-    color: #888888;
+    color: #333;
     font-weight: bold;
 }
   
@@ -740,7 +740,7 @@ a.resource:hover {
 	font-size: 0.75em;
   	line-height: 1.4em;
 	font-weight: bold;
-	color: #9C9B9B;	
+	color: #444;	
   margin: 0;
 }
 
@@ -892,7 +892,7 @@ ul.tab_header li.tab_button a:hover {
 	padding:3px 0 0 0;
 	font-size: 0.75em;
   	line-height: 1.25em;
-	color: #9C9B9B;
+	color: #444;
 }
 .info_data a {
 	color: #EC974F;
@@ -1061,7 +1061,7 @@ color: #333; margin-bottom: 5px;
 }  
   
 #rate_label, #comment_label {
-	font-weight: bold;
+	font-weight: normal;
 }
 .submit {
   margin: 10px 0 0 120px;
@@ -1072,6 +1072,11 @@ color: #333; margin-bottom: 5px;
 	line-height: 1.3em;
 
 }
+
+.comment_user {
+  color: #444;
+}
+
 #comment_list .comment_item {
 	margin-top:20px;
   border-bottom:1px dotted #ddd;
@@ -1094,7 +1099,8 @@ color: #333; margin-bottom: 5px;
 #comment_list .comment_body {
 	padding-bottom:10px;	
 	font-size: 0.8em;
-  color: #8a8a8a;
+  font-weight: normal;
+  color: #444;
 }
 #comment_list .comment_body a {
 	color: #EAA77C; 
@@ -1542,7 +1548,7 @@ float:left;
   padding: 10px 0;
 	line-height: 1.8em;
 	font-size: 0.8em;
-	color: #8a8a8a;
+	color: #444;
   }
   
   .flatpage h2:first-child {
@@ -1566,7 +1572,7 @@ float:left;
  .flatpage ul li {
     list-style: none;
     background: url(images/bullet-arrow.png) 0 7px no-repeat;
-    color: #8a8a8a;
+    color: #444;
     font-size: 0.8em;
     line-height: 1.4em;
     padding: 4px 0 4px 28px
@@ -1586,7 +1592,7 @@ float:left;
   
    .flatpage ol li {
       list-style: decimal;
-      color: #8a8a8a;
+      color: #444;
       font-size: 0.8em;
       line-height: 1.4em;
       padding: 4px 0 4px 0;
