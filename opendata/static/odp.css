@@ -2119,3 +2119,20 @@ li.resource #entry_votes {
     
 }
 
+/* -------------------------------------------------
+  
+  Code Styles
+  
+   ------------------------------------------------- */
+pre {
+  margin: 0px;
+  padding: 10px;
+  overflow-x: auto;
+  background-color: #333;
+}
+
+code {
+  color: #ccc;
+  font-size: 12px;
+  font-family: monospace;
+}
