@@ -98,7 +98,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -123,7 +123,7 @@ AUTH_PROFILE_MODULE = 'opendata.odpuserprofile'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -133,7 +133,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-    
     "opendata.context_processors.get_current_path",
     "opendata.context_processors.get_settings",
 )
@@ -148,7 +147,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django_sorting.middleware.SortingMiddleware',
     'pagination.middleware.PaginationMiddleware',
-
 )
 
 ROOT_URLCONF = 'urls'
